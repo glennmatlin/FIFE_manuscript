@@ -1,0 +1,974 @@
+@article{chang_survey_2024,
+	title = {A Survey on Evaluation of Large Language Models},
+	volume = {15},
+	issn = {2157-6904, 2157-6912},
+	url = {https://dl.acm.org/doi/10.1145/3641289},
+	doi = {10.1145/3641289},
+	abstract = {Large language models ({LLMs}) are gaining increasing popularity in both academia and industry, owing to their unprecedented performance in various applications. As {LLMs} continue to play a vital role in both research and daily use, their evaluation becomes increasingly critical, not only at the task level, but also at the society level for better understanding of their potential risks. Over the past years, significant efforts have been made to examine {LLMs} from various perspectives. This paper presents a comprehensive review of these evaluation methods for {LLMs}, focusing on three key dimensions:
+              what to evaluate
+              ,
+              where to evaluate
+              , and
+              how to evaluate
+              . Firstly, we provide an overview from the perspective of evaluation tasks, encompassing general natural language processing tasks, reasoning, medical usage, ethics, education, natural and social sciences, agent applications, and other areas. Secondly, we answer the ‘where’ and ‘how’ questions by diving into the evaluation methods and benchmarks, which serve as crucial components in assessing the performance of {LLMs}. Then, we summarize the success and failure cases of {LLMs} in different tasks. Finally, we shed light on several future challenges that lie ahead in {LLMs} evaluation. Our aim is to offer invaluable insights to researchers in the realm of {LLMs} evaluation, thereby aiding the development of more proficient {LLMs}. Our key point is that evaluation should be treated as an essential discipline to better assist the development of {LLMs}. We consistently maintain the related open-source materials at:
+              https://github.com/{MLGroupJLU}/{LLM}-eval-survey},
+	pages = {1--45},
+	number = {3},
+	journaltitle = {{ACM} Transactions on Intelligent Systems and Technology},
+	shortjournal = {{ACM} Trans. Intell. Syst. Technol.},
+	author = {Chang, Yupeng and Wang, Xu and Wang, Jindong and Wu, Yuan and Yang, Linyi and Zhu, Kaijie and Chen, Hao and Yi, Xiaoyuan and Wang, Cunxiang and Wang, Yidong and Ye, Wei and Zhang, Yue and Chang, Yi and Yu, Philip S. and Yang, Qiang and Xie, Xing},
+	urldate = {2025-08-13},
+	date = {2024-06-30},
+	langid = {english},
+}
+
+@article{wen_benchmarking_2024,
+	title = {Benchmarking Complex Instruction-Following with Multiple Constraints Composition},
+	volume = {37},
+	url = {https://proceedings.neurips.cc/paper_files/paper/2024/hash/f8c24b08b96a08ec7a7a975feea7777e-Abstract-Datasets_and_Benchmarks_Track.html},
+	pages = {137610--137645},
+	journaltitle = {Advances in Neural Information Processing Systems},
+	author = {Wen, Bosi and Ke, Pei and Gu, Xiaotao and Wu, Lindong and Huang, Hao and Zhou, Jinfeng and Li, Wenchuang and Hu, Binxin and Gao, Wendy and Xu, Jiaxin and Liu, Yiming and Tang, Jie and Wang, Hongning and Huang, Minlie},
+	urldate = {2025-08-26},
+	date = {2024-12-16},
+	langid = {english},
+}
+
+@misc{wen_benchmarking_2024-1,
+	title = {Benchmarking Complex Instruction-Following with Multiple Constraints Composition},
+	url = {http://arxiv.org/abs/2407.03978},
+	doi = {10.48550/arXiv.2407.03978},
+	abstract = {Instruction following is one of the fundamental capabilities of large language models ({LLMs}). As the ability of {LLMs} is constantly improving, they have been increasingly applied to deal with complex human instructions in real-world scenarios. Therefore, how to evaluate the ability of complex instruction-following of {LLMs} has become a critical research problem. Existing benchmarks mainly focus on modeling different types of constraints in human instructions while neglecting the composition of different constraints, which is an indispensable constituent in complex instructions. To this end, we propose {ComplexBench}, a benchmark for comprehensively evaluating the ability of {LLMs} to follow complex instructions composed of multiple constraints. We propose a hierarchical taxonomy for complex instructions, including 4 constraint types, 19 constraint dimensions, and 4 composition types, and manually collect a high-quality dataset accordingly. To make the evaluation reliable, we augment {LLM}-based evaluators with rules to effectively verify whether generated texts can satisfy each constraint and composition. Furthermore, we obtain the final evaluation score based on the dependency structure determined by different composition types. {ComplexBench} identifies significant deficiencies in existing {LLMs} when dealing with complex instructions with multiple constraints composition.},
+	number = {{arXiv}:2407.03978},
+	publisher = {{arXiv}},
+	author = {Wen, Bosi and Ke, Pei and Gu, Xiaotao and Wu, Lindong and Huang, Hao and Zhou, Jinfeng and Li, Wenchuang and Hu, Binxin and Gao, Wendy and Xu, Jiaxin and Liu, Yiming and Tang, Jie and Wang, Hongning and Huang, Minlie},
+	urldate = {2025-08-29},
+	date = {2024-10-31},
+	eprinttype = {arxiv},
+	eprint = {2407.03978 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@unpublished{wen_benchmarking_2024-2,
+	title = {Benchmarking complex instruction-following with multiple constraints composition},
+	url = {http://dx.doi.org/10.48550/arXiv.2407.03978},
+	abstract = {Instruction following is one of the fundamental capabilities of large
+language models ({LLMs}). As the ability of {LLMs} is constantly improving,
+they have been increasingly applied to deal with complex human
+instructions in real-world scenarios. Therefore, how to evaluate the
+ability of complex instruction-following of {LLMs} has become a critical
+research problem. Existing benchmarks mainly focus on modeling different
+types of constraints in human instructions while neglecting the
+composition of different constraints, which is an indispensable
+constituent in complex instructions. To this end, we propose {ComplexBench},
+a benchmark for comprehensively evaluating the ability of {LLMs} to follow
+complex instructions composed of multiple constraints. We propose a
+hierarchical taxonomy for complex instructions, including 4 constraint
+types, 19 constraint dimensions, and 4 composition types, and manually
+collect a high-quality dataset accordingly. To make the evaluation
+reliable, we augment {LLM}-based evaluators with rules to effectively verify
+whether generated texts can satisfy each constraint and composition.
+Furthermore, we obtain the final evaluation score based on the dependency
+structure determined by different composition types. {ComplexBench}
+identifies significant deficiencies in existing {LLMs} when dealing with
+complex instructions with multiple constraints composition.},
+	author = {Wen, Bosi and Ke, Pei and Gu, Xiaotao and Wu, Lindong and Huang, Hao and Zhou, Jinfeng and Li, Wenchuang and Hu, Binxin and Gao, Wendy and Xu, Jiaxin and Liu, Yiming and Tang, Jie and Wang, Hongning and Huang, Minlie},
+	date = {2024-07-04},
+	doi = {10.48550/arXiv.2407.03978},
+}
+
+@article{he_can_2023,
+	title = {Can Large Language Models Understand Real-World Complex Instructions?},
+	rights = {{arXiv}.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2309.09150},
+	doi = {10.48550/ARXIV.2309.09150},
+	abstract = {Large language models ({LLMs}) can understand human instructions, showing their potential for pragmatic applications beyond traditional {NLP} tasks. However, they still struggle with complex instructions, which can be either complex task descriptions that require multiple tasks and constraints, or complex input that contains long context, noise, heterogeneous information and multi-turn format. Due to these features, {LLMs} often ignore semantic constraints from task descriptions, generate incorrect formats, violate length or sample count constraints, and be unfaithful to the input text. Existing benchmarks are insufficient to assess {LLMs}' ability to understand complex instructions, as they are close-ended and simple. To bridge this gap, we propose {CELLO}, a benchmark for evaluating {LLMs}' ability to follow complex instructions systematically. We design eight features for complex instructions and construct a comprehensive evaluation dataset from real-world scenarios. We also establish four criteria and develop corresponding metrics, as current ones are inadequate, biased or too strict and coarse-grained. We compare the performance of representative Chinese-oriented and English-oriented models in following complex instructions through extensive experiments. Resources of {CELLO} are publicly available at https://github.com/Abbey4799/{CELLO}.},
+	author = {He, Qianyu and Zeng, Jie and Huang, Wenhao and Chen, Lina and Xiao, Jin and He, Qianxi and Zhou, Xunzhe and Chen, Lida and Wang, Xintao and Huang, Yuncheng and Ye, Haoning and Li, Zihan and Chen, Shisong and Zhang, Yikai and Gu, Zhouhong and Liang, Jiaqing and Xiao, Yanghua},
+	urldate = {2025-08-13},
+	date = {2023},
+	note = {Publisher: {arXiv}
+Version Number: 2},
+	keywords = {Artificial Intelligence (cs.{AI}), Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@misc{he_can_2024,
+	title = {Can Large Language Models Understand Real-World Complex Instructions?},
+	url = {http://arxiv.org/abs/2309.09150},
+	doi = {10.48550/arXiv.2309.09150},
+	abstract = {Large language models ({LLMs}) can understand human instructions, showing their potential for pragmatic applications beyond traditional {NLP} tasks. However, they still struggle with complex instructions, which can be either complex task descriptions that require multiple tasks and constraints, or complex input that contains long context, noise, heterogeneous information and multi-turn format. Due to these features, {LLMs} often ignore semantic constraints from task descriptions, generate incorrect formats, violate length or sample count constraints, and be unfaithful to the input text. Existing benchmarks are insufficient to assess {LLMs}' ability to understand complex instructions, as they are close-ended and simple. To bridge this gap, we propose {CELLO}, a benchmark for evaluating {LLMs}' ability to follow complex instructions systematically. We design eight features for complex instructions and construct a comprehensive evaluation dataset from real-world scenarios. We also establish four criteria and develop corresponding metrics, as current ones are inadequate, biased or too strict and coarse-grained. We compare the performance of representative Chinese-oriented and English-oriented models in following complex instructions through extensive experiments. Resources of {CELLO} are publicly available at https://github.com/Abbey4799/{CELLO}.},
+	number = {{arXiv}:2309.09150},
+	publisher = {{arXiv}},
+	author = {He, Qianyu and Zeng, Jie and Huang, Wenhao and Chen, Lina and Xiao, Jin and He, Qianxi and Zhou, Xunzhe and Chen, Lida and Wang, Xintao and Huang, Yuncheng and Ye, Haoning and Li, Zihan and Chen, Shisong and Zhang, Yikai and Gu, Zhouhong and Liang, Jiaqing and Xiao, Yanghua},
+	urldate = {2025-08-29},
+	date = {2024-01-08},
+	eprinttype = {arxiv},
+	eprint = {2309.09150 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{he_can_2024-1,
+	title = {Can Large Language Models Understand Real-World Complex Instructions?},
+	url = {http://arxiv.org/abs/2309.09150},
+	doi = {10.48550/arXiv.2309.09150},
+	abstract = {Large language models ({LLMs}) can understand human instructions, showing their potential for pragmatic applications beyond traditional {NLP} tasks. However, they still struggle with complex instructions, which can be either complex task descriptions that require multiple tasks and constraints, or complex input that contains long context, noise, heterogeneous information and multi-turn format. Due to these features, {LLMs} often ignore semantic constraints from task descriptions, generate incorrect formats, violate length or sample count constraints, and be unfaithful to the input text. Existing benchmarks are insufficient to assess {LLMs}' ability to understand complex instructions, as they are close-ended and simple. To bridge this gap, we propose {CELLO}, a benchmark for evaluating {LLMs}' ability to follow complex instructions systematically. We design eight features for complex instructions and construct a comprehensive evaluation dataset from real-world scenarios. We also establish four criteria and develop corresponding metrics, as current ones are inadequate, biased or too strict and coarse-grained. We compare the performance of representative Chinese-oriented and English-oriented models in following complex instructions through extensive experiments. Resources of {CELLO} are publicly available at https://github.com/Abbey4799/{CELLO}.},
+	number = {{arXiv}:2309.09150},
+	publisher = {{arXiv}},
+	author = {He, Qianyu and Zeng, Jie and Huang, Wenhao and Chen, Lina and Xiao, Jin and He, Qianxi and Zhou, Xunzhe and Chen, Lida and Wang, Xintao and Huang, Yuncheng and Ye, Haoning and Li, Zihan and Chen, Shisong and Zhang, Yikai and Gu, Zhouhong and Liang, Jiaqing and Xiao, Yanghua},
+	urldate = {2025-08-26},
+	date = {2024-01-08},
+	eprinttype = {arxiv},
+	eprint = {2309.09150 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@unpublished{yan_codeif_2025,
+	title = {{CodeIF}: Benchmarking the instruction-following capabilities of Large Language Models for code generation},
+	url = {http://arxiv.org/abs/2502.19166},
+	abstract = {With the rapid advancement of Large Language Models ({LLMs}), the demand for robust instruction-following capabilities in code generation tasks has grown significantly. Code generation not only facilitates faster prototyping and automated testing, but also augments developer efficiency through improved maintainability and reusability of code. In this paper, we introduce {CodeIF}, the first benchmark specifically designed to assess the abilities of {LLMs} to adhere to task-oriented instructions within diverse code generation scenarios. {CodeIF} encompasses a broad range of tasks, including function synthesis, error debugging, algorithmic refactoring, and code explanation, thereby providing a comprehensive suite to evaluate model performance across varying complexity levels and programming domains. We conduct extensive experiments with {LLMs}, analyzing their strengths and limitations in meeting the demands of these tasks. The experimental results offer valuable insights into how well current models align with human instructions, as well as the extent to which they can generate consistent, maintainable, and contextually relevant code. Our findings not only underscore the critical role that instruction-following {LLMs} can play in modern software development, but also illuminate pathways for future research aimed at enhancing their adaptability, reliability, and overall effectiveness in automated code generation.},
+	author = {Yan, Kaiwen and Guo, Hongcheng and Shi, Xuanqing and Xu, Jingyi and Gu, Yaonan and Li, Zhoujun},
+	date = {2025-02-26},
+}
+
+@misc{zhang_darg_2024,
+	title = {{DARG}: Dynamic Evaluation of Large Language Models via Adaptive Reasoning Graph},
+	url = {http://arxiv.org/abs/2406.17271},
+	doi = {10.48550/arXiv.2406.17271},
+	shorttitle = {{DARG}},
+	abstract = {The current paradigm of evaluating Large Language Models ({LLMs}) through static benchmarks comes with significant limitations, such as vulnerability to data contamination and a lack of adaptability to the evolving capabilities of {LLMs}. Therefore, evaluation methods that can adapt and generate evaluation data with controlled complexity are urgently needed. In this work, we introduce Dynamic Evaluation of {LLMs} via Adaptive Reasoning Graph Evolvement ({DARG}) to dynamically extend current benchmarks with controlled complexity and diversity. Specifically, we first extract the reasoning graphs of data points in current benchmarks and then perturb the reasoning graphs to generate novel testing data. Such newly generated test samples can have different levels of complexity while maintaining linguistic diversity similar to the original benchmarks. We further use a code-augmented {LLM} to ensure the label correctness of newly generated data. We apply our {DARG} framework to diverse reasoning tasks in four domains with 15 state-of-the-art {LLMs}. Experimental results show that almost all {LLMs} experience a performance decrease with increased complexity and certain {LLMs} exhibit significant drops. Additionally, we find that {LLMs} exhibit more biases when being evaluated via the data generated by {DARG} with higher complexity levels. These observations provide useful insights into how to dynamically and adaptively evaluate {LLMs}. The code is available at https://github.com/{SALT}-{NLP}/{DARG}.},
+	number = {{arXiv}:2406.17271},
+	publisher = {{arXiv}},
+	author = {Zhang, Zhehao and Chen, Jiaao and Yang, Diyi},
+	urldate = {2025-08-26},
+	date = {2024-06-25},
+	eprinttype = {arxiv},
+	eprint = {2406.17271 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@article{heo_llms_2024,
+	title = {Do {LLMs} "know" internally when they follow instructions?},
+	rights = {Creative Commons Attribution Non Commercial No Derivatives 4.0 International},
+	url = {https://arxiv.org/abs/2410.14516},
+	doi = {10.48550/ARXIV.2410.14516},
+	abstract = {Instruction-following is crucial for building {AI} agents with large language models ({LLMs}), as these models must adhere strictly to user-provided constraints and guidelines. However, {LLMs} often fail to follow even simple and clear instructions. To improve instruction-following behavior and prevent undesirable outputs, a deeper understanding of how {LLMs}' internal states relate to these outcomes is required. In this work, we investigate whether {LLMs} encode information in their representations that correlate with instruction-following success - a property we term knowing internally. Our analysis identifies a direction in the input embedding space, termed the instruction-following dimension, that predicts whether a response will comply with a given instruction. We find that this dimension generalizes well across unseen tasks but not across unseen instruction types. We demonstrate that modifying representations along this dimension improves instruction-following success rates compared to random changes, without compromising response quality. Further investigation reveals that this dimension is more closely related to the phrasing of prompts rather than the inherent difficulty of the task or instructions. This work provides insight into the internal workings of {LLMs}' instruction-following, paving the way for reliable {LLM} agents.},
+	author = {Heo, Juyeon and Heinze-Deml, Christina and Elachqar, Oussama and Chan, Kwan Ho Ryan and Ren, Shirley and Nallasamy, Udhay and Miller, Andy and Narain, Jaya},
+	urldate = {2025-08-13},
+	date = {2024},
+	note = {Publisher: {arXiv}
+Version Number: 5},
+	keywords = {Artificial Intelligence (cs.{AI}), Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@article{heo_llms_2024-1,
+	title = {Do {LLMs} estimate uncertainty well in instruction-following?},
+	rights = {Creative Commons Attribution Non Commercial No Derivatives 4.0 International},
+	url = {https://arxiv.org/abs/2410.14582},
+	doi = {10.48550/ARXIV.2410.14582},
+	abstract = {Large language models ({LLMs}) could be valuable personal {AI} agents across various domains, provided they can precisely follow user instructions. However, recent studies have shown significant limitations in {LLMs}' instruction-following capabilities, raising concerns about their reliability in high-stakes applications. Accurately estimating {LLMs}' uncertainty in adhering to instructions is critical to mitigating deployment risks. We present, to our knowledge, the first systematic evaluation of the uncertainty estimation abilities of {LLMs} in the context of instruction-following. Our study identifies key challenges with existing instruction-following benchmarks, where multiple factors are entangled with uncertainty stems from instruction-following, complicating the isolation and comparison across methods and models. To address these issues, we introduce a controlled evaluation setup with two benchmark versions of data, enabling a comprehensive comparison of uncertainty estimation methods under various conditions. Our findings show that existing uncertainty methods struggle, particularly when models make subtle errors in instruction following. While internal model states provide some improvement, they remain inadequate in more complex scenarios. The insights from our controlled evaluation setups provide a crucial understanding of {LLMs}' limitations and potential for uncertainty estimation in instruction-following tasks, paving the way for more trustworthy {AI} agents.},
+	author = {Heo, Juyeon and Xiong, Miao and Heinze-Deml, Christina and Narain, Jaya},
+	urldate = {2025-08-13},
+	date = {2024},
+	note = {Publisher: {arXiv}
+Version Number: 4},
+	keywords = {Artificial Intelligence (cs.{AI}), Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@misc{hu_dynacode_2025,
+	title = {{DynaCode}: A Dynamic Complexity-Aware Code Benchmark for Evaluating Large Language Models in Code Generation},
+	url = {http://arxiv.org/abs/2503.10452},
+	doi = {10.48550/arXiv.2503.10452},
+	shorttitle = {{DynaCode}},
+	abstract = {The rapid advancement of large language models ({LLMs}) has significantly improved their performance in code generation tasks. However, existing code benchmarks remain static, consisting of fixed datasets with predefined problems. This makes them vulnerable to memorization during training, where {LLMs} recall specific test cases instead of generalizing to new problems, leading to data contamination and unreliable evaluation results. To address these issues, we introduce {DynaCode}, a dynamic, complexity-aware benchmark that overcomes the limitations of static datasets. {DynaCode} evaluates {LLMs} systematically using a complexity-aware metric, incorporating both code complexity and call-graph structures. {DynaCode} achieves large-scale diversity, generating up to 189 million unique nested code problems across four distinct levels of code complexity, referred to as units, and 16 types of call graphs. Results on 12 latest {LLMs} show an average performance drop of 16.8\% to 45.7\% compared to {MBPP}+, a static code generation benchmark, with performance progressively decreasing as complexity increases. This demonstrates {DynaCode}'s ability to effectively differentiate {LLMs}. Additionally, by leveraging call graphs, we gain insights into {LLM} behavior, particularly their preference for handling subfunction interactions within nested code. Our benchmark and evaluation code are available at https://github.com/{HWH}-2000/{DynaCode}.},
+	number = {{arXiv}:2503.10452},
+	publisher = {{arXiv}},
+	author = {Hu, Wenhao and Duan, Jinhao and Wei, Chunchen and Zhang, Li and Zhang, Yue and Xu, Kaidi},
+	urldate = {2025-08-26},
+	date = {2025-05-29},
+	eprinttype = {arxiv},
+	eprint = {2503.10452 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{zhu_dynamic_2024,
+	title = {Dynamic Evaluation of Large Language Models by Meta Probing Agents},
+	url = {http://arxiv.org/abs/2402.14865},
+	doi = {10.48550/arXiv.2402.14865},
+	abstract = {Evaluation of large language models ({LLMs}) has raised great concerns in the community due to the issue of data contamination. Existing work designed evaluation protocols using well-defined algorithms for specific tasks, which cannot be easily extended to diverse scenarios. Moreover, current evaluation benchmarks can only provide the overall benchmark results and cannot support a fine-grained and multifaceted analysis of {LLMs}' abilities. In this paper, we propose meta probing agents ({MPA}), a general dynamic evaluation protocol inspired by psychometrics to evaluate {LLMs}. {MPA} is the key component of {DyVal} 2, which naturally extends the previous {DyVal}{\textasciitilde}{\textbackslash}citep\{zhu2023dyval\}. {MPA} designs the probing and judging agents to automatically transform an original evaluation problem into a new one following psychometric theory on three basic cognitive abilities: language understanding, problem solving, and domain knowledge. These basic abilities are also dynamically configurable, allowing multifaceted analysis. We conducted extensive evaluations using {MPA} and found that most {LLMs} achieve poorer performance, indicating room for improvement. Our multifaceted analysis demonstrated the strong correlation between the basic abilities and an implicit Matthew effect on model size, i.e., larger models possess stronger correlations of the abilities. {MPA} can also be used as a data augmentation approach to enhance {LLMs}. Code is available at: https://github.com/microsoft/promptbench.},
+	number = {{arXiv}:2402.14865},
+	publisher = {{arXiv}},
+	author = {Zhu, Kaijie and Wang, Jindong and Zhao, Qinlin and Xu, Ruochen and Xie, Xing},
+	urldate = {2025-08-26},
+	date = {2024-06-07},
+	eprinttype = {arxiv},
+	eprint = {2402.14865 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
+}
+
+@misc{zhu_dyval_2024,
+	title = {{DyVal}: Dynamic Evaluation of Large Language Models for Reasoning Tasks},
+	url = {http://arxiv.org/abs/2309.17167},
+	doi = {10.48550/arXiv.2309.17167},
+	shorttitle = {{DyVal}},
+	abstract = {Large language models ({LLMs}) have achieved remarkable performance in various evaluation benchmarks. However, concerns are raised about potential data contamination in their considerable volume of training corpus. Moreover, the static nature and fixed complexity of current benchmarks may inadequately gauge the advancing capabilities of {LLMs}. In this paper, we introduce {DyVal}, a general and flexible protocol for dynamic evaluation of {LLMs}. Based on our framework, we build graph-informed {DyVal} by leveraging the structural advantage of directed acyclic graphs to dynamically generate evaluation samples with controllable complexities. {DyVal} generates challenging evaluation sets on reasoning tasks including mathematics, logical reasoning, and algorithm problems. We evaluate various {LLMs} ranging from Flan-T5-large to {GPT}-3.5-Turbo and {GPT}-4. Experiments show that {LLMs} perform worse in {DyVal}-generated evaluation samples with different complexities, highlighting the significance of dynamic evaluation. We also analyze the failure cases and results of different prompting methods. Moreover, {DyVal}-generated samples are not only evaluation sets, but also helpful data for fine-tuning to improve the performance of {LLMs} on existing benchmarks. We hope that {DyVal} can shed light on future evaluation research of {LLMs}. Code is available at: https://github.com/microsoft/promptbench.},
+	number = {{arXiv}:2309.17167},
+	publisher = {{arXiv}},
+	author = {Zhu, Kaijie and Chen, Jiaao and Wang, Jindong and Gong, Neil Zhenqiang and Yang, Diyi and Xie, Xing},
+	urldate = {2025-08-26},
+	date = {2024-03-14},
+	eprinttype = {arxiv},
+	eprint = {2309.17167 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
+}
+
+@inproceedings{perlitz_efficient_2023,
+	title = {Efficient Benchmarking of Language Models},
+	rights = {{arXiv}.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2308.11696},
+	doi = {10.48550/ARXIV.2308.11696},
+	abstract = {The increasing versatility of language models ({LMs}) has given rise to a new class of benchmarks that comprehensively assess a broad range of capabilities. Such benchmarks are associated with massive computational costs, extending to thousands of {GPU} hours per model. However, the efficiency aspect of these evaluation efforts had raised little discussion in the literature. In this work, we present the problem of Efficient Benchmarking, namely, intelligently reducing the computation costs of {LM} evaluation without compromising reliability. Using the {HELM} benchmark as a test case, we investigate how different benchmark design choices affect the computation-reliability trade-off. We propose to evaluate the reliability of such decisions, by using a new measure -- Decision Impact on Reliability, {DIoR} for short. We find, for example, that a benchmark leader may change by merely removing a low-ranked model from the benchmark, and observe that a correct benchmark ranking can be obtained by considering only a fraction of the evaluation examples. Based on our findings, we outline a set of concrete recommendations for efficient benchmark design and utilization practices. To take a step further, we use our findings to propose an evaluation algorithm, that, when applied to the {HELM} benchmark, leads to dramatic cost savings with minimal loss of benchmark reliability, often reducing computation by x100 or more.},
+	publisher = {{arXiv}},
+	author = {Perlitz, Yotam and Bandel, Elron and Gera, Ariel and Arviv, Ofir and Ein-Dor, Liat and Shnarch, Eyal and Slonim, Noam and Shmueli-Scheuer, Michal and Choshen, Leshem},
+	urldate = {2025-08-13},
+	date = {2023},
+	note = {Version Number: 5},
+	keywords = {Artificial Intelligence (cs.{AI}), Computation and Language (cs.{CL}), Computer Vision and Pattern Recognition (cs.{CV}), {FOS}: Computer and information sciences, Machine Learning (cs.{LG})},
+}
+
+@misc{zou_eifbench_2025,
+	title = {{EIFBENCH}: Extremely Complex Instruction Following Benchmark for Large Language Models},
+	url = {http://arxiv.org/abs/2506.08375},
+	doi = {10.48550/arXiv.2506.08375},
+	shorttitle = {{EIFBENCH}},
+	abstract = {With the development and widespread application of large language models ({LLMs}), the new paradigm of "Model as Product" is rapidly evolving, and demands higher capabilities to address complex user needs, often requiring precise workflow execution which involves the accurate understanding of multiple tasks. However, existing benchmarks focusing on single-task environments with limited constraints lack the complexity required to fully reflect real-world scenarios. To bridge this gap, we present the Extremely Complex Instruction Following Benchmark ({EIFBENCH}), meticulously crafted to facilitate a more realistic and robust evaluation of {LLMs}. {EIFBENCH} not only includes multi-task scenarios that enable comprehensive assessment across diverse task types concurrently, but also integrates a variety of constraints, replicating complex operational environments. Furthermore, we propose the Segment Policy Optimization ({SegPO}) algorithm to enhance the {LLM}'s ability to accurately fulfill multi-task workflow. Evaluations on {EIFBENCH} have unveiled considerable performance discrepancies in existing {LLMs} when challenged with these extremely complex instructions. This finding underscores the necessity for ongoing optimization to navigate the intricate challenges posed by {LLM} applications.},
+	number = {{arXiv}:2506.08375},
+	publisher = {{arXiv}},
+	author = {Zou, Tao and Zhang, Xinghua and Yu, Haiyang and Wang, Minzheng and Huang, Fei and Li, Yongbin},
+	urldate = {2025-08-29},
+	date = {2025-06-10},
+	eprinttype = {arxiv},
+	eprint = {2506.08375 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@article{yuan_evaluating_2023,
+	title = {Evaluating Instruction-Tuned Large Language Models on Code Comprehension and Generation},
+	rights = {{arXiv}.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2308.01240},
+	doi = {10.48550/ARXIV.2308.01240},
+	abstract = {In this work, we evaluate 10 open-source instructed {LLMs} on four representative code comprehension and generation tasks. We have the following main findings. First, for the zero-shot setting, instructed {LLMs} are very competitive on code comprehension and generation tasks and sometimes even better than small {SOTA} models specifically fine-tuned on each downstream task. We also find that larger instructed {LLMs} are not always better on code-related tasks. Second, for the few-shot setting, we find that adding demonstration examples substantially helps instructed {LLMs} perform better on most code comprehension and generation tasks; however, the examples would sometimes induce unstable or even worse performance. Furthermore, we find widely-used {BM}25-based shot selection strategy significantly outperforms the basic random selection or fixed selection only on generation problems. Third, for the fine-tuning setting, we find that fine-tuning could further improve the model performance on downstream code comprehension and generation tasks compared to the zero-shot/one-shot performance. In addition, after being fine-tuned on the same downstream task dataset, instructed {LLMs} outperform both the small {SOTA} models and similar-scaled {LLMs} without instruction tuning. Based on our findings, we further present practical implications on model and usage recommendation, performance and cost trade-offs, and future direction.},
+	author = {Yuan, Zhiqiang and Liu, Junwei and Zi, Qiancheng and Liu, Mingwei and Peng, Xin and Lou, Yiling},
+	urldate = {2025-08-13},
+	date = {2023},
+	note = {Publisher: {arXiv}
+Version Number: 1},
+	keywords = {Artificial Intelligence (cs.{AI}), Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@unpublished{kamble_expect_2025,
+	title = {Expect the unexpected: {FailSafe} long context {QA} for finance},
+	url = {http://arxiv.org/abs/2502.06329},
+	abstract = {We propose a new long-context financial benchmark, {FailSafeQA}, designed to
+test the robustness and context-awareness of {LLMs} against six variations
+in human-interface interactions in {LLM}-based query-answer systems within
+finance. We concentrate on two case studies: Query Failure and Context
+Failure. In the Query Failure scenario, we perturb the original query to
+vary in domain expertise, completeness, and linguistic accuracy. In the
+Context Failure case, we simulate the uploads of degraded, irrelevant, and
+empty documents. We employ the {LLM}-as-a-Judge methodology with
+Qwen2.5-72B-Instruct and use fine-grained rating criteria to define and
+calculate Robustness, Context Grounding, and Compliance scores for 24
+off-the-shelf models. The results suggest that although some models excel
+at mitigating input perturbations, they must balance robust answering with
+the ability to refrain from hallucinating. Notably,
+Palmyra-Fin-128k-Instruct, recognized as the most compliant model,
+maintained strong baseline performance but encountered challenges in
+sustaining robust predictions in 17\% of test cases. On the other hand, the
+most robust model, {OpenAI} o3-mini, fabricated information in 41\% of tested
+cases. The results demonstrate that even high-performing models have
+significant room for improvement and highlight the role of {FailSafeQA} as a
+tool for developing {LLMs} optimized for dependability in financial
+applications. The dataset is available at:
+https://huggingface.co/datasets/Writer/{FailSafeQA}},
+	author = {Kamble, Kiran and Russak, Melisa and Mozolevskyi, Dmytro and Ali, Muayad and Russak, Mateusz and {AlShikh}, Waseem},
+	date = {2025-02-10},
+}
+
+@article{ye_flask_2023,
+	title = {{FLASK}: Fine-grained Language Model Evaluation based on Alignment Skill Sets},
+	rights = {Creative Commons Attribution 4.0 International},
+	url = {https://arxiv.org/abs/2307.10928},
+	doi = {10.48550/ARXIV.2307.10928},
+	shorttitle = {{FLASK}},
+	abstract = {Evaluation of Large Language Models ({LLMs}) is challenging because instruction-following necessitates alignment with human values and the required set of skills varies depending on the instruction. However, previous studies have mainly focused on coarse-grained evaluation (i.e. overall preference-based evaluation), which limits interpretability since it does not consider the nature of user instructions that require instance-wise skill composition. In this paper, we introduce {FLASK} (Fine-grained Language Model Evaluation based on Alignment Skill Sets), a fine-grained evaluation protocol for both human-based and model-based evaluation which decomposes coarse-level scoring to a skill set-level scoring for each instruction. We experimentally observe that the fine-graininess of evaluation is crucial for attaining a holistic view of model performance and increasing the reliability of the evaluation. Using {FLASK}, we compare multiple open-source and proprietary {LLMs} and observe a high correlation between model-based and human-based evaluations. We publicly release the evaluation data and code implementation at https://github.com/{kaistAI}/{FLASK}.},
+	author = {Ye, Seonghyeon and Kim, Doyoung and Kim, Sungdong and Hwang, Hyeonbin and Kim, Seungone and Jo, Yongrae and Thorne, James and Kim, Juho and Seo, Minjoon},
+	urldate = {2025-08-13},
+	date = {2023},
+	note = {Publisher: {arXiv}
+Version Number: 4},
+	keywords = {Artificial Intelligence (cs.{AI}), Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@misc{pyatkin_generalizing_2025,
+	title = {Generalizing Verifiable Instruction Following},
+	url = {http://arxiv.org/abs/2507.02833},
+	doi = {10.48550/arXiv.2507.02833},
+	abstract = {A crucial factor for successful human and {AI} interaction is the ability of language models or chatbots to follow human instructions precisely. A common feature of instructions are output constraints like ``only answer with yes or no" or ``mention the word `abrakadabra' at least 3 times" that the user adds to craft a more useful answer. Even today's strongest models struggle with fulfilling such constraints. We find that most models strongly overfit on a small set of verifiable constraints from the benchmarks that test these abilities, a skill called precise instruction following, and are not able to generalize well to unseen output constraints. We introduce a new benchmark, {IFBench}, to evaluate precise instruction following generalization on 58 new, diverse, and challenging verifiable out-of-domain constraints. In addition, we perform an extensive analysis of how and on what data models can be trained to improve precise instruction following generalization. Specifically, we carefully design constraint verification modules and show that reinforcement learning with verifiable rewards ({RLVR}) significantly improves instruction following. In addition to {IFBench}, we release 29 additional new hand-annotated training constraints and verification functions, {RLVR} training prompts, and code.},
+	number = {{arXiv}:2507.02833},
+	publisher = {{arXiv}},
+	author = {Pyatkin, Valentina and Malik, Saumya and Graf, Victoria and Ivison, Hamish and Huang, Shengyi and Dasigi, Pradeep and Lambert, Nathan and Hajishirzi, Hannaneh},
+	urldate = {2025-08-26},
+	date = {2025-08-04},
+	eprinttype = {arxiv},
+	eprint = {2507.02833 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@misc{pyatkin_generalizing_2025-1,
+	title = {Generalizing Verifiable Instruction Following},
+	url = {http://arxiv.org/abs/2507.02833},
+	doi = {10.48550/arXiv.2507.02833},
+	abstract = {A crucial factor for successful human and {AI} interaction is the ability of language models or chatbots to follow human instructions precisely. A common feature of instructions are output constraints like ``only answer with yes or no" or ``mention the word `abrakadabra' at least 3 times" that the user adds to craft a more useful answer. Even today's strongest models struggle with fulfilling such constraints. We find that most models strongly overfit on a small set of verifiable constraints from the benchmarks that test these abilities, a skill called precise instruction following, and are not able to generalize well to unseen output constraints. We introduce a new benchmark, {IFBench}, to evaluate precise instruction following generalization on 58 new, diverse, and challenging verifiable out-of-domain constraints. In addition, we perform an extensive analysis of how and on what data models can be trained to improve precise instruction following generalization. Specifically, we carefully design constraint verification modules and show that reinforcement learning with verifiable rewards ({RLVR}) significantly improves instruction following. In addition to {IFBench}, we release 29 additional new hand-annotated training constraints and verification functions, {RLVR} training prompts, and code.},
+	number = {{arXiv}:2507.02833},
+	publisher = {{arXiv}},
+	author = {Pyatkin, Valentina and Malik, Saumya and Graf, Victoria and Ivison, Hamish and Huang, Shengyi and Dasigi, Pradeep and Lambert, Nathan and Hajishirzi, Hannaneh},
+	urldate = {2025-08-29},
+	date = {2025-08-04},
+	eprinttype = {arxiv},
+	eprint = {2507.02833 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@article{diao_guidebench_2025,
+	title = {{GuideBench}: Benchmarking Domain-Oriented Guideline Following for {LLM} Agents},
+	rights = {{arXiv}.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2505.11368},
+	doi = {10.48550/ARXIV.2505.11368},
+	shorttitle = {{GuideBench}},
+	abstract = {Large language models ({LLMs}) have been widely deployed as autonomous agents capable of following user instructions and making decisions in real-world applications. Previous studies have made notable progress in benchmarking the instruction following capabilities of {LLMs} in general domains, with a primary focus on their inherent commonsense knowledge. Recently, {LLMs} have been increasingly deployed as domain-oriented agents, which rely on domain-oriented guidelines that may conflict with their commonsense knowledge. These guidelines exhibit two key characteristics: they consist of a wide range of domain-oriented rules and are subject to frequent updates. Despite these challenges, the absence of comprehensive benchmarks for evaluating the domain-oriented guideline following capabilities of {LLMs} presents a significant obstacle to their effective assessment and further development. In this paper, we introduce {GuideBench}, a comprehensive benchmark designed to evaluate guideline following performance of {LLMs}. {GuideBench} evaluates {LLMs} on three critical aspects: (i) adherence to diverse rules, (ii) robustness to rule updates, and (iii) alignment with human preferences. Experimental results on a range of {LLMs} indicate substantial opportunities for improving their ability to follow domain-oriented guidelines.},
+	author = {Diao, Lingxiao and Xu, Xinyue and Sun, Wanxuan and Yang, Cheng and Zhang, Zhuosheng},
+	urldate = {2025-08-13},
+	date = {2025},
+	note = {Publisher: {arXiv}
+Version Number: 2},
+	keywords = {Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@misc{jaroslawicz_how_2025,
+	title = {How Many Instructions Can {LLMs} Follow at Once?},
+	url = {http://arxiv.org/abs/2507.11538},
+	doi = {10.48550/arXiv.2507.11538},
+	abstract = {Production-grade {LLM} systems require robust adherence to dozens or even hundreds of instructions simultaneously. However, the instruction-following capabilities of {LLMs} at high instruction densities have not yet been characterized, as existing benchmarks only evaluate models on tasks with a single or few instructions. We introduce {IFScale}, a simple benchmark of 500 keyword-inclusion instructions for a business report writing task to measure how instruction-following performance degrades as instruction density increases. We evaluate 20 state-of-the-art models across seven major providers and find that even the best frontier models only achieve 68\% accuracy at the max density of 500 instructions. Our analysis reveals model size and reasoning capability to correlate with 3 distinct performance degradation patterns, bias towards earlier instructions, and distinct categories of instruction-following errors. Our insights can help inform design of instruction-dense prompts in real-world applications and highlight important performance-latency tradeoffs. We open-source the benchmark and all results for further analysis at https://distylai.github.io/{IFScale}.},
+	number = {{arXiv}:2507.11538},
+	publisher = {{arXiv}},
+	author = {Jaroslawicz, Daniel and Whiting, Brendan and Shah, Parth and Maamari, Karime},
+	urldate = {2025-08-26},
+	date = {2025-07-15},
+	eprinttype = {arxiv},
+	eprint = {2507.11538 [cs]},
+	keywords = {Computer Science - Artificial Intelligence},
+}
+
+@unpublished{chia_instructeval_2023,
+	title = {{INSTRUCTEVAL}: Towards Holistic Evaluation of Instruction-Tuned Large Language Models},
+	url = {http://arxiv.org/abs/2306.04757},
+	abstract = {Instruction-tuned large language models have revolutionized natural
+language processing and have shown great potential in applications such as
+conversational agents. These models, such as {GPT}-4, can not only master
+language but also solve complex tasks in areas like mathematics, coding,
+medicine, and law. Despite their impressive capabilities, there is still a
+lack of comprehensive understanding regarding their full potential,
+primarily due to the black-box nature of many models and the absence of
+holistic evaluation studies. To address these challenges, we present
+{INSTRUCTEVAL}, a more comprehensive evaluation suite designed specifically
+for instruction-tuned large language models. Unlike previous works, our
+evaluation involves a rigorous assessment of models based on
+problem-solving, writing ability, and alignment to human values. We take a
+holistic approach to analyze various factors affecting model performance,
+including the pretraining foundation, instruction-tuning data, and
+training methods. Our findings reveal that the quality of instruction data
+is the most crucial factor in scaling model performance. While open-source
+models demonstrate impressive writing abilities, there is substantial room
+for improvement in problem-solving and alignment. We are encouraged by the
+rapid development of models by the open-source community, but we also
+highlight the need for rigorous evaluation to support claims made about
+these models. Through {INSTRUCTEVAL}, we aim to foster a deeper
+understanding of instruction-tuned models and advancements in their
+capabilities. {INSTRUCTEVAL} is publicly available at
+https://github.com/declare-lab/instruct-eval.},
+	author = {Chia, Yew Ken and Hong, Pengfei and Bing, Lidong and Poria, Soujanya},
+	date = {2023-06-07},
+}
+
+@unpublished{zhou_instruction-following_2023,
+	title = {Instruction-following evaluation for Large Language Models},
+	url = {http://arxiv.org/abs/2311.07911},
+	abstract = {One core capability of Large Language Models ({LLMs}) is to follow natural
+language instructions. However, the evaluation of such abilities is not
+standardized: Human evaluations are expensive, slow, and not objectively
+reproducible, while {LLM}-based auto-evaluation is potentially biased or
+limited by the ability of the evaluator {LLM}. To overcome these issues, we
+introduce Instruction-Following Eval ({IFEval}) for large language models.
+{IFEval} is a straightforward and easy-to-reproduce evaluation benchmark. It
+focuses on a set of "verifiable instructions" such as "write in more than
+400 words" and "mention the keyword of {AI} at least 3 times". We identified
+25 types of those verifiable instructions and constructed around 500
+prompts, with each prompt containing one or more verifiable instructions.
+We show evaluation results of two widely available {LLMs} on the market. Our
+code and data can be found at
+https://github.com/google-research/google-research/tree/master/instruction\_following\_eval},
+	author = {Zhou, Jeffrey and Lu, Tianjian and Mishra, Swaroop and Brahma, Siddhartha and Basu, Sujoy and Luan, Yi and Zhou, Denny and Hou, Le},
+	urldate = {2025-06-15},
+	date = {2023-11-14},
+}
+
+@inproceedings{li_instruction-following_2023,
+	title = {Instruction-following Evaluation through Verbalizer Manipulation},
+	rights = {{arXiv}.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2307.10558},
+	doi = {10.48550/ARXIV.2307.10558},
+	abstract = {While instruction-tuned models have shown remarkable success in various natural language processing tasks, accurately evaluating their ability to follow instructions remains challenging. Existing benchmarks primarily focus on common instructions that align well with what the model learned during training. However, proficiency in responding to these instructions does not necessarily imply strong ability in instruction following. In this paper, we propose a novel instruction-following evaluation protocol called verbalizer manipulation. It instructs the model to verbalize the task label with words aligning with model priors to different extents, adopting verbalizers from highly aligned (e.g., outputting ``postive'' for positive sentiment), to minimally aligned (e.g., outputting ``negative'' for positive sentiment). Verbalizer manipulation can be seamlessly integrated with any classification benchmark to examine the model's reliance on priors and its ability to override them to accurately follow the instructions. We conduct a comprehensive evaluation of four major model families across nine datasets, employing twelve sets of verbalizers for each of them. We observe that the instruction-following abilities of models, across different families and scales, are significantly distinguished by their performance on less natural verbalizers. Even the strongest {GPT}-4 model struggles to perform better than random guessing on the most challenging verbalizer, emphasizing the need for continued advancements to improve their instruction-following abilities.},
+	publisher = {{arXiv}},
+	author = {Li, Shiyang and Yan, Jun and Wang, Hai and Tang, Zheng and Ren, Xiang and Srinivasan, Vijay and Jin, Hongxia},
+	urldate = {2025-08-13},
+	date = {2023},
+	note = {Version Number: 2},
+	keywords = {Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@misc{jiang_instruction-tuning_2025,
+	title = {Instruction-Tuning Data Synthesis from Scratch via Web Reconstruction},
+	url = {http://arxiv.org/abs/2504.15573},
+	doi = {10.48550/arXiv.2504.15573},
+	abstract = {The improvement of {LLMs}' instruction-following capabilities depends critically on the availability of high-quality instruction-response pairs. While existing automatic data synthetic methods alleviate the burden of manual curation, they often rely heavily on either the quality of seed data or strong assumptions about the structure and content of web documents. To tackle these challenges, we propose Web Reconstruction ({WebR}), a fully automated framework for synthesizing high-quality instruction-tuning ({IT}) data directly from raw web documents with minimal assumptions. Leveraging the inherent diversity of raw web content, we conceptualize web reconstruction as an instruction-tuning data synthesis task via a novel dual-perspective paradigm--Web as Instruction and Web as Response--where each web document is designated as either an instruction or a response to trigger the reconstruction process. Comprehensive experiments show that datasets generated by {WebR} outperform state-of-the-art baselines by up to 16.65\% across four instruction-following benchmarks. Notably, {WebR} demonstrates superior compatibility, data efficiency, and scalability, enabling enhanced domain adaptation with minimal effort. The data and code are publicly available at https://github.com/{YJiangcm}/{WebR}.},
+	number = {{arXiv}:2504.15573},
+	publisher = {{arXiv}},
+	author = {Jiang, Yuxin and Wang, Yufei and Wu, Chuhan and Dai, Xinyi and Xu, Yan and Gan, Weinan and Wang, Yasheng and Jiang, Xin and Shang, Lifeng and Tang, Ruiming and Wang, Wei},
+	urldate = {2025-08-26},
+	date = {2025-05-21},
+	eprinttype = {arxiv},
+	eprint = {2504.15573 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@inproceedings{kim_instructive_2023,
+	title = {Instructive Decoding: Instruction-Tuned Large Language Models are Self-Refiner from Noisy Instructions},
+	url = {https://www.semanticscholar.org/paper/Instructive-Decoding%3A-Instruction-Tuned-Large-are-Kim-Kim/c0d698950a4560fc2a63acb30a91aa2deb042ed3},
+	shorttitle = {Instructive Decoding},
+	abstract = {While instruction-tuned language models have demonstrated impressive zero-shot generalization, these models often struggle to generate accurate responses when faced with instructions that fall outside their training set. This paper presents Instructive Decoding ({ID}), a simple yet effective approach that augments the efficacy of instruction-tuned models. Specifically, {ID} adjusts the logits for next-token prediction in a contrastive manner, utilizing predictions generated from a manipulated version of the original instruction, referred to as a noisy instruction. This noisy instruction aims to elicit responses that could diverge from the intended instruction yet remain plausible. We conduct experiments across a spectrum of such noisy instructions, ranging from those that insert semantic noise via random words to others like 'opposite' that elicit the deviated responses. Our approach achieves considerable performance gains across various instruction-tuned models and tasks without necessitating any additional parameter updates. Notably, utilizing 'opposite' as the noisy instruction in {ID}, which exhibits the maximum divergence from the original instruction, consistently produces the most significant performance gains across multiple models and tasks.},
+	eventtitle = {International Conference on Learning Representations},
+	author = {Kim, Taehyeon and Kim, Joonkee and Lee, Gihun and Yun, Se-young},
+	urldate = {2025-08-13},
+	date = {2023-11-01},
+}
+
+@unpublished{murthy_kcif_2024,
+	title = {{KCIF}: Knowledge-conditioned instruction following},
+	url = {http://arxiv.org/abs/2410.12972},
+	abstract = {{LLM} evaluation benchmarks have traditionally separated the testing of
+knowledge/reasoning capabilities from instruction following. In this work,
+we study the interaction between knowledge and instruction following, and
+observe that {LLMs} struggle to follow simple answer modifying instructions,
+and are also distracted by instructions that should have no bearing on the
+original knowledge task answer. We leverage existing multiple-choice
+answer based knowledge benchmarks and apply a set of simple instructions
+which include manipulating text (eg.: change case), numeric quantities
+(eg.: increase value, change formatting), operate on lists (eg.: sort
+answer candidates) and distractor instructions (eg.: change case of
+numeric answers). We evaluate models at varying parameter sizes (1B-405B)
+from different model families and find that, surprisingly, all models
+report a significant drop in performance on such simple task compositions.
+While large-sized and frontier models report performance drops of 40-50\%,
+in small and medium sized models the drop is severe (sometimes exceeding
+80\%). Our results highlight a limitation in the traditional separation of
+knowledge/reasoning and instruction following, and suggest that
+joint-study of these capabilities are important. We release our benchmark
+dataset, evaluation framework code, and results for future work.},
+	author = {Murthy, Rudra and Venkateswaran, Praveen and Kumar, Prince and Contractor, Danish},
+	date = {2024-10-16},
+}
+
+@misc{he_multi-if_2024,
+	title = {Multi-{IF}: Benchmarking {LLMs} on Multi-Turn and Multilingual Instructions Following},
+	url = {http://arxiv.org/abs/2410.15553},
+	doi = {10.48550/arXiv.2410.15553},
+	shorttitle = {Multi-{IF}},
+	abstract = {Large Language Models ({LLMs}) have demonstrated impressive capabilities in various tasks, including instruction following, which is crucial for aligning model outputs with user expectations. However, evaluating {LLMs}' ability to follow instructions remains challenging due to the complexity and subjectivity of human language. Current benchmarks primarily focus on single-turn, monolingual instructions, which do not adequately reflect the complexities of real-world applications that require handling multi-turn and multilingual interactions. To address this gap, we introduce Multi-{IF}, a new benchmark designed to assess {LLMs}' proficiency in following multi-turn and multilingual instructions. Multi-{IF}, which utilizes a hybrid framework combining {LLM} and human annotators, expands upon the {IFEval} by incorporating multi-turn sequences and translating the English prompts into another 7 languages, resulting in a dataset of 4,501 multilingual conversations, where each has three turns. Our evaluation of 14 state-of-the-art {LLMs} on Multi-{IF} reveals that it presents a significantly more challenging task than existing benchmarks. All the models tested showed a higher rate of failure in executing instructions correctly with each additional turn. For example, o1-preview drops from 0.877 at the first turn to 0.707 at the third turn in terms of average accuracy over all languages. Moreover, languages with non-Latin scripts (Hindi, Russian, and Chinese) generally exhibit higher error rates, suggesting potential limitations in the models' multilingual capabilities. We release Multi-{IF} prompts and the evaluation code base to encourage further research in this critical area.},
+	number = {{arXiv}:2410.15553},
+	publisher = {{arXiv}},
+	author = {He, Yun and Jin, Di and Wang, Chaoqi and Bi, Chloe and Mandyam, Karishma and Zhang, Hejia and Zhu, Chen and Li, Ning and Xu, Tengyu and Lv, Hongjiang and Bhosale, Shruti and Zhu, Chenguang and Sankararaman, Karthik Abinav and Helenowski, Eryk and Kambadur, Melanie and Tayade, Aditya and Ma, Hao and Fang, Han and Wang, Sinong},
+	urldate = {2025-08-26},
+	date = {2024-11-13},
+	eprinttype = {arxiv},
+	eprint = {2410.15553 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@unpublished{he_multi-if_2024-1,
+	title = {Multi-{IF}: Benchmarking {LLMs} on Multi-Turn and Multilingual Instructions Following},
+	url = {http://dx.doi.org/10.48550/arXiv.2410.15553},
+	abstract = {Large Language Models ({LLMs}) have demonstrated impressive capabilities in
+various tasks, including instruction following, which is crucial for
+aligning model outputs with user expectations. However, evaluating {LLMs}'
+ability to follow instructions remains challenging due to the complexity
+and subjectivity of human language. Current benchmarks primarily focus on
+single-turn, monolingual instructions, which do not adequately reflect the
+complexities of real-world applications that require handling multi-turn
+and multilingual interactions. To address this gap, we introduce Multi-{IF},
+a new benchmark designed to assess {LLMs}' proficiency in following
+multi-turn and multilingual instructions. Multi-{IF}, which utilizes a
+hybrid framework combining {LLM} and human annotators, expands upon the
+{IFEval} by incorporating multi-turn sequences and translating the English
+prompts into another 7 languages, resulting in a dataset of 4,501
+multilingual conversations, where each has three turns. Our evaluation of
+14 state-of-the-art {LLMs} on Multi-{IF} reveals that it presents a
+significantly more challenging task than existing benchmarks. All the
+models tested showed a higher rate of failure in executing instructions
+correctly with each additional turn. For example, o1-preview drops from
+0.877 at the first turn to 0.707 at the third turn in terms of average
+accuracy over all languages. Moreover, languages with non-Latin scripts
+(Hindi, Russian, and Chinese) generally exhibit higher error rates,
+suggesting potential limitations in the models' multilingual capabilities.
+We release Multi-{IF} prompts and the evaluation code base to encourage
+further research in this critical area.},
+	author = {He, Yun and Jin, Di and Wang, Chaoqi and Bi, Chloe and Mandyam, Karishma and Zhang, Hejia and Zhu, Chen and Li, Ning and Xu, Tengyu and Lv, Hongjiang and Bhosale, Shruti and Zhu, Chenguang and Sankararaman, Karthik Abinav and Helenowski, Eryk and Kambadur, Melanie and Tayade, Aditya and Ma, Hao and Fang, Han and Wang, Sinong},
+	date = {2024-10-20},
+	doi = {10.48550/arXiv.2410.15553},
+}
+
+@inproceedings{zeng_order_2025,
+	location = {Vienna, Austria},
+	title = {Order Matters: Investigate the Position Bias in Multi-constraint Instruction Following},
+	isbn = {979-8-89176-256-5},
+	url = {https://aclanthology.org/2025.findings-acl.646/},
+	doi = {10.18653/v1/2025.findings-acl.646},
+	shorttitle = {Order Matters},
+	abstract = {Real-world instructions with multiple constraints pose a significant challenge to existing large language models ({LLMs}). An observation is that the {LLMs} exhibit dramatic performance fluctuation when disturbing the order of the incorporated constraints. Yet, none of the existing works has systematically investigated this position bias problem in the field of multi-constraint instruction following. To bridge this gap, we design a probing task where we quantitatively measure the difficulty distribution of the constraints by a novel Difficulty Distribution Index ({CDDI}). Through the experimental results, we find that {LLMs} are more performant when presented with the constraints in a “hard-to-easy” order. This preference can be generalized to {LLMs} with different architecture or different sizes of parameters. Additionally, we conduct an explanation study, providing an intuitive insight into the correlation between the {LLM}'s attention and constraint orders. Our code and dataset are publicly available at https://github.com/meowpass/{PBIF}.},
+	eventtitle = {Findings 2025},
+	pages = {12479--12492},
+	booktitle = {Findings of the Association for Computational Linguistics: {ACL} 2025},
+	publisher = {Association for Computational Linguistics},
+	author = {Zeng, Jie and He, Qianyu and Ren, Qingyu and Liang, Jiaqing and Zhou, Weikang and Sun, Zeye and Yu, Fei and Xiao, Yanghua},
+	editor = {Che, Wanxiang and Nabende, Joyce and Shutova, Ekaterina and Pilehvar, Mohammad Taher},
+	urldate = {2025-08-26},
+	date = {2025-07},
+}
+
+@misc{zeng_order_2025-1,
+	title = {Order Matters: Investigate the Position Bias in Multi-constraint Instruction Following},
+	url = {http://arxiv.org/abs/2502.17204},
+	doi = {10.48550/arXiv.2502.17204},
+	shorttitle = {Order Matters},
+	abstract = {Real-world instructions with multiple constraints pose a significant challenge to existing large language models ({LLMs}). An observation is that the {LLMs} exhibit dramatic performance fluctuation when disturbing the order of the incorporated constraints. Yet, none of the existing works has systematically investigated this position bias problem in the field of multi-constraint instruction following. To bridge this gap, we design a probing task where we quantitatively measure the difficulty distribution of the constraints by a novel Difficulty Distribution Index ({CDDI}). Through the experimental results, we find that {LLMs} are more performant when presented with the constraints in a ``hard-to-easy'' order. This preference can be generalized to {LLMs} with different architecture or different sizes of parameters. Additionally, we conduct an explanation study, providing an intuitive insight into the correlation between the {LLM}'s attention and constraint orders. Our code and dataset are publicly available at https://github.com/meowpass/{PBIF}.},
+	number = {{arXiv}:2502.17204},
+	publisher = {{arXiv}},
+	author = {Zeng, Jie and He, Qianyu and Ren, Qingyu and Liang, Jiaqing and Xiao, Yanghua and Zhou, Weikang and Sun, Zeye and Yu, Fei},
+	urldate = {2025-08-29},
+	date = {2025-03-03},
+	eprinttype = {arxiv},
+	eprint = {2502.17204 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{vir_promptevals_2025,
+	title = {{PROMPTEVALS}: A Dataset of Assertions and Guardrails for Custom Production Large Language Model Pipelines},
+	url = {http://arxiv.org/abs/2504.14738},
+	doi = {10.48550/arXiv.2504.14738},
+	shorttitle = {{PROMPTEVALS}},
+	abstract = {Large language models ({LLMs}) are increasingly deployed in specialized production data processing pipelines across diverse domains -- such as finance, marketing, and e-commerce. However, when running them in production across many inputs, they often fail to follow instructions or meet developer expectations. To improve reliability in these applications, creating assertions or guardrails for {LLM} outputs to run alongside the pipelines is essential. Yet, determining the right set of assertions that capture developer requirements for a task is challenging. In this paper, we introduce {PROMPTEVALS}, a dataset of 2087 {LLM} pipeline prompts with 12623 corresponding assertion criteria, sourced from developers using our open-source {LLM} pipeline tools. This dataset is 5x larger than previous collections. Using a hold-out test split of {PROMPTEVALS} as a benchmark, we evaluated closed- and open-source models in generating relevant assertions. Notably, our fine-tuned Mistral and Llama 3 models outperform {GPT}-4o by 20.93\% on average, offering both reduced latency and improved performance. We believe our dataset can spur further research in {LLM} reliability, alignment, and prompt engineering.},
+	number = {{arXiv}:2504.14738},
+	publisher = {{arXiv}},
+	author = {Vir, Reya and Shankar, Shreya and Chase, Harrison and Fu-Hinthorn, Will and Parameswaran, Aditya},
+	urldate = {2025-08-26},
+	date = {2025-04-20},
+	eprinttype = {arxiv},
+	eprint = {2504.14738 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@misc{vir_promptevals_2025-1,
+	title = {{PROMPTEVALS}: A Dataset of Assertions and Guardrails for Custom Production Large Language Model Pipelines},
+	url = {http://arxiv.org/abs/2504.14738},
+	doi = {10.48550/arXiv.2504.14738},
+	shorttitle = {{PROMPTEVALS}},
+	abstract = {Large language models ({LLMs}) are increasingly deployed in specialized production data processing pipelines across diverse domains -- such as finance, marketing, and e-commerce. However, when running them in production across many inputs, they often fail to follow instructions or meet developer expectations. To improve reliability in these applications, creating assertions or guardrails for {LLM} outputs to run alongside the pipelines is essential. Yet, determining the right set of assertions that capture developer requirements for a task is challenging. In this paper, we introduce {PROMPTEVALS}, a dataset of 2087 {LLM} pipeline prompts with 12623 corresponding assertion criteria, sourced from developers using our open-source {LLM} pipeline tools. This dataset is 5x larger than previous collections. Using a hold-out test split of {PROMPTEVALS} as a benchmark, we evaluated closed- and open-source models in generating relevant assertions. Notably, our fine-tuned Mistral and Llama 3 models outperform {GPT}-4o by 20.93\% on average, offering both reduced latency and improved performance. We believe our dataset can spur further research in {LLM} reliability, alignment, and prompt engineering.},
+	number = {{arXiv}:2504.14738},
+	publisher = {{arXiv}},
+	author = {Vir, Reya and Shankar, Shreya and Chase, Harrison and Fu-Hinthorn, Will and Parameswaran, Aditya},
+	urldate = {2025-08-29},
+	date = {2025-04-20},
+	eprinttype = {arxiv},
+	eprint = {2504.14738 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@unpublished{vir_promptevals_2025-2,
+	title = {{PROMPTEVALS}: A dataset of assertions and guardrails for custom production large language model pipelines},
+	url = {http://dx.doi.org/10.48550/arXiv.2504.14738},
+	abstract = {Large language models ({LLMs}) are increasingly deployed in specialized
+production data processing pipelines across diverse domains -- such as
+finance, marketing, and e-commerce. However, when running them in
+production across many inputs, they often fail to follow instructions or
+meet developer expectations. To improve reliability in these applications,
+creating assertions or guardrails for {LLM} outputs to run alongside the
+pipelines is essential. Yet, determining the right set of assertions that
+capture developer requirements for a task is challenging. In this paper,
+we introduce {PROMPTEVALS}, a dataset of 2087 {LLM} pipeline prompts with
+12623 corresponding assertion criteria, sourced from developers using our
+open-source {LLM} pipeline tools. This dataset is 5x larger than previous
+collections. Using a hold-out test split of {PROMPTEVALS} as a benchmark, we
+evaluated closed- and open-source models in generating relevant
+assertions. Notably, our fine-tuned Mistral and Llama 3 models outperform
+{GPT}-4o by 20.93\% on average, offering both reduced latency and improved
+performance. We believe our dataset can spur further research in {LLM}
+reliability, alignment, and prompt engineering.},
+	author = {Vir, Reya and Shankar, Shreya and Chase, Harrison and Fu-Hinthorn, Will and Parameswaran, Aditya},
+	date = {2025-04-20},
+	doi = {10.48550/arXiv.2504.14738},
+}
+
+@unpublished{liu_recast_2025,
+	title = {{RECAST}: Strengthening {LLMs}' complex instruction following with constraint-verifiable data},
+	url = {http://arxiv.org/abs/2505.19030},
+	abstract = {Large language models ({LLMs}) are increasingly expected to tackle complex
+tasks, driven by their expanding applications and users' growing
+proficiency in crafting sophisticated prompts. However, as the number of
+explicitly stated requirements increases (particularly more than 10
+constraints), {LLMs} often struggle to accurately follow such complex
+instructions. To address this challenge, we propose {RECAST}, a novel
+framework for synthesizing datasets where each example incorporates far
+more constraints than those in existing benchmarks. These constraints are
+extracted from real-world prompt-response pairs to ensure practical
+relevance. {RECAST} enables automatic verification of constraint
+satisfaction via rule-based validators for quantitative constraints and
+{LLM}-based validators for qualitative ones. Using this framework, we
+construct {RECAST}-30K, a large-scale, high-quality dataset comprising 30k
+instances spanning 15 constraint types. Experimental results demonstrate
+that models fine-tuned on {RECAST}-30K show substantial improvements in
+following complex instructions. Moreover, the verifiability provided by
+{RECAST} enables the design of reward functions for reinforcement learning,
+which further boosts model performance on complex and challenging tasks.},
+	author = {Liu, Wenhao and Guo, Zhengkang and Xie, Mingchen and Xu, Jingwen and Huang, Zisu and Tian, Muzhao and Xu, Jianhan and Wu, Muling and Wang, Xiaohua and Lv, Changze and Wang, He-Da and Yao, Hu and Zheng, Xiaoqing and Huang, Xuanjing},
+	date = {2025-05-25},
+}
+
+@misc{liu_recast_2025-1,
+	title = {{RECAST}: Strengthening {LLMs}' Complex Instruction Following with Constraint-Verifiable Data},
+	url = {http://arxiv.org/abs/2505.19030},
+	doi = {10.48550/arXiv.2505.19030},
+	shorttitle = {{RECAST}},
+	abstract = {Large language models ({LLMs}) are increasingly expected to tackle complex tasks, driven by their expanding applications and users' growing proficiency in crafting sophisticated prompts. However, as the number of explicitly stated requirements increases (particularly more than 10 constraints), {LLMs} often struggle to accurately follow such complex instructions. To address this challenge, we propose {RECAST}, a novel framework for synthesizing datasets where each example incorporates far more constraints than those in existing benchmarks. These constraints are extracted from real-world prompt-response pairs to ensure practical relevance. {RECAST} enables automatic verification of constraint satisfaction via rule-based validators for quantitative constraints and {LLM}-based validators for qualitative ones. Using this framework, we construct {RECAST}-30K, a large-scale, high-quality dataset comprising 30k instances spanning 15 constraint types. Experimental results demonstrate that models fine-tuned on {RECAST}-30K show substantial improvements in following complex instructions. Moreover, the verifiability provided by {RECAST} enables the design of reward functions for reinforcement learning, which further boosts model performance on complex and challenging tasks.},
+	number = {{arXiv}:2505.19030},
+	publisher = {{arXiv}},
+	author = {Liu, Wenhao and Guo, Zhengkang and Xie, Mingchen and Xu, Jingwen and Huang, Zisu and Tian, Muzhao and Xu, Jianhan and Wu, Muling and Wang, Xiaohua and Lv, Changze and Wang, He-Da and Yao, Hu and Zheng, Xiaoqing and Huang, Xuanjing},
+	urldate = {2025-08-29},
+	date = {2025-05-27},
+	eprinttype = {arxiv},
+	eprint = {2505.19030 [cs]},
+	keywords = {Computer Science - Artificial Intelligence},
+}
+
+@misc{chen_recent_2025,
+	title = {Recent Advances in Large Langauge Model Benchmarks against Data Contamination: From Static to Dynamic Evaluation},
+	url = {http://arxiv.org/abs/2502.17521},
+	doi = {10.48550/arXiv.2502.17521},
+	shorttitle = {Recent Advances in Large Langauge Model Benchmarks against Data Contamination},
+	abstract = {Data contamination has received increasing attention in the era of large language models ({LLMs}) due to their reliance on vast Internet-derived training corpora. To mitigate the risk of potential data contamination, {LLM} benchmarking has undergone a transformation from static to dynamic benchmarking. In this work, we conduct an in-depth analysis of existing static to dynamic benchmarking methods aimed at reducing data contamination risks. We first examine methods that enhance static benchmarks and identify their inherent limitations. We then highlight a critical gap-the lack of standardized criteria for evaluating dynamic benchmarks. Based on this observation, we propose a series of optimal design principles for dynamic benchmarking and analyze the limitations of existing dynamic benchmarks. This survey provides a concise yet comprehensive overview of recent advancements in data contamination research, offering valuable insights and a clear guide for future research efforts. We maintain a {GitHub} repository to continuously collect both static and dynamic benchmarking methods for {LLMs}. The repository can be found at this link.},
+	number = {{arXiv}:2502.17521},
+	publisher = {{arXiv}},
+	author = {Chen, Simin and Chen, Yiming and Li, Zexin and Jiang, Yifan and Wan, Zhongwei and He, Yixin and Ran, Dezhi and Gu, Tianle and Li, Haizhou and Xie, Tao and Ray, Baishakhi},
+	urldate = {2025-08-26},
+	date = {2025-02-23},
+	eprinttype = {arxiv},
+	eprint = {2502.17521 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
+}
+
+@unpublished{wang_self-instruct_2022,
+	title = {Self-Instruct: Aligning Language Models with Self-Generated Instructions},
+	url = {http://arxiv.org/abs/2212.10560},
+	abstract = {Large "instruction-tuned" language models (i.e., finetuned to respond to
+instructions) have demonstrated a remarkable ability to generalize
+zero-shot to new tasks. Nevertheless, they depend heavily on human-written
+instruction data that is often limited in quantity, diversity, and
+creativity, therefore hindering the generality of the tuned model. We
+introduce Self-Instruct, a framework for improving the
+instruction-following capabilities of pretrained language models by
+bootstrapping off their own generations. Our pipeline generates
+instructions, input, and output samples from a language model, then
+filters invalid or similar ones before using them to finetune the original
+model. Applying our method to the vanilla {GPT}3, we demonstrate a 33\%
+absolute improvement over the original model on Super-{NaturalInstructions},
+on par with the performance of {InstructGPT}-001, which was trained with
+private user data and human annotations. For further evaluation, we curate
+a set of expert-written instructions for novel tasks, and show through
+human evaluation that tuning {GPT}3 with Self-Instruct outperforms using
+existing public instruction datasets by a large margin, leaving only a 5\%
+absolute gap behind {InstructGPT}-001. Self-Instruct provides an almost
+annotation-free method for aligning pre-trained language models with
+instructions, and we release our large synthetic dataset to facilitate
+future studies on instruction tuning. Our code and data are available at
+https://github.com/yizhongw/self-instruct.},
+	author = {Wang, Yizhong and Kordi, Yeganeh and Mishra, Swaroop and Liu, Alisa and Smith, Noah A and Khashabi, Daniel and Hajishirzi, Hannaneh},
+	date = {2022-12-20},
+}
+
+@unpublished{cheng_spar_2024,
+	title = {{SPaR}: Self-play with tree-search refinement to improve instruction-following in large language models},
+	url = {http://dx.doi.org/10.48550/arXiv.2412.11605},
+	abstract = {Instruction-following is a fundamental capability of language models,
+requiring the model to recognize even the most subtle requirements in the
+instructions and accurately reflect them in its output. Such an ability is
+well-suited for and often optimized by preference learning. However,
+existing methods often directly sample multiple independent responses from
+the model when creating preference pairs. Such practice can introduce
+content variations irrelevant to whether the instruction is precisely
+followed (e.g., different expressions about the same semantic),
+interfering with the goal of teaching models to recognize the key
+differences that lead to improved instruction following. In light of this,
+we introduce {SPaR}, a self-play framework integrating tree-search
+self-refinement to yield valid and comparable preference pairs free from
+distractions. By playing against itself, an {LLM} employs a tree-search
+strategy to refine its previous responses with respect to the instruction
+while minimizing unnecessary variations. Our experiments show that a
+{LLaMA}3-8B model, trained over three iterations guided by {SPaR}, surpasses
+{GPT}-4-Turbo on the {IFEval} benchmark without losing general capabilities.
+Furthermore, {SPaR} demonstrates promising scalability, greatly enhancing
+models like {GLM}-4-9B and {LLaMA}3-70B. We also identify how inference
+scaling in tree search would impact model performance. Our code and data
+are publicly available at https://github.com/thu-coai/{SPaR}.},
+	author = {Cheng, Jiale and Liu, Xiao and Wang, Cunxiang and Gu, Xiaotao and Lu, Yida and Zhang, Dan and Dong, Yuxiao and Tang, Jie and Wang, Hongning and Huang, Minlie},
+	date = {2024-12-16},
+	doi = {10.48550/arXiv.2412.11605},
+}
+
+@misc{venkateswaran_spotlight_2025,
+	title = {Spotlight Your Instructions: Instruction-following with Dynamic Attention Steering},
+	url = {http://arxiv.org/abs/2505.12025},
+	doi = {10.48550/arXiv.2505.12025},
+	shorttitle = {Spotlight Your Instructions},
+	abstract = {In many real-world applications, users rely on natural language instructions to guide large language models ({LLMs}) across a wide range of tasks. These instructions are often complex, diverse, and subject to frequent change. However, {LLMs} do not always attend to these instructions reliably, and users lack simple mechanisms to emphasize their importance beyond modifying prompt wording or structure. To address this, we present an inference-time method that enables users to emphasize specific parts of their prompt by steering the model's attention toward them, aligning the model's perceived importance of different prompt tokens with user intent. Unlike prior approaches that are limited to static instructions, require significant offline profiling, or rely on fixed biases, we dynamically update the proportion of model attention given to the user-specified parts--ensuring improved instruction following without performance degradation. We demonstrate that our approach improves instruction following across a variety of tasks involving multiple instructions and generalizes across models of varying scales.},
+	number = {{arXiv}:2505.12025},
+	publisher = {{arXiv}},
+	author = {Venkateswaran, Praveen and Contractor, Danish},
+	urldate = {2025-08-26},
+	date = {2025-05-17},
+	eprinttype = {arxiv},
+	eprint = {2505.12025 [cs]},
+	keywords = {Computer Science - Machine Learning},
+}
+
+@misc{ren_step-by-step_2025,
+	title = {Step-by-Step Mastery: Enhancing Soft Constraint Following Ability of Large Language Models},
+	url = {http://arxiv.org/abs/2501.04945},
+	doi = {10.48550/arXiv.2501.04945},
+	shorttitle = {Step-by-Step Mastery},
+	abstract = {It is crucial for large language models ({LLMs}) to follow instructions that involve multiple constraints. However, it is an unexplored area to enhance {LLMs}' ability to follow soft constraints. To bridge the gap, we initially design a pipeline to construct datasets with high-quality outputs automatically. Additionally, to fully utilize the positive and negative samples generated during the data construction process, we choose Direct Preference Optimization ({DPO}) as the training method. Furthermore, taking into account the difficulty of soft constraints indicated by the number of constraints, we design a curriculum learning training paradigm based on the constraint quantity. We experimentally evaluate the effectiveness of our methods in improving {LLMs}' soft constraint following ability and analyze the factors driving the improvements.The datasets and code are publicly available at https://github.com/Rainier-rq/{FollowSoftConstraint}.},
+	number = {{arXiv}:2501.04945},
+	publisher = {{arXiv}},
+	author = {Ren, Qingyu and Zeng, Jie and He, Qianyu and Liang, Jiaqing and Xiao, Yanghua and Zhou, Weikang and Sun, Zeye and Yu, Fei},
+	urldate = {2025-08-26},
+	date = {2025-05-31},
+	eprinttype = {arxiv},
+	eprint = {2501.04945 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{ren_step-by-step_2025-1,
+	title = {Step-by-Step Mastery: Enhancing Soft Constraint Following Ability of Large Language Models},
+	url = {http://arxiv.org/abs/2501.04945},
+	doi = {10.48550/arXiv.2501.04945},
+	shorttitle = {Step-by-Step Mastery},
+	abstract = {It is crucial for large language models ({LLMs}) to follow instructions that involve multiple constraints. However, it is an unexplored area to enhance {LLMs}' ability to follow soft constraints. To bridge the gap, we initially design a pipeline to construct datasets with high-quality outputs automatically. Additionally, to fully utilize the positive and negative samples generated during the data construction process, we choose Direct Preference Optimization ({DPO}) as the training method. Furthermore, taking into account the difficulty of soft constraints indicated by the number of constraints, we design a curriculum learning training paradigm based on the constraint quantity. We experimentally evaluate the effectiveness of our methods in improving {LLMs}' soft constraint following ability and analyze the factors driving the improvements.The datasets and code are publicly available at https://github.com/Rainier-rq/{FollowSoftConstraint}.},
+	number = {{arXiv}:2501.04945},
+	publisher = {{arXiv}},
+	author = {Ren, Qingyu and Zeng, Jie and He, Qianyu and Liang, Jiaqing and Xiao, Yanghua and Zhou, Weikang and Sun, Zeye and Yu, Fei},
+	urldate = {2025-08-29},
+	date = {2025-05-31},
+	eprinttype = {arxiv},
+	eprint = {2501.04945 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{li_synthetic_2024,
+	title = {Synthetic Data (Almost) from Scratch: Generalized Instruction Tuning for Language Models},
+	url = {http://arxiv.org/abs/2402.13064},
+	doi = {10.48550/arXiv.2402.13064},
+	shorttitle = {Synthetic Data (Almost) from Scratch},
+	abstract = {We introduce Generalized Instruction Tuning (called {GLAN}), a general and scalable method for instruction tuning of Large Language Models ({LLMs}). Unlike prior work that relies on seed examples or existing datasets to construct instruction tuning data, {GLAN} exclusively utilizes a pre-curated taxonomy of human knowledge and capabilities as input and generates large-scale synthetic instruction data across all disciplines. Specifically, inspired by the systematic structure in human education system, we build the taxonomy by decomposing human knowledge and capabilities to various fields, sub-fields and ultimately, distinct disciplines semi-automatically, facilitated by {LLMs}. Subsequently, we generate a comprehensive list of subjects for every discipline and proceed to design a syllabus tailored to each subject, again utilizing {LLMs}. With the fine-grained key concepts detailed in every class session of the syllabus, we are able to generate diverse instructions with a broad coverage across the entire spectrum of human knowledge and skills. Extensive experiments on large language models (e.g., Mistral) demonstrate that {GLAN} excels in multiple dimensions from mathematical reasoning, coding, academic exams, logical reasoning to general instruction following without using task-specific training data of these tasks. In addition, {GLAN} allows for easy customization and new fields or skills can be added by simply incorporating a new node into our taxonomy.},
+	number = {{arXiv}:2402.13064},
+	publisher = {{arXiv}},
+	author = {Li, Haoran and Dong, Qingxiu and Tang, Zhengyang and Wang, Chaojun and Zhang, Xingxing and Huang, Haoyang and Huang, Shaohan and Huang, Xiaolong and Huang, Zeqiang and Zhang, Dongdong and Gu, Yuxian and Cheng, Xin and Wang, Xun and Chen, Si-Qing and Dong, Li and Lu, Wei and Sui, Zhifang and Wang, Benyou and Lam, Wai and Wei, Furu},
+	urldate = {2025-08-26},
+	date = {2024-02-20},
+	eprinttype = {arxiv},
+	eprint = {2402.13064 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@unpublished{qin_sysbench_2024,
+	title = {{SysBench}: Can large Language Models follow system messages?},
+	url = {http://dx.doi.org/10.48550/arXiv.2408.10943},
+	abstract = {Large Language Models ({LLMs}) have become instrumental across various
+applications, with the customization of these models to specific scenarios
+becoming increasingly critical. System message, a fundamental component of
+{LLMs}, is consist of carefully crafted instructions that guide the behavior
+of model to meet intended goals. Despite the recognized potential of
+system messages to optimize {AI}-driven solutions, there is a notable
+absence of a comprehensive benchmark for evaluating how well {LLMs} follow
+system messages. To fill this gap, we introduce {SysBench}, a benchmark that
+systematically analyzes system message following ability in terms of three
+limitations of existing {LLMs}: constraint violation, instruction
+misjudgement and multi-turn instability. Specifically, we manually
+construct evaluation dataset based on six prevalent types of constraints,
+including 500 tailor-designed system messages and multi-turn user
+conversations covering various interaction relationships. Additionally, we
+develop a comprehensive evaluation protocol to measure model performance.
+Finally, we conduct extensive evaluation across various existing {LLMs},
+measuring their ability to follow specified constraints given in system
+messages. The results highlight both the strengths and weaknesses of
+existing models, offering key insights and directions for future research.
+The open source library {SysBench} is available at
+https://github.com/{PKU}-Baichuan-{MLSystemLab}/{SysBench}.},
+	author = {Qin, Yanzhao and Zhang, Tao and Zhang, Tao and Shen, Yanjun and Luo, Wenjing and Sun, Haoze and Zhang, Yan and Qiao, Yujing and Chen, Weipeng and Zhou, Zenan and Zhang, Wentao and Cui, Bin},
+	date = {2024-08-20},
+	doi = {10.48550/arXiv.2408.10943},
+}
+
+@misc{qin_sysbench_2024-1,
+	title = {{SysBench}: Can Large Language Models Follow System Messages?},
+	url = {http://arxiv.org/abs/2408.10943},
+	doi = {10.48550/arXiv.2408.10943},
+	shorttitle = {{SysBench}},
+	abstract = {Large Language Models ({LLMs}) have become instrumental across various applications, with the customization of these models to specific scenarios becoming increasingly critical. System message, a fundamental component of {LLMs}, is consist of carefully crafted instructions that guide the behavior of model to meet intended goals. Despite the recognized potential of system messages to optimize {AI}-driven solutions, there is a notable absence of a comprehensive benchmark for evaluating how well {LLMs} follow system messages. To fill this gap, we introduce {SysBench}, a benchmark that systematically analyzes system message following ability in terms of three limitations of existing {LLMs}: constraint violation, instruction misjudgement and multi-turn instability. Specifically, we manually construct evaluation dataset based on six prevalent types of constraints, including 500 tailor-designed system messages and multi-turn user conversations covering various interaction relationships. Additionally, we develop a comprehensive evaluation protocol to measure model performance. Finally, we conduct extensive evaluation across various existing {LLMs}, measuring their ability to follow specified constraints given in system messages. The results highlight both the strengths and weaknesses of existing models, offering key insights and directions for future research. The open source library {SysBench} is available at https://github.com/{PKU}-Baichuan-{MLSystemLab}/{SysBench}.},
+	number = {{arXiv}:2408.10943},
+	publisher = {{arXiv}},
+	author = {Qin, Yanzhao and Zhang, Tao and Zhang, Tao and Shen, Yanjun and Luo, Wenjing and Sun, Haoze and Zhang, Yan and Qiao, Yujing and Chen, Weipeng and Zhou, Zenan and Zhang, Wentao and Cui, Bin},
+	urldate = {2025-08-26},
+	date = {2024-10-22},
+	eprinttype = {arxiv},
+	eprint = {2408.10943 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@misc{qin_sysbench_2024-2,
+	title = {{SysBench}: Can Large Language Models Follow System Messages?},
+	url = {http://arxiv.org/abs/2408.10943},
+	doi = {10.48550/arXiv.2408.10943},
+	shorttitle = {{SysBench}},
+	abstract = {Large Language Models ({LLMs}) have become instrumental across various applications, with the customization of these models to specific scenarios becoming increasingly critical. System message, a fundamental component of {LLMs}, is consist of carefully crafted instructions that guide the behavior of model to meet intended goals. Despite the recognized potential of system messages to optimize {AI}-driven solutions, there is a notable absence of a comprehensive benchmark for evaluating how well {LLMs} follow system messages. To fill this gap, we introduce {SysBench}, a benchmark that systematically analyzes system message following ability in terms of three limitations of existing {LLMs}: constraint violation, instruction misjudgement and multi-turn instability. Specifically, we manually construct evaluation dataset based on six prevalent types of constraints, including 500 tailor-designed system messages and multi-turn user conversations covering various interaction relationships. Additionally, we develop a comprehensive evaluation protocol to measure model performance. Finally, we conduct extensive evaluation across various existing {LLMs}, measuring their ability to follow specified constraints given in system messages. The results highlight both the strengths and weaknesses of existing models, offering key insights and directions for future research. The open source library {SysBench} is available at https://github.com/{PKU}-Baichuan-{MLSystemLab}/{SysBench}.},
+	number = {{arXiv}:2408.10943},
+	publisher = {{arXiv}},
+	author = {Qin, Yanzhao and Zhang, Tao and Zhang, Tao and Shen, Yanjun and Luo, Wenjing and Sun, Haoze and Zhang, Yan and Qiao, Yujing and Chen, Weipeng and Zhou, Zenan and Zhang, Wentao and Cui, Bin},
+	urldate = {2025-08-29},
+	date = {2024-10-22},
+	eprinttype = {arxiv},
+	eprint = {2408.10943 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@inproceedings{zheng_tabledreamer_2025,
+	location = {Vienna, Austria},
+	title = {{TableDreamer}: Progressive and Weakness-guided Data Synthesis from Scratch for Table Instruction Tuning},
+	isbn = {979-8-89176-256-5},
+	url = {https://aclanthology.org/2025.findings-acl.381/},
+	doi = {10.18653/v1/2025.findings-acl.381},
+	shorttitle = {{TableDreamer}},
+	abstract = {Despite the commendable progress of recent {LLM}-based data synthesis methods, they face two limitations in generating table instruction tuning data. First, they can not thoroughly explore the vast input space of table understanding tasks, leading to limited data diversity. Second, they ignore the weaknesses in table understanding ability of the target {LLM} and blindly pursue the increase of data quantity, resulting in suboptimal data efficiency. In this paper, we introduce a progressive and weakness-guided data synthesis framework tailored for table instruction tuning, named {TableDreamer}, to mitigate the above issues. Specifically, we first synthesize diverse tables and related instructions as seed data, and then perform an iterative exploration of the input space under the guidance of the newly identified weakness data, which eventually serve as the final training data for fine-tuning the target {LLM}. Extensive experiments on 10 tabular benchmarks demonstrate the effectiveness of the proposed framework, which boosts the average accuracy of Llama3.1-8B-instruct by 11.62\% (49.07{\textbackslash}rightarrow60.69) with 27K {GPT}-4o synthetic data and outperforms state-of-the-art data synthesis baselines which use more training data.},
+	eventtitle = {Findings 2025},
+	pages = {7290--7315},
+	booktitle = {Findings of the Association for Computational Linguistics: {ACL} 2025},
+	publisher = {Association for Computational Linguistics},
+	author = {Zheng, Mingyu and Feng, Zhifan and Wang, Jia and Wang, Lanrui and Lin, Zheng and Yang, Hao and Wang, Weiping},
+	editor = {Che, Wanxiang and Nabende, Joyce and Shutova, Ekaterina and Pilehvar, Mohammad Taher},
+	urldate = {2025-08-26},
+	date = {2025-07},
+}
+
+@inproceedings{kim_biggen_2024,
+	title = {The {BiGGen} Bench: A Principled Benchmark for Fine-grained Evaluation of Language Models with Language Models},
+	rights = {Creative Commons Attribution Non Commercial No Derivatives 4.0 International},
+	url = {https://arxiv.org/abs/2406.05761},
+	doi = {10.48550/ARXIV.2406.05761},
+	shorttitle = {The {BiGGen} Bench},
+	abstract = {As language models ({LMs}) become capable of handling a wide range of tasks, their evaluation is becoming as challenging as their development. Most generation benchmarks currently assess {LMs} using abstract evaluation criteria like helpfulness and harmlessness, which often lack the flexibility and granularity of human assessment. Additionally, these benchmarks tend to focus disproportionately on specific capabilities such as instruction following, leading to coverage bias. To overcome these limitations, we introduce the {BiGGen} Bench, a principled generation benchmark designed to thoroughly evaluate nine distinct capabilities of {LMs} across 77 diverse tasks. A key feature of the {BiGGen} Bench is its use of instance-specific evaluation criteria, closely mirroring the nuanced discernment of human evaluation. We apply this benchmark to assess 103 frontier {LMs} using five evaluator {LMs}. Our code, data, and evaluation results are all publicly available at https://github.com/prometheus-eval/prometheus-eval/tree/main/{BiGGen}-Bench.},
+	publisher = {{arXiv}},
+	author = {Kim, Seungone and Suk, Juyoung and Cho, Ji Yong and Longpre, Shayne and Kim, Chaeeun and Yoon, Dongkeun and Son, Guijin and Cho, Yejin and Shafayat, Sheikh and Baek, Jinheon and Park, Sue Hyun and Hwang, Hyeonbin and Jo, Jinkyung and Cho, Hyowon and Shin, Haebin and Lee, Seongyun and Oh, Hanseok and Lee, Noah and Ho, Namgyu and Joo, Se June and Ko, Miyoung and Lee, Yoonjoo and Chae, Hyungjoo and Shin, Jamin and Jang, Joel and Ye, Seonghyeon and Lin, Bill Yuchen and Welleck, Sean and Neubig, Graham and Lee, Moontae and Lee, Kyungjae and Seo, Minjoon},
+	urldate = {2025-08-13},
+	date = {2024},
+	note = {Version Number: 2},
+	keywords = {Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@misc{cook_ticking_2024,
+	title = {{TICKing} All the Boxes: Generated Checklists Improve {LLM} Evaluation and Generation},
+	url = {http://arxiv.org/abs/2410.03608},
+	doi = {10.48550/arXiv.2410.03608},
+	shorttitle = {{TICKing} All the Boxes},
+	abstract = {Given the widespread adoption and usage of Large Language Models ({LLMs}), it is crucial to have flexible and interpretable evaluations of their instruction-following ability. Preference judgments between model outputs have become the de facto evaluation standard, despite distilling complex, multi-faceted preferences into a single ranking. Furthermore, as human annotation is slow and costly, {LLMs} are increasingly used to make these judgments, at the expense of reliability and interpretability. In this work, we propose {TICK} (Targeted Instruct-evaluation with {ChecKlists}), a fully automated, interpretable evaluation protocol that structures evaluations with {LLM}-generated, instruction-specific checklists. We first show that, given an instruction, {LLMs} can reliably produce high-quality, tailored evaluation checklists that decompose the instruction into a series of {YES}/{NO} questions. Each question asks whether a candidate response meets a specific requirement of the instruction. We demonstrate that using {TICK} leads to a significant increase (46.4\% \${\textbackslash}to\$ 52.2\%) in the frequency of exact agreements between {LLM} judgements and human preferences, as compared to having an {LLM} directly score an output. We then show that {STICK} (Self-{TICK}) can be used to improve generation quality across multiple benchmarks via self-refinement and Best-of-N selection. {STICK} self-refinement on {LiveBench} reasoning tasks leads to an absolute gain of \$+\$7.8\%, whilst Best-of-N selection with {STICK} attains \$+\$6.3\% absolute improvement on the real-world instruction dataset, {WildBench}. In light of this, structured, multi-faceted self-improvement is shown to be a promising way to further advance {LLM} capabilities. Finally, by providing {LLM}-generated checklists to human evaluators tasked with directly scoring {LLM} responses to {WildBench} instructions, we notably increase inter-annotator agreement (0.194 \${\textbackslash}to\$ 0.256).},
+	number = {{arXiv}:2410.03608},
+	publisher = {{arXiv}},
+	author = {Cook, Jonathan and Rocktäschel, Tim and Foerster, Jakob and Aumiller, Dennis and Wang, Alex},
+	urldate = {2025-08-26},
+	date = {2024-10-04},
+	eprinttype = {arxiv},
+	eprint = {2410.03608 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Human-Computer Interaction, Computer Science - Machine Learning},
+}
+
+@article{cao_toward_2025,
+	title = {Toward Generalizable Evaluation in the {LLM} Era: A Survey Beyond Benchmarks},
+	rights = {Creative Commons Attribution Non Commercial Share Alike 4.0 International},
+	url = {https://arxiv.org/abs/2504.18838},
+	doi = {10.48550/ARXIV.2504.18838},
+	shorttitle = {Toward Generalizable Evaluation in the {LLM} Era},
+	abstract = {Large Language Models ({LLMs}) are advancing at an amazing speed and have become indispensable across academia, industry, and daily applications. To keep pace with the status quo, this survey probes the core challenges that the rise of {LLMs} poses for evaluation. We identify and analyze two pivotal transitions: (i) from task-specific to capability-based evaluation, which reorganizes benchmarks around core competencies such as knowledge, reasoning, instruction following, multi-modal understanding, and safety; and (ii) from manual to automated evaluation, encompassing dynamic dataset curation and "{LLM}-as-a-judge" scoring.
+ Yet, even with these transitions, a crucial obstacle persists: the evaluation generalization issue. Bounded test sets cannot scale alongside models whose abilities grow seemingly without limit. We will dissect this issue, along with the core challenges of the above two transitions, from the perspectives of methods, datasets, evaluators, and metrics. Due to the fast evolving of this field, we will maintain a living {GitHub} repository (links are in each section) to crowd-source updates and corrections, and warmly invite contributors and collaborators.},
+	author = {Cao, Yixin and Hong, Shibo and Li, Xinze and Ying, Jiahao and Ma, Yubo and Liang, Haiyuan and Liu, Yantao and Yao, Zijun and Wang, Xiaozhi and Huang, Dan and Zhang, Wenxuan and Huang, Lifu and Chen, Muhao and Hou, Lei and Sun, Qianru and Ma, Xingjun and Wu, Zuxuan and Kan, Min-Yen and Lo, David and Zhang, Qi and Ji, Heng and Jiang, Jing and Li, Juanzi and Sun, Aixin and Huang, Xuanjing and Chua, Tat-Seng and Jiang, Yu-Gang},
+	urldate = {2025-08-13},
+	date = {2025},
+	note = {Publisher: {arXiv}
+Version Number: 1},
+	keywords = {Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@misc{peng_verif_2025,
+	title = {{VerIF}: Verification Engineering for Reinforcement Learning in Instruction Following},
+	url = {http://arxiv.org/abs/2506.09942},
+	doi = {10.48550/arXiv.2506.09942},
+	shorttitle = {{VerIF}},
+	abstract = {Reinforcement learning with verifiable rewards ({RLVR}) has become a key technique for enhancing large language models ({LLMs}), with verification engineering playing a central role. However, best practices for {RL} in instruction following remain underexplored. In this work, we explore the verification challenge in {RL} for instruction following and propose {VerIF}, a verification method that combines rule-based code verification with {LLM}-based verification from a large reasoning model (e.g., {QwQ}-32B). To support this approach, we construct a high-quality instruction-following dataset, {VerInstruct}, containing approximately 22,000 instances with associated verification signals. We apply {RL} training with {VerIF} to two models, achieving significant improvements across several representative instruction-following benchmarks. The trained models reach state-of-the-art performance among models of comparable size and generalize well to unseen constraints. We further observe that their general capabilities remain unaffected, suggesting that {RL} with {VerIF} can be integrated into existing {RL} recipes to enhance overall model performance. We have released our datasets, codes, and models to facilitate future research at https://github.com/{THU}-{KEG}/{VerIF}.},
+	number = {{arXiv}:2506.09942},
+	publisher = {{arXiv}},
+	author = {Peng, Hao and Qi, Yunjia and Wang, Xiaozhi and Xu, Bin and Hou, Lei and Li, Juanzi},
+	urldate = {2025-08-13},
+	date = {2025-06-11},
+	eprinttype = {arxiv},
+	eprint = {2506.09942 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@unpublished{xu_wizardlm_2023,
+	title = {{WizardLM}: Empowering Large Language Models to Follow Complex Instructions},
+	url = {http://arxiv.org/abs/2304.12244},
+	abstract = {Training large language models ({LLMs}) with open-domain instruction
+following data brings colossal success. However, manually creating such
+instruction data is very time-consuming and labor-intensive. Moreover,
+humans may struggle to produce high-complexity instructions. In this
+paper, we show an avenue for creating large amounts of instruction data
+with varying levels of complexity using {LLM} instead of humans. Starting
+with an initial set of instructions, we use our proposed Evol-Instruct to
+rewrite them step by step into more complex instructions. Then, we mix all
+generated instruction data to fine-tune {LLaMA}. We call the resulting model
+{WizardLM}. Human evaluations on a complexity-balanced test bed and Vicuna's
+testset show that instructions from Evol-Instruct are superior to
+human-created ones. By analyzing the human evaluation results of the high
+complexity part, we demonstrate that outputs from our {WizardLM} are
+preferred to outputs from {OpenAI} {ChatGPT}. In {GPT}-4 automatic evaluation,
+{WizardLM} achieves more than 90{\textbackslash}\% capacity of {ChatGPT} on 17 out of 29
+skills. Even though {WizardLM} still lags behind {ChatGPT} in some aspects,
+our findings suggest that fine-tuning with {AI}-evolved instructions is a
+promising direction for enhancing {LLMs}. Our code and data are public at
+https://github.com/nlpxucan/{WizardLM}},
+	author = {Xu, Can and Sun, Qingfeng and Zheng, Kai and Geng, Xiubo and Zhao, Pu and Feng, Jiazhan and Tao, Chongyang and Jiang, Daxin},
+	date = {2023-04-24},
+}
