@@ -1,0 +1,67 @@
+
+\begin{table*}[ht]
+  \centering
+  \small
+    \begin{tabular}{p{24.5em}c}
+    \toprule
+    \multicolumn{2}{l}{\textbf{Case 1}} \\
+    \midrule
+    \multicolumn{2}{l}{
+    \parbox{15cm}{
+    \textbf{Instruction:} Imagine that you are a guest speaker giving a lecture. Write a 1 to 2 sentences introduction about yourself. It should be generalizable to different fields.}
+    }\\
+    \\
+    \multicolumn{1}{l}{\textbf{\red{Output (a)}}} & \multicolumn{1}{l}{\textbf{\lime{Output (b)} }} \\
+    Hello everyone! My name is John Smith and I'm glad to be here today as a guest speaker. I'm a software engineer with over 10 years of experience ....
+    & \multicolumn{1}{p{24.5em}}{Good evening everyone! My name is \_\_\_\_\_\_ and I'm excited to be here today to discuss the importance of \_\_\_\_\_\_.} \\
+    \\
+    \multicolumn{2}{l}{\textbf{Generation:}} \\
+    \multicolumn{2}{p{50em}}{Output (a) provides a specific and concrete introduction about the speaker, including their name and profession, which is relevant to the lecture. On the other hand, Output (b) leaves blank spaces for the name and topic, making it unclear and incomplete. \red{Therefore, Output (a) is better.}} \\
+    \\
+    
+    \multicolumn{2}{p{51em}}{\textbf{Comment:} Error type(s): \texttt{surface,overlook,counting}; \llama-3-70b failed to recognize that Output (a) violates both the length constraint and the generalization requirement specified in the instruction. Instead, it preferred Output (a) because it appeared more complete than Output (b).} \\
+    \midrule
+    \multicolumn{2}{l}{\textbf{Case 2}} \\
+    \midrule
+    \multicolumn{2}{p{51em}}{\textbf{Instruction:} "Determine the most common word in the text. Humans are created in the image of God, from a spiritual perspective and from a physical perspective."} \\
+    \\
+    \multicolumn{1}{l}{\textbf{\lime{Output (a)}}} & \multicolumn{1}{l}{\textbf{\red{Output (b)}}} \\
+    "from", "a", and "perspective"
+    & \multicolumn{1}{p{24.5em}}{The most common word in the text is "humans", which appears twice.} \\
+    
+    \multicolumn{2}{l}{\textbf{Generation:}} \\
+    \multicolumn{2}{p{49em}}{The instruction asks to determine the most common word in the given text. Output (a) provides a list of words without specifying which one is the most common, whereas Output (b) clearly identifies the most common word as "humans" and provides the frequency of its appearance. Output (b) precisely executes the instruction by providing a single most common word, whereas Output (a) does not. \red{Therefore, Output (b) is better.}} \\
+   \\
+    \multicolumn{2}{p{50em}}{\textbf{Comment:} Error type(s): \texttt{surface,counting}; The model failed to identify the error in Output (b), where "humans" only appears once and is not the most common word. It preferred Output (b) due to its better formatting, despite the underlying error.} \\
+    \midrule
+    \multicolumn{2}{l}{\textbf{Case 3}} \\
+    \midrule
+    \multicolumn{2}{l}{\textbf{Instruction:} "Write a script for a 10-second conversation between two characters."} \\
+    \\
+
+    \multicolumn{1}{l}{\textbf{\red{Output (a)}}} & \multicolumn{1}{l}{\textbf{\lime{{Output (b)}}}} \\
+    
+    Person A: Hi, I'm John. It's nice to meet you. 
+Person B: Hi John, I'm Jane. It's nice to meet you too.
+.... (7 more turns)
+    & \multicolumn{1}{p{24.5em}}{
+Person A: Hi, how are you?
+Person B: I'm doing well, how about you? 
+(1 more turn)
+    } \\
+    \\
+
+    \multicolumn{2}{l}{\textbf{Generation:}} \\
+    \multicolumn{2}{p{49em}}{The instruction asks for a script for a 10-second conversation between two characters. Output (a) provides a conversation that is too long and detailed for a 10-second conversation, as it includes multiple topics and exchanges. Output (b), on the other hand, provides a brief and concise conversation that can fit within a 10-second time frame. However, Output (b) does not provide a complete conversation, as it only includes two exchanges and does not provide a clear conclusion or ending.
+
+\red{Therefore, Output (a) is better.}} \\
+\\
+
+    \multicolumn{2}{p{50em}}{\textbf{Comment:} Error type(s):  \texttt{surface,overlook}; \llama-3-70b overlooked a clear violation of the instruction in Output (a), where the conversation exceeds the 10-second limit. Despite this, it preferred the output as the more "complete" conversation, even though completeness was not a required attribute in the instruction.} \\
+    \bottomrule
+    \end{tabular}%
+  \caption{Case study (Appendix~\S\ref{appx_case_study}) showing error patterns in \llama-3-70b generations under \texttt{cot} protocol (\S\ref{sec:all_protocols}).}
+  \label{tab:appx_error_case}
+\end{table*}
+
+\clearpage

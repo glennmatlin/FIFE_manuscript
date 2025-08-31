@@ -1,0 +1,1096 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+\usepackage[table]{xcolor}
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[]{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+%Including images in your LaTeX document requires adding
+%additional package(s)
+\usepackage{graphicx}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{xargs}
+\usepackage{MnSymbol,bbding,pifont}
+\usepackage{colortbl}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+
+\usepackage{fontawesome5}
+\usepackage{soul}
+
+% ---------- visual design blocks--------
+\newcommand{\inlinepicture}[1]{\includegraphics[height=1.2\fontcharht\font`\B]{#1}}
+\newcommand{\X}{\inlinepicture{figures/1.png}}
+\newcommand{\Y}{\inlinepicture{figures/2.png}}
+\newcommand{\Z}{\inlinepicture{figures/3.png}}
+
+\newenvironment{ttblock}{\ttfamily}{}
+\newcommand{\highlightcolor}[2]{%
+\sethlcolor{#1}%
+\hl{#2}%
+}
+
+\definecolor{oc-gray-0}{HTML}{F8F9FA}
+\definecolor{oc-gray-1}{HTML}{F1F3F5}
+\definecolor{oc-gray-2}{HTML}{E9ECEF}
+\definecolor{oc-gray-3}{HTML}{DEE2E6}
+\definecolor{oc-gray-4}{HTML}{CED4DA}
+\definecolor{oc-gray-5}{HTML}{ADB5BD}
+\definecolor{oc-gray-6}{HTML}{868E96}
+\definecolor{oc-gray-7}{HTML}{495057}
+\definecolor{oc-gray-8}{HTML}{343A40}
+\definecolor{oc-gray-9}{HTML}{212529}
+\definecolor{oc-black}{HTML}{000000}
+\definecolor{oc-blue-0}{HTML}{E7F5FF}
+\definecolor{oc-blue-1}{HTML}{d0ebff}
+\definecolor{oc-blue-7}{HTML}{1C7ED6}
+\definecolor{oc-blue-8}{HTML}{1971C2}
+\definecolor{oc-blue-9}{HTML}{1864AB}
+\definecolor{oc-lime-0}{HTML}{F4FCE3}
+\definecolor{oc-lime-8}{HTML}{66A80F}
+\definecolor{oc-lime-9}{HTML}{5C940D}
+\definecolor{oc-green-0}{HTML}{EBFBEE}
+\definecolor{oc-green-8}{HTML}{2F9E44}
+\definecolor{oc-green-9}{HTML}{2B8A3E}
+\definecolor{oc-orange-0}{HTML}{FFF4E6}
+\definecolor{oc-orange-8}{HTML}{E8590C}
+\definecolor{oc-orange-9}{HTML}{D9480F}
+\definecolor{oc-maroon}{HTML}{A61E4D}
+
+\definecolor{user-yellow}{HTML}{FFD43B}
+\definecolor{oc-maroon}{HTML}{A61E4D}
+\newcommand{\tulu}{\textsc{T\"ulu}\xspace}
+\newcommand{\llama}{llama\xspace}
+\newcommand{\tulumix}{\textsc{T\"ulu V2 Mix}\xspace}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+
+\newcommand{\lime}[1]{\textcolor{oc-green-8}{#1}}
+
+
+\newtcolorbox{promptbox}[2][Prompt]{
+colback=black!4!white, 
+arc=5pt, 
+boxrule=1.1pt,
+fonttitle=\bfseries,
+title=#1, 
+before upper={\small}, 
+fontupper=\selectfont\footnotesize, 
+colframe=#2, 
+} 
+
+
+
+
+\newcommand{\styledtext}[3]{\textcolor{#1}{\highlightcolor{#2}{#3}}}
+\newcommand{\prompttemplate}[1]{\styledtext{oc-blue-9}{oc-blue-0}{#1}}
+\newcommand{\promptgeneration}[1]{\styledtext{oc-green-9}{oc-green-0}{#1}}
+\setlength\fboxsep{0.2pt}
+
+
+
+% \usepackage[htt]{hyphenat}
+
+% ---------- visual design blocks--------
+
+\iffalse   %% Change between \iffalse and \iftrue to show/hide comments
+\newcommand{\yl}[1]{}
+\else
+\newcommand{\yl}[1]{\textcolor{cyan}{\textbf{YL:} #1}}
+\fi
+\newcommand{\kejian}[1]{{\color{red} [#1 -- KS]}}
+\newcommand{\ac}[1]{\textcolor{brown}{[\textbf{AC:} #1}]}
+
+\newcommand{\llmbarnatural}{\texttt{LLMBar-Natural}\xspace}
+\newcommand{\adversarial}{\texttt{LLMBar-Adversarial}\xspace}
+\newcommand{\mtbench}{\texttt{MTBench}\xspace}
+\newcommand{\instrusum}{\texttt{InstruSum}\xspace}
+
+
+\newcommand{\natshort}{\texttt{Nat.}\xspace}
+\newcommand{\advshort}{\texttt{Adv.}\xspace}
+\newcommand{\mtshort}{\texttt{MT.}\xspace}
+\newcommand{\insshort}{\texttt{Ins.}\xspace}
+
+\newcommand{\bettersig}{$^\uparrow$}
+\newcommand{\worsesig}{$^\downarrow$}
+\newcommand{\cparagraph}[1]{\noindent\textbf{#1}}
+
+\newcommand{\ours}{\textsc{ReIFE}\xspace}
+
+
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+
+
+\title{\ours: Re-evaluating Instruction-Following Evaluation}
+
+
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a separate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+% \author{First Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   \texttt{email@domain} \\\And
+%   Second Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   \texttt{email@domain} \\}
+
+\author{
+ Yixin Liu\Thanks{~Equal contribution}$^{1}$ 
+ \quad \textbf{Kejian Shi}\footnotemark[1]$^{1}$
+ \quad \textbf{Alexander R. Fabbri}$^{2}$
+ \quad \textbf{Yilun Zhao}$^{1}$ \\
+ \quad \textbf{Peifeng Wang}$^{2}$ 
+ \quad \textbf{Chien-Sheng Wu}$^{2}$ 
+  \quad \textbf{Shafiq Joty}$^{2}$ 
+ \quad \textbf{Arman Cohan}$^{1,3}$ \vspace{6pt}\\
+  $^1$Yale University\quad 
+  $^2$Salesforce AI\quad
+  $^3$Allen Institute for AI
+  \vspace{6pt}\\
+  \texttt{yixin.liu@yale.edu, kejian.shi@yale.edu, arman.cohan@yale.edu}
+ }
+ 
+%\author{
+%  \textbf{First Author\textsuperscript{1}},
+%  \textbf{Second Author\textsuperscript{1,2}},
+%  \textbf{Third T. Author\textsuperscript{1}},
+%  \textbf{Fourth Author\textsuperscript{1}},
+%\\
+%  \textbf{Fifth Author\textsuperscript{1,2}},
+%  \textbf{Sixth Author\textsuperscript{1}},
+%  \textbf{Seventh Author\textsuperscript{1}},
+%  \textbf{Eighth Author \textsuperscript{1,2,3,4}},
+%\\
+%  \textbf{Ninth Author\textsuperscript{1}},
+%  \textbf{Tenth Author\textsuperscript{1}},
+%  \textbf{Eleventh E. Author\textsuperscript{1,2,3,4,5}},
+%  \textbf{Twelfth Author\textsuperscript{1}},
+%\\
+%  \textbf{Thirteenth Author\textsuperscript{3}},
+%  \textbf{Fourteenth F. Author\textsuperscript{2,4}},
+%  \textbf{Fifteenth Author\textsuperscript{1}},
+%  \textbf{Sixteenth Author\textsuperscript{1}},
+%\\
+%  \textbf{Seventeenth S. Author\textsuperscript{4,5}},
+%  \textbf{Eighteenth Author\textsuperscript{3,4}},
+%  \textbf{Nineteenth N. Author\textsuperscript{2,5}},
+%  \textbf{Twentieth Author\textsuperscript{1}}
+%\\
+%\\
+%  \textsuperscript{1}Affiliation 1,
+%  \textsuperscript{2}Affiliation 2,
+%  \textsuperscript{3}Affiliation 3,
+%  \textsuperscript{4}Affiliation 4,
+%  \textsuperscript{5}Affiliation 5
+%\\
+%  \small{
+%    \textbf{Correspondence:} \href{mailto:email@domain}{email@domain}
+%  }
+%}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+The automatic evaluation of instruction following typically involves using large language models (LLMs) to assess response quality. 
+However, there is a lack of comprehensive evaluation of these LLM-based evaluators across two dimensions: the base LLMs and the evaluation protocols.
+Therefore, we present a thorough meta-evaluation of instruction following, including 25 base LLMs and 15 recently proposed evaluation protocols, on 4 human-annotated datasets, assessing the evaluation accuracy of the LLM-evaluators.
+Our evaluation allows us to identify the best-performing base LLMs and evaluation protocols with a high degree of robustness.
+Moreover, our large-scale evaluation reveals:
+(1) Base LLM performance ranking remains largely consistent across evaluation protocols, with less capable LLMs showing greater improvement from protocol enhancements;
+(2) Robust evaluation of evaluation protocols requires many base LLMs with varying capability levels, as protocol effectiveness can depend on the base LLM used;
+(3) Evaluation results on different datasets are not always consistent, so a rigorous evaluation requires multiple datasets with distinctive features.
+We release our meta-evaluation suite \ours,\footnote{\ours stands for \textbf{R}e-\textbf{e}valuation of \textbf{I}nstruction-\textbf{F}ollowing \textbf{E}valuation: \url{https://github.com/yale-nlp/ReIFE}.} which provides the codebase and evaluation result collection for more than 500 LLM-evaluator configurations, to support future research in instruction-following evaluation.
+\end{abstract}
+
+
+
+\section{Introduction}
+
+\begin{figure*}[t!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/Figure_1.pdf}
+    \caption{\label{fig:intro}Overview of our large-scale meta-evaluation study of instruction-following evaluation.
+    We evaluate the capabilities of 25 open-source base LLMs and 15 evaluation protocols, resulting in a total of 375 LLM-evaluators --  evaluation methods that perform the evaluations using the base LLMs by following the evaluation protocols.
+    }
+\end{figure*}
+
+% 
+The ability to follow human instructions has become an important evaluation aspect for large language models (LLMs), indicating their alignment with human users~\cite{NEURIPS2022_b1efde53}.
+Recently, due to their better correlation with human judgments compared with traditional evaluation metrics, the LLMs themselves are often used as judges of the model output quality for generative tasks including instruction following~\cite{liu-etal-2023-g, fu2023gptscore, zheng2024judging}.
+% 
+These LLM-based evaluation methods are an essential component of the most widely used automatic benchmarks for instruction-following evaluation, such as AlpacaEval~\cite{alpaca_eval} and MTBench~\cite{zheng2024judging}, where a strong LLM is used to evaluate the quality of model responses.
+% 
+Moreover, they can be used as reward models for instruction fine-tuning of LLMs in both distillation and self-improvement settings~\citep{tunstall2023zephyr, yuan2024selfrewarding}.
+However, recent studies have identified various limitations of LLM-based evaluation methods, including low self-consistency rates in their predictions, positional biases, and a preference for their own outputs~\cite{liu-etal-2023-g,wang-etal-2024-large-language-models-fair, zheng2024judging, panickssery2024llm}.
+% 
+
+%
+
+
+Therefore, the evaluation of LLM-based evaluations is critically important.
+% 
+Such evaluations of evaluation methods, or meta-evaluation, usually involve comparing the automatic evaluation results against human evaluation~\cite{liu-etal-2023-g, dubois2024alpacafarm, zeng2024evaluating}.
+These evaluations of LLM-evaluators assess two dimensions: (1) the capabilities of \textit{base LLMs} in performing the evaluation task and (2) the effectiveness of \textit{evaluation protocols} — the methods by which base LLMs are used to perform evaluation, e.g., pairwise comparison as in AlpacaEval or pointwise scoring as in MTBench.\footnote{We use ``LLM-evaluator'' to refer to an evaluation method that combines a base LLM and an evaluation protocol.}
+Existing work~\cite{zheng2024judging, wang-etal-2024-large-language-models-fair, zeng2024evaluating} often lacks comprehensiveness in one or both of these dimensions, and more thorough evaluations are needed.
+
+
+%
+
+% 
+% 
+We argue that the following two directions are crucial for a more comprehensive, rigorous evaluation of LLM-evaluators for instruction following: 
+(1) \textbf{Including the diverse set of base LLMs} for the evaluation of evaluation protocols -- while various evaluation protocols have been proposed recently~\cite{gong2023coascore, saha2023branchsolvemerge, chan2024chateval, jeong2024prepair}, meta-evaluation studies of these evaluation protocols often lack scale in the number of LLMs used. 
+For example, LLMBar~\citep{zeng2024evaluating} uses only 5 LLMs to compare different evaluation protocols. 
+% 
+As a result, it remains unclear whether the improvements observed in recently introduced evaluation protocols are robust and generalizable across base LLMs with varying performance levels.
+Therefore, we aim to conduct an evaluation with a larger and more diverse set of base LLMs to ensure a more rigorous examination of the evaluation protocols.
+% 
+(2) \textbf{Expanding the pool of evaluation protocols} for the evaluation of base LLMs -- various related studies use only a limited number of evaluation protocols when assessing the evaluation capabilities of different base LLMs~\cite{liu-etal-2023-g, dubois2024alpacafarm}.
+However, LLMs' performance can be sensitive to prompt design~\cite{sclar2024quantifying}, raising doubts about the reliability of using a single protocol for evaluation.
+Consequently, we aim to achieve a more reliable evaluation of base LLMs by including a larger set of recently proposed evaluation protocols to account for performance variations from prompt/protocol configurations.
+% 
+
+Based on these goals, we present an in-depth meta-evaluation with the following components:
+
+% 
+
+\noindent (1) We perform a robust baseline evaluation across 4 meta-evaluation datasets by evaluating 38 base LLMs and 3 evaluation protocols used in existing benchmarks: Alpacaeval, ArenaHard~\cite{li2024crowdsourced}, and WildBench~\cite{lin2024wildbench} (\S\ref{sec:status-quo}).
+
+\noindent (2) We gather 15 evaluation protocols based on previous work, applying a unified prompting style for a fair comparison, and evaluate their average performance with 25 open-source LLMs (\S\ref{sec:protocols}).
+
+\noindent (3) We leverage the large number of 375 LLM-evaluators evaluated in \S\ref{sec:protocols} to perform an in-depth analysis of the practice of meta-evaluation itself, addressing research questions on base LLMs, evaluation protocols, and datasets used in the meta-evaluation process (\S\ref{sec:analysis}).
+
+
+Our large-scale meta-evaluation, as outlined in Figure~\ref{fig:intro}, enables a thorough examination of the current progress in LLM-based instruction-following evaluation, providing a solid foundation for developing evaluation protocols and evaluating base LLMs' evaluation capabilities.
+We make our meta-evaluation suite \ours publicly available, which contains the codebase and evaluation result collection for more than 500 LLM-evaluators we evaluated,  and we summarize our key findings below:
+
+\paragraph{Findings}
+\noindent (1) When used in conjunction with 15 evaluation protocols, Llama-3.1-405B~\cite{dubey2024llama} is the best open-source base LLM we evaluated (Table~\ref{tab:models}), which approaches state-of-the-art proprietary LLM performance (Table~\ref{tab:baseline}).
+
+\noindent (2) The evaluation protocols used in 3 widely used benchmarks fail to outperform even the base evaluation protocol evaluated in this work (Table~\ref{tab:benchmark-protocol}).
+In contrast, the recently introduced evaluation protocol, \texttt{prepair}~\citep{jeong2024prepair}, achieves the highest average performance across 25 open-source LLMs, with 7 of the protocols evaluated significantly outperforming the base protocol (Table~\ref{tab:protocol-avg}).
+
+ % 
+
+\noindent (3) 
+% 
+The performance ranking of different base LLMs is largely consistent across different evaluation protocols, suggesting that evaluating different base LLMs' evaluation capabilities with a single evaluation protocol is likely to yield reliable results (\S\ref{subsec:llm-analysis}).
+However, the benefits of advanced protocols vary across LLMs, with less capable LLMs more likely to gain greater improvements (Table~\ref{tab:models-improvement}).
+
+\noindent (4) The effectiveness of evaluation protocols depends significantly on the base LLMs used (\S\ref{subsec:analysis-protocols}). 
+For example, although \texttt{prepair} achieves the highest average performance, it ranks only seventh among the 15 evaluation protocols when comparing their optimal performance achieved with the most compatible base LLMs (Table~\ref{tab:protocol-best}). 
+This highlights the need to use multiple base LLMs with varying performance levels for reliable evaluation of evaluation protocols.
+
+\noindent (5) Different meta-evaluation datasets can exhibit varying difficulty levels, and the LLM-evaluator rankings on these datasets do not always show a strong positive correlation, demonstrating the importance of incorporating diverse datasets for a more comprehensive meta-evaluation (\S\ref{subsec:analysis-dataset}).
+
+% 
+
+
+% 
+
+
+
+
+
+\section{Related Work}
+\label{sec:related-work}
+
+
+\paragraph{LLM-based Evaluation} Using LLMs as evaluators has become a promising approach for assessing text generation quality~\citep{chiang-lee-2023-large, fu2023gptscore, liu-etal-2023-g} in tasks like summarization \citep{fu2023gptscore, liu-etal-2023-g, liu-etal-2023-revisiting} and instruction-following \citep{zheng2024judging, zeng2024evaluating, alpaca_eval}. 
+%
+
+Recent work has proposed various advanced LLM-based evaluation methods. 
+For example, fine-grained or decomposition-based approaches, such as Chain-of-Aspects \citep{gong2023coascore} and Branch-Solve-Merge \citep{saha2023branchsolvemerge}, can guide LLMs to perform structured analysis by identifying fine-grained differences and providing detailed rationales. 
+Agent-based methods, like PRD \citep{li2023prd} and ChatEval \citep{chan2024chateval}, employ multi-role debate settings to bring diverse perspectives to the evaluation process.
+Other techniques include probability-weighted scoring \citep{liu-etal-2023-g}, reference-based evaluation \citep{zeng2024evaluating}, and self-consistency decoding \citep{wang2023selfconsistency}. 
+Our study investigates the effectiveness of these advanced evaluation protocols on a larger scale, assessing their performance across multiple datasets and base LLMs.
+
+Related studies have also explored fine-tuning LLMs as evaluators for various evaluation tasks including instruction-following evaluation~\cite{li2023generative, wang2024direct}, such as Prometheus~\cite{kim2024prometheus}. 
+However, we choose to exclude them from the majority of our evaluation since our focus is on generic LLMs with various evaluation protocols, while the fine-tuned LLMs usually require a fixed evaluation protocol.
+
+
+\paragraph{Human Evaluation and Meta-Evaluation of Instruction-Following} 
+
+A series of recent studies have conducted human evaluations on instruction-following and/or performed evaluations of automatic evaluators using the collected human annotations~\cite{ zhang2023wider, wang-etal-2024-large-language-models-fair, wang2024pandalm, lan2024criticbench}.
+Among them, the annotations from AlpacaFarm~\cite{dubois2024alpacafarm} and MTBench~\citep{zheng2024judging} have become important testbeds for evaluating widely used LLM evaluators. 
+\citet{zeng2024evaluating} introduce LLMBar, which consists of high-quality human annotations with a high level of inter-annotator agreement rate. 
+RewardBench~\citep{lambert2024rewardbench} provides a benchmark for evaluating reward models used for learning from human or LLM feedback~\citep{NEURIPS2022_b1efde53,bai2022constitutional,tunstall2023zephyr}.
+% 
+While sharing a similar task format, our evaluation focus is different from theirs because we aim to assess the evaluation capability of generic LLMs instead of dedicated reward models.
+
+
+% 
+
+% 
+
+
+\section{Evaluation Settings of \ours}
+\label{sec:data_models}
+% 
+In \ours, we evaluate LLM-based instruction-following evaluations along two dimensions: base LLMs and evaluation protocols (Figure~\ref{fig:intro}), using human evaluations as the gold standard.
+Below, we outline the settings of this evaluation.
+
+% 
+\paragraph{Datasets}
+We use four datasets to evaluate the LLMs' capability of instruction-following.
+Each dataset includes human annotations for pairwise comparisons of two outputs from an instruction, with a binary label indicating which output is better in instruction following.
+Table~\ref{tab:dataset-info} summarizes the dataset information.
+\llmbarnatural and \adversarial are from \citet{zeng2024evaluating}, consisting of data examples examined and edited by the paper authors.
+\mtbench~\citep{zheng2024judging} contains expert human annotations made by graduate students for multi-turn conversations. 
+\instrusum~\cite{liu2024benchmarking} contains human annotations for instruction-controllable summarization, where the input includes a source article and a specific summary requirement, as a complex instruction.
+We only use its annotation data samples with perfect annotator agreement to reduce the annotation noise.
+In Appendix~\ref{appx_data_examples}, we show data examples from the datasets.
+We selected these datasets due to their varying difficulties, instruction complexity, and human annotation noise.
+For example, \instrusum contains much longer instructions than the other datasets, while \mtbench has lower agreement than the others.
+
+
+
+% 
+\cparagraph{LLM-Evaluator Settings}
+Since all the datasets we use contain \textit{pairwise} human evaluations, we evaluate LLM-evaluators under the same pairwise comparison setting for evaluation target alignment.
+We use the term ``LLM-evaluator'' to refer to a combination of an \textit{base LLM} and an \textit{evaluation protocol}.
+An evaluation protocol defines how the base LLM performs the evaluation, typically using one or more prompts to query it.
+By default, we use greedy decoding to ensure deterministic behavior.
+
+
+
+% 
+\cparagraph{Evaluation Metrics}
+We mainly use \textit{\textbf{evaluation accuracy}} to evaluate the LLM-evaluators, which measures the alignment with human evaluations using human annotations as the gold standard.
+Since the LLM-evaluators perform pairwise comparisons, to account for potential \textit{position biases}, where the LLM-evaluators may favor either the first or the second output \cite{wang-etal-2024-large-language-models-fair}, we report the averaged evaluation accuracy across two directions, swapping the order of the two outputs.
+An auxiliary metric we used is the \textit{\textbf{self-agreement rate}} of the LLM-evaluators in their predictions across two directions in Krippendorff’s alpha~\cite{Krippendorff2011ComputingKA}, measuring their positional biases.
+% 
+
+
+%
+\renewcommand{\arraystretch}{1.1} 
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{-4pt} 
+\begin{tabular}{lrrrrr}
+\toprule
+ & \textbf{Abbr.} & \textbf{In.L.} & \textbf{Out.L.}  & \textbf{Num.} & \textbf{Agr.}\\
+\midrule
+\llmbarnatural & \natshort & 53.3 & 56.9 & 100 & 90\% \\
+\adversarial & \advshort & 26.7 & 112.4 & 319 & 95\% \\
+\mtbench & \mtshort & 58.8 & 192.4 & 200 & 81\% \\ 
+\instrusum & \insshort & 1149.8 & 109.2 & 411 & 100\% \\ 
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{+4pt} 
+% \vspace{-2mm}
+\caption{Dataset information including abbreviation used (\textbf{Abbr.}), average instruction (\textbf{In.L.}) and output length (\textbf{Out.L.}) in words, number of examples (\textbf{Num.}), and annotation agreement rate (\textbf{Agr.}).
+}
+% \vspace{-4mm}
+\label{tab:dataset-info} 
+\end{table}
+
+\section{Baselines}
+\label{sec:status-quo}
+
+
+
+% 
+We first establish baselines for base LLMs and evaluation protocols for evaluating instruction-following for our further investigations.
+
+\subsection{Baselines for Base LLMs}
+\label{subsec:llm-baseline}
+% 
+To benchmark the baseline performance of base LLMs at instruction-following evaluation, we evaluate them with a simple evaluation protocol to construct the corresponding LLM-evaluators.
+This \textit{base} evaluation protocol, proposed in \citet{zeng2024evaluating}, requires the LLM-evaluators to directly predict which output is better, with rules to constrain output formats and to avoid potential biases.\footnote{The prompt template is in Appendix~\ref{appx_base_prompts}.}
+
+% 
+\input{tables/baseline-tables}
+
+Table~\ref{tab:baseline} presents the evaluation accuracy of 38 proprietary and open-source LLMs, together with two state-of-the-art reward models, \texttt{nemotron-4-340b-rm}~\citep{adler2024nemotron} and \texttt{offsetbias-rm}~\citep{park2024offsetbias}, and two strong fine-tuned LLM-evaluators, \texttt{prometheus-2-8x7b}~\cite{kim2024prometheus} and \texttt{offsetbias-lm}~\citep{park2024offsetbias} as baselines.
+The model information is in Appendix~\ref{appx_model_details} at Table~\ref{tab:appx_model_registry}.
+We note the following observations:
+
+\noindent (1) \textbf{Proprietary vs. Open-Source}: the open-sourced \texttt{llama-3.1-405b} outperforms most of the proprietary LLMs, and \texttt{llama-3.1-70b}  lags slightly behind \texttt{gpt-4o} and \texttt{gpt-4-0613}.
+
+% 
+
+\noindent (2) \textbf{Performance Gap}:
+The LLMs at the lower end, such as \texttt{llama-2-7b} and \texttt{gemma-2b}, achieve an accuracy near 50\%, comparable to a random oracle.
+On the other hand, \texttt{llama-3.1-405b} achieves a high accuracy of approximately 84\%.
+
+\noindent (3) \textbf{Dataset Difficulty}: 
+There is also a large difference in the average LLM performance across different datasets.
+For example, the average evaluation accuracy on \llmbarnatural is around 20\% higher than \adversarial.
+% 
+
+\noindent (4) \textbf{Comparisons with Reward Models and Fine-tuned LLMs}. 
+The strongest LLM-evaluators outperform the state-of-the-art reward models and fine-tuned LLM-evaluators.
+The fine-tuned LLM-evaluator, \texttt{offsetbias-lm}, shows a significant improvement over its base model, \texttt{llama-3-8b}, suggesting the potential of fine-tuned LLM-evaluators.
+Meanwhile, \texttt{prometheus-2-8x7b} only outperforms its base model (\texttt{mixtral-8x7b}) on the easier datasets \llmbarnatural and \mtbench, indicating a lack of robustness.
+
+
+These baseline results show that the top open-source LLMs already approach the performance of their proprietary counterparts and offer a wide performance spectrum. 
+Therefore, for transparency and reproducibility, we will use mostly open-source LLMs in the rest of our evaluations.
+
+\subsection{Baselines for Evaluation Protocols}
+\label{baselines_protocols}
+
+
+
+
+We now establish a baseline for evaluation protocols, which define how the base LLM is used to perform the evaluation.
+To this end, we evaluate the evaluation protocols used in three automatic LLM benchmarks for instruction-following -- AlpacaEval~\cite{alpaca_eval}, ArenaHard~\cite{li2024crowdsourced}, and WildBench~\cite{lin2024wildbench}.\footnote{The prompt templates are in Appendix~\ref{appx_benchmark_prompts}.}
+Each of these benchmarks uses their evaluation protocol together with a strong base LLM, e.g., GPT-4~\citep{achiam2023gpt}, to perform \textit{pairwise} comparison of different LLMs' outputs.
+The individual comparison results are then aggregated to produce a performance ranking of various LLMs.
+We note that the efficacy of these benchmarks is evaluated at the \textit{system level}, where their produced ranking is compared against the system ranking from human evaluation benchmarks, e.g., ChatBot Arena~\cite{chiang2024chatbot}.
+In contrast, here we aim to evaluate the performance of their evaluation protocols at the \textit{instance level}, measuring their evaluation accuracy against human annotations at individual data instances. 
+
+
+In Table~\ref{tab:benchmark-protocol}, the benchmark evaluation protocols are compared against the base protocol~\cite{zeng2024evaluating} used in \S\ref{subsec:llm-baseline}, where they are used together with the 25 open-source base LLMs evaluated in \S\ref{subsec:llm-baseline} and the strongest proprietary LLM, \texttt{gpt-4o}.
+It shows that the benchmark protocols cannot outperform the base protocol, especially on the more challenging  \adversarial and \instrusum datasets.
+This indicates that the complex design of the benchmark protocols, which often includes detailed instructions on the evaluation plan and output structure, cannot improve the LLM-evaluators performance at the instance level.
+In the next section, we will provide a further examination of various evaluation protocols.
+
+
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{+2pt} 
+% \setlength{\tabcolsep}{9pt}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Protocol} & \textbf{\natshort} & \textbf{\advshort} & \textbf{\mtshort}  & \textbf{\insshort} & \textbf{\texttt{Avg.}}\\
+\midrule
+\multicolumn{6}{c}{Average across 25 Open-Source Base LLMs} \\
+\midrule
+base       & 74.7             & \textbf{53.5}        & 70.7          & \textbf{66.0}   & \textbf{66.2} \\
+ arena-hard & \textbf{76.3}    & 46.2                 & \textbf{72.1} & 64.5            & 64.8          \\
+ wild-bench  & 74.9             & 47.5                 & 70.7          & 63.0            & 64.0          \\
+ alpaca-eval & 65.3             & 49.8                 & 63.1          & 59.4            & 59.4          \\
+\midrule
+\multicolumn{6}{c}{gpt-4o-2024-0806 as Base LLM} \\
+\midrule
+base       & \textbf{97.5}    & \textbf{84.5}        & 79.8          & \textbf{81.3}   & \textbf{85.7} \\
+ arena-hard & 94.5             & 78.8                 & 83.2          & 75.4            & 83.0          \\
+ wild-bench  & 95.5             & 75.5                 & \textbf{84.0} & 73.7            & 82.2          \\
+ alpaca-eval & 94.0             & 70.2                 & 83.7          & 76.5            & 81.1          \\
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{-2pt} 
+% \vspace{-2mm}
+\caption{Evaluation accuracy of evaluation protocols in existing LLM benchmarks compared against the base evaluation protocol.  
+% 
+}
+% \vspace{-3mm}
+\label{tab:benchmark-protocol} 
+\end{table}
+
+\section{Evaluating Evaluation Protocols}
+\label{sec:protocols}
+
+
+
+In \S\ref{sec:status-quo}, we only tested the LLM-evaluators with the base and benchmark evaluation protocols. We now expand the evaluation dimensions to include various protocols proposed in recent work. By using 25 open-source LLMs, we believe this evaluation will provide a fairer and more rigorous examination.
+% 
+
+\subsection{Evaluation Protocols}
+\label{sec:all_protocols}
+In our evaluation, we examine 15 protocols derived from previous work. 
+To address the unavailability of some prompt templates and to ensure a fair comparison, we design prompt templates ourselves when necessary.
+We ensure that all prompt templates adhere to unified formatting and style, and we refine them iteratively to make sure that the protocols can perform to their full potential.
+% 
+The evaluated protocols are outlined below, with their prompt templates provided in Appendix~\ref{appx_prompts}.
+
+\paragraph{Baseline Protocol}
+\noindent (1) \texttt{base}: the vanilla approach used in \S\ref{sec:status-quo} which directly predicts the pairwise comparison outcome, proposed in \citet{zeng2024evaluating}. 
+% 
+
+\paragraph{Enhanced Protocols} Five other protocols from \citet{zeng2024evaluating} are evaluated, which include various enhancements based on the \texttt{base} protocol:
+% 
+
+\noindent (2) \texttt{cot}: the LLM is asked to provide a chain-of-thought~\cite{wei2022chain} explanation before making the final decision.
+% 
+
+\noindent (3) \texttt{metric}: the LLM is prompted to generate a few metrics for the evaluation task first, which are later used in the actual evaluation.
+% 
+
+\noindent (4) \texttt{reference}: the LLM is prompted to generate a ``reference'' output for the given instruction, which is later used in the actual evaluation.
+% 
+
+\noindent (5) \texttt{metric+reference}: a combination of the \texttt{metric} and \texttt{reference} methods.
+% 
+
+\noindent (6) \texttt{swap\&synthesize}: based on \texttt{cot} and inspired by \citet{du2024improving}, this method requires the LLM to resolve self-disagreement in predictions from two output orders and make a final decision.
+% 
+
+\paragraph{Complex Protocols}
+Beyond the enhanced protocols, 7 complex protocols are evaluated based on evaluation methods proposed in previous work.
+
+\noindent (7) \texttt{fine-grained-diff}: Similar to~\citet{min-etal-2023-factscore}, this protocol guides the LLM to first identify \textit{fine-grained differences} in output pairs and then provide a detailed rationale for choosing the better output considering these differences.
+% 
+
+\noindent (8) \texttt{multi-role-round1} \& (9) \texttt{multi-role-\\round2}: 
+Inspired by frameworks that use multiple agents as judges~\citep{li2023prd, chan2024chateval, zhao2024autoarena}, these two protocols use a \textit{multi-role debate} setting where multiple evaluators are instantiated from an LLM using prompts with specific role descriptions, to bring diverse perspectives to the evaluation process.
+The evaluators will generate their responses sequentially, potentially in \textit{multiple rounds}, to engage in a debate that leads to the final prediction.  
+We evaluate its single-round and two-round variants. 
+% 
+
+\noindent (10) \texttt{multi-aspect-two} \& (11) \texttt{multi-aspect-\\single}: Similar to several related studies~\citep{saha2023branchsolvemerge, gong2023coascore, li2023generative, li2024decompose}, this protocol performs a \textit{multi-aspect comparison} of the output pairs, with two variants:
+the \textit{two-stage} protocol prompts the LLMs to evaluate each quality aspect in separate inference passes, while the \textit{single-stage} protocol requires the LLMs to conduct a multi-aspect evaluation in a single inference pass before making the final prediction.
+% 
+
+\noindent (12) \texttt{gpt4-reference}: Similar to the \texttt{reference} protocol, this protocol uses a reference output generated by \texttt{gpt-4o} to assist the evaluation.
+% 
+
+\noindent (13) \texttt{prepair}: Adapted from \citet{jeong2024prepair}, this protocol incorporates pointwise reasoning within a pairwise evaluation framework, leveraging the robustness of pointwise evaluation against biases while maintaining the comparative benefits of pairwise evaluation. 
+%
+
+
+\paragraph{Self-consistency Protocols}
+Self-consistency is a commonly used decoding approach that can improve the LLMs' performance in various reasoning tasks~\cite{wang2023selfconsistency}.
+Used together with CoT prompting, self-consistency generates the final prediction by taking a majority vote on the predictions made in each generation pass.
+
+\noindent (14) \texttt{cot\&self-consistency}:
+Self-consistency in pairwise comparison determines the more frequently preferred output. 
+We use a sampling temperature of 0.7 and generate 9 CoTs for voting.
+
+
+\noindent (15) \texttt{protocol-consistency}:
+Beyond different CoTs, a majority vote can be applied across various evaluation protocols.
+We evaluate this approach using the 5 \textit{enhanced} protocols.
+
+% 
+
+% 
+
+% 
+
+
+\subsection{Results}
+\label{subsec:protocol-overall}
+
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{-4.0pt} 
+% \renewcommand{\arraystretch}{1.1} 
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Protocol} & \textbf{\natshort} & \textbf{\advshort} & \textbf{\mtshort}  & \textbf{\insshort} & \textbf{\texttt{Avg.}}\\
+\midrule
+  prepair (13)              & \bettersig76.4          & \bettersig\textbf{61.8} & 69.7                    & \worsesig63.8   & \bettersig\textbf{67.9} \\
+ gpt4-reference (12)       & \bettersig76.7          & \bettersig58.0          & 70.1                    & 66.0            & \bettersig67.7          \\
+ metric+reference (5)      & \bettersig76.6          & \bettersig58.3          & \worsesig70.0           & 65.6            & \bettersig67.6          \\
+ protocol-consistency (15) & \bettersig76.3          & \bettersig55.9          & 70.9                    & 66.1            & \bettersig67.3          \\
+ metric (3)                & \bettersig75.8          & \bettersig56.2          & 70.7                    & 65.7            & \bettersig67.1          \\
+ reference (4)             & \bettersig76.2          & \bettersig57.5          & \worsesig69.4           & \worsesig65.2   & \bettersig67.1          \\
+ swap\&synthesize (6)      & 75.6                    & \bettersig54.4          & 70.8                    & \textbf{66.2}   & \bettersig66.8          \\
+ cot\&consistency (14)     & 74.9                    & 54.1                    & 70.5                    & \worsesig65.4   & 66.2                    \\
+ base (1)                  & 74.7                    & 53.5                    & 70.7                    & 66.0            & 66.2                    \\
+ cot (2)                   & \worsesig73.6           & 53.6                    & 70.2                    & \worsesig64.9   & \worsesig65.6           \\
+ multi-aspect-two (10)     & \bettersig\textbf{77.1} & \worsesig42.3           & \bettersig\textbf{72.5} & \worsesig62.3   & \worsesig63.6           \\
+ fine-grained-diff (7)     & \worsesig71.2           & \worsesig49.5           & \worsesig69.2           & \worsesig61.8   & \worsesig62.9           \\
+ multi-role-round1 (8)     & \worsesig68.0           & 53.9                    & \worsesig66.2           & \worsesig61.6   & \worsesig62.4           \\
+ multi-role-round2 (9)     & \worsesig68.4           & 53.4                    & \worsesig65.7           & \worsesig61.7   & \worsesig62.3           \\
+ multi-aspect-single (11)  & \worsesig69.6           & \worsesig40.8           & 70.5                    & \worsesig62.4   & \worsesig60.8           \\
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{+4.0pt} 
+% \vspace{-2mm}
+\caption{Average evaluation accuracy of different evaluation protocols across various LLMs, ordered by their average performance.
+The protocol indexes introduced in \S\ref{sec:all_protocols} are in parentheses.
+\bettersig, \worsesig: significantly better or worse than the base protocol ($p<0.05$).
+% 
+}
+% \vspace{-3mm}
+\label{tab:protocol-avg} 
+\end{table}
+
+
+%
+
+\paragraph{Evaluation Accuracy} Table~\ref{tab:protocol-avg} demonstrates the evaluation accuracy of various protocols averaged over different base LLMs.
+% 
+We note the following:
+
+\noindent (1) \texttt{prepair} and \texttt{gpt4-reference} achieve the strongest average performance, achieving a 1.7\% higher accuracy compared to the base protocol.
+
+\noindent (2) \texttt{multi-aspect-two} achieves the best performance on \llmbarnatural and \mtbench.
+However, its performance on \adversarial ranks among the worst.
+This highlights that the protocol performance can significantly vary across different datasets.
+
+\noindent (3) On average, most complex protocols fail to outperform the base protocol, despite their higher computational costs and multi-step, fine-grained nature, indicating that designing a robust, superior evaluation protocol is a non-trivial task.
+
+
+\noindent (4) Similarly, the approaches that have been proven effective on various reasoning tasks, chain-of-thought (\texttt{cot}) and self-consistency (\texttt{cot\&consistency}), also fail to bring significant improvement over the \texttt{base} protocol.
+% 
+
+\renewcommand{\arraystretch}{1.12} 
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{-2.5pt} 
+% \renewcommand{\arraystretch}{1.15} 
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Protocol} & \textbf{\natshort} & \textbf{\advshort} & \textbf{\mtshort}  & \textbf{\insshort} & \textbf{\texttt{Avg.}}\\
+\midrule
+ swap\&synthesize (6)      & \textbf{89.3}    & \textbf{84.4}        & \textbf{86.0} & \textbf{86.1}   & \textbf{86.5} \\
+ prepair (13)              & 62.1             & 59.7                 & 59.3          & 38.9            & 55.0          \\
+ multi-aspect-two (10)     & 62.4             & 51.9                 & 54.6          & 36.6            & 51.4          \\
+ fine-grained-diff (7)     & 53.1             & 45.3                 & 54.6          & 33.5            & 46.6          \\
+ protocol-consistency (15) & 56.5             & 47.0                 & 50.9          & 30.7            & 46.3          \\
+ metric (3)                & 53.6             & 48.4                 & 52.7          & 29.4            & 46.0          \\
+ metric+reference (5)      & 57.4             & 48.7                 & 49.7          & 28.3            & 46.0          \\
+ base (1)                  & 54.5             & 47.3                 & 49.6          & 32.4            & 46.0          \\
+ cot\&consistency (14)     & 54.0             & 42.0                 & 48.1          & 36.9            & 45.2          \\
+ multi-aspect-single (11)  & 45.6             & 44.6                 & 50.7          & 35.9            & 44.2          \\
+ gpt4-reference (12)       & 51.3             & 47.2                 & 45.9          & 25.7            & 42.5          \\
+ cot (2)                   & 47.7             & 38.7                 & 45.7          & 34.6            & 41.7          \\
+ reference (4)             & 50.8             & 44.5                 & 44.2          & 24.9            & 41.1          \\
+ multi-role-round1 (8)     & 38.3             & 26.8                 & 31.8          & 25.4            & 30.6          \\
+ multi-role-round2 (9)     & 37.1             & 25.9                 & 31.8          & 25.9            & 30.2          \\
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{+2.5pt} 
+% \vspace{-2mm}
+\caption{Average self-agreement rate of various evaluation protocols across various LLMs (ordered).
+The protocol indexes introduced in \S\ref{sec:all_protocols} are in parentheses.
+% 
+}
+% \vspace{-3mm}
+\label{tab:protocol-avg-agreement} 
+\end{table}
+\renewcommand{\arraystretch}{1.1} 
+
+\paragraph{Self-Agreement Rate} Table~\ref{tab:protocol-avg-agreement} shows the protocols self-agreement rates, demonstrating that
+(1) \texttt{swap\&synthesize} can significantly enhance the self-agreement rate;
+(2) The multi-role debate protocols, \texttt{multi-role-round1\&2}, yield a significantly lower self-agreement rate, indicating that introducing more complex evaluation processes can lead to larger self-inconsistency.
+
+
+\paragraph{Best LLM-Evaluators}
+
+Table~\ref{tab:best-evaluator} displays the LLM-evaluators that achieve the highest evaluation accuracy on each dataset, together with the evaluation accuracy of the same base LLM achieved with the \texttt{base} protocol.
+It shows that \texttt{llama-3.1-405b}, which achieves the strongest performance among the open-source LLMs, remains the strongest base LLM across three datasets.
+On the other hand, the evaluation protocols used by the best LLM-evaluators on the four datasets differ, indicating greater variance in their capabilities. 
+% 
+
+
+
+
+
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{-4.0pt} 
+\begin{tabular}{lllrr}
+\toprule
+\textbf{Dataset} & \textbf{LLM} & \textbf{Protocol} & \textbf{Acc.}  & \textbf{B.Acc.}\\
+\midrule
+ \natshort & llama-3.1-405b & \texttt{swap\&synthesize} & 98.0 & 94.0 \\
+ \advshort & llama-3.1-405b  & \texttt{gpt4-reference} & 87.8 & 83.1 \\
+ \mtshort & qwen-2.5-72b & \texttt{metric+reference} & 84.0  & 82.5 \\
+ \insshort & llama-3.1-405b & \texttt{prepair} &  82.7 & 79.6 \\
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{+4.0pt} 
+% \vspace{-2mm}
+\caption{Best LLM-evaluators identified on each dataset.
+\textbf{Acc.} is the evaluation accuracy of the best LLM-evaluator, \textbf{B.Acc.} is the evaluation accuracy achieved by the same base LLM with the \texttt{base} protocol. 
+% 
+}
+% \vspace{-3mm}
+\label{tab:best-evaluator} 
+\end{table}
+
+
+\section{Analysis}
+\label{sec:analysis}
+
+In \S\ref{sec:protocols}, a total number of 375 LLM-evaluators are evaluated, combining 25 base LLMs and 15 evaluation protocols. 
+We now present detailed analyses of the base LLMs, evaluation protocols, and datasets, using these comprehensive evaluation results to address a series of specific research questions.
+
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{+1pt} 
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Model} & \textbf{\natshort} & \textbf{\advshort} & \textbf{\mtshort}  & \textbf{\insshort} & \textbf{\texttt{Avg.}}\\
+\midrule
+ llama-3.1-405b  & \textbf{94.1}    & \textbf{81.3}        & 81.4          & \textbf{80.0}   & \textbf{84.2} \\
+ llama-3.1-70b   & 91.7             & 80.2                 & 81.0          & 75.3            & 82.1          \\
+ qwen-2-72b      & 91.6             & 69.9                 & \textbf{82.2} & 72.8            & 79.1          \\
+ qwen-2.5-72b    & 89.6             & 71.0                 & 81.2          & 72.4            & 78.6          \\
+ llama-3-70b     & 88.2             & 71.5                 & 80.0          & 74.3            & 78.5          \\
+ qwen-1.5-72b    & 86.1             & 56.0                 & 76.4          & 68.0            & 71.6          \\
+ yi-1.5-34b      & 86.5             & 57.6                 & 73.9          & 66.0            & 71.0          \\
+ tulu-2-dpo-70b  & 84.2             & 56.1                 & 73.7          & 66.5            & 70.1          \\
+ mixtral-8x7b    & 82.2             & 54.7                 & 73.8          & 66.4            & 69.3          \\
+ tulu-2-70b      & 83.6             & 55.0                 & 72.8          & 65.4            & 69.2          \\
+ qwen-1.5-32b    & 85.7             & 47.9                 & 77.0          & 64.3            & 68.7          \\
+ glm-4-9b        & 79.1             & 54.4                 & 70.6          & 68.2            & 68.1          \\
+ yi-1.5-9b       & 77.1             & 55.7                 & 71.3          & 60.1            & 66.1          \\
+ llama-3.1-8b    & 75.3             & 54.7                 & 70.3          & 62.3            & 65.7          \\
+ llama-3-8b      & 71.8             & 47.9                 & 71.4          & 62.6            & 63.4          \\
+ llama-2-70b     & 74.4             & 36.6                 & 68.5          & 63.3            & 60.7          \\
+ mistral-7b-v0.3 & 65.1             & 47.3                 & 66.6          & 61.9            & 60.2          \\
+ tulu-2-dpo-13b  & 66.0             & 40.0                 & 65.3          & 60.3            & 57.9          \\
+ tulu-2-13b      & 63.3             & 39.7                 & 65.4          & 60.2            & 57.2          \\
+ llama-2-13b     & 63.9             & 36.3                 & 62.7          & 56.9            & 54.9          \\
+ tulu-2-dpo-7b   & 58.2             & 43.7                 & 57.2          & 57.2            & 54.1          \\
+ gemma-7b        & 51.9             & 42.7                 & 59.2          & 56.7            & 52.6          \\
+ tulu-2-7b       & 49.1             & 45.8                 & 54.9          & 56.9            & 51.7          \\
+ llama-2-7b      & 48.6             & 45.3                 & 54.7          & 54.4            & 50.8          \\
+ gemma-2b        & 44.6             & 47.0                 & 53.8          & 55.5            & 50.3          \\
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{-1pt} 
+% \vspace{-3mm}
+\caption{Evaluation accuracy of different base LLMs averaged over 15 evaluation protocols. The base LLMs are ordered by their average performance.
+}
+% \vspace{-3mm}
+\label{tab:models} 
+\end{table}
+
+\subsection{Analysis of Base LLMs}
+\label{subsec:llm-analysis}
+
+
+
+
+\paragraph{What is the average performance of the base LLMs across different protocols?}
+Table~\ref{tab:models} displays the LLMs' average evaluation accuracy over 15 protocols, showing that \texttt{llama-3.1-70b} is the strongest evaluator on average, while \texttt{qwen-2-72b} achieves the best performance on \mtbench.
+
+\paragraph{How does base LLMs' ranking change with different protocols?}
+Figure~\ref{fig:protocol-performance-compare} shows the evaluation accuracy of base LLMs achieved with the \texttt{base} protocol and the average accuracy across different protocols.
+The results demonstrate a high positive correlation between them, achieving a Spearman's coefficient of 0.983.
+This indicates that \textbf{using a single \texttt{base} protocol for the evaluation of the base LLMs' is likely to yield reliable results}.
+
+
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/protocol_analysis_performance_compare.pdf}
+% \vspace{-7mm}
+ \caption{\label{fig:protocol-performance-compare}Correlation between the base LLMs' evaluation accuracy with the \texttt{base} protocol and their average accuracy across 15 protocols. The fitted regression line and the 95\% confidence interval are displayed.
+    }
+% \vspace{-5mm}
+\end{figure}
+
+\begin{table}[t!]
+\small
+\centering
+% \renewcommand{\arraystretch}{1.2} 
+\addtolength{\tabcolsep}{1pt} 
+% \addtolength{\tabcolsep}{-0.5pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+\textbf{Model} & \textbf{\natshort} & \textbf{\advshort} & \textbf{\mtshort}  & \textbf{\insshort} & \textbf{\texttt{Avg.}}\\
+\midrule
+ mistral-7b-v0.3 & 16.0             & 7.8                  & 8.2           & \textbf{5.5}    & \textbf{9.4} \\
+ llama-2-7b      & \textbf{23.5}    & 0.2                  & \textbf{11.7} & 1.2             & 9.2          \\
+ tulu-2-7b       & 21.0             & 2.7                  & 10.3          & 1.5             & 8.8          \\
+ llama-3-8b      & 9.5              & 17.9                 & 3.0           & 4.5             & 8.7          \\
+ yi-1.5-34b      & 5.0              & 17.6                 & 4.5           & 3.6             & 7.7          \\
+ tulu-2-dpo-13b  & 10.0             & 11.8                 & 6.0           & 1.7             & 7.4          \\
+ llama-3.1-8b    & 5.0              & \textbf{18.5}        & 3.3           & -0.7            & 6.5          \\
+ tulu-2-dpo-7b   & 15.5             & 5.2                  & 5.2           & 0.0             & 6.5          \\
+ qwen-1.5-32b    & 4.0              & 16.5                 & 2.0           & 3.3             & 6.4          \\
+ tulu-2-dpo-70b  & 4.0              & 11.0                 & 3.0           & 3.5             & 5.4          \\
+ tulu-2-13b      & 5.0              & 10.7                 & 4.5           & 1.0             & 5.3          \\
+ glm-4-9b        & 1.0              & 14.1                 & 5.0           & 0.9             & 5.2          \\
+ qwen-2.5-72b    & 2.5              & 13.6                 & 1.5           & 3.2             & 5.2          \\
+ mixtral-8x7b    & 6.0              & 7.4                  & 4.2           & 1.1             & 4.7          \\
+ gemma-7b        & 8.0              & 9.7                  & -0.2          & 0.6             & 4.5          \\
+ llama-2-70b     & 2.5              & 11.8                 & 0.5           & 3.3             & 4.5          \\
+ tulu-2-70b      & 4.0              & 8.5                  & 0.3           & 5.2             & 4.5          \\
+ llama-3-70b     & 4.5              & 8.9                  & 2.2           & 2.1             & 4.4          \\
+ qwen-1.5-72b    & 1.0              & 8.6                  & 4.0           & 0.7             & 3.6          \\
+ gemma-2b        & 6.5              & 5.6                  & 2.0           & 0.1             & 3.6          \\
+ qwen-2-72b      & 2.0              & 8.8                  & 1.2           & 1.8             & 3.5          \\
+ llama-2-13b     & 6.0              & 6.0                  & 1.5           & 0.2             & 3.4          \\
+ llama-3.1-405b  & 4.0              & 4.7                  & 0.8           & 3.2             & 3.2          \\
+ llama-3.1-70b   & 4.5              & 5.5                  & 0.2           & 1.2             & 2.9          \\
+ yi-1.5-9b       & 0.5              & 5.6                  & 2.3           & 1.6             & 2.5          \\
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{-1pt} 
+% \vspace{-2mm}
+\caption{Optimal evaluation accuracy improvement (Eq.~\ref{eq:improvement}) of base LLMs achieved by the most compatible evaluation protocols, ordered by average improvement.
+}
+% \vspace{-3mm}
+\label{tab:models-improvement} 
+\end{table}
+
+\paragraph{How large is the optimal improvement gained from different evaluation protocols for base LLMs?}
+
+Table~\ref{tab:models-improvement} displays the optimal evaluation accuracy improvement ($\Tilde{s}$) achieved by different evaluation protocols over the \texttt{base} protocol for various base LLMs.
+That is,
+\begin{equation}
+\label{eq:improvement}
+% \vspace{-2mm}
+    \Tilde{s} = \max_{p \in \mathcal{P}} s(p) - s(\hat{p}),
+% \vspace{-2mm}
+\end{equation}
+where $s(p)$ is the evaluation accuracy of an evaluation protocol $p$, $\hat{p}$ denotes the \texttt{base} protocol, $\mathcal{P}$ is the set of protocols excluding $\hat{p}$.
+The results indicate that \textbf{less capable LLMs are more likely to achieve larger improvements when the suitable protocols are used}, showing a -0.455 Spearman's correlation between the base LLMs' performance with the \texttt{base} protocol and their optimal performance with the most compatible evaluation protocol.
+We hypothesize this is because the inductive biases and constraints introduced by the more complicated protocols help less capable LLMs overcome their potential biases and limitations. 
+% 
+
+
+
+
+\subsection{Analysis of Evaluation Protocols}
+\label{subsec:analysis-protocols}
+
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{-2pt} 
+% \renewcommand{\arraystretch}{1.2} 
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Protocol} & \textbf{\natshort} & \textbf{\advshort} & \textbf{\mtshort}  & \textbf{\insshort} & \textbf{\texttt{Avg.}}\\
+\midrule
+ metric+reference (3)    & 95.0             & 86.2                 & \textbf{84.0} & 82.4            & \textbf{86.9} \\
+ reference  (6)          & 97.5             & 85.9                 & 83.2          & 80.9            & \textbf{86.9} \\
+ swap\&synthesize (7)    & \textbf{98.0}    & 84.8                 & 82.7          & 80.4            & 86.5          \\
+ gpt4-reference (2)      & 94.5             & \textbf{87.8}        & 82.5          & 81.0            & 86.4          \\
+ cot\&consistency (8)    & 96.5             & 84.2                 & 82.2          & 81.5            & 86.1          \\
+ protocol-consistency (4) & 95.0             & 85.0                 & 82.8          & 81.4            & 86.0          \\
+ prepair (1)             & 94.5             & 84.8                 & 81.2          & \textbf{82.7}   & 85.8          \\
+ metric (5)              & 95.0             & 82.1                 & 83.5          & 80.9            & 85.4          \\
+ cot (10)                 & 96.0             & 82.8                 & 82.2          & 79.7            & 85.2          \\
+ base  (9)               & 94.0             & 83.1                 & 82.5          & 79.6            & 84.8          \\
+ multi-role-round2 (14)   & 94.0             & 81.5                 & 81.5          & 79.3            & 84.1          \\
+ fine-grained-diff (12)    & 92.5             & 77.9                 & 83.0          & 79.4            & 83.2          \\
+ multi-role-round1 (13)   & 92.0             & 81.7                 & 80.2          & 76.8            & 82.7          \\
+ multi-aspect-two  (11)   & 93.0             & 73.0                 & 83.0          & 79.0            & 82.0          \\
+ multi-aspect-single (15)  & 87.5             & 65.8                 & 83.0          & 75.8            & 78.0          \\ 
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{+2pt} 
+% \vspace{-2mm}
+\caption{Optimal evaluation accuracy of different evaluation protocols with the most compatible base LLMs, ordered by their performance.
+The protocols' average performance rankings (Table~\ref{tab:protocol-avg}) are in parentheses.
+% 
+}
+% \vspace{-5mm}
+\label{tab:protocol-best} 
+\end{table}
+
+
+
+
+
+
+\paragraph{What is the evaluation protocols' optimal performance?}
+In Table~\ref{tab:protocol-avg} of \S\ref{subsec:protocol-overall}, the evaluation protocols' performance is evaluated across all base LLMs.
+Table~\ref{tab:protocol-best} instead shows the optimal performance of evaluation protocols, i.e., their evaluation accuracy with the most compatible base LLM.
+The results show that the \textbf{evaluation protocols' optimal performance can significantly differ from their average performance}.
+For example, while \texttt{prepair} achieves the best average performance, it ranks only 7th in terms of optimal performance.
+Moreover, the Spearman's correlation between the rankings of average and optimal performance for the evaluation protocols is 0.789, much lower than the correlation between rankings of average and optimal performance for the base LLMs (0.977).
+
+
+
+\paragraph{How do base LLMs' capabilities affect evaluation protocol's performance?}
+
+The previous analysis shows that the evaluation protocol's performance can be significantly affected by the base LLMs used.
+Therefore, we provide a further examination of the protocol performance with two groups of LLMs: one containing the strongest 10 LLMs identified in Table~\ref{tab:models}, and another containing the weakest 10.
+Figure~\ref{fig:protocol-performance-group} demonstrates a 0.807 Spearman's correlation between the protocol performance ranking with these two groups of LLMs.
+We note the effectiveness of evaluation protocols can substantially vary with the capabilities of the base LLMs used.
+For example, \texttt{prepair} is significantly better than other protocols for weaker LLMs, while \texttt{metric+reference} works better with stronger LLMs.
+This suggests that \textbf{a robust evaluation of evaluation protocols requires multiple base LLMs with a diverse performance range}.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/protocol_analysis_group_performance.pdf}
+% \vspace{-7mm}
+ \caption{\label{fig:protocol-performance-group}Evaluation protocols' evaluation accuracy with the stronger and weaker base LLM groups, with a fitted regression line and a 95\% confidence interval.
+    }
+% \vspace{-3mm}
+\end{figure}
+
+
+
+
+
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[b]{0.24\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/correctness_rate_llmbar_natural.pdf}
+        % 
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.24\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/correctness_rate_llmbar_adversarial.pdf}
+        % 
+    \end{subfigure}
+    \begin{subfigure}[b]{0.24\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/correctness_rate_mtbench.pdf}
+        % 
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.24\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/correctness_rate_instrusum_acc.pdf}
+        % 
+    \end{subfigure}
+    \hfill
+    \vspace{-1mm}
+    \caption{Distribution of the correctness rate (Eq.~\ref{eq:correctness}) of data examples in each dataset over different LLM-evaluators.}
+    \label{fig:correctness-rate}
+    % \vspace{-5mm}
+\end{figure*}
+
+
+
+
+\subsection{Analysis of datasets}
+\label{subsec:analysis-dataset}
+
+
+\paragraph{What is the difficulty level of different datasets?}
+
+The large number of LLM-evaluators in our evaluation allows us to measure the difficulty of individual data examples. Therefore, we calculate the average \textit{correctness rate} of different LLM-evaluators on each example in different datasets, which is defined as the average evaluation accuracy:
+\begin{equation}
+\label{eq:correctness}
+\resizebox{0.5\hsize}{!}{$
+ \mathcal{C}(x) = \sum_{i}\frac{\mathrm{Acc}(x;e_i)}{N},
+$}
+\end{equation}
+where $\mathcal{C}(x)$ is the correctness rate of data example $x$, $\mathrm{Acc}(x;e_i)$ is the evaluation accuracy of LLM-evaluator $e_i$, and $N$ is the number of evaluators.
+ 
+Figure~\ref{fig:correctness-rate} shows the distribution of this correctness rate of data examples.
+% 
+We note:
+
+\noindent (1) \llmbarnatural, \mtbench, and \instrusum have a similar data example difficulty distribution, with a small portion of examples where the LLM-evaluators are rarely correct.
+
+
+
+\noindent (2) \adversarial exhibits a different pattern: the distribution peaks at examples of medium difficulty, while the easiest and most difficult examples are similarly proportioned. 
+This suggests that different LLM-evaluators may have distinct sets of adversarial examples.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/final_v2_dataset_similarity.pdf}
+% \vspace{-3mm}
+ \caption{\label{fig:dataset-corr} Spearman's correlations between the performance ranking of LLM-evaluators on different datasets.
+    }
+% \vspace{-2mm}
+\end{figure}
+
+\paragraph{Are LLM-evaluators' rankings consistent over different datasets?}
+
+To better understand how the LLM-evaluators' performance differs across different datasets, in Figure~\ref{fig:dataset-corr} we present the Spearman's correlations between LLM-evaluators' performance ranking between different datasets.
+The results show that \llmbarnatural and \mtbench exhibit the highest level of similarity.
+In contrast, \adversarial displays a much lower correlation with the other datasets, suggesting the necessity of using multiple datasets for evaluation.
+
+
+
+
+% 
+
+% 
+
+
+
+
+
+\section{Conclusion}
+
+In this work, we conducted a large-scale meta-evaluation of instruction following, examining 25 open-source base LLMs and 15 evaluation protocols while identifying the best-performing LLM-evaluators over 4 datasets.
+We found that a reliable evaluation of base LLMs' evaluation capabilities can likely be achieved with a single evaluation protocol due to the stability of their performance across different protocols.
+However, evaluating evaluation protocols should involve a diverse group of base LLMs, as they can significantly impact the evaluation protocols' effectiveness.
+We hope that our findings and meta-evaluation suite, \ours, can pave the way for further studies in this direction.
+% 
+
+\section*{Limitations}
+
+\noindent \textbf{Evaluation Scope:} 
+Our evaluation centered around generic LLMs and evaluation protocols.
+As discussed in \S\ref{sec:related-work}, we did not focus on reward models trained to evaluate output quality or LLMs fine-tuned for instruction-following. 
+We note that a future study incorporating these systems could yield more comprehensive results.
+
+\noindent \textbf{Prompt Variations:} 
+In our evaluations, we aimed to control the impact of prompt design by minimizing unnecessary differences across different evaluation protocols. 
+However, we acknowledge that a more thorough evaluation involving multiple prompt variants for each protocol would likely produce more stable results.
+
+\noindent \textbf{Qualitative Human Evaluation:} We primarily used high-quality human annotation datasets for our quantitative meta-evaluation. 
+Nevertheless, we recognize the lack of qualitative human evaluation, especially concerning the rationales generated by different LLM-evaluators, which could provide further insights into their limitations.
+We provide a preliminary case study in Appendix~\ref{appx_case_study} showcasing the error patterns of the base LLMs, and another in Appendix~\ref{appx_case_study_llama3_70b} demonstrating the effect of different evaluation protocols on the same base LLM.
+
+\section*{Acknowledgements} 
+We are grateful to OpenAI's Researcher Access Program and Together AI for provision of LLM API credits.
+
+% Bibliography entries for the entire Anthology, followed by custom entries
+\bibliography{anthology,custom}
+% Custom bibliography entries only
+% \bibliography{custom}
+
+\input{Appendix}
+
+\end{document}

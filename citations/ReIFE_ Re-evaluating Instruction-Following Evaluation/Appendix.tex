@@ -1,0 +1,130 @@
+% \newpage
+
+\appendix
+
+% 
+
+\section{Dataset Examples}
+\label{appx_data_examples}
+
+We randomly select two data examples from each of the four datasets in our study (\S\ref{sec:data_models}), and present them in Table~\ref{tab:dataset_ex_1} and Table~\ref{tab:dataset_ex_2}.
+
+
+\section{Details of Base LLMs}
+\label{appx_model_details}
+
+We provide brief descriptions for the 38 base LLMs adopted in this study in Table~\ref{tab:appx_model_registry}, discussed in \S\ref{sec:status-quo}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Details of Evaluation Protocols}
+\label{appx_prompts}
+
+We provide a list of the 15 evaluation protocols investigated in this study in Table~\ref{tab:appx_method_registry}, detailed in \S\ref{sec:all_protocols}.
+Below, we provide the prompt templates used for all prompting-based evaluation protocols in \S\ref{sec:all_protocols}.
+
+\subsection{Prompt for Base Evaluation Protocol}
+\label{appx_base_prompts}
+Figure~\ref{fig:prompt_base} shows the prompt for the \texttt{base} protocol.
+It corresponds to the \textit{Vanilla+Rules} prompting strategy proposed in \citet{{zeng2024evaluating}}.
+
+\subsection{Prompts for Benchmark Evaluation Protocols}
+\label{appx_benchmark_prompts}
+
+We provide the prompts adopted from AlpacaEval~\cite{alpaca_eval} (Figure ~\ref{fig:prompt_alpaca}), ArenaHard~\cite{li2024crowdsourced} (Figure~ \ref{fig:prompt_arena}), and WildBench~\cite{lin2024wildbench}  (Figure~ \ref{fig:prompt_wildbench}).
+The original evaluation protocols of ArenaHard and WildBench perform five-scale pairwise comparisons between the output pairs.
+To better suit our task format, we modify their evaluation task to a binary pairwise comparison.
+The evaluation protocol of WildBench requires a task-specific checklist of output quality to aid the evaluation.
+In WildBench, these checklists were created using GPT-4-Turbo and Claude-3-Opus and manually reviewed.
+Following a similar approach, we use GPT-4o to generate these checklists for the 4 datasets used in this work.
+
+\subsection{Prompts for Enhanced Evaluation Protocols}
+\label{appx_enhanced_prompts}
+
+We list the prompts for \texttt{cot} (Figure~\ref{fig:prompt_cot}), \texttt{metric} (Figure~\ref{fig:prompt_metric_gen} \& Figure~\ref{fig:prompt_metric}), \texttt{reference} (Figure~\ref{fig:prompt_reference}), \texttt{metric+reference} (Figure~\ref{fig:prompt_metric_reference}), and \texttt{swap\&synthesize} (Figure~\ref{fig:prompt_swap_synthesis}).
+These prompt templates are proposed by \citet{{zeng2024evaluating}}.
+
+
+\subsection{Prompts for Complex Evaluation Protocols}
+\label{appx_complex_prompts}
+We present our prompts for \texttt{fine-grained-diff} (Figure~\ref{fig:prompt_finegrained_differences}), \texttt{multi-role-round2} (Figure~\ref{fig:prompt_multi-role_debate}), \texttt{multi-aspect-single} (Figure~\ref{fig:prompt_multi_aspect_one}), \texttt{multi-aspect-two} (Figure~\ref{fig:prompt_multi_aspect_two_analysis} and Figure~\ref{fig:prompt_multi_aspect_two_final}), \texttt{gpt4-reference} (Figure~\ref{fig:prompt_gpt4_reference}), and \texttt{prepair} (Figure~\ref{fig:prompt_prepair_pointwise} and Figure~\ref{fig:prompt_prepair_pairwise}).
+
+% 
+
+
+% 
+
+\section{Case Study}
+\label{appx_case_study}
+We perform a qualitative analysis of the evaluation performance of \llama-3-70B and identify three main error patterns that impact its performance in various instances. The following paragraphs outline these error patterns, and we present a specific case study in Table~\ref{tab:appx_error_case}.
+
+\paragraph{Surface-level deception \textsc{(surface)}} The model tends to favor outputs that appear more positive or have more structured presentations like numbered lists or professional layout despite clear disadvantages in addressing the instruction task compared to less structured but more appropriate and accurate responses. This failure mode is a recognized pattern across LLM-evaluators~\citep{zheng2024judging,wang-etal-2024-large-language-models-fair}.
+
+\paragraph{Overlooking crucial context \textsc{(overlook)}} The model sometimes fails to identify important context in the question when it is not explicitly emphasized. This can lead to generic responses that miss key elements specific to the task at hand.
+
+\paragraph{Counting issues \textsc{(counting)}} This applies to both numerical counting (for example, ``generate an 8-letter password'') and text-based context-relevant counting. The model often fails to count letters correctly or prefers longer outputs that exceed the instructed requirements, contrary to human annotators' preference for accurate answers.
+
+
+
+
+
+\section{Generation Samples}
+\label{appx_case_study_llama3_70b}
+We present generation samples across different evaluation protocols of \llama-3-70B model for an example from \llmbarnatural, as shown in Figure~\ref{fig:appx_case_70b_data}. Model evaluations of \llama-3-70B under selected evaluation protocols are presented in Figure~\ref{fig:appx_case_70b_cot} (\texttt{cot}), Figure~\ref{fig:appx_case_70b_fine} (\texttt{fine-grained-diff}), Figure~\ref{fig:appx_case_70b_multi_role} (\texttt{multi-role-round2}),  and Figure~\ref{fig:appx_case_70b_prepair} (\texttt{prepair}).
+Our analysis of the evaluation protocols reveals interesting disparities in their effectiveness. For example, the \texttt{cot} fails because it overlooks the factual error regarding the frequency of the word ``humans'' in one of the candidate outputs. In contrast, 
+\texttt{multi-role-round2}'s success can be attributed to its multi-perspective debate approach, which allows for a more thorough examination and fact-checking of the claims made in each output.
+
+
+
+%
+
+%%%% all inputs
+\input{tables/data_example}
+\input{tables/data_example_2}
+\input{tables/model_registry}
+\input{tables/method_registry}
+\input{Appendix_prompts}
+\input{tables/error_case}
+
+
+\begin{figure*}[t!]
+  \centering
+  \includegraphics[width=0.9\textwidth]{figures/1.pdf}
+  \caption{An instance from \llmbarnatural dataset. Output (A) is the gold preferred response.}
+  \label{fig:appx_case_70b_data}
+\end{figure*}
+
+\begin{figure*}[t!]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/2.pdf}
+  \caption{\llama-3-70b output under \texttt{cot} protocol.}
+  \label{fig:appx_case_70b_cot}
+\end{figure*}
+\begin{figure*}[t!]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/3.pdf}
+
+  \caption{\llama-3-70b output under \texttt{fine-grained-diff} protocol.}
+    \label{fig:appx_case_70b_fine}
+\end{figure*}
+\begin{figure*}[t!]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/4.pdf}
+  \caption{\llama-3-70b output under \texttt{multi-role-round2} protocol.}
+  \label{fig:appx_case_70b_multi_role}
+\end{figure*}
+
+
+% 
+
+% 
+
+\begin{figure*}[t!]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/9.pdf}
+  \caption{\llama-3-70b outputs under \texttt{prepair} protocol. Outputs from the pointwise analysis stage and the pairwise evaluation stage are presented.}
+  \label{fig:appx_case_70b_prepair}
+
+\end{figure*}
+
+% 

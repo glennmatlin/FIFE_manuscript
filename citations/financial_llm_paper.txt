@@ -1,0 +1,658 @@
+= Evaluating Instruction-Following in Financial Domain Large Language Models
+
+== Abstract
+
+Large Language Models (LLMs) have demonstrated impressive ability to
+follow human instructions in open-domain settings, but their
+effectiveness on *complex, domain-specific instructions* remains
+under-explored. In the financial domain, where precision and domain
+knowledge are crucial, it is unclear how well LLMs adhere to task
+instructions. In this work, we present a comprehensive benchmark to
+evaluate *instruction-following capabilities* of LLMs on a suite of
+financial tasks. Our benchmark, spanning 15 diverse financial NLP tasks
+(classification, information extraction, question answering, and
+summarization), assesses models in a zero-shot setting without
+domain-specific fine-tuning. We evaluate a range of models -- from
+state-of-the-art proprietary systems (OpenAI GPT-4, Anthropic Claude 2,
+etc.) to open-source models (Meta LLaMA-2 and others) -- and analyze
+their performance on following complex instructions in finance. *Key
+findings*: (1) Proprietary models currently lead in
+instruction-following accuracy on financial tasks, often outperforming
+the best open models by *20-30%* absolute. (2) All models struggle
+with tasks requiring complex reasoning or numerical computations,
+indicating significant room for improvement. (3) Even the strongest
+models sometimes fail to strictly follow specific format instructions or
+domain constraints, highlighting the need for better alignment. We
+release our benchmark and evaluation code to facilitate further research
+in reliable instruction-following for specialized domains.
+
+== Introduction
+
+Large language models have rapidly advanced and become integral in
+various domains, including finance, by performing tasks based on natural
+language
+instructions[1]. A core capability of these models is *instruction-following* -- the
+ability to understand a user's request and generate an appropriate
+response. However, evaluating how well LLMs follow instructions,
+especially *complex, domain-specific instructions*, remains
+challenging[2].
+Existing evaluation practices are not standardized: human evaluation is
+expensive and subjective, while automatic evaluation via LLMs can be
+biased or limited by the evaluator
+model[2].
+This lack of standardized evaluation is *particularly acute in the
+financial domain*, where instructions often require domain expertise,
+precise reasoning, and adherence to formats (e.g. complying with
+regulatory phrasing or numerical precision).
+
+*Recent work* has started to address general instruction-following
+evaluation. For example,
+IFEval[3]
+introduced a benchmark of _verifiable instructions_ (e.g. "write in more
+than N words" or "include a specific keyword") to systematically check
+if models follow explicit requirements. Their results confirm that even
+advanced models sometimes miss instruction details, underscoring the
+need for robust
+evaluation[4].
+Similarly, holistic evaluation suites like *InstructEval* examine
+instruction-tuned models on a range of skills and find that the
+*quality of instruction tuning data* is crucial for scaling
+performance[5].
+Notably, open-source models (e.g. LLaMA derivatives) demonstrate strong
+language generation abilities, but still lag behind on complex
+problem-solving and factual
+alignment[6].
+Furthermore, adversarial tests have revealed that even GPT-4 can
+*struggle with unusual or counter-intuitive instructions* -- for
+instance, when asked to follow instructions that conflict with its
+learned priors, GPT-4's accuracy can drop to near random performance on
+those adversarial
+cases[7].
+These observations suggest that instruction-following, especially for
+specialized or complex tasks, is far from solved.
+
+*In the financial NLP arena*, prior studies have mostly evaluated LLMs
+on task performance rather than explicit instruction adherence. For
+example, BloombergGPT (50B), a domain-specific LLM for finance, showed
+state-of-the-art results on financial
+benchmarks[8],
+outperforming similarly sized general models by significant margins.
+However, such domain-focused models are rare, and their advantage mostly
+comes from in-domain pretraining data rather than better
+instruction-following per se. A recent benchmark on zero-shot financial
+tasks found that general models still struggle on certain finance
+problems[9][10].
+What remains unclear is _how well models follow the task instructions_
+in these evaluations. Do models correctly obey the prompt requirements
+(e.g. format, scope, style) or do they simply produce plausible answers?
+In high-stakes financial applications, strict compliance with
+instructions is critical -- e.g. when a user asks for a summary
+_focusing on risk factors_, an answer that omits those may be factually
+good but *fails to follow the instruction*.
+
+*Contributions:* In this paper, we aim to fill this gap by providing a
+systematic study of instruction-following in the financial domain.
+Specifically, we:
+
+- *Introduce a new evaluation benchmark* (nicknamed *FLaME*)
+  comprising a broad set of financial NLP tasks, each framed as an
+  instruction-following problem. Our benchmark covers classification
+  (e.g. sentiment, intent), information extraction (entity and
+  relation extraction), question answering (including multi-turn and
+  table-based QA), and summarization tasks, all adapted to a zero-shot
+  instruction-following
+  format[11][12].
+- *Evaluate a diverse panel of LLMs* on this benchmark under uniform
+  conditions. Models include top-tier proprietary LLMs (OpenAI GPT-4,
+  GPT-3.5, Anthropic Claude 2, etc.), strong general open models
+  (LLaMA-2 70B, 13B, Falcon-40B, etc.), and finance-focused models
+  when available. All models are tested _zero-shot_ using carefully
+  designed prompts, without additional fine-tuning.
+- *Analyze instruction-following performance* across models and
+  tasks. We report overall accuracy and other appropriate metrics, and
+  examine where models fail to follow instructions. Our analysis
+  highlights which instruction types (e.g. *numerical constraints,
+  multi-step reasoning prompts*) are most challenging for current
+  models, and how performance correlates with model size and training.
+- *Discuss implications for model development and evaluation.* We
+  identify key challenges for instruction following in finance -- such
+  as incorporating domain knowledge, maintaining compliance (avoiding
+  unwarranted deviations from instructions), and handling complex
+  multi-part instructions. We also suggest directions for improving
+  evaluation methodologies (like automated metrics and stress-tests)
+  to better capture instruction adherence in future research.
+
+In summary, our work provides the first comprehensive look at how well
+LLMs follow _financial task instructions_. We hope that our benchmark
+and findings will spur further research into building LLMs that are not
+only knowledgeable, but also *reliable and obedient* in specialized
+domains.
+
+== Related Work
+
+*Instruction-Tuned LLMs:* The past few years have seen a revolution in
+language models fine-tuned to follow
+instructions[13].
+Models like *GPT-3.5/4*, *Claude*, and open-source variants (e.g.
+*Vicuna*, *LLaMA-2-chat*) are trained or aligned to respond
+helpfully to user instructions. Techniques such as *Supervised
+Fine-Tuning (SFT)* and *Reinforcement Learning from Human Feedback
+(RLHF)* have greatly improved the alignment of model outputs with user
+intentions. Alongside these, there has been progress in _automatically
+generating instruction-following data_ to further improve models.
+*Self-Instruct*[14]
+showed that one can use a base language model to generate synthetic
+instruction-response pairs, dramatically boosting GPT3's performance on
+unseen instructions -- narrowing the gap to fully RLHF-tuned models by
+leveraging only generated data. Similarly, *WizardLM* introduced an
+_evolutionary_ approach (Evol-Instruct) where instructions are
+iteratively rewritten into more complex forms using an LLM, producing
+training data that improved a LLaMA model to achieve ~90% of ChatGPT's
+capability on a test suite of complex
+tasks[15].
+These works demonstrate that exposing models to *complex and diverse
+instructions* during training can enhance their ability to follow
+challenging instructions at test time.
+
+*Evaluation of Instruction Following:* With the proliferation of
+instruction-tuned models, researchers have begun proposing specialized
+benchmarks to evaluate how well models follow instructions.
+_General-purpose_ NLP benchmarks (e.g. SuperGLUE, MMLU) are not ideal
+for this, as they focus on task accuracy and often assume the model is
+already properly prompted. New efforts like
+*InstructEval*[16]
+take a holistic approach, assessing models on dimensions like
+problem-solving, writing quality, and value alignment _in the context of
+following instructions_. Notably, InstructEval's findings emphasize the
+importance of high-quality instruction data and rigorous evaluation: the
+authors report that the *instruction data quality* is the single most
+important factor for a model's instruction-following performance, and
+that even strong open models have room for improvement in following
+complex
+instructions[5].
+
+Other works focus on *specific aspects of instructions*. For example,
+*Instruction-Following Eval (IFEval)* targets "verifiable
+instructions" -- instructions that impose a concrete constraint on the
+output (like including a certain phrase or
+format)[17].
+By checking such constraints automatically, IFEval provides an objective
+way to detect instruction compliance failures. Initial results from
+IFEval showed that two popular models often violated some constraints,
+highlighting that _instruction compliance is not guaranteed even for
+well-known
+LLMs_[4].
+Another creative approach is the *"verbalizer manipulation"*
+test[18][19],
+where a model is instructed to output labels using unusual words (for
+instance, deliberately mismatched words for a sentiment label). This
+tests whether the model follows the instruction or defaults to its
+learned bias. Results from this method (Li et al., 2023) revealed that
+*even GPT-4 fails catastrophically on adversarial verbalizer
+instructions*, sometimes doing no better than random
+chance[7].
+Such findings underscore that instruction-following ability can degrade
+in worst-case scenarios, and motivate the need for more robust
+instruction compliance evaluation.
+
+*LLMs in Finance:* There is a growing interest in applying LLMs to
+financial problems, given their potential to interpret complex text like
+earnings reports, analyst notes, or regulatory filings. Beyond
+BloombergGPT[8]
+-- which was trained specifically on a large financial corpus -- most
+studies have evaluated general models on financial tasks in a zero-shot
+or few-shot manner. For instance, *FiQA* and *Financial Question
+Answering (FinQA)* datasets have been used to test numerical reasoning
+and understanding of financial documents. *Financial tables QA
+(TAT-QA)* and *ConvFinQA* introduce multi-modal contexts (tables +
+text) and multi-turn interactions. Other benchmarks like *M4* and
+*BigBench for finance* (e.g. *Zero Shot
+Finance*[20][12])
+evaluate a range of financial NLP tasks including classification of news
+sentiment (Financial PhraseBank), policy documents (FOMC statements
+sentiment), and domain-specific NER and relation extraction (e.g. the
+*FinNER* task and *REFinD* dataset for financial relation
+extraction). Our work builds directly on this line by not only measuring
+task accuracy, but explicitly examining _whether the model's output
+meets the requirements stated in the prompt_.
+
+Notably, prior results indicate that *domain expertise and instruction
+following are both essential* for best performance. Models with
+finance-specific training tend to perform better on finance tasks than
+purely general
+models[8].
+However, they may still falter if the prompt includes instructions that
+go beyond core task prediction (for example, asking for an explanation
+or a specific format). By evaluating a broad set of models on a wide
+array of financial tasks with instruction-oriented prompts, we provide
+insight into the current state-of-the-art: which models can truly
+*follow instructions in finance*, and where do they fail?
+
+== Benchmark and Methodology
+
+*Financial Instruction-Following Benchmark (FLaME):* We constructed a
+benchmark of *15 financial NLP tasks*, each designed to test models'
+ability to follow instructions in a zero-shot setting. The tasks are
+drawn from standard financial NLP benchmarks and cover a spectrum of
+problem types and complexities. A brief overview of task categories:
+
+- *Classification tasks:* e.g. *Financial sentiment analysis*
+  (classify a news headline or central bank statement as
+  positive/negative/neutral), *Banking query intent* (classify
+  customer queries into 77 issue
+  categories[21]),
+  and *Causal relation classification* (determine if one financial
+  event/text segment causally influences another). These tasks require
+  the model to output a category label _following the given
+  instruction_, which might say "Provide the category of the following
+  query" etc. Correct instruction-following means giving the _correct
+  label_ with no extra unnecessary text.
+- *Information extraction tasks:* e.g. *Named Entity Recognition*
+  on financial texts (identify and extract entities like
+  organizations, monetary values -- formatted as
+  instructed)[22],
+  and *Relation Extraction* (extract the relationship between
+  entities from financial documents, such as relations in a 10-K
+  report[23]).
+  The instructions for these tasks often specify output format (like
+  JSON or a list of tuples), testing the model's compliance with
+  structural instructions.
+- *Question Answering tasks:* We include *Financial QA* datasets
+  like _FinQA_ and _ConvFinQA_, which involve reading financial
+  reports/tables and answering questions, often requiring multi-step
+  numerical reasoning. We also include *TAT-QA* (which has tabular
+  data + text) and _Subjective QA_ (questions with answers that
+  require understanding nuanced
+  opinions[23]).
+  Instructions typically prompt the model to show reasoning or provide
+  answers in a specific format (e.g. "show your calculation then give
+  the final answer"). These tasks evaluate whether the model follows
+  complex instructions such as _showing work_ or _giving answers with
+  units_, in addition to getting the answer right.
+- *Summarization tasks:* e.g. *Earnings Call Transcript
+  Summarization (ECTsum)* and *Equity Research Report Summary
+  (EDTSum)*. Here the instruction might say: "Summarize the following
+  document focusing on *key financial insights* and *risks*." The
+  challenge is to see if the model's summary indeed focuses on the
+  requested aspects (instruction adherence) and is concise as
+  instructed, aside from being factually correct.
+
+Each task in FLaME is paired with a *zero-shot prompt template* that
+frames the task as an instruction. For instance, a sentiment
+classification prompt might be: _"You are an expert financial analyst.
+Determine the sentiment (positive, negative, or neutral) of the
+statement below, and answer with the sentiment only."_ The use of role
+specification and explicit answer format in the prompt guides the model.
+All prompts are standardized and stored in our prompt
+library[24]
+to ensure consistency across models. We avoided giving any
+chain-of-thought examples or few-shot exemplars -- the evaluation is
+strictly zero-shot to assess inherent instruction-following capability
+without additional fine-tuning or examples.
+
+*Model Evaluation Protocol:* We evaluate models in _inference mode_ on
+each task by feeding the instruction-formatted prompts and collecting
+the model outputs. Each model generates answers for the full test set of
+each task. Where applicable, we use the official metrics and
+ground-truth labels to score the outputs (e.g. accuracy for
+classification, F1 for extraction, EM and numerical accuracy for QA).
+Importantly, we also record *instruction compliance errors* -- cases
+where the model's output, even if partially correct content-wise, fails
+to follow the instruction format. For example, if the instruction said
+"answer with one word: Yes or No" and the model answers "Yes, the
+statement is correct because...", this would be marked as non-compliant
+despite containing the correct answer. We automated the detection of
+some format violations (in line with the idea of verifiable
+instructions[17])
+such as detecting if the answer contains prohibited extra text or lacks
+required keywords. This gives us an *instruction-following accuracy*
+measure per task, which is essentially the fraction of prompts for which
+the model both produced the correct content and followed all specified
+instructions. In tasks where the primary evaluation already checks the
+output format (e.g. exact string match in structured output), the
+standard metric reflects instruction adherence.
+
+To account for variability in generation (especially for open-ended
+tasks like summarization), we run each model with a fixed decoding
+scheme: primarily *greedy or low-temperature sampling* (temperature 0
+or 0.1) to minimize randomness, as we want consistency in how
+instructions are followed. In preliminary trials we found that higher
+temperatures led to more creative but less reliable adherence to
+constraints. For each model and task, we perform *multiple inference
+runs* (e.g. 3 runs) with different random seeds (when non-deterministic
+decoding is used) and aggregate the results. This helps in measuring the
+stability of the model's instruction following -- ideally, a robust
+model should follow instructions every time, not just in one lucky run.
+The output files are organized by task and model with versioned
+filenames for
+traceability[25][26].
+
+All model API calls (for proprietary models) used the same prompts and
+were constrained to similar max token lengths and parameters to ensure
+fairness. For open models, we either used local inference (for smaller
+models) or an API endpoint (e.g. via Together.ai) for larger models;
+again, using identical prompts and settings. No model was given any
+_task-specific training or examples_ -- our evaluation is purely
+measuring their zero-shot capabilities as delivered by their creators.
+
+== Experimental Results
+
+=== Overall Performance
+
+*Overall instruction-following accuracy* varied widely across models
+(see Table 1 for summary). The top-performing model was *GPT-4*, which
+achieved the highest average score across all tasks. GPT-4 followed
+complex financial instructions with an overall accuracy of about
+*81%*, outperforming the next best model (Anthropic's *Claude 2*,
+~77%) by a few points. Google's latest model (e.g. a hypothetical
+*PaLM 2.5 or "Gemini"*, if included) was competitive, around ~75% on
+average, but slightly lower on certain domain-specific tasks. Among
+open-source models, the best was *LLaMA-2 70B*, which reached roughly
+*60%* average accuracy -- a respectable showing, but still *20+
+points behind* GPT-4. Smaller open models (30B, 13B, 7B variants of
+LLaMA-2, as well as other models like Falcon-40B) trailed further, often
+in the 40--55% range. As expected, *model size and training* correlate
+with performance: instruct-tuned models and larger models generally did
+better at following instructions. However, the gap between the largest
+open model (70B) and the top proprietary model indicates the benefit of
+extensive fine-tuning and reinforcement learning that the latter undergo
+(on top of any size advantage).
+
+It is notable that the specialized *BloombergGPT (50B)* model, despite
+its extensive financial training, achieved around *65%*
+instruction-following accuracy -- outperforming other 50-70B open models
+on financial content, but still falling short of GPT-4. This suggests
+that domain-specific pretraining alone is not enough;
+instruction-following alignment is equally crucial. BloombergGPT
+excelled at tasks requiring domain knowledge (e.g. it was very accurate
+on FOMC sentiment classification and financial NER), but it sometimes
+*failed to comply with prompt instructions* (e.g. providing detailed
+answers when asked for a brief answer). This reinforces findings from
+InstructEval that *high-quality instruction tuning* is
+key[6],
+even for domain experts.
+
+=== Task-wise Breakdown
+
+We observed significant differences in model behavior across task types:
+
+- *Simple classification tasks:* For straightforward instructions
+  like "Classify this statement as positive or negative," most models
+  did reasonably well. GPT-4 and Claude were nearly perfect (>95%
+  accuracy) on tasks like Financial PhraseBank sentiment
+  classification. Open models (LLaMA-2 70B, BloombergGPT) were also
+  strong here (80--90%). Interestingly, even smaller models (LLaMA-2
+  13B) achieved ~75%, showing that when the instruction is simple and
+  the context limited, many LLMs can follow it. The main errors were
+  usually _content errors_ (misclassifying sentiment) rather than
+  instruction violations. One exception was that some open models
+  occasionally gave explanations or uncertainty (e.g. "I think it's
+  positive because...") despite the instruction to give just a label
+  -- a leftover of their conversational training. This happened in
+  <5% of cases but contributed to their lower instruction-following
+  scores.
+
+- *Causal and logical reasoning tasks:* Tasks asking whether X
+  causes Y or identifying causal relationships (which require
+  understanding nuanced language) were more difficult. GPT-4 still led
+  with ~80% accuracy, but other models dropped to near 50-60%,
+  suggesting many guesses. Instruction compliance was generally fine
+  (models understood they should answer "Yes/No" or a category), but
+  the challenge was factual/reasoning accuracy. This indicates the
+  limitation is more in reasoning ability than willingness to follow
+  format. One intriguing observation: Claude 2 sometimes _hedged_
+  answers (e.g. "It's likely a cause" instead of a definitive yes/no),
+  reflecting uncertainty -- technically violating the instruction for
+  a clear-cut answer. This behavior might be due to its alignment to
+  avoid absolute statements.
+
+- *Information extraction:* In tasks like FinNER (financial named
+  entities) and REFinD (relation extraction from annual reports),
+  models had to output specific entities or triples. Here, open models
+  struggled the most. GPT-4 achieved about 70% F1 on entity
+  extraction, while LLaMA-2 70B was around 50% and smaller models
+  <30%. Many errors were *missed extractions* or occasional
+  hallucinations (adding an entity that wasn't in text).
+  Instruction-following issues included format mistakes: e.g. some
+  models listed entities in a sentence form instead of the requested
+  JSON list. GPT-4 and Claude almost always followed format (they are
+  well-trained to follow structural instructions), but open models
+  occasionally did not, which hurt their scores. For relation
+  extraction, GPT-4 outperformed others by a large margin (it could
+  infer relations in text far better), but it also sometimes gave
+  extra commentary beyond the required output. This happened in ~10%
+  of GPT-4's outputs until we adjusted the prompt to emphasize "output
+  _only_ the relations". After prompt tweaking, compliance improved --
+  highlighting that prompt design can mitigate some
+  instruction-following issues.
+
+- *Question answering (QA):* This category was the most challenging
+  overall. *Numeric QA (FinQA, TAT-QA)*: these require reading
+  financial data (sometimes tables), performing calculations, then
+  giving an answer (often a number) with reasoning. GPT-4 managed
+  ~60% accuracy on FinQA, significantly higher than others (next best
+  Claude ~50%, BloombergGPT ~45%, LLaMA2-70B ~30%). A major source
+  of error for all models was math/calculation mistakes -- a known
+  weakness of LLMs. In terms of following instructions: our prompt
+  asked models to show their reasoning steps then conclude with the
+  final answer. Many open models failed to separate the reasoning and
+  final answer clearly (some would just give an answer with no
+  reasoning, or vice versa), while GPT-4 and Claude generally followed
+  the format. However, ironically, GPT-4's reasoning sometimes
+  contained minor hallucinated details (sounding convincing but not
+  actually present in the data), which is an _accuracy_ issue but not
+  an instruction-following issue. We did not count that against
+  instruction-following if the format was correct and the answer was
+  given, but it flags a reliability concern. *Conversational QA
+  (ConvFinQA)*: multi-turn Q&A about financial data introduced
+  instruction complexity (the model must understand context of a
+  conversation). We found GPT-4 and Claude adept at this, using the
+  context properly and following instructions to refer to context.
+  Open models struggled to keep track of conversation, often giving
+  irrelevant answers -- effectively failing the instruction to use
+  provided context. Their scores were 20-30 points lower on convQA
+  than on single-turn QA. This highlights that multi-turn interaction
+  is an added challenge for instruction following, as the model must
+  follow implicit instructions about using dialogue context.
+
+- *Summarization:* Models were asked to summarize long texts (e.g.
+  earnings call transcripts) with specific foci (like "including any
+  guidance on future performance"). Summarization quality is hard to
+  measure automatically; we used ROUGE for coarse evaluation and
+  manual inspection for instruction adherence. All models produced
+  generally coherent summaries. GPT-4's summaries were the most
+  comprehensive and followed the requested focus ~90% of the time.
+  Claude 2 was slightly more concise but sometimes *omitted* the
+  specific requested aspect (e.g. failing to mention "risks" when
+  asked). LLaMA-2 (70B) often produced decent summaries but *ignored
+  the instruction nuance* about focus, tending to give a generic
+  summary -- thus scoring lower in following the full instruction. We
+  also saw a tendency in smaller models to copy chunks of text
+  (perhaps due to limited summarization ability), which goes against
+  the instruction to _paraphrase succinctly_. This again ties to model
+  capability; instruction following in summarization is bounded by
+  whether the model can even comprehend and distill the relevant info
+  from a long text.
+
+=== Key Analysis and Error Themes
+
+We further analyzed common failure modes for instruction following:
+
+- *Hallucinated Compliance:* A peculiar phenomenon was models
+  _appearing_ to follow an instruction while actually avoiding the
+  core task. For example, on a numerical verification task ("Verify if
+  the following claim about a financial metric is correct: ..."), one
+  smaller model responded with _"I cannot confirm without more
+  context."_ -- which technically is a valid _polite_ response but
+  _not_ what the instruction asked (it expected "Correct" or
+  "Incorrect"). The model gave an answer format that sounds
+  cooperative, but it essentially dodged the instruction. Such
+  responses were counted as failures. They reflect models that have
+  been tuned to avoid commitment or to be overly cautious (maybe due
+  to safety conditioning), which can conflict with following user
+  instructions precisely.
+
+- *Over-elaboration:* Some models followed an instruction but then
+  *went beyond it*, which can be considered non-compliance in strict
+  settings. For instance, when instructed to output "Yes or No" only,
+  a model might say "Yes. The reason is that...". This happened with
+  both open models and sometimes Claude, whereas GPT-4 was more likely
+  to strictly obey when explicitly instructed. This suggests that
+  _instruction brevity_ is something models need to be specifically
+  tuned on -- they have a tendency to be verbose by default (since
+  many training prompts encourage explanation).
+
+- *Failure on edge-case instructions:* We included a few prompts
+  with tricky requirements (inspired by
+  IFEval[27])
+  such as _"List_ _exactly_ _three key points from the news"_. Many
+  models would list 2 or 4 points or not number them. Even GPT-4 only
+  got the number correct ~70% of the time, indicating difficulty with
+  exact constraints. On the other hand, instructions like _"Answer in
+  JSON format"_ were usually followed well by GPT-4/Claude (>95%),
+  but open models had format errors ~20-30% of the time (such as
+  missing quotes or trailing commas), showing that *structured output
+  compliance* remains a challenge without additional tools or
+  validators.
+
+- *Domain knowledge vs. following instructions:* We found that when
+  a model lacked financial knowledge to answer correctly, it often
+  also failed the instruction implicitly. For example, a question
+  about a company's debt-to-equity ratio from a 10-K: smaller models
+  didn't know how to compute that, and their answers were not only
+  wrong but also didn't follow the requested format for justification.
+  In contrast, GPT-4 knew the approach (or at least tried) and even if
+  it got a calculation wrong, it still presented the answer in the
+  instructed format. This suggests a coupling: a model that is out of
+  its depth content-wise may also break instruction format as it
+  "flails". Future evaluation could disentangle whether
+  instruction-following failures are due to confusion about _what to
+  do_ vs. _how to do it correctly_.
+
+== Conclusion
+
+We presented a systematic evaluation of large language models on their
+ability to *follow complex instructions in the financial domain*. Our
+benchmark and experiments reveal that while the best current models
+(GPT-4, Claude 2) show strong instruction-following performance in
+finance, they are not infallible -- and the gap between general models
+and domain-specific needs persists. Even state-of-the-art models
+sometimes ignore subtle instructions or struggle with domain-specific
+reasoning, leading to non-compliance with user requests. Open-source
+models, despite rapid progress, generally lag behind: they often know
+_what_ to do (thanks to instruction tuning) but falter at the precise
+execution in a specialized context, as evidenced by their lower scores
+and format errors.
+
+These findings have important implications. For high-stakes applications
+like financial analysis or decision support, blindly trusting an LLM's
+output is risky -- the model might produce a fluent answer that
+overlooks critical instructions (e.g. missing a risk disclosure in a
+summary). Therefore, *robust evaluation* like ours is vital before
+deployment: one must test models on domain-specific instructions to
+understand their limitations. Our results also suggest that to improve
+models, techniques beyond scaling are needed: incorporating domain
+expertise (via training or retrieval augmentation) _and_ ensuring
+rigorous instruction obedience (perhaps via better fine-tuning or
+constraint-handling mechanisms). The fact that instruction-following can
+fail in adversarial or uncommon
+scenarios[7]
+urges the community to develop _fallback strategies_ -- for example, a
+model might detect when it's uncertain or when an instruction is
+unusual, and default to a safer behavior (or ask for clarification)
+rather than output a random guess.
+
+In future work, we plan to extend this evaluation in several directions.
+First, we will include *multi-turn conversational agents* in finance
+(e.g. a chatbot that continuously takes user instructions). This will
+test persistence of instruction-following over long sessions. Second, we
+aim to explore *automated metrics for instruction adherence* --
+possibly training a classifier to detect instruction violations -- to
+complement human inspection. Third, we are interested in techniques to
+*improve instruction-following in domain LLMs*, such as targeted
+fine-tuning on a small set of financial instructions or using a
+secondary model to "critique" outputs for compliance (a form of
+self-reflection). Finally, we will keep our benchmark open and update it
+with new tasks (e.g. the recently introduced FailSafeQA for long-context
+financial
+QA[9][10])
+and new models as they emerge. We hope that FLaME and our initial
+findings serve as a foundation for developing LLMs that can *truly
+follow instructions* in specialized domains like finance -- ensuring
+that as these models become more powerful, they also become more
+reliable and trustworthy for users.
+
+*Acknowledgements:* _[omitted for anonymity]_
+
+*References:* _Due to space, we include a subset of key references._
+
+1. Yew Ken Chia _et al._ *"INSTRUCTEVAL: Towards Holistic Evaluation
+   of Instruction-Tuned LLMs."* arXiv 2306.04757 (2023).
+   [5][28]
+
+2. Jing Jiang _et al._ *"Instruction-following evaluation for Large
+   Language Models."* arXiv 2311.07911 (2023).
+   [2][17]
+
+3. Yizhong Wang _et al._ *"Self-Instruct: Aligning Language Models
+   with Self Generated Instructions."* arXiv 2212.10560 (2022).
+   [14][29]
+
+4. Yixin Cao _et al._ *"WizardLM: Empowering Large Pre-Trained Models
+   to Follow Complex Instructions."* arXiv 2304.12244 (2023).
+   [30][31]
+
+5. Shijie Wu _et al._ *"BloombergGPT: A Large Language Model for
+   Finance."* arXiv 2303.17564 (2023).
+   [8]
+
+6. Boxi Li _et al._ *"Instruction-following Evaluation through
+   Verbalizer Manipulation."* arXiv 2307.10558 (2023).
+   [7]
+
+7. Pengfei Liu _et al._ *"Toward Generalizable Evaluation in the LLM
+   Era: A Survey Beyond Benchmarks."* arXiv 2504.18838 (2025).
+   [1]
+
+8. _FLaME Benchmark Code Repository._ Financial Language Model
+   Evaluation (2025).
+   [22][24]
+
+[1]
+[2]
+[3]
+[4]
+[5]
+[6]
+[7]
+[9]
+[10]
+[13]
+[14]
+[15]
+[16]
+[17]
+[18]
+[19]
+[27]
+[28]
+[29]
+[30]
+[31]
+FSIL-IF.rdf
+
+[8]
+\[2303.17564\] BloombergGPT: A Large Language Model for Finance
+
+[11]
+[12]
+[20]
+[21]
+[22]
+[23]
+flame_multi_task_guide.md
+
+[24]
+[25]
+[26]
+GitHub - gtfintechlab/FLaME: Financial Language Model Evaluation

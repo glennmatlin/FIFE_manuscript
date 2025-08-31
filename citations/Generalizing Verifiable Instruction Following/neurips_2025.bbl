@@ -1,0 +1,163 @@
+\begin{thebibliography}{10}
+
+\bibitem{adler2024nemotron}
+Bo~Adler, Niket Agarwal, Ashwath Aithal, Dong~H Anh, Pallab Bhattacharya, Annika Brundyn, Jared Casper, Bryan Catanzaro, Sharon Clay, Jonathan Cohen, et~al.
+\newblock Nemotron-4 340b technical report.
+\newblock {\em arXiv preprint arXiv:2406.11704}, 2024.
+
+\bibitem{chung2024scaling}
+Hyung~Won Chung, Le~Hou, Shayne Longpre, Barret Zoph, Yi~Tay, William Fedus, Yunxuan Li, Xuezhi Wang, Mostafa Dehghani, Siddhartha Brahma, et~al.
+\newblock Scaling instruction-finetuned language models.
+\newblock {\em J. Mach. Learn. Res.}, 2024.
+
+\bibitem{dominguez2024training}
+Ricardo Dominguez-Olmedo, Florian~E Dorner, and Moritz Hardt.
+\newblock Training on the test task confounds evaluation and emergence.
+\newblock {\em arXiv preprint arXiv:2407.07890}, 2024.
+
+\bibitem{dubey2024llama}
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan, et~al.
+\newblock The llama 3 herd of models.
+\newblock {\em arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem{golchintime}
+Shahriar Golchin and Mihai Surdeanu.
+\newblock Time travel in llms: Tracing data contamination in large language models.
+\newblock In {\em The Twelfth International Conference on Learning Representations}.
+
+\bibitem{grattafiori2024llama}
+Aaron Grattafiori, Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Alex Vaughan, et~al.
+\newblock The llama 3 herd of models.
+\newblock {\em arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem{guo2025deepseek}
+Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Ruoyu Zhang, Runxin Xu, Qihao Zhu, Shirong Ma, Peiyi Wang, Xiao Bi, et~al.
+\newblock Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning.
+\newblock {\em arXiv preprint arXiv:2501.12948}, 2025.
+
+\bibitem{Hochlehnert2025ASL}
+Andreas Hochlehnert, Hardik Bhatnagar, Vishaal Udandarao, Samuel Albanie, Ameya Prabhu, and Matthias Bethge.
+\newblock A sober look at progress in language model reasoning: Pitfalls and paths to reproducibility.
+\newblock 2025.
+
+\bibitem{Ivison2023CamelsIA}
+Hamish Ivison, Yizhong Wang, Valentina Pyatkin, Nathan Lambert, Matthew~E. Peters, Pradeep Dasigi, Joel Jang, David Wadden, Noah~A. Smith, Iz~Beltagy, and Hanna Hajishirzi.
+\newblock Camels in a changing climate: Enhancing lm adaptation with tulu 2.
+\newblock {\em ArXiv}, abs/2311.10702, 2023.
+
+\bibitem{jiang2023followbench}
+Yuxin Jiang, Yufei Wang, Xingshan Zeng, Wanjun Zhong, Liangyou Li, Fei Mi, Lifeng Shang, Xin Jiang, Qun Liu, and Wei Wang.
+\newblock Followbench: A multi-level fine-grained constraints following benchmark for large language models.
+\newblock {\em CoRR}, 2023.
+
+\bibitem{kim-etal-2025-systematic}
+Joongwon Kim, Anirudh Goyal, Aston Zhang, Bo~Xiong, Rui Hou, Melanie Kambadur, Dhruv Mahajan, Hannaneh Hajishirzi, and Liang Tan.
+\newblock A systematic examination of preference learning through the lens of instruction-following.
+\newblock In Luis Chiruzzo, Alan Ritter, and Lu~Wang, editors, {\em Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)}, pages 11062--11082, Albuquerque, New Mexico, April 2025. Association for Computational Linguistics.
+
+\bibitem{lambert2024t}
+Nathan Lambert, Jacob Morrison, Valentina Pyatkin, Shengyi Huang, Hamish Ivison, Faeze Brahman, Lester James~V Miranda, Alisa Liu, Nouha Dziri, Shane Lyu, et~al.
+\newblock T$\backslash$" ulu 3: Pushing frontiers in open language model post-training.
+\newblock {\em arXiv preprint arXiv:2411.15124}, 2024.
+
+\bibitem{lior2025wildifeval}
+Gili Lior, Asaf Yehudai, Ariel Gera, and Liat Ein-Dor.
+\newblock Wildifeval: Instruction following in the wild.
+\newblock {\em arXiv preprint arXiv:2503.06573}, 2025.
+
+\bibitem{mirzadehgsm}
+Seyed~Iman Mirzadeh, Keivan Alizadeh, Hooman Shahrokhi, Oncel Tuzel, Samy Bengio, and Mehrdad Farajtabar.
+\newblock Gsm-symbolic: Understanding the limitations of mathematical reasoning in large language models.
+\newblock In {\em The Thirteenth International Conference on Learning Representations}.
+
+\bibitem{olmo20242}
+Team OLMo, Pete Walsh, Luca Soldaini, Dirk Groeneveld, Kyle Lo, Shane Arora, Akshita Bhagia, Yuling Gu, Shengyi Huang, Matt Jordan, et~al.
+\newblock 2 olmo 2 furious.
+\newblock {\em arXiv preprint arXiv:2501.00656}, 2024.
+
+\bibitem{qin2024infobench}
+Yiwei Qin, Kaiqiang Song, Yebowen Hu, Wenlin Yao, Sangwoo Cho, Xiaoyang Wang, Xuansheng Wu, Fei Liu, Pengfei Liu, and Dong Yu.
+\newblock Infobench: Evaluating instruction following ability in large language models.
+\newblock In {\em Findings of the Association for Computational Linguistics ACL 2024}, pages 13025--13048, 2024.
+
+\bibitem{roberts2023cutoff}
+Manley Roberts, Himanshu Thakur, Christine Herlihy, Colin White, and Samuel Dooley.
+\newblock To the cutoff... and beyond? a longitudinal perspective on llm data contamination.
+\newblock In {\em The Twelfth International Conference on Learning Representations}.
+
+\bibitem{shao2024deepseekmath}
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, YK~Li, Y~Wu, et~al.
+\newblock Deepseekmath: Pushing the limits of mathematical reasoning in open language models.
+\newblock {\em arXiv preprint arXiv:2402.03300}, 2024.
+
+\bibitem{stolfo2024improving}
+Alessandro Stolfo, Vidhisha Balachandran, Safoora Yousefi, Eric Horvitz, and Besmira Nushi.
+\newblock Improving instruction-following in language models through activation steering.
+\newblock {\em arXiv preprint arXiv:2410.12877}, 2024.
+
+\bibitem{sun2023evaluating}
+Jiao Sun, Yufei Tian, Wangchunshu Zhou, Nan Xu, Qian Hu, Rahul Gupta, John~Frederick Wieting, Nanyun Peng, and Xuezhe Ma.
+\newblock Evaluating large language models on controlled generation tasks.
+\newblock In {\em The 2023 Conference on Empirical Methods in Natural Language Processing}.
+
+\bibitem{tam2024let}
+Zhi~Rui Tam, Cheng-Kuang Wu, Yi-Lin Tsai, Chieh-Yen Lin, Hung-yi Lee, and Yun-Nung Chen.
+\newblock Let me speak freely? a study on the impact of format restrictions on performance of large language models.
+\newblock {\em arXiv preprint arXiv:2408.02442}, 2024.
+
+\bibitem{team2025gemma}
+Gemma Team, Aishwarya Kamath, Johan Ferret, Shreya Pathak, Nino Vieillard, Ramona Merhej, Sarah Perrin, Tatiana Matejovicova, Alexandre Ram{\'e}, Morgane Rivi{\`e}re, et~al.
+\newblock Gemma 3 technical report.
+\newblock {\em arXiv preprint arXiv:2503.19786}, 2025.
+
+\bibitem{team2024qwen2}
+Qwen Team.
+\newblock Qwen2 technical report.
+\newblock {\em arXiv preprint arXiv:2412.15115}, 2024.
+
+\bibitem{touvron2023llama}
+Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timoth{\'e}e Lacroix, Baptiste Rozi{\`e}re, Naman Goyal, Eric Hambro, Faisal Azhar, et~al.
+\newblock Llama: Open and efficient foundation language models.
+\newblock {\em arXiv preprint arXiv:2302.13971}, 2023.
+
+\bibitem{wallace2024instruction}
+Eric Wallace, Kai Xiao, Reimar Leike, Lilian Weng, Johannes Heidecke, and Alex Beutel.
+\newblock The instruction hierarchy: Training llms to prioritize privileged instructions.
+\newblock {\em arXiv preprint arXiv:2404.13208}, 2024.
+
+\bibitem{wang2025reinforcement}
+Yiping Wang, Qing Yang, Zhiyuan Zeng, Liliang Ren, Liyuan Liu, Baolin Peng, Hao Cheng, Xuehai He, Kuan Wang, Jianfeng Gao, et~al.
+\newblock Reinforcement learning for reasoning in large language models with one training example.
+\newblock {\em arXiv preprint arXiv:2504.20571}, 2025.
+
+\bibitem{wangverifiable}
+Zhaoyang Wang, Jinqi Jiang, Huichi Zhou, Wenhao Zheng, Xuchao Zhang, Chetan Bansal, and Huaxiu Yao.
+\newblock Verifiable format control for large language model generations.
+\newblock In {\em Findings of the Association for Computational Linguistics: NAACL 2025}, pages 3499--3513, 2025.
+
+\bibitem{yang2025qwen3}
+An~Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo~Zheng, Bowen Yu, Chang Gao, Chengen Huang, Chenxu Lv, et~al.
+\newblock Qwen3 technical report.
+\newblock {\em arXiv preprint arXiv:2505.09388}, 2025.
+
+\bibitem{yang2024qwen2}
+An~Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo~Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu, Fei Huang, Haoran Wei, et~al.
+\newblock Qwen2. 5 technical report.
+\newblock {\em arXiv preprint arXiv:2412.15115}, 2024.
+
+\bibitem{zhao2024wildchat}
+Wenting Zhao, Xiang Ren, Jack Hessel, Claire Cardie, Yejin Choi, and Yuntian Deng.
+\newblock Wildchat: 1m chatgpt interaction logs in the wild.
+\newblock {\em arXiv preprint arXiv:2405.01470}, 2024.
+
+\bibitem{zheng2023judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi~Lin, Zhuohan Li, Dacheng Li, Eric Xing, et~al.
+\newblock Judging llm-as-a-judge with mt-bench and chatbot arena.
+\newblock {\em Advances in Neural Information Processing Systems}, 36:46595--46623, 2023.
+
+\bibitem{zhou2023instruction}
+Jeffrey Zhou, Tianjian Lu, Swaroop Mishra, Siddhartha Brahma, Sujoy Basu, Yi~Luan, Denny Zhou, and Le~Hou.
+\newblock Instruction-following evaluation for large language models.
+\newblock {\em arXiv preprint arXiv:2311.07911}, 2023.
+
+\end{thebibliography}

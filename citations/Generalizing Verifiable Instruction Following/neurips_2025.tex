@@ -1,0 +1,751 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2025
+
+
+% ready for submission
+%\usepackage[dandb]{neurips_2025}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+\usepackage[preprint]{neurips_2025}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2025}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2025}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage[inline]{enumitem}
+
+\usepackage{tikz}
+\newcommand{\cblock}[3]{
+  \mbox{
+  \protect\hspace{-1.5mm}
+  \protect\begin{tikzpicture}
+    \protect\node[draw, minimum size=2.5mm, thick, line width=0.5pt, 
+          fill={rgb,255:red,#1;green,#2;blue,#3}] () {};
+  \protect\end{tikzpicture}%
+  }
+}
+
+  
+%new
+\usepackage{arydshln}
+
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{algorithm2e}
+%\usepackage{algorithmicx}
+\usepackage{xspace}
+ \usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\newcommand{\benchname}{\textsc{IFBench}\xspace}
+\newcommand{\trainname}{\textsc{IFTrain}\xspace}
+\newcommand{\tulu}{\textsc{T\"ulu}\xspace}
+
+\definecolor{olmoDarkBlue}{HTML}{012e59}
+\definecolor{olmoBlue}{HTML}{265ed4}
+\definecolor{ai2offwhite}{HTML}{fbf4ee}
+
+\newcommand{\balpha}{{\color{olmoBlue}\boldsymbol{\alpha}}}   % AI2
+\newcommand{\bbeta} {{\color{olmoBlue}\boldsymbol{\beta}}}   % UW
+\newcommand{\bgamma}{{\color{olmoBlue}\boldsymbol{\gamma}}}  % (unused here)
+\newcommand{\bdelta}{{\color{olmoBlue}\boldsymbol{\delta}}}  % Cohere
+
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[1]}
+
+\title{Generalizing Verifiable Instruction Following}
+
+
+
+\author{
+  {\bf
+    Valentina~Pyatkin$^{\balpha}$$^{\bbeta}$ \quad\ 
+        Saumya~Malik$^{\balpha}$\thanks{Joint second authors.} \quad \ 
+    Victoria~Graf$^{\balpha}$$^{\bbeta}$\samethanks\ \vspace{6pt}
+  }\\
+  {\bf
+        Hamish~Ivison$^{\balpha}$$^{\bbeta}$\
+      Shengyi~Huang$^{\balpha}$\
+    Pradeep~Dasigi$^{\balpha}$\ 
+        Nathan~Lambert$^{\balpha}$\ 
+    Hannaneh~Hajishirzi$^{\balpha}$$^{\bbeta}$\vspace{6pt}
+  }\\
+  $^{\balpha}$Allen Institute for Artificial Intelligence \\
+  $^{\bbeta}$University of Washington\\
+  \texttt{contact: valentinap@allenai.org}
+}
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+A crucial factor for successful human and AI interaction is the ability of language models or chatbots to follow human instructions precisely. 
+A common feature of instructions are output constraints like ``only answer with yes or no" or ``mention the word `abrakadabra' at least 3 times" that the user adds to craft a more useful answer.
+Even today's strongest models struggle with fulfilling such constraints. 
+We find that most models strongly overfit on a small set of verifiable constraints from the benchmarks that test these abilities, a skill called precise instruction following, and are not able to generalize well to unseen output constraints. 
+We introduce a new benchmark, \benchname,  to evaluate precise instruction following generalization 
+on 58 new, diverse, and challenging verifiable out-of-domain constraints. 
+In addition, we perform an extensive analysis of how and on what data models can be trained to improve precise instruction following generalization. 
+Specifically, we carefully design constraint verification modules and show that reinforcement learning with verifiable rewards 
+(RLVR) significantly improves instruction following.  
+In addition to \benchname, we release 29 additional new hand-annotated training constraints and verification functions, RLVR training prompts, and code.
+\end{abstract}
+
+
+\section{Introduction}
+
+Following instructions \textit{exactly} is a crucial skill for a language model to have, in order for it to generate a useful output that corresponds to the entirety of a user's specifications and not just the general topic. 
+In particular, instructions often include output constraints that specify length, format and content. 
+A model's ability to follow constraints in instructions is evaluated on precise instruction following benchmarks with verifiable constraints, with IFEval \cite{zhou2023instruction} being the most popular benchmark (and it has quickly saturated, with many leading models scoring 80+\% at as small as 2B parameters~\cite{dubey2024llama,lambert2024t,team2025gemma}.\footnote{Technically not every constraint passed by users is \textit{simple} to verify with software, but these evaluations focus on implementable variants for ease of iteration and improvement.}
+This evaluation benchmark consists of a set of 25 constraint templates, which can all be automatically verified using short python functions. Most models strongly overfit to this small set of constraints.  
+
+In order to investigate a model's precise instruction following (IF) generalization abilities, we introduce \benchname{} with new, diverse, and challenging verifiable instruction following constraints where leading models such as GPT-4.1 or Claude 3.7 Sonnet score below 50\%. 
+The constraints in \benchname{} cover important skills like counting, formatting, sentence/word/character manipulations, and copying.
+This shows that most state-of-the-art models overfit on IFEval and are not able to generalize well to the unseen constraints we introduce. Figure \ref{fig:generalization_failure} shows the discrepancy in accuracy between IFEval and \benchname for state-of-the-art models.
+
+
+To facilitate experimenting with the generalization of precise IF, we create 29 training constraints by manually curating useful and challenging constraints and verification functions, some of which representative of real-world chatbot usage, and others inspired by the core capabilities we desire our models to have. 
+We find that increasing the number and variety of training constraints improves IF generalization. 
+In addition to creating distinct training constraints, we explore new methods for inducing strong IF performance by appending combinations of constraints and using wider constraint variable ranges for the training prompts in the RL stage, rewarding models for following more complex instructions. 
+For example, an instruction could be combined with a length constraint, a formatting constraint and a constraint asking to include specific words.
+
+
+Given that many precise instruction following constraints are verifiable, we show how to use novel reinforcement learning with verifiable reward (RLVR) techniques to train models to be better at precise IF while maintaining performance on existing skills~\cite{lambert2024t, guo2025deepseek}.
+To gain further insights into when generalization happens for precise instruction following, we analyze the effect of training data and post-training algorithms on IF performance, both in and out-of-domain. 
+Our results indicate that RLVR with Group Region Policy Optimization (GRPO)~\cite{shao2024deepseekmath} and data augmentation leads to significant performance increases on old IF benchmarks and \benchname{}.
+
+
+Beyond improving precise IF, we also see that RLVR trained models exhibit different instruction following behaviors compared to their non reinforcement trained counterparts. 
+Take for example an instruction like ``write a recipe for tiramisu" with an output constraint like \textit{only use unique words in your output, do not mention any word more than once}. 
+There is a tension between following the task of writing a recipe and adhering to the constraint. 
+Many models would prioritize the task, while IF-RLVR trained models tend to prioritize the constraint -- future work will explore how to blend these behaviors with refined training recipes. 
+Qwen2.5-72B-Instruct, for example, tends to prioritize the constraint over the instruction.
+In line with the above example of constraint-focused generation, we find that RLVR can lead to over-optimization and we suggest adding a preference reward model signal to balance the signals. 
+Our contributions are as follows:
+
+\begin{enumerate}[leftmargin=0.5cm]
+    \item A new, unseen and challenging precise instruction following benchmark, \benchname\footnote{Code for IFBench is available here: \url{https://github.com/allenai/IFBench}.}, with 58 new constraints and corresponding verification functions.
+    With an investigation into the generalization abilities of LLMs for following constraints, we find that leading language models such as Qwen3-32B or Claude 4 Sonnet score below 50\% showcasing the opportunity for improvement in precise IF.
+    \item 29 new training constraints and verification functions, \trainname, to enable simple data creation that improves instruction following performance.
+    \item New methods of RLVR training for precise instruction following (IF-RLVR) by interleaving multiple constraints per prompt or mixing verifiable and preference rewards. With our new training techniques we improve the IFeval scores of a \tulu-3-8B model from 82.4 to 92.2, and the \benchname scores from 28.9 to 45.9. Similarly, IF-RLVR increases a Qwen 2.5 7b base model to scores of 87.8 (IFEval) and 54.7 (\benchname), and we also show that our approach is effective for models from the OLMo family.
+\end{enumerate}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/model_comparison_release.pdf}
+ \label{fig:generalization_failure}
+         \cblock{103}{173}{151} IFEval
+    \cblock{229}{139}{109} \benchname
+   \caption{Model performance on IFEval and \benchname. Left Models: out-of-the-box performance. Right Models: after IF-RLVR training.}
+\end{figure}
+
+\section{\benchname \& \trainname: Measuring and Training Precise IF}
+In this section we specify the problem specification of precise instruction following so that we can detail the benchmark construction process and its final contents.
+Along with introducing \benchname, we detail how we can use similar methods to create \trainname and train models that generalize better to a broad range of instruction following tasks.
+
+
+The task of precise instruction following (IF) evaluates a language model's ability to perform a task $t$, such as summarization or creative writing, while adhering to one or more output constraints $c$, which can be automatically verified. 
+Users naturally use constraints in their prompts \cite{zhao2024wildchat, lior2025wildifeval}, so precise IF is an important task to master and most models report performance scores on IFEval.
+Many models even have designated sections in their technical reports on how they improve IF performance -- the most common approach is targeted synthetic data generation \cite{yang2024qwen2, lambert2024t, adler2024nemotron, grattafiori2024llama}. 
+The Nemotron-4 340B technical report \cite{adler2024nemotron} goes into more detail and mentions that targeted synthetic IF data is generated by combining synthetic instructions with constraints from the IFEval taxonomy. 
+Figure \ref{fig:generalization_failure} shows that models display good accuracy on IFEval. 
+The scores on our new unseen benchmark, \benchname, on the other hand, are much lower due to the verifiable constraints being different, despite the task and evaluation setup being the same. 
+This discrepancy between the results indicates that most models overfit to a small set of verifiable constraints and do not possess sufficient capabilities to generalize as well to unseen constraints.
+
+
+We introduce a new benchmark, \benchname, and paradigm to evaluate the generalizability of methods addressing precise instruction following. We define a taxonomy of constraint templates, which we split into training and test constraints to prevent contamination.
+The new constraints we introduce were created manually -- sourced by collecting feedback from LM users beyond the authors on the types of constraints they have tried with models, or manually written to cover core IF skills. 
+Then, we filtered constraints for the benchmark to those that can be easily paired with a verification function written in Python, making for reproducible evaluation and training tools.
+The full list of new constraints can be found in Appendix \ref{app:test_const} for evaluation and Appendix \ref{app:train_const} for training constraints. 
+
+\paragraph{\benchname} consists of 58 new verifiable constraints that go beyond the 25 constraints included in IFEval \cite{zhou2023instruction}. 
+To create the final test prompts, we add instantiated constraints to unseen, i.e. held out from release, prompts from WildChat \cite{zhao2024wildchat}. By combining unseen prompts with unseen constraints, we prevent accidental train-test contamination and can appropriately evaluate language models' abilities to generalize on the task of precise instruction following. Every instance went through a human annotation process to verify the prompt and constraint compatibility (i.e. a coding related constraint, for example, does not fit with a prompt asking for a summary). These  constraints cover 7 different broader categories: {\it count, ratio, words, sentence, format, custom, copy.}
+These categories cover a broad range of sub-skills, such as a model's ability to copy parts of the input prompt into the output. The final benchmark consists of 300 prompts. When curating the benchmark, another focus was to include challenging constraints, such as \textit{Maintain a 2:1 ratio of declarative to interrogative sentences.} Similarly to the original IFEval, we compute both strict and loose accuracy, where the strict accuracy verifies if the constraint is followed correctly, and the loose accuracy additionally cleans the model's output by removing first/last lines and certain font modifiers. We evaluate constraint following abilities in two different settings:
+
+\begin{itemize}
+    \item Single-turn: The ``user" prompt consist of a general prompt with task $t$, concatenated with one or more output constraints $c$, and the model has to complete $t$ while adhering to $c$.
+    \item Multi-turn: $c$ is isolated from $t$ in three turns. The first ``user" prompt consist of a general prompt with task $t$ and the second turn is an ``assistant"'s response to $t$, $r_1$. The third turn (``user") asks to rewrite $r_1$ to comply with a constraint $c$. The model has to respond to the third turn, given all previous turns as context.
+\end{itemize}
+
+
+\paragraph{\trainname}
+
+consists of 29 new, unseen, verifiable constraints, with their corresponding verification functions. This more than doubles the current set of train constraint types. The full list of new constraints can be found in Appendix \ref{app:train_const}. The constraints were created to capture the basic building blocks of classic constraints. For example, to teach the model to copy better from the input, we create different versions of copying tasks, such as copying spans or copying and editing of the input.  
+
+
+\section{IF-RLVR}
+\label{sec:prompts}
+\label{sec:grpo_hyperparameters}
+In what follows we expand upon a new approach for training language models on precise instruction following with reinforcement learning with verifiable rewards~\cite{lambert2024t}, IF-RLVR.
+We propose the following training and data recipe to achieve strong in and out-of-domain IF performance.
+
+\paragraph{Data:} We create targeted IF-RLVR training data that is diverse and covers a variety of constraints. The prompts for verifiable IF training are created by combining an instruction from a public SFT dataset with a constraint from either the IFEval taxonomy (under Apache 2.0 license) or our new unseen training constraint taxonomy (which is separate from the constraints in \benchname). We randomly sample prompts from \tulu-3-SFT \cite{lambert2024t} and we append at least one and up to $n$ constraints. We prevent the combination of contradictory constraints by maintaining a dictionary of constraint conflicts. As training constraints we use IFTrain and the constraints from IFEval, which we expand by increasing the variable range for each constraint. For most of the experiments we create about 60k-100k prompts.
+
+
+\paragraph{Training}
+Reinforcement Learning with Verifiable Rewards (RLVR) \cite{lambert2024t} can be applied to the precise instruction following task, as each constraint can be verified with a function.
+We use GRPO \cite{shao2024deepseekmath} to optimize the following objective:
+
+Specifically, we train a policy with GRPO and outcome supervision, where each output is scored according to wether or not the constraint has been correctly fulfilled. 
+
+
+For multi-constraint IF-RLVR, the reward per instance is calculated as follows:
+
+\begin{equation}
+\text{Instance Reward} = \sum_{i=1}^{n} \text{verifiable\_reward}_i \cdot \text{reward\_multiplier}_i \cdot \text{reward\_weight}_i
+\label{eq:multi-reward}
+\end{equation}
+
+IF-RLVR training works for base models, using a special chat template (see Appendix \ref{app:chattemplate}), and for post-trained models, using their own chat templates.
+
+\paragraph{Experimental Setup}
+We experiment with the following base policies: Llama-3.1-Tulu-3-8B-DPO, Llama-3.1-8B, Qwen2.5-7B, Qwen2.5-7B-instruct, OLMo2, OLMo2-instruct.
+We train using the GRPO implementation in open-instruct \cite{Ivison2023CamelsIA, lambert2024t}, with the following hyperparameters: max\_token\_length$=$2048, temperature$=$1, learning rate$=$5e-7, 16 samples per prompt, 8 GPUs and a local mini-batch size of 32. Training took on average 1 day for 2000 steps.
+Base models with a reasoning chat template are trained with a max token length of 10240, a beta of 0, and a temperature of 1.
+
+\subsection{IF-RLVR Results}
+In Figure \ref{fig:generalization_failure} we show that IF-RLVR is very well suited to for teaching a model to follow instructions precisely. Our IF-RLVR trained models outperform most of the current state-of-the-art models (besides o3). We also show that our recipe can be successfully applied to 3 different model families: OLMo \cite{olmo20242}, Qwen 2.5 \cite{team2024qwen2}, and Llama 3.1 \cite{touvron2023llama}.
+
+
+\section{IF-RLVR Experiments}
+In this section we ablate our modeling design and data choices, and compare IF-RLVR to other training approaches like DPO.
+
+\subsection{Training on Multiple Constraints}
+We experiment with RL training on multiple constraints per instance. For each instruction $i$, randomly sampled from \tulu-SFT \cite{lambert2024t}, we append at least one and up to $n$ constraints, where $n \in \{1, 2, 3, 4, 5, 6\}$. This results in four different sets of RLVR training data with multiple constraints. We prevent the combination of contradictory constraints by maintaining a dictionary of constraint conflicts.
+
+We find that \textbf{training on a combination of constraints improves both in-domain and out-of-domain performance.} As displayed in Figure \ref{fig:combining_constraints}, training on a bigger combination of constraints leads to better performance, compared to training on only up to 3 constraints per instance. Interestingly, instructions in IFEval have up to 3 constraints and up to 2 constraints in \benchname, but training on up to 5 or 6 constraints still leads to better generalization on these benchmarks. Also on the out-of-domain benchmark \benchname, the best performance is achieved when training on more than one constraint per instance (Table \ref{tab:number_instances}).
+
+
+\begin{table}[]
+  \caption{Training on 1-6 constraints per instance. Training on 50-1000 instances per constraint. (qwen2.5 policy)}
+  \label{tab:number_instances}
+  \centering
+\begin{tabular}{llllllllllll} \toprule
+                                              & \cellcolor{blue!10}1 & \cellcolor{blue!10} 2 & \cellcolor{blue!10} 3 & \cellcolor{blue!10}4 & \cellcolor{blue!10}5 & \cellcolor{blue!10}6 & \cellcolor{blue!20}10 & \cellcolor{blue!20}50 & \cellcolor{blue!20}100 & \cellcolor{blue!20}500 & \cellcolor{blue!20}1000 \\ \midrule
+\cellcolor{yellow!30}IFBench & 48.9                                  & 53.1                                   &                  59.5                     & 49.4                                 & 55.8                                  & 54.1                                  & 48.6                                   & 52.7                                   & 51.7                                    & 51                                      & 48.6                                     \\
+IFEval                                        & 71.2                                 & 79.9                                  &              77.8                         & 79.5                                 & 79.9                                  & 85.8                                 & 73.6                                   &   72.8                                     & 74.3                                    & 70.1                                    & 72.8    \\ \bottomrule                                
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]
+    {figures/combining_constraints.png}
+         \caption{Training on 1 - 6 constraints per instruction. (\tulu-DPO policy)}
+    \label{fig:combining_constraints}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/instances.png}
+        \caption{Training on 10, 100, 500 and 1000 instances per constraint.}
+
+    \label{fig:instances}
+\end{minipage}
+\end{figure}
+
+
+
+\subsection{Seen vs. Unseen Constraints}
+Training on the 25 constraint templates from IFEval directly translates to good performance on IFEval. We perform multiple GRPO training runs where we take the 29 `unseen' constraint templates from \trainname, which do not overlap with any of the test constraints, and add $n$ `seen' constraint templates (from IFEval), with $n \in \{5, 10, 15, 20, 25\}$. 
+
+A combination of the full \trainname and IFEval constraints leads to the highest in-domain performance on IFEval (see Fig. \ref{fig:indomainconstraints}). On the out-of-domain benchmark \benchname, on the other hand, performance is less affected by the number of IFEval constraints the model is trained on. Nevertheless, we see that training on a larger set and larger variety of constraints is beneficial for generalization.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/comparison_performance_graph.png}
+    \caption{Training on IFTrain (ood) + n constraints (in-domain) from IFEval. (\tulu-DPO policy) }
+    \label{fig:indomainconstraints}
+\end{figure}
+
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \centering
+    \includegraphics[width=\linewidth]{figures/variable_ranges.png}
+        \caption{Experiments with variable ranges. (\tulu-DPO policy)}
+          \label{fig:var_range}
+\end{center}
+\end{wrapfigure}
+
+\subsection{Changing the range of constraint variables}
+Most of the constraint templates contain variables which can be instantiated with different values. \textit{In your response, all lowercase words should appear at most {N} times.}, for example, has the variable $N$ which could in theory be any number. For both the IFEval and the \benchname benchmarks, variables are instantiated for each instruction instance from a fixed range of options. Another type of generalization to assess is whether a model trained on the same constraints, but different variable ranges, can still apply the skill to unseen ranges. To evaluate this, we chose variable ranges for training that are disjoint from the test ranges. For the constraint \textit{Your response should contain at most {num\_sentences} sentences.}, for example, we sample a value between 20 and 40 for train and a value between 1 and 20 for test. Specifically we experiment with three different settings: \textsc{different range}, where every train variable is filled from a range that is disjoint from the test range; \textsc{wider range}, where every train variable is filled from a range that includes and extends the test range; \textsc{same range}, where variables are filled with the same range for train and test. Fig. \ref{fig:var_range} shows performance on IFEval for different steps of IF-RLVR training. Training on a different variable range consistently scores lower than the other two setups. Interestingly, though, training on a wider variable range, performs comparably and often even better than training on the same range. This suggests that training on a diverse set of constraint variables improves generalization for in-domain constraints performance.
+
+
+
+
+\subsection{Removing Categories}
+Most verifiable constraints fall under broader constraint type categories. IFEval, for example, has 9 different categories, such as \textsc{length constraints} or \textsc{detectable format}. To investigate how training on a set of categories generalizes to an unseen categories, we experiment with training on a leave-one-out set of categories, iteratively removing one of the following classes: \textsc{change cases}, \textsc{detectable format}, \textsc{length constraints}, \textsc{keywords}. 
+
+Removing the constraints from the \textsc{length constraint} and the \textsc{keywords} categories harms IFEval performance the most, while removing constraints from the \textsc{change cases} and \textsc{detectable format} categories barely affect performance with the model achieving an IFEval accuracy of 89.65 (see Fig. \ref{fig:leave_one_out}).
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \centering
+    \includegraphics[width=\linewidth]{figures/leave_one_out.png}
+        \caption{Removing a constraint category from training. (\tulu-DPO policy)}
+            \label{fig:leave_one_out}
+\end{center}
+\end{wrapfigure}
+
+\subsection{Teaching the basic units of precise IF}
+We designed the new training constraints so that they would cover IF skills models are currently lacking in, such as copying from the input, counting, and formatting. We find that GRPO training on our new constraints shows targeted improvements in all these areas. As seen in Table \ref{tab:fine_grained}, our final two models (from base vs. from instruct) improve over the base model (in this case a DPO trained model) in all categories, such as in counting, inserting the right amount of keywords, formatting and in following length constraints. Most of the IFEval categories seem saturated with IF-RLVR training (performance $>90$), while the \benchname categories leave room for improvement, such as the \textit{words} and \textit{sentence} categories.
+
+Comparing our final models to other post-trained (SFT, DPO, RLVR) models in Table \ref{tab:final}, we find that our approach and model results in the best in- and out-of-domain instruction following performance on both IFEval and \benchname. We also see that targeted RLVR training for IF slightly harms other downstream evaluations, such as AlpacaEval 2, while staying comparable on others, such as GSM8K, MMLU and BBH. We therefore suggest, for future work, to investigate how to combine precise IF RLVR with other types of rewards for other tasks such as math or chat. Note that the performance on other benchmarks is low for IF-RLVR Qwen2.5, as the policy is a base model that has not been post-trained. 
+
+\begin{table}[]
+    \label{tab:fine_grained}
+
+    \caption{IFEval (blue) and \benchname (yellow) performance breakdown for constraint types, for the final IF-RLVR models and one of the base models (\tulu-DPO), as comparison.}
+    \centering
+\begin{tabular}{lllllllllll} \toprule
+                                                             & \cellcolor{blue!14}IFEval & \cellcolor{yellow!30} IFB. & \cellcolor{blue!14}case & \cellcolor{blue!14}detect. & \cellcolor{blue!14}keywo. & \cellcolor{blue!14} length & \cellcolor{yellow!30}count & \cellcolor{yellow!30} format & \cellcolor{yellow!30} words & \cellcolor{yellow!30}sent. \\ \midrule
+tulu3DPO                                                     & 81.1                                       & 25.5                                        & 82.9                                     & 94.2                                        & 79.3                                       & 68.6                                        & 45.3                                        & 35.2                                          & 7.0                                          & 13.3                                        \\
+\begin{tabular}[c]{@{}l@{}}IF-RLVR\\ (tulu3DPO)\end{tabular} & 92.2                                       & 44.6                                        & 92.0                                     & 99.2                                        & 95.4                                       & 89.3                                        & 53.1                                        & 64.3                                          & 48.1                                         & 36.7                                        \\
+\begin{tabular}[c]{@{}l@{}}IF-RLVR\\ (qwen2.5)\end{tabular}  & 87.8                                       & 53.7                                        & 93.3                                     & 94.4                                        & 93.2                                       & 90.9                                        & 67.7                                        & 68.1                                          & 67.0                                         & 71.1 \\ \bottomrule                                          
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+        \caption{Model performances on different benchmarks.}
+            \label{tab:final}
+\begin{tabular}{lllllll}
+\hline \toprule
+                    & IFEval & IFBench & Alpaca & GSM8K & MMLU & BBH  \\ \midrule
+\tulu-sft            & 72.8   & 20.7    & 12.4   & 76.2  & 65.9 & 69.7 \\
+\tulu-DPO            & 81.1   & 25.5    & 33.5   & 84.3  & 68.7 & 68.7 \\
+\tulu                & 82.4   & 28.9    & 34.5   & 87.6  & 68.2 & 69.0 \\ \midrule
+IF-RLVR \tulu-DPO 8b & 92.2   & 44.6    & 21.3   & 83.2  & 66.4 & 68.9 \\
+IF-RLVR qwen2.5 7b  & 87.8   & 53.7    & 1.1    & 15.3  & 59.4 & 26.0 \\ \bottomrule   
+\end{tabular}
+\end{table}
+
+\subsection{DPO}
+While RLVR has been shown to be a well-suited training approach for precise IF, the verification functions could also be used to generate and verify SFT or DPO training data. Here we perform a controlled experiment on the same prompts and constraints, using the same verification functions, comparing DPO training to GRPO training for precise IF.
+
+\paragraph{Preference Data}
+We generate prompts using the approach described in Section \ref{sec:prompts}, with up to 5 constraints per prompt, and sample completions from 5 different models (\tulu-3-70B, Qwen-72b, Llama-3.1-405b, Llama3-8b, Yi-34B-Chat). For each constraint in a prompt a completion is verified on whether it fulfills the constraint. We construct preference pairs by sampling, for each instruction, a completion that satisfies all constraints (\textit{chosen}) and a completion that does not satisfy at least one constraint (\textit{rejected}). 
+Table \ref{tab:scored_completions}, shows how most models struggle with precisely following a lot of our prompts, and even when relaxing the requirement and counting cases where models got not more than 1 constraint wrong, the percentages are less than half. The model that stands out is Qwen-72B. Out of all the instances that models get completely correct, 54\% have only 1 constraint and only 2\% have 5 constraints. We also find that most LLMs get the same easy instances right and the same hard instances wrong, which makes the creation of preference pairs more difficult. This further highlights the benefits of RLVR, where we can get ground truth signal for both easy and hard prompts, with an unlimited amount of constraints. We end up with a set of prompts and chosen/rejected pairs, called \textit{strict}, where chosen completions get all constraints correct (31751 prompts).
+
+\begin{table}[]
+  \caption{Scoring completions for whether they adhere to the constraints.}
+  \label{tab:scored_completions}
+  \centering
+\begin{tabular}{llllll}
+    \toprule 
+               & Tulu-3-70B & Qwen-72B & Llama-3.1-405b & Llama3-8b & Yi-34B-Chat \\ \midrule
+all correct    & 15\%       & 26\%     & 21\%           & 6\%       & 10\%        \\
+only one wrong & 35\%       & 100\%    & 44\%           & 16\%      & 26\%  \\ \bottomrule        
+\end{tabular}
+\end{table}
+
+\paragraph{Experiments and Results}
+Given the \textit{strict} training data, we train models using either GRPO or DPO, starting from either a model that has been instruction tuned (\tulu-3-8b-SFT) or one that has been instruction tuned and DPO trained (\tulu-3-8b-DPO). The hyperparameters for DPO training are a learning rate of 5.0e-7, dpo beta of 5, and a batch size of 16. The results in Tab. \ref{tab:dpo_grpo} show that despite training on the same prompts and starting from the same model, GRPO training with IF verifiable rewards consistently outperforms the model trained with DPO on IFEval and \benchname. Further, starting with a model that has gone through both SFT and DPO training results in higher final IF performance.
+
+\begin{table}[]
+  \caption{Comparing DPO to GRPO training for IF, IFEval Accuracy.}
+  \label{tab:dpo_grpo}
+  \centering
+\begin{tabular}{llllll}
+\toprule
+                         &         & DPO after SFT & DPO after DPO & GRPO after SFT & GRPO after DPO \\ \midrule 
+\cellcolor{blue!14} IFEval  & strict  & 76.89         & 79.67         & 85.77          & 89.65          \\
+\cellcolor{yellow!30}{IFBench} & strict  & 25.2          & 29.3          & 28.6           & 30.6          \\ \bottomrule          
+\end{tabular}
+\end{table}
+
+
+\subsection{RLVR for IF from Base}
+We compare IF-RLVR training using policy models that have gone through post-training already (SFT and DPO), with IF-RLVR training from base models, as it has been shown that it is also possible to perform RLVR training on a base model, leading to good math and reasoning performance \cite{shao2024deepseekmath, wang2025reinforcement, yang2025qwen3}. 
+
+Specifically, we RLVR train three base models for precise IF, llama3.1-8b, Qwen2.5-7B and Qwen3-8B, and their instruct counterparts. To encourage reasoning we use a special chat template (see Appendix \ref{app:chattemplate}). The models are trained with a max token length of 10240, a beta of 0, and a temperature of 1.
+
+\begin{table}[]
+\centering   
+        \caption{Comparing model performance on IFEval and \benchname, before and after IF-RLVR training, for base and instruct models. (Base models before RLVR training cannot be evaluated as they don't have a chat template.)}    \label{tab:base}
+\begin{tabular}{llllllll} \toprule
+                                &         & \multicolumn{3}{l}{from base} & \multicolumn{3}{l}{instruct} \\ \midrule
+                                &         & llama3.1  & qwen2.5  & olmo2  & tulu3-dpo  & qwen2.5 & olmo2 \\ \midrule
+\multirow{2}{*}{before IF-RLVR} & IFEval  & na        & na       & na     & 81.1       & 74.7    & 61.7  \\
+                                & IFBench & na        & na       & na     & 25.2       & 31.3    & 16.7  \\
+\multirow{2}{*}{after IF-RLVR}  & IFEval  & 88.2      & 87.8     & 70.4   & 92.2       & 89.1    &  74.5     \\
+                                & IFBench & 54.1      & 53.7     & 46.6   & 44.6       & 45.9    &   44.6   \\ \bottomrule   
+\end{tabular}
+\end{table}
+
+In Table \ref{tab:base}, we find that IF-RLVR training a base model leads to nearly the same IFEval performance as when using an instruct policy. IF-RLVR training from base, with a reasoning chat template, results in better generalization on the out-of-domain \benchname. We conclude that IF-RLVR with reasoning leads to improved IF generalization.
+
+
+\subsection{RLVR for Multi-turn IF}
+We experiment with comparing single-turn RLVR runs (IF-RLVR-\textsc{single}) to multi-turn RLVR training (IF-RLVR-\textsc{multi}), and to training on a mix of both types of data (IF-RLVR-\textsc{mix}). We run experiments on Qwen2.7-7b base and instruct. 
+
+\begin{table}[]
+\small
+\centering
+    \label{fig:multiturn}
+        \caption{Training on single turn data, multi turn data, and a mix. Evaluated on IFEval (IFE.) constraints and IFBench (IFB.) constraints.}
+    \begin{tabular}{lllllllllllll}
+\toprule
+                                                               & \multicolumn{4}{l}{trained on single turn}                       & \multicolumn{4}{l}{trained on multi turn}                        & \multicolumn{4}{l}{trained on a mix}                             \\
+                                                               & \multicolumn{2}{l}{single turn} & \multicolumn{2}{l}{multi turn} & \multicolumn{2}{l}{single turn} & \multicolumn{2}{l}{multi turn} & \multicolumn{2}{l}{single turn} & \multicolumn{2}{l}{multi turn} \\ \midrule
+                                                               & IFE.            & IFB.          & IFE.           & IFB.          & IFE.           & IFB.           & IFE.           & IFB.          & IFE.           & IFB.           & IFE.           & IFB.          \\
+Qwen2.5-7B                                                     & 79.9            & 55.8          & 57.4           & 50.0          & 70.8           & 41.2           & 65.9           & 50.0          & 85.2           & 51.0           & 62.5           & 51.0          \\
+\begin{tabular}[c]{@{}l@{}}Qwen2.5-7B-\\ Instruct\end{tabular} & 89.1            & 45.9          & 85.2           & 71.7          & 81.5           & 34.7           & 90.2           & 68.6          & 86.6           & 54.8           & 89.5           & 72.9         \\ \bottomrule   
+\end{tabular}
+\end{table}
+
+IF-RLVR-\textsc{multi} mostly leads to an improved performance on the multiturn setup of \benchname, compared to IF-RLVR-\textsc{single}, while harming the singleturn performance. IF-RLVR-\textsc{mix} harms singleturn performance less, and sometimes even helps it, while reaching a comparable multiturn performance.
+
+\section{Reward Hacking and the Instruction Hierarchy}
+\label{sec:instruction_hierarchy}
+
+Following (verifiable) output constraints can stand in conflict with following the main task mentioned in the instruction and a model has to trade-off between completing the task while also adhering to the constraint. 
+Take for example an instruction that asks to provide a single-sentence summary of a text, combined with the constraint that ``each word in the response must start with the next letter of the alphabet, looping back to A after Z". 
+The best single-sentence summary would probably not consists of words starting with the next letter of the alphabet, and a model should therefore ideally balance fulfilling the task as best as possible, while still adhering to the boundaries of the constraint. 
+Models exhibit different ways to prioritize instructions composed within a prompt. 
+The notion of an ``instruction hierarchy'' can be used to prioritize either the relative ranking of following system versus user prompts in a query along with how to prioritize different pieces of a request relative to eachother~\cite{wallace2024instruction}. 
+In order to avoid a clear conflict within our benchmark dataset, we manually checked samples to avoid situations where a model could only fulfill either the question or the constraint. 
+
+\paragraph{Trade-offs between response quality and instruction following}
+To understand the trade-off between challenging constraints and general response quality we contrast \benchname accuracy with a general LLM-as-a-judge prompt-completion rating~\citep{zheng2023judging}.
+Using GPT4.1 as the judge, we prompt\footnote{See Appendix \ref{app:llmjudge} for details.} it to score how well a completion answers a prompt without the constraint. 
+We score the IFEval and \benchname completions from our RLVR trained model and from the base policy before RLVR training. 
+Completions from the base policy are scored higher by the LLM-as-judge than completions from the IF-RLVR trained model, for both IFEval and IFBench prompts with constraints removed (see Figure \ref{fig:inst-vs-const}). This indicates that the base policy models are better at following general instructions, while IF-RLVR trained models are better at following the constraints.
+The verifiable accuracy, though, is on average higher for the model that went through RLVR training. 
+The verifiable rewards teach the model to prioritize the constraints and in the following section we propose an approach to soften this preference.
+
+We also analyze IFBench completions of existing models: claude-3-7-sonnet, Gemini, Qwen2.5-72B-Instruct, and tulu3-70B. We find that tulu3-70B's IF accuracy correlates the most with the LLM-as-judge scores and that Qwen2.5-72B-Instruct's IF accuracy is the most negatively correlated with LLM-as-judge scores, out of this set of models. This indicates that Qwen2.5 tends to focus on the constraints rather than the general instruction.
+
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/combined_model_scores_comparison.png}
+    \label{fig:inst-vs-const}
+        \caption{Comparing the model before vs. after RLVR training: LLM-as-judge scores vs. verifiable accuracy.}
+
+\end{figure}
+
+
+\paragraph{Mitigating Reward Hacking}
+While GRPO training with verifiable rewards for precise IF is great at teaching LLMs to follow output constraints, it can sometimes result in models that over-prioritize the constraint over the full instruction. An example of such an output is given in Figure \ref{fig:hacking}.
+This could also be called over-optimization.
+We propose adding a general reward model (RM) signal to the verifiable reward. 
+The intuition is that while the verifiable reward checks for the adherence to the output constraint, the general reward model provides signal for whether the response answers the prompt. 
+We apply the reward from the reward model to all generations that received a verifiable reward $>0$, as follows: For a batch of data, we assign the final reward, $F_i$ to that instance corresponding to conditions of the verifiable reward, $V_i$, and the reward model score, $S_i$:
+\begin{equation}
+    F_i = \begin{cases}
+    V_i + 1 & \text{if } V_i > 0 \text{ and } S_i > \alpha \\
+    V_i - 0.5 & \text{if } V_i > 0 \text{ and } S_i \le \alpha \\
+    V_i & \text{if } V_i \le 0
+\end{cases}
+\end{equation}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/overoptimization.pdf}
+    \label{fig:hacking}
+        \caption{An example output of a model being overoptimized to follow constraints.}
+\end{figure}
+
+
+We use the openly available Llama-3.1-Tulu-3-8B-RM as our general preference reward model, set $\alpha = 7$\footnote{We chose 7 as this is around the mean reward score given by the model over a large set of instances.}, and use an effective batch size of 512, with 8 samples/prompt.
+
+After 1100 steps, this model achieves an IFEval score of 86.1 and an \benchname score of 30. Compared to the model trained on only ground-truth reward signal (see Table \ref{tab:final}), this model scores slightly lower on instruction following (with still more than a 5 point improvement over the base policy), while scoring higher on AlpacaEval 2 (31.6). A good solution that balances instruction following and constraint following is therefore to combine a ground truth reward with a preference reward, and we suggest further investigating reward combinations in future work.
+
+
+\section{Related Work}
+Following instructions precisely and adhering to specific output or formatting constraints is often still a challenge for language models. LLMs' reasoning abilities, for example, decline when they also have to adhere to formatting constraints \cite{tam2024let}. And models can struggle at doing constrained generation with fine-grained constraints \cite{sun2023evaluating}. Previous works improved models' instruction following abilities by scaling up the instruction fine-tuning stage \cite{chung2024scaling}, through activation steering \cite{stolfo2024improving}, DPO training \cite{kim-etal-2025-systematic}, and using RL with verifiable rewards \cite{lambert2024t}.
+
+
+The issues of train-test contamination and model generalization have also been pointed out in previous works \cite{golchintime, roberts2023cutoff, dominguez2024training}. One approach to investigate a model's abilities to generalize on a given task is to build a new \textit{unseen} test set. This has, for example, been done for the GSM8K benchmark, which was perturbed using templates to create GSM8K-symbolic \cite{mirzadehgsm}. Similar findings were made in the reasoning domain, where models were shown to overfit on small benchmarks like AIME'24 \cite{Hochlehnert2025ASL}.
+
+
+Multiple benchmarks have been proposed to evaluate instruction following. IFEval \cite{zhou2023instruction} evaluates how models follow a set of 25 verifiable constraints targeting output formats. FollowBench \cite{jiang2023followbench} looks at how models deal with an iteratively increasing amount of constraints, covering situation, style, and format constraints. These constraints are not verifiable and are evaluated using LLM-as-judges. InFoBench \cite{qin2024infobench} evaluates models by decomposing the instruction into atomic constraints and rating each constraint individually with an LLM-as-a-judge. To the best of our knowledge, the only other work that generates automatically verifiable training and test data is VFF \cite{wangverifiable}, showing how their data improves IF performance using SFT and DPO training. IFBench additionally investigates how IF-RLVR training affects IF generalization.
+
+
+
+\section{Conclusion and Limitations}
+We create \benchname, a challenging and unseen benchmark to evaluate precise, verifiable instruction following. We show that most models overfit on a small set of constraints and that generalization is difficult. Using \benchname we perform an analysis of if and when generalization is possible for RLVR training for precise instruction following. We conclude with recommendations for improved constraint following abilities in language models and by showing how our benchmark remains challenging despite targeted training efforts.
+
+Our work comes with some limitations and open questions left for future work. We exclusively focus on verifiable constraints, which is limiting, as many constraints used by users in the wild are constraints that do not have an easily verifiable ground truth. This also means our constraints might sometimes seem unnatural or contrived. For future work it would be interesting to explore RL training for a wider variety of constraints, some of which not necessarily verifiable.
+
+\section*{Acknowledgements}
+This research was developed with funding from NSF IIS-2044660.
+
+\bibliography{references.bib}
+\bibliographystyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+%\section{Technical Appendices and Supplementary Material}
+%Technical appendices with additional results, figures, graphs and proofs may be submitted with the paper submission before the full submission deadline (see above), or as a separate PDF in the ZIP file below before the supplementary material deadline. There is no page limit for the technical appendices.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Out-of-Distribution Test Constraints}
+\label{app:test_const}
+\begin{longtable}{@{}p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}@{}}
+\toprule
+\textbf{Instruction Group} & \textbf{Instruction}     & \textbf{Description}  \\ 
+\midrule 
+\endhead 
+count    & conjunctions             & Use at least \{N\} different coordinating conjunctions in the response.
+\\ \midrule
+count    & numbers                  & Include exactly \{N\} numbers in the response.
+\\ \midrule
+count    & person\_names            & Mention at least \{N\} different person names in the response.
+\\ \midrule
+count    & pronouns                 & The response should include at least \{N\} pronouns.
+\\ \midrule
+count    & punctuation              & Use every standard punctuation mark at least once, including semicolons, colons, and the interrobang (?!).
+\\ \midrule
+count    & unique\_word\_count      & Use at least \{N\} unique words in the response.
+\\ \midrule
+count    & word\_count\_range       & The response must contain between \{min\_n\} and \{max\_n\} words.
+\\ \midrule
+count    & words\_french            & Every \{N\}th word of your response must be in french.
+\\ \midrule
+format   & emoji                    & Please use an emoji at the end of every sentence.
+\\ \midrule
+format   & line\_indent             & Create stairs by incrementally indenting each new line.
+\\ \midrule
+format   & list                     & Answer with a list of items, instead of bullet points use \{sep\}.
+\\ \midrule
+format   & newline                  & Write each word on a new line.
+\\ \midrule
+format   & no\_bullets\_bullets     & Your answer must contain at least two sentences ending in a period followed by at least two bullet points denoted by *.
+\\ \midrule
+format   & options                  & Answer with one of the following options: \{options\}. Do not give any explanation.
+\\ \midrule
+format   & parentheses              & Nest parentheses (and {[}brackets \{and braces\}{]}) at least 5 levels deep.
+\\ \midrule
+format   & quote\_unquote           & Every quoted phrase must be followed by an unquoted explanation.
+\\ \midrule
+format   & quotes                   & Include quotes within quotes within quotes, at least 3 levels deep, alternating between double quotes and single quotes.
+\\ \midrule
+format   & sub-bullets              & Your response must include bullet points denoted by * and at least one sub-bullet point denoted by - for each bullet point.
+\\ \midrule
+format   & thesis                   & Each section must begin with a thesis statement in italics, use HTML to indicate the italics.
+\\ \midrule
+ratio    & overlap                  & Maintain a trigram overlap of \{percentage\}\% ($\pm$2\%) with the provided reference text.
+\\ \midrule
+ratio    & sentence\_balance        & Ensure that the ratio of sentence types (declarative, interrogative, exclamatory) in your response is balanced.
+\\ \midrule
+ratio    & sentence\_type           & Maintain a 2:1 ratio of declarative to interrogative sentences in your response.
+\\ \midrule
+ratio    & sentence\_words          & Respond with three sentences, all containing the same number of characters but using all different words.
+\\ \midrule
+ratio    & stop\_words              & Ensure that stop words constitute no more than \{percentage\}\% of the total words in your response.
+\\ \midrule
+sentence & alliteration\_increment  & Each sentence must have more alliterative words than the previous one.
+\\ \midrule
+sentence & increment                & Each sentence in your response must contain exactly \{small\_N\} more words than the previous one.
+\\ \midrule
+sentence & keyword                  & The response must include keyword \{keyword\} in the \{N\}-th sentence.
+\\ \midrule
+words    & alphabet                 & Each word in your response must start with the next letter of the alphabet, looping back to 'A' after 'Z'.
+\\ \midrule
+words    & consonants               & Ensure each word in your response has at least one consonant cluster (two or more consonants together).
+\\ \midrule
+words    & last\_first              & In your response, the last word of each sentence must become the first word of the next sentence.
+\\ \midrule
+words    & no\_consecutive          & No two consecutive words can share the same first letter.
+\\ \midrule
+words    & odd\_even\_syllables     & Alternate between words with odd and even numbers of syllables.
+\\ \midrule
+words    & palindrome               & Include at least 10 palindromes, each at least 5 characters long.
+\\ \midrule
+words    & paragraph\_last\_first   & Each paragraph of your response must end with the same word it started with.
+\\ \midrule
+words    & prime\_lengths           & Use only words with lengths that are prime numbers.
+\\ \midrule
+words    & repeats                  & The response should not repeat any word more than \{small\_N\} times.
+\\ \midrule
+words    & start\_verb              & The response must start with a verb.
+\\ \midrule
+words    & vowel                    & Write a paragraph using words that contain only one type of vowel.
+\\ \midrule
+custom   & character\_reverse       & What animal is the national symbol of the US? Respond to this query, but make your sentence in reverse order of what it should be, per letter.
+\\ \midrule
+custom   & csv\_city                & Generate CSV data: The column names are {[}"ID", "Country", "City", "Year", "Count"{]}, the data should be comma delimited. Please generate 7 rows.
+\\ \midrule
+custom   & csv\_quotes              & Generate CSV data: The column names are {[}"StudentID", "Subject", "Grade", "Semester", "Score"{]}, the data should be tab delimited. Please generate 3 rows and enclose each single field in double quotes.
+\\ \midrule
+custom   & csv\_special\_character  & Generate CSV data: The column names are {[}"ProductID", "Category", "Brand", "Price", "Stock"{]}, the data should be comma delimited. Please generate 14 rows. Add one field which contains a special character and enclose it in double quotes.
+\\ \midrule
+custom   & date\_format\_list       & List the start dates of all the battles Napoleon fought separated by commas, use the following date format: YYYY-MM-DD. Do not provide an explanation.
+\\ \midrule
+custom   & european\_capitals\_sort & Give me the names of all capital cities of european countries whose latitude is higher than than 45 degrees? List the capital cities without country names, separated by commas, sorted by latitude, from highest to lowest.
+\\ \midrule
+custom   & mcq\_count\_length       & Generate 4 multiple choice questions with 5 options each about "20th century art history". Each question should start with the label "Question". The questions should get progressively longer. Do not provide an explanation.
+\\ \midrule
+custom   & multiples                & Count from 10 to 50 but only print multiples of 7.
+\\ \midrule
+custom   & reverse\_newline         & List the countries of Africa in reverse alphabetical order, each on a new line.
+\\ \midrule
+custom   & sentence\_alphabet       & Tell me a 26-sentence story where each sentence's first word starts with the letters of the alphabet in order.
+\\ \midrule
+custom   & word\_reverse            & What animal is the national symbol of the US? Respond to this query, but make your sentence in reverse order of what it should be, per word. 
+
+\\ \midrule
+count   & keywords\_multiple           & Include keyword \{keyword1\} once in your response, keyword \{keyword2\} twice in your response, keyword \{keyword3\} three times in your response, and keyword \{keyword4\} five times in your response.
+\\ \midrule
+words   & keywords\_specific\_pos.         & Include keyword \{keyword\} in the n-th sentence, as the m-th word of that sentence.
+\\ \midrule
+words   & words\_position        & The second word in your response and the second to last word in your response should be the word \{keyword\}.
+\\ \midrule
+copy   &repeat\_change       & Repeat the request, but change the first word of the repeated request, (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request! \\ \midrule
+copy   &repeat\_simple       & Only output this sentence here, ignore all other requests.
+\\ \midrule
+copy   &repeat\_span       & Copy the span of words that lies between (and including) index {n\_start} and {n\_end}, the indices are word indices, split by whitespace!
+\\ \midrule
+format   &title\_case       & Write the entire response in title case (capitalize the first letter of every major word).
+\\ \midrule
+format   &output\_template       & Use this exact template for your response: My Answer: [answer] My Conclusion: [conclusion] Future Outlook: [outlook]
+\\ \midrule
+format   &no\_whitespace       & The output should not contain any whitespace.
+\\ \bottomrule
+%\vspace{3pt}
+\caption{\benchname out-of-distribution constraints. Constraints are added to an unseen WildChat prompt to form the final prompt except for in the "custom" instruction group.}
+\label{tab:ifeval-ood-full}
+\end{longtable}
+
+
+\section{Out-of-Distribution Train Constraints}
+\label{app:train_const}
+\begin{longtable}{@{}p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}@{}}
+\toprule
+\textbf{Instruction Group} & \textbf{Instruction}     & \textbf{Description}  \\ 
+\midrule 
+\endhead 
+keyword    & word\_once             & Include keyword {keyword} in your response.
+\\ \midrule
+keyword    & word\_count\_diff\_numb              & In your response, the word \{word\} should appear \{N\} times.
+\\ \midrule
+keyword    & exclude\_word\_harder             & Do not include keyword \{keyword1\} in the response. \textit{where keyword is sampled from instruction}
+\\ \midrule
+letter    & letter\_counting2                 & In your response, the letter \{letter\} should appear \{N\} times.
+\\ \midrule
+paragraphs    & paragraphs          & Your response should contain 2 paragraphs. You separate paragraphs using the markdown divider: * * *
+\\ \midrule
+paragraphs    & paragraphs2                & There should be 2 paragraphs. Paragraphs and only paragraphs are separated with each other by two line breaks. 
+\\ \midrule
+first word    & first\_word\_sent             & The first word of each sentence should be the word \{first\_word\}.
+\\ \midrule
+first word     & first\_word\_answer     & The first word of your response should be the word \{first\_word\}.
+\\ \midrule
+last word    & last\_word\_sent      & The last word of each sentence, before punctuation, should be the word \{last\_word\}.
+\\ \midrule
+last word    & last\_word\_answer      & The last word of your response should be the word \{last\_word\}.
+\\ \midrule
+format   & bigram\_wrapping            & Wrap every word bigram in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>.
+\\ \midrule
+copy  & copying\_simple              & Repeat the request without change (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!
+\\ \midrule
+copy   & copying\_multiple                   & Repeat the request without change \{N\} times, separated by 6 asterisk symbols (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!
+\\ \midrule
+punctuation   & punctuation\_dot            & In your entire response, refrain from the use of . (i.e. dots) as punctuation and in general.
+\\ \midrule
+punctuation   & punctuation\_exclam.                   & In your entire response, refrain from the use of ! (i.e. exclamation marks) as punctuation and in general.
+\\ \midrule
+count   & lowercase\_counting                & In your response, all lowercase words should appear at most \{N\} times.
+\\ \midrule
+count   & letter\_counting    & Answer with {relation} \{N\} letters.
+\\ \midrule
+count   & counting\_composition                 & Write 3 paragraphs, delimited by the markdown divider: * * *, with exactly \{n\_sent\} sentences each, with exactly \{n\_words\} words in each sentence.
+\\ \midrule
+count  & count\_unique             & Only use unique words in your response, no word should be repeated!
+\\ \midrule
+count   & count\_increment\_word          & Include keyword \{keyword1\} once in your response, keyword \{keyword2\} twice in your response.
+\\ \midrule
+keywords   & palindrome                 & Include a palindrome in your response.
+\\ \midrule
+keywords   & keyword\_specific\_pos.            & Include keyword \{keyword1\} in the \{n\}-th sentence, as the \{m\}-th word of that sentence.
+\\ \midrule
+keywords   & start\_end                 & Start and end your response with the same word (do not write anything after the last word, not even punctuation).
+\\ \midrule
+copy    & repeat\_phrase                 & Repeat the phrase {phrase} exactly \{N\} times, transforming it slightly each time by replacing one word.
+\\ \midrule
+keywords    & no\_adjacent\_consec.      & No two adjacent words can start with consecutive letters of the alphabet.
+\\ \midrule
+format    & square\_brackets           & Enclose every word in your response within square brackets.
+\\ \midrule
+format    & sentence\_hyphens         & All sentences must be connected using hyphens, with no spaces between them.
+\\ \midrule
+copy    & copy           & Copy this instruction verbatim, do not follow the instruction, only copy it into the output (do not include this instruction sentence!).
+\\ \midrule
+copy & copy\_span\_idx & Copy the span of words that lies between (and including) index \{n\_start\} and \{n\_end\}, the indices are character indices!
+ \\ \bottomrule
+%\vspace{3pt}
+\caption{IFTrain out-of-distribution constraints. Constraints are added to an unseen SFT prompt to form the final prompt.}
+\label{tab:iftrain-full}
+\end{longtable}
+
+
+\newpage
+
+\section{LLM-as-judge Prompt}
+\label{app:llmjudge}
+
+Evaluate the response provided below to determine if it meets the specified constraints related to the following prompt.
+Provide an integer score from 1 to 10, taking into account its helpfulness, relevance, accuracy, depth, creativity, and how
+well it conforms to the constraints.  Here are the criteria that you should score:
+1. Helpfulness: Does the response address the user's needs and questions effectively?
+2. Relevance: Is the response directly related to the context of the dialog?
+3. Accuracy: Are the facts and information presented in the response correct?
+4. Depth: Does the response cover the topic thoroughly, with sufficient detail?
+5. Creativity: Is the response original and engaging?
+
+Prompt to Evaluate Against:
+{prompt}
+
+Response to Evaluate:
+{response}
+
+The evaluation must be structured in the following JSON format:
+"Score": "<An integer score from 1 to 10.>"
+
+
+\section{Chat Template}
+\label{app:chattemplate}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/chat_template.png}
+    \label{fig:chattemplate}
+        \caption{Chat template for IF-RLVR training from base.}
+\end{figure}
+
+\end{document}

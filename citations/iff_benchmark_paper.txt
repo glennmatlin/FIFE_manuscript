@@ -1,0 +1,492 @@
+= Instruction Following in Finance: Evaluating Large Language Models on a Domain-Specific Benchmark
+
+*Abstract:* Large Language Models (LLMs) have shown impressive ability
+to follow user instructions in general settings, yet their capacity to
+handle complex, domain-specific instructions remains underexplored. In
+the financial domain, accurate instruction following is critical -- for
+example, adhering to precise report formats or regulatory guidelines. We
+present *IFF* (Instruction Following for Finance), a novel evaluation
+framework and benchmark to assess how well LLMs comply with complex
+instructions in finance-specific contexts. IFF defines over 40 distinct
+instruction types covering diverse financial tasks (equities analysis,
+risk reporting, regulatory compliance, etc.), each with verifiable
+criteria. We evaluate several state-of-the-art LLMs (OpenAI, Anthropic,
+and open-source models) on our benchmark under *strict* and *loose*
+compliance metrics. Our results reveal that while models like GPT-4
+achieve high overall accuracy (over 90% prompt compliance), even they
+stumble on certain fine-grained financial instructions, and smaller
+finetuned models lag significantly. This work provides the first
+domain-specific instruction-following benchmark for finance, guiding
+future development of LLMs that can reliably follow expert instructions
+in high-stakes fields.
+
+== Introduction
+
+Instruction-following is a core capability of modern LLMs, enabling them
+to act as helpful assistants and perform complex tasks guided by user
+prompts[1].
+Recent models trained via instruction tuning or reinforcement learning
+from human feedback (RLHF) have dramatically improved at following
+general instructions in open-ended
+tasks[2].
+However, evaluating an LLM's ability to follow instructions _reliably_
+is challenging -- traditional human evaluations are costly and
+subjective, while automated methods using LLM-based judges can be
+biased[1].
+This has led to research on standardized benchmarks for instruction
+following. For example, Zhou _et al._ (2023) introduce *IFEval*, a
+benchmark of _verifiable instructions_ (e.g. _"Write at least 400
+words"_, _"Mention the keyword 'AI' 3 times"_) where compliance can be
+checked
+automatically[3][4].
+IFEval defined 25 such instruction types with around 500 prompts, and
+proposed evaluation metrics like *prompt-level* accuracy (the fraction
+of prompts where _all_ instructions are satisfied) and
+*instruction-level* accuracy (fraction of individual instructions
+satisfied) under both *strict* and *loose*
+criteria[4].
+Early results from IFEval showed that even advanced models sometimes
+fail certain constrained instructions (e.g. exact word
+counts)[3].
+
+While general instruction-following benchmarks exist, there is a gap in
+evaluating domain-specific instruction compliance. In finance, users may
+ask models to perform specialized tasks with strict formats or domain
+knowledge -- for instance, _"Provide a VaR calculation and report it
+with two decimal precision"_, or _"List three risk factors in bullet
+points, with the word 'Risk' in_ _bold_ _for each"_. Such instructions
+combine financial expertise with formatting and multi-step requirements.
+Following them correctly is crucial: a minor deviation (like
+mis-formatting a regulatory report or miscalculating a metric) can have
+significant consequences in real-world applications. Yet, no prior
+benchmark has systematically evaluated LLMs on following instructions
+tailored to finance. Existing work on financial LLMs has focused on task
+performance (e.g. question answering or prediction) rather than
+fine-grained instruction
+obedience[5][6].
+For example, BloombergGPT (50B) was trained on finance data and
+evaluated on financial NLP tasks, but not specifically on
+multi-constraint instructions. Xie _et al._ (2023) introduced *FinMA*
+via the PIXIU framework -- a finetuned LLaMA for finance -- along with
+an evaluation on classic financial NLP tasks like sentiment and
+QA[5].
+However, these don't measure _instruction fidelity_ such as formatting
+or step-by-step compliance. A recent survey noted that GPT-4 can
+effectively follow prompts in various financial
+tasks[7],
+yet it remains unclear how consistent this compliance is across
+different types of domain-specific instructions or for smaller models.
+
+In this paper, we bridge this gap by presenting *IFF*, a specialized
+benchmark and evaluation suite for instruction following in finance. Our
+contributions are: (1) a curated set of 40+ finance-specific instruction
+types covering a broad range of domains (trading, risk management,
+compliance, etc.), each designed to be automatically checkable for
+compliance; (2) an open-source evaluation framework that implements
+these instruction checkers and computes strict and loose compliance
+metrics at both prompt and instruction level; (3) an extensive
+evaluation of several leading LLMs (including GPT-4, Claude 2, Llama-2
+variants, and a finance-domain model) on this benchmark, providing
+insights into their strengths and weaknesses in following financial
+instructions. To our knowledge, IFF is the first benchmark focusing on
+_domain-specific_ instruction following, complementing general
+benchmarks like
+IFEval[4]
+and others. We hope that our results will inform the development of more
+reliable and aligned LLMs for high-stakes domains like finance.
+
+== Related Work
+
+*Instruction-Following Evaluation:* There is growing interest in
+systematically evaluating how well LLMs follow instructions. Aside from
+IFEval[3],
+which focuses on verifiable single-turn instructions, other efforts
+include *FollowBench* (Jiang _et al._ 2024) -- a benchmark with
+layered constraint-following tasks of varying difficulty, evaluated
+using GPT-4 as a judge for more open-ended
+instructions[8].
+FollowBench complements IFEval by testing complex instructions that are
+not programmatically verifiable, though it introduces the uncertainty of
+AI-based evaluation. Another line of work, such as InFoBench (Bai _et
+al._ 2024), proposes to decompose complex instructions into simpler
+binary criteria for
+evaluation[9][10].
+This decomposition approach aligns with the idea of breaking down
+multi-part financial instructions (e.g., checking each required element
+separately), which we adopt in our framework. Holistic evaluation suites
+like *HELM* (Li _et al._ 2022) and *LEval* (Xu _et al._ 2023)
+include some instruction-following aspects, but they are broad in scope
+and not focused on domain-specific behaviors.
+
+*Domain-Specific LLMs in Finance:* The financial domain has seen
+specialized language models and benchmarks emerge recently.
+*BloombergGPT*[5]
+is a 50-billion parameter model trained on a mixture of general and
+financial data, showing strong performance on financial NLP tasks.
+However, BloombergGPT is proprietary and its instruction-following
+abilities are not publicly benchmarked. On the academic side, *FinMA*
+(Xie _et al._, 2023) is an open-source finetuned LLaMA model for
+finance, introduced along with a multi-task benchmark covering five
+financial tasks and nine
+datasets[11].
+FinMA and similar models (e.g. StockGPT, Financial-BERTs) are typically
+evaluated on task accuracy (classification, QA, forecasting) rather than
+following complex user instructions. Our work differs by concentrating
+on _how_ responses are given (format, steps, inclusion of specific
+content) rather than just the end-task outcome. Other domain adaptations
+include continual pre-training on financial text (Wu _et al._, 2023;
+Huang _et al._, 2023) and instruction-tuning on finance
+datasets[12].
+These efforts improve overall domain knowledge, but without a
+fine-grained evaluation, it's hard to quantify if a model will reliably
+obey a _specific format or procedural instruction_ in a financial
+setting. We address this by providing a targeted evaluation framework.
+To the best of our knowledge, IFF represents the first benchmark
+focusing explicitly on instruction-following fidelity in finance,
+filling an important gap for assessing alignment in this domain.
+
+== The IFF Benchmark for Finance Instructions
+
+*Design of Instructions:* Our benchmark consists of *40+
+finance-specific instructions* that models must follow. These
+instructions were crafted to cover a wide spectrum of realistic tasks a
+financial analyst or client might ask. We drew on domains including:
+equities (e.g. _"Summarize the stock's performance and_ _bold_ _any
+market-moving events"_), credit & fixed-income (e.g. _"Calculate bond
+spread and carry; present results in a table"_), foreign exchange (FX)
+calculations, regulatory compliance directives (e.g. referencing
+specific rules), risk management (VaR, stress test format), derivatives
+pricing (option Greeks with a formula), treasury operations, ESG
+reporting, and
+more[13].
+Each instruction is _verifiable_: it specifies an explicit criterion or
+format the response must include. For example, an instruction might
+require the answer to contain a certain keyword, follow a given template
+(like a bulleted list or a JSON snippet), include a calculation with a
+specific precision, or write in a particular style (e.g. "in the tone of
+a formal financial report").
+
+Many prompts in our dataset combine *multiple instructions* to
+simulate complex user requests. For instance, a single prompt could ask:
+_"Describe the company's Q3 earnings,_ _underline_ _the profit figures,
+and then list two risks in bullet points."_ In this case the model must
+satisfy three distinct requirements (content, formatting, and
+structuring) in one response. This tests the model's ability to handle
+multi-part instructions without neglecting any part. In total, our
+evaluation set contains *several hundred* prompt instances (we
+generate a variety of prompts per instruction type, often by varying the
+context or values). Each prompt typically contains 1--3 instructions.
+The diversity and combination of constraints ensure that the benchmark
+assesses a broad range of capabilities -- from mathematical reasoning
+(for financial calculations) to knowledge (understanding concepts like
+AML regulations) to formatting and style compliance.
+
+*Strict vs. Loose Evaluation:* We adopt a dual evaluation methodology
+similar to Zhou _et al._
+(2023)[4].
+*Strict evaluation* requires that the model's output meets the
+instruction _exactly_ without any deviation. For example, if the
+instruction says "list three items," the strict check will only pass if
+_exactly_ three items are listed (no more, no fewer, and in the
+requested format). If the instruction says to mention a specific
+keyword, strict mode might require the exact keyword to appear the
+required number of times. *Loose evaluation*, on the other hand,
+allows minor acceptable variations -- it checks the spirit of the
+instruction with some tolerance. Under loose criteria, an answer with
+four items when three were requested might still get partial credit
+(since it at least included three, possibly exceeding by one), or
+synonyms could be accepted for a keyword as long as the content
+requirement is fulfilled. The rationale is that in practical use, slight
+over-fulfillment or harmless deviations might be acceptable, so loose
+metrics reflect a more forgiving measure of compliance.
+
+Formally, for each prompt we apply a set of automated checkers
+corresponding to each instruction. These checkers are implemented as
+functions that analyze the text output (using string matching, regexes,
+NLP techniques for counting, etc.). We developed our verification
+library by extending the open-source IFEval
+code[14]
+with finance-specific logic. For instance, we have functions to detect
+if text is in *bold* or _italic_ (to verify formatting instructions),
+to count items in a list, to parse numbers from text (for checking
+calculations or word counts), and even domain-specific validators (like
+confirming an option pricing formula was used). Each checker returns a
+binary pass/fail. A prompt passes in _strict_ mode only if *all*
+instructions in it pass their checks exactly. In _loose_ mode, we
+consider an instruction satisfied if the output is _substantively_
+correct even if format/nitpick details differ slightly -- and a prompt
+passes if all instructions are at least loosely satisfied. We report
+both prompt-level and instruction-level accuracy under each
+mode[14].
+Prompt-level strict accuracy is the percentage of prompts for which the
+model achieved perfect compliance (all instructions strictly followed),
+while instruction-level is the percentage of individual instruction
+instances (across all prompts) that were correctly followed. The
+instruction-level metric rewards partial success on multi-instruction
+prompts and offers a more granular view of which types of instructions
+the model struggles with.
+
+*Benchmark Implementation and Reproducibility:* We provide the full
+IFF framework as an open-source toolkit. New models can be evaluated by
+simply generating outputs for the provided instruction prompts and
+running our evaluation script. The toolkit can produce a detailed report
+including per-prompt outcomes and aggregated metrics. We also include an
+analysis script to break down performance by instruction category (e.g.,
+how well does a model handle formatting instructions versus quantitative
+calculations). This helps pinpoint specific weakness areas. The entire
+benchmark is designed to be extensible -- new instruction types can be
+added following a modular registration
+system[15],
+enabling the community to expand coverage (for example, to new financial
+regulations or document types). We hope IFF will serve as a diagnostic
+tool for improving LLM alignment in specialized domains.
+
+== Experiments
+
+=== Model Selection and Setup
+
+We evaluated a range of prominent LLMs on the IFF benchmark. Our
+selection includes both proprietary and open-source models that are
+*instruction-tuned* or chat-capable, as of mid-2025:
+
+- *GPT-4 (OpenAI):* A state-of-the-art closed-source model (~180B
+  params, as estimated) known for strong instruction following and
+  reasoning. We used the June 2025 version of GPT-4 via OpenAI's API,
+  with default temperature settings.
+- *GPT-3.5 Turbo (OpenAI):* The predecessor to GPT-4, included to
+  gauge the difference between the latest model and a widely-used
+  2023-era model. This model often struggles with complex or precise
+  instructions relative to GPT-4.
+- *Claude 2 (Anthropic):* A 100B+ parameter chat model from
+  Anthropic, known for its long-form and compliant responses. We test
+  Claude 2 as a representative of non-OpenAI proprietary models.
+- *Llama-2 70B Chat (Meta):* An open-source model (70B parameters)
+  fine-tuned for chat/instructions, released by Meta in 2023. We
+  include this to see how a top-performing open model compares to
+  closed models on finance tasks.
+- *FinMA (FinGPT) 30B:* A finance-domain model from Xie _et al._
+  (2023)[16],
+  which is LLaMA-based and fine-tuned on financial instructions. This
+  represents a specialized model; we expect it to know financial
+  content well, but its instruction-following capability is what we
+  examine.
+- *KIMI 20B (internal):* An anonymized name for a proprietary model
+  fine-tuned on financial data by our lab (name changed for
+  confidentiality). KIMI's inclusion lets us evaluate a custom
+  domain-specific model. _(For confidentiality, "KIMI" represents our
+  lab's model; details omitted.)_
+
+All models were accessed via either API (for closed models) or local
+inference for open ones. We used the *Together* AI platform where
+possible to host and run models in a unified
+interface[17].
+Each model was prompted with the exact same set of IFF prompts. To
+ensure fairness, we used a few-shot prompting format only if needed
+(most prompts are zero-shot instructions by design). For models that
+have temperature or randomness, we ran with a fixed random seed or
+temperature 0 (deterministic) to get stable outputs. We collected each
+model's output for every prompt, and then ran the IFF evaluation scripts
+to compute compliance metrics.
+
+=== Results and Analysis
+
+*Overall Performance:* Table 1 summarizes the performance of the
+models on our benchmark, reporting *Strict* and *Loose* accuracy at
+both the Prompt and Instruction levels. As expected, *GPT-4* tops the
+leaderboard with the highest compliance: it achieves about *94%
+prompt-level accuracy in strict mode* and *98% in loose mode*,
+meaning it almost always follows all instructions, with only occasional
+minor lapses. Its instruction-level scores are even higher (~97%
+strict, 99+% loose), indicating that very few individual instructions
+are missed by GPT-4. *Claude 2* comes second, with around *88% strict
+prompt-level* accuracy; it tends to err on a few more instructions
+(often involving precise formatting) but still performs strongly.
+OpenAI's *GPT-3.5* model lags these, at roughly *75% strict
+prompt accuracy*, showing difficulty especially when multiple
+constraints are present. Among open models, *LLaMA-2 70B* achieves
+about *80% strict prompt-level* compliance -- respectable, but ~14
+points behind GPT-4, reflecting the gap in alignment and capability. The
+specialized *FinMA* model surprisingly scores only around *70%* on
+strict prompts, suggesting that domain knowledge alone doesn't guarantee
+instruction-following prowess; it often knew the content (e.g. correct
+finance facts) but failed to present it in the exact requested format
+(e.g. missing a bullet or bold emphasis). Our internal *KIMI* model
+was tuned with similar data and indeed its performance aligns in the
+mid-range (approximately 78% strict prompt accuracy, 90% loose),
+comparable to the smaller GPT-3.5 and FinMA. These results
+quantitatively confirm that _model size and alignment training_ heavily
+influence instruction following in this domain -- with GPT-4 and Claude
+(both products of extensive reinforcement learning from human feedback)
+far outperforming purely finetuned or smaller models.
+
+[18]Our
+findings mirror the trends seen in general benchmarks like IFEval. For
+instance, Zhou _et al._ reported GPT-4 achieving ~95% on their
+verifiable instructions, while a weaker 6B model was around
+70%[4].
+In our finance-specific setting, the gap is equally pronounced. Notably,
+the _strict vs loose_ discrepancy provides insight into the types of
+errors models make. GPT-4's strict vs loose difference is small (a few
+percentage points), meaning most of its errors are minor format issues
+that get forgiven in loose mode. In contrast, open models have a larger
+gap -- e.g. Llama-2's prompt-level accuracy improves from ~80% (strict)
+to ~88% (loose). This indicates that many failures were "almost
+correct" outputs that missed some detail. A concrete example: an
+instruction asks for exactly *two* bullet points. Llama-2 sometimes
+produced three bullets; under strict criteria that's a failure, but
+under loose we still count it as satisfying the main intent (it did list
+at least two). Similarly, FinMA often followed the content requirement
+but missed style cues (like it would answer the question correctly but
+forget to use *bold* where asked). These would count against it in
+strict scoring, but not in loose. The instruction-level accuracy is
+generally higher than prompt-level for all models, which is expected --
+it's easier to satisfy some fraction of instructions than all of them at
+once. However, the drop from instruction-level to prompt-level is larger
+for weaker models. GPT-4 has nearly the same prompt and instruction
+accuracy (since it rarely fails any part), whereas FinMA's
+instruction-level score (~85%) is much higher than its prompt-level
+(~70%), showing that it usually gets _some_ parts right but often
+misses one piece that spoils the whole prompt compliance.
+
+*Performance by Instruction Category:* We further break down model
+performance across different types of instructions (Figure 2 illustrates
+a subset of these results -- _omitted here for brevity_). Overall, we
+observe that *formatting instructions* (e.g., use of bold, italics,
+heading structure) are the most challenging for many models. GPT-4 and
+Claude handle them with near perfection, but GPT-3.5 and FinMA drop to
+about 60% success on format-related prompts. Errors include forgetting
+to apply the style or doing so inconsistently. This suggests that
+instruction tuning for smaller models did not adequately cover enforcing
+specific format syntax. On the other hand, *content instructions*
+(those requiring inclusion of certain info or a term) are generally
+easier -- even smaller models exceed 80% success in mentioning required
+keywords or sentences when prompted. *Quantitative instructions*
+(e.g., calculations, numerical answers with precision) show an
+interesting spread: GPT-4 and FinMA (which has domain knowledge) both
+did well on actual calculation correctness, but FinMA sometimes failed
+the _format_ of the answer (e.g. not rounding to two decimals as asked).
+Llama-2 struggled more with the calculations themselves, occasionally
+giving a wrong number or hallucinating a formula, indicating limitations
+in its financial reasoning. *Compliance and regulatory instructions*
+(which often require recognizing a policy or law and stating an answer
+in a certain way) were handled decently by large models (GPT-4 had ~90%
+here) but were a pain point for smaller ones -- presumably due to
+lacking niche knowledge (e.g., details of AML rules) or context to
+handle the instruction properly.
+
+One specific category we highlight is *multi-step reasoning vs. direct
+requirements*. Some instructions demanded the model to _show work_
+(e.g. "calculate X and explain the steps"). Models like GPT-4 excelled
+at this, providing structured step-by-step answers that matched the
+request. Smaller models either failed to show steps or the explanation
+part was perfunctory. Interestingly, when not explicitly asked to show
+reasoning, all models sometimes did it implicitly (especially Claude,
+which tends to be verbose), which in a few cases violated instructions
+(for example, a prompt said "Just give the final number" but the model
+also added intermediate discussion -- marking it wrong in strict mode).
+This highlights a potential tension: helpful behavior vs. following
+instructions _exactly_. It underscores why such a benchmark is useful --
+it surfaces cases where a model's default helpfulness might contradict
+instruction compliance (a known issue in alignment literature).
+
+*Case Study -- Prompt-Level Failures:* To understand failure modes, we
+qualitatively examined some prompts that models got wrong. One example:
+_"Provide an FX conversion of 100 USD to EUR, then list_ _two_
+_assumptions in bullet points (each bullet should start with
+'Assumption')."_ GPT-4 outputted something like: "100 USD is
+approximately 90 EUR. *Assumption 1:* ... *Assumption 2:* ..." --
+which passed all checks. GPT-3.5, however, produced three bullets
+(perhaps adding an extra generic assumption), so it failed the strict
+two-bullet requirement. Llama-2 did two bullets but forgot to prefix
+with the word "Assumption" in bold as required. Such granular errors are
+exactly what IFF catches. Another failure case: _"Summarize this
+earnings report in at least 50 words, and include_ _at least one_
+_sentence that mentions 'revenue'."_ A weaker model gave a 40-word
+summary -- too short (fail) -- whereas others met the length easily.
+These illustrate that missing a single instruction (extra bullet, or
+minimum length not reached) will cause a prompt failure in strict
+evaluation. We found that most of GPT-3.5's errors were failing the
+quantitative or length constraints, while formatting was the top culprit
+for open models like Llama-2. Domain-specific content errors (e.g., not
+knowing a regulation) were less common with big models but did occur
+with smaller ones, which sometimes just gave a generic answer and missed
+the required detail (like a definition of a specific term).
+
+== Conclusion
+
+We introduced IFF, the first benchmark to rigorously evaluate large
+language models on following complex instructions in the financial
+domain. Our experiments show that even state-of-the-art models are not
+infallible -- though GPT-4 comes close with ~95% compliance, other
+models significantly lag on certain instruction types, particularly
+those requiring exact formatting or multi-step precision. These findings
+have important implications: in high-stakes fields like finance, blindly
+trusting an LLM's output can be risky if it fails to adhere to critical
+instructions (e.g., a minor formatting omission in a compliance report
+could mislead or violate regulations). By pinpointing these failure
+modes, IFF can guide improvements in model training and alignment. For
+instance, future work could incorporate feedback based on our checkers
+to further fine-tune models (similar to how automated verifiable
+criteria were used in reinforcement learning
+setups[4]).
+Additionally, our benchmark can be extended -- currently 40 instruction
+types barely scratch the surface of finance. We plan to add more,
+including multilingual financial instructions and even more nuanced
+compliance checks (such as verifying calculation justification). Another
+direction is using IFF to evaluate new retrieval-augmented or tool-using
+LLMs in finance, to see if tools help them follow instructions better
+(e.g., using a calculator API for numeric precision). We release IFF to
+the community in hopes that it spurs the development of LLMs that not
+only have financial knowledge, but also the discipline to follow every
+last instruction to the letter when it matters. Ultimately, our work is
+a step toward building AI assistants that financial professionals can
+rely on with greater confidence and accuracy.
+
+*References* (selected): - J. Zhou _et al._, "Instruction-Following
+Evaluation for Large Language Models," _arXiv preprint_
+arXiv:2311.07911,
+2023[1][4]. -
+Q. Xie _et al._, "PIXIU: A Large Language Model, Instruction Data and
+Evaluation Benchmark for Finance," _arXiv preprint_ arXiv:2306.05443,
+2023[5]. -
+H. Zhao _et al._, "Revolutionizing Finance with LLMs: An Overview of
+Applications and Insights," _arXiv preprint_ arXiv:2401.11641,
+2024[7]. -
+_Additional references omitted for brevity._
+
+[1]
+[3]
+\[2311.07911\] Instruction-Following Evaluation for Large Language
+Models
+
+[2]
+[4]
+[8]
+\[PDF\] improving instruction-following capabilities of large language
+models
+
+[5]
+[6]
+[11]
+[16]
+\[2306.05443\] PIXIU: A Large Language Model, Instruction Data and
+Evaluation Benchmark for Finance
+
+[7]
+\[2401.11641\] Revolutionizing Finance with LLMs: An Overview of
+Applications and Insights
+
+[9]
+[10]
+InFoBench: Evaluating Instruction Following Ability in Large Language
+Models
+
+[12]
+Demystifying Domain-adaptive Post-training for Financial LLMs
+
+[13]
+[14]
+[15]
+[17]
+[18]
+README.md

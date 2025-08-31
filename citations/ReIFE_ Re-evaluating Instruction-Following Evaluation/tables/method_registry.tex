@@ -1,0 +1,27 @@
+\begin{table*}[ht!]
+    \centering
+    \footnotesize
+    \begin{tabular}{@{}lll@{}}
+    \toprule
+    \textbf{Full Name} & \textbf{Code Name} & \textbf{Related Work} \\
+    \midrule
+    Base Pairwise Evaluation & base & \citet{zeng2024evaluating} \\
+    Chain-of-Thought & cot & \citet{zeng2024evaluating,wei2022chain} \\
+    Metric Generation & metric & \citet{zeng2024evaluating} \\
+    Reference Generation & reference & \citet{zeng2024evaluating}  \\
+    Metric and Reference & metric+reference & \citet{zeng2024evaluating} \\
+    Swap and Synthesize & swap\&synthesize  & \citet{zeng2024evaluating} \\
+    Fine-grained Differences & fine-grained-diff & Inspired by \citet{liu-etal-2023-revisiting, liu-etal-2023-towards-interpretable, min-etal-2023-factscore} \\
+    Multi-Role Debate (Single Round) & multi-role-round1  & \citet{chan2024chateval} \\
+    Multi-Role Debate (Two Rounds) & multi-role-round2  & \citet{chan2024chateval} \\
+    Multi-Aspect Comparison (Two-Stage) & multi-aspect-two  & \citet{li2024decompose} \\
+    Multi-Aspect Comparison (Single-Stage) & multi-aspect-single  & \citet{li2024decompose} \\
+    GPT-4 Reference & gpt4-reference & Modified from \citet{zeng2024evaluating} \\
+    Pointwise Reasoning Enhanced Pairwise & prepair  & \citet{jeong2024prepair} \\
+    Self-Consistency over CoTs & cot\&consistency & \citet{wang2023selfconsistency} \\
+    Self-Consistency over Different Protocols & protocol-consistency & \citet{wang2023selfconsistency} \\
+    \bottomrule
+    \end{tabular}
+    \caption{Method registry for evaluation protocols in \S\ref{sec:all_protocols}}
+    \label{tab:appx_method_registry}
+\end{table*}

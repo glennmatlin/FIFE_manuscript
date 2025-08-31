@@ -1,0 +1,120 @@
+
+
+
+
+
+
+
+ 
+\begin{table*}[t!]
+  \centering
+  \footnotesize
+    \begin{tabular}{p{24.5em}c}
+    \toprule
+    \multicolumn{2}{l}{\textbf{\llmbarnatural}} \\
+    \midrule
+    \multicolumn{2}{l}{ 
+    \parbox{13cm}{Given the following input statement, provide the type of sentiment in the statement and the extent of sentiment in terms of sentiment scores. This restaurant has the best service I've ever seen. You can design the score scale by yourself.}
+    
+    } \\
+    \midrule
+    \multicolumn{1}{l}{\textbf{\red{Output 1} }} & \multicolumn{1}{l}{\textbf{\lime{Output 2} }} \\
+   
+    This statement has a sentiment score of 9 / 10
+
+& \multicolumn{1}{p{24.5em}}{Positive sentiment, sentiment score: 9.5 out of 10 } \\
+    \midrule
+    \multicolumn{2}{l}{\textbf{\adversarial}} \\
+    \midrule
+    \multicolumn{2}{l}{ Analyze the results of the following test scores. 90, 86, 75, 63} \\
+    \midrule
+    \multicolumn{1}{l}{\textbf{\red{Output 1}}} & \multicolumn{1}{l}{\textbf{\lime{Output 2} }} \\
+   
+        The average grade is 78.75.
+    & \multicolumn{1}{p{24.5em}}{The test scores show a decreasing trend, with the first score being the highest and the last score being the lowest. This could indicate that the test taker's knowledge and skills were increasingly weak as the test progressed.} \\
+    \midrule
+    
+    \multicolumn{2}{l}{\textbf{\mtbench}} \\
+    \midrule
+    \multicolumn{2}{l}{ 
+    \parbox{15cm}{Identify the countries, their capitals, and the languages spoken in the following sentences. Output in JSON format.
+    
+    a) Amidst the idyllic vistas, Copenhagen, Denmark's capital, captivates visitors with its thriving art scene and the enchanting Danish language spoken by its inhabitants.
+    
+    b) Within the enchanting realm of Eldoria, one discovers Avalore, a grandiose city that emanates an ethereal aura. Lumina, a melodious language, serves as the principal mode of communication within this mystical abode.
+    
+    c) Nestled amidst a harmonious blend of age-old customs and contemporary wonders, Buenos Aires, the capital of Argentina, stands as a bustling metropolis. It is a vibrant hub where the expressive Spanish language holds sway over the city's inhabitants.}
+    
+    
+    } \\
+    \midrule
+    \multicolumn{1}{l}{\textbf{\lime{Output 1} }} & \multicolumn{1}{l}{\textbf{\red{Output 2} }} \\
+\{``sentences'': [
+
+\{
+``text'': ``Amidst the idyllic vistas, Copenhagen, Denmark's capital, captivates visitors with its thriving art scene and the enchanting Danish language spoken by its inhabitants.'',
+
+``country'': ``Denmark'',
+
+``capital'': ``Copenhagen'',
+
+``language'': ``Danish''
+\},
+
+\{
+``text'': ''Within the enchanting realm of Eldoria, one discovers Avalore, a grandiose city that emanates an ethereal aura. Lumina, a melodious language, serves as the principal mode of communication within this mystical abode.'',
+
+``country'': ``Eldoria (fictional)'',
+
+``capital'': ``Avalore (fictional)'',
+
+``language'': ``Lumina (fictional)''
+\},
+
+\{
+``text'': ``Nestled amidst a harmonious blend of age-old customs and contemporary wonders, Buenos Aires, the capital of Argentina, stands as a bustling metropolis. It is a vibrant hub where the expressive Spanish language holds sway over the city's inhabitants.'',
+
+``country'': ``Argentina'',
+
+``capital'': ``Buenos Aires'',
+
+``language'': ``Spanish''
+\}
+
+]\}
+    & \multicolumn{1}{p{24.5em}}{
+
+    a) The capital of Denmark is Copenhagen. The language spoken in Denmark is Danish.
+    
+    b) The capital of Eldoria is Avalore. The language spoken in Eldoria is Lumina.
+    
+    c) The capital of Argentina is Buenos Aires. The language spoken in Argentina is Spanish.
+ 
+} \\
+\midrule
+    \multicolumn{2}{l}{\textbf{\instrusum}} \\
+    \midrule
+    \multicolumn{2}{l}{ % Use 1 column across, and left-align the text
+    \parbox{15cm}{ % Set a paragraph box of width 12cm
+    Here is an article:
+    
+    As pressure to tackle London's housing crisis grows, a number of controversial views are being offered on how the problem...
+    
+    Please summarize the above article based on the given requirement:
+    }
+    } \\
+    \midrule
+    \multicolumn{1}{l}{\textbf{\lime{Output 1} }} & \multicolumn{1}{l}{\textbf{\red{Output 2} }} \\
+   
+Research director at The Adam Smith Institute, Sam Bowman, suggests that building on London's green belt lands could provide bigger and cheaper homes for everyone. However, Ann Goddard of Elstree \& Borehamwood Greenbelt Society argues that green belt lands are important for recreation purposes and to maintain a separation between settlements. Bowman proposes a compromise by differentiating between areas of beauty and intensive farmland within the green belt.
+
+& \multicolumn{1}{p{24.5em}}{One solution to London's housing crisis is to build more properties on green belt lands. This would mean bigger and cheaper homes for everyone, but there is opposition to this idea as green belt land is seen as important for recreation and to make a demarcation between settlements. A compromise could be reached by differentiating between areas of beauty and intensive farmland.} \\
+    \bottomrule
+    \end{tabular}%
+  \caption{Selected examples from our datasets (\S\ref{sec:data_models}). The green label indicates the output is the preferred output.}
+  \label{tab:dataset_ex_2}
+  
+\end{table*}%
+
+
+

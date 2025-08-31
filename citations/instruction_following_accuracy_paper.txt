@@ -1,0 +1,324 @@
+= Instruction-Following Accuracy in Large Language Models
+
+== Importance of Instruction-Following in LLMs
+
+Instruction following is the ability of a language model to understand
+and *precisely execute a user's instructions*. It has emerged as a
+*core competency* for modern LLMs, alongside knowledge and
+reasoning[1].
+This capability is crucial for aligning model outputs with user
+expectations: a model may possess vast knowledge, but it must apply that
+knowledge according to the user's directives (formatting the answer,
+following constraints, etc.) to be truly useful. Indeed, recent surveys
+identify _instruction following_ as one of the pivotal evaluation
+dimensions in the LLM
+era[2].
+Strong instruction-following ensures the model *produces the requested
+content in the desired manner*, which is fundamental for helpfulness
+and user
+trust[3].
+Conversely, poor instruction adherence can lead to irrelevant or
+improperly formatted answers, undermining the model's utility even if
+its underlying knowledge is sound.
+
+In practice, the importance of this skill was highlighted by the success
+of instruction-tuned models like InstructGPT and ChatGPT. These systems
+are explicitly fine-tuned (often via human feedback) to better comply
+with user instructions, resulting in dramatically more helpful and
+aligned behavior compared to earlier base models. Research confirms that
+*instruction-tuning enables zero-shot generalization to new
+tasks*[4].
+For example, Wang _et al._ (2022) showed that using a bootstrapped
+_Self-Instruct_ dataset to fine-tune GPT-3 yielded a *33% absolute
+improvement* on a broad instruction benchmark (Super-Natural
+Instructions)[5].
+The fine-tuned model's performance approached that of InstructGPT,
+despite using almost no human-written
+data[5].
+This demonstrates how critical and effective instruction-following
+training is: models learn to interpret arbitrary user requests and
+comply with them, even for tasks they haven't seen before. Overall,
+instruction-following accuracy underpins an LLM's *usefulness, safety,
+and alignment* in real-world deployments.
+
+== Evaluating Instruction-Following Accuracy
+
+*Measuring how well models follow instructions is challenging*,
+especially for open-ended tasks. Unlike a simple QA with a single
+correct answer, instructions often yield a variety of valid responses,
+making automated evaluation
+non-trivial[6][7].
+Human evaluation is a gold standard -- judges can decide if an output
+sufficiently followed the prompt -- but it is slow and expensive. Recent
+efforts therefore explore *capability-based benchmarks* focused
+specifically on instruction adherence and use innovative scoring
+methods. For instance, one trend is to design tasks with *verifiable
+output constraints*. A user might say _"Answer with only 'Yes' or
+'No'"_ or _"Include the word 'abracadabra' exactly 3 times"_. These
+constraints allow automatic checks of compliance. A new benchmark called
+*IFBench* introduces 58 diverse, challenging tasks of this form to
+test "*precise instruction
+following*"[8][9].
+Early findings from IFBench show that even state-of-the-art models
+(GPT-4, etc.) struggle with *unseen* constraints -- many models only
+learned to handle a small set of familiar formats and failed to
+generalize to new
+instructions[10].
+This highlights a gap: models often *overfit to limited instruction
+styles* in training and break the rules when faced with novel
+constraints[11].
+
+Another strategy for evaluation is using *LLMs as judges*. As
+identified in a 2025 survey, the field is shifting "from manual to
+automated evaluation" by leveraging powerful models (like GPT-4) to
+score the outputs of other
+models[12].
+For example, one can prompt GPT-4 with the original instruction and the
+model's response: _"Did the response follow the instruction
+correctly?"_. This method, sometimes called _GPT scoring_ or
+_LLM-as-a-judge_, correlates reasonably with human judgments in
+preliminary
+studies[13][14].
+It has been used to rank or rate model outputs at scale. However, it is
+not flawless -- the judge model may have its own biases -- so
+researchers often combine it with targeted tests like IFBench or with
+some human spot-checking.
+
+*Open-ended tasks* (e.g. writing an essay, summarizing text, giving
+advice) add complexity because compliance is a spectrum. Here,
+evaluation often breaks into components: *(1)* _Did the model fulfill
+the user's explicit request?_ (e.g. covered the asked content, followed
+format instructions) and *(2)* _Is the output correct/appropriate?_
+The first part is instruction-following accuracy proper, and can be
+assessed by criteria like presence of requested elements or formatting.
+The second part overlaps with other axes (factual accuracy, reasoning,
+etc.). For instruction-following specifically, researchers try to
+isolate metrics that capture how well the model _obeyed the input
+instructions_ irrespective of absolute correctness. For example,
+*GuideBench* (2025) evaluates models on following domain-specific
+guidelines and rules, with measures of _adherence_ to each
+rule[15][16].
+Similarly, *Multi-IF* benchmark (2024) looks at multi-turn
+conversational instructions and tracks the fraction of turns where the
+model executed the user's last command
+correctly[17][18].
+These benchmarks reveal that evaluation is *multi-faceted*: it may
+require checking format constraints, specific keywords, or sequencing of
+actions in a conversation. In summary, achieving a single "instruction
+following accuracy" number often involves a combination of *automated
+checks, LLM-based evaluations, and carefully chosen test prompts* that
+make success or failure unambiguous.
+
+== Comparative Performance Across Models
+
+A wide range of models -- from open-source LLMs to proprietary systems
+-- have been evaluated for instruction-following. *Generally, the
+latest proprietary models (OpenAI's GPT-4, Anthropic's Claude 2, etc.)
+still set the high bar*, thanks to extensive fine-tuning with human
+feedback. These models tend to respond accurately to even complex or
+quirky instructions, maintain format constraints, and clarify
+ambiguities with questions when needed. In contrast, many base models or
+earlier open models (without instruction tuning) often ignore or
+misinterpret instructions (e.g. continuing a story in first-person when
+asked for third-person, or giving a detailed answer when asked for a
+brief one). The good news is that the gap has been *rapidly closing*
+as the community develops instruction-tuned open models. For example,
+the *WizardLM* project fine-tuned an open 7B LLaMA model on a large
+set of progressively evolved instructions. The resulting model's outputs
+were preferred by human evaluators over ChatGPT in many cases, and
+*GPT-4-based evaluation found WizardLM reached 90%+ of ChatGPT's
+capacity on most skills
+tested*[19].
+This is an impressive leap for an open 7B model, indicating that with
+the right training data, smaller models can learn strong
+instruction-following behaviors. Another open model, Vicuna-13B, trained
+on user-shared ChatGPT conversations, likewise demonstrated surprisingly
+high instruction compliance (often on par with older versions of
+ChatGPT). These successes suggest that *instruction-following is a
+learnable skill* that does not strictly require 100B+ parameters --
+though larger models still hold an advantage on very complex
+instructions.
+
+Despite these improvements, *state-of-the-art models are not perfect*
+at instruction following, especially on edge cases. Even GPT-4 can fail
+to follow certain tricky instructions. One study introduced a
+"verbalizer manipulation" task -- essentially instructing the model to
+map answers to unusual words (e.g., say `'apple'` to mean _yes_ and
+`'banana'` to mean _no_). On the hardest versions of this task, _"even
+the strongest GPT-4 model struggles to perform better than random
+guessing"_, underscoring the need for further improvements in
+instruction
+following[20].
+We also see weaknesses when instructions are combined with other
+challenges. A 2024 study called *KCIF (Knowledge-Conditioned
+Instruction Following)* found that if a model is asked a knowledge
+question and then given a *simple follow-up instruction to modify the
+answer* (for example, _"now give the answer in alphabetical order"_ or
+_"increase each number by one"_), performance plummets. Large frontier
+models suffered a *40--50% drop in accuracy* on such composed tasks,
+and smaller models dropped by 80% or
+more[21][22].
+Clearly, many models cannot *simultaneously reason out a correct answer
+and apply an arbitrary instruction on that answer*. They tend to either
+ignore the instruction or mess up the original answer -- a failure to
+_generalize_ their instruction-following beyond simple formats.
+
+*Multi-turn conversations* pose another hurdle. Instruction-following
+is often evaluated in one-shot prompts, but in a chat, a model must
+remember and apply instructions over multiple turns. As the conversation
+grows, maintaining high instruction accuracy becomes harder. The
+Multi-IF benchmark revealed that models' accuracy in following
+instructions *drops with each additional turn* in a
+dialogue[17][18].
+For instance, one leading model's accuracy fell from ~88% on the first
+turn to ~71% by the third
+turn[23].
+Longer dialogues introduce more opportunities to forget or confuse
+instructions (especially in multilingual settings, as that study also
+showed). This indicates that even top models like Claude or ChatGPT
+might need help (e.g. system messages or memory mechanisms) to keep
+following user directives consistently in lengthy exchanges.
+
+In summary, *proprietary models currently achieve the highest
+instruction-following accuracy* overall, but top open models are not
+far behind on many
+benchmarks[19].
+All models have trouble with certain categories of instructions --
+particularly those involving complex constraints, _unusual or
+out-of-distribution formats_, or compounded instructions mixed with
+reasoning. These are active areas of research, and new techniques (like
+better reward models, verifier-guided tuning, or larger multi-modal
+training) are being explored to push the accuracy higher. For example,
+one 2025 approach used *reinforcement learning with verifiable reward
+signals (RLVR)* -- essentially training the model with an automatic
+checker for each constraint -- and reported *significant gains in
+following precise instructions* on
+IFBench[24][25].
+Such methods, along with continual dataset expansion, are helping models
+inch closer to flawless instruction obedience.
+
+== Zero-Shot Evaluation and Multi-Sample Inference Strategy
+
+Our benchmark evaluation of instruction following is conducted in a
+*zero-shot setting*: models are given new instructions without any
+task-specific examples or fine-tuning on those tasks. Zero-shot tests
+are a stringent measure of generalization -- they reveal whether a
+model's training on broad instructions enables it to handle novel
+queries right out of the box. Thanks to instruction-tuning, many models
+can do a lot zero-shot (from solving puzzles to writing code) that they
+couldn't do as base language models. We will leverage this by assessing
+every model -- from OpenAI's latest to open-source alternatives like
+LLaMA 2, Falcon, etc. -- on the same set of instructions without
+additional hints. This levels the playing field and focuses purely on
+their learned ability to interpret and follow prompts.
+
+One important feature of our evaluation is the use of *multiple
+inference attempts per instruction*. Because the model's generation is
+somewhat stochastic (especially for open-ended prompts), a single trial
+might not reflect its full capability. The first response could miss
+something crucial, while a second attempt (with a different sampling
+seed) might get it right. To capture this, we will prompt each model
+*multiple times (e.g. 5 independent runs)* for every instruction. This
+yields a set of candidate responses. We can then evaluate
+instruction-following accuracy in two complementary ways:
+
+- *Consistency*: How often does the model follow the instruction
+  _across all attempts_? If a model reliably complies 5/5 times,
+  that's a sign of strong, stable instruction-following. If it only
+  succeeds occasionally, that suggests it struggles or is fickle in
+  obeying the prompt.
+- *Best-case success (Pass@N)*: Did _any_ of the attempts succeed in
+  following the instruction correctly? This is akin to the _pass@N_
+  metric used in code generation, where, say, if any of 5 tries
+  produces a correct program, we count it as a success. In our
+  context, if at least one out of the multiple samples fully satisfies
+  the instruction, we mark the instruction as solvable by the model
+  (even if other attempts failed). This best-of-n view is useful to
+  estimate an upper bound of the model's capability -- assuming one
+  could pick or cherry-pick the best output. It tells us "can the
+  model do it at all if given enough chances?"
+
+Using multiple samples in this way can *significantly improve the
+observed success rates*. Prior research in reasoning tasks has shown
+that models might get an answer wrong in one shot but correct on a
+second try with a different chain-of-thought, and combining or selecting
+from multiple generations improves final accuracy (e.g.
+_self-consistency decoding_ strategies). In our case, if a model's
+outputs vary, an automated judge or a simple heuristic (like choosing
+the longest answer, or the one containing a keyword) might help choose a
+better answer from the batch. Even without a selection mechanism,
+reporting _pass@5_ (success in any of 5 tries) alongside _single-shot
+accuracy_ gives a more nuanced picture of performance. A wide gap
+between these metrics would indicate high variability -- the model
+*can* follow the instruction, but not reliably so. A narrow gap means
+the model is consistently doing the right thing each time, which is even
+more desirable.
+
+Finally, it's worth noting that *all tasks in our benchmark expect
+open-ended responses* -- there isn't a single fixed correct answer.
+This reflects real use cases (summaries, explanations, creative writing,
+etc.). Our evaluation will therefore use a combination of the approaches
+above: we will likely employ an LLM-based grader or heuristic checks to
+judge each output for compliance, and aggregate those judgments across
+multiple samples. By examining both the average-case and best-case
+performance, we can better understand each model's instruction-following
+accuracy. The ultimate goal is to identify which models not only get
+instructions right, but do so *consistently and confidently*, and
+where others falter (perhaps requiring further fine-tuning or prompting
+techniques to improve).
+
+== Sources
+
+- Cao _et al._, _Toward Generalizable Evaluation in the LLM Era: A
+  Survey Beyond Benchmarks_, arXiv 2504.18838
+  (2025)[1].
+- Zhou _et al._, _Generalizing Verifiable Instruction Following
+  (IFBench)_, arXiv 2507.02833
+  (2025)[8][9].
+- He _et al._, _KCIF: Knowledge-Conditioned Instruction Following_,
+  arXiv 2410.12972
+  (2024)[21][22].
+- Xu _et al._, _WizardLM: Empowering Large Language Models to Follow
+  Complex Instructions_, arXiv 2304.12244
+  (2023)[19].
+- Wang _et al._, _Self-Instruct: Aligning Language Models with
+  Self-Generated Instructions_, arXiv 2212.10560
+  (2022)[5].
+- Diao _et al._, _GuideBench: Benchmarking Domain-Oriented Guideline
+  Following for LLM Agents_, arXiv 2505.11368
+  (2025)[15][16].
+- Zheng _et al._, _Multi-IF: Multi-Turn and Multilingual Instructions
+  Following_, arXiv 2410.15553
+  (2024)[6][17].
+- Ren _et al._, _Verbalizer Manipulation (study in instruction
+  following)_, arXiv 2308.01240
+  (2023)[20].
+
+[1]
+[2]
+[3]
+[4]
+[5]
+[6]
+[7]
+[8]
+[9]
+[10]
+[11]
+[12]
+[15]
+[16]
+[17]
+[18]
+[19]
+[20]
+[21]
+[22]
+[23]
+[24]
+[25]
+FSIL-IF.rdf
+
+[13]
+[14]
+README.md

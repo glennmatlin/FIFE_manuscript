@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>Generalizing Verifiable Instruction Following</title>
+<!--Generated on Mon Aug  4 11:54:37 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/static/browse/0.3.4/css/ar5iv.0.8.2.min.css" rel="stylesheet" type="text/css"/>
+<link href="/static/browse/0.3.4/css/ar5iv-fonts.0.8.2.min.css" rel="stylesheet" type="text/css"/>
+<link href="/static/browse/0.3.4/css/latexml_styles.0.8.2.css" rel="stylesheet" type="text/css"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script>
+<script src="/static/browse/0.3.4/js/addons_new.js"></script>
+<script src="/static/browse/0.3.4/js/feedbackOverlay.js"></script>
+<base href="/html/2507.02833v2/"/></head>
+<body>
+<nav class="ltx_page_navbar">
+<nav class="ltx_TOC">
+<ol class="ltx_toclist">
+<li class="ltx_tocentry ltx_tocentry_section"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S1" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1 </span>Introduction</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_section">
+<a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S2" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2 </span><span class="ltx_text ltx_font_smallcaps">IFBench</span> &amp; <span class="ltx_text ltx_font_smallcaps">IFTrain</span>: Measuring and Training Precise IF</span></a>
+<ol class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S2.SS0.SSS0.Px1" title="In 2 IFBench &amp; IFTrain: Measuring and Training Precise IF ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_text ltx_font_smallcaps">IFBench</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S2.SS0.SSS0.Px2" title="In 2 IFBench &amp; IFTrain: Measuring and Training Precise IF ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_text ltx_font_smallcaps">IFTrain</span></span></a></li>
+</ol>
+</li>
+<li class="ltx_tocentry ltx_tocentry_section">
+<a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S3" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3 </span>IF-RLVR</span></a>
+<ol class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S3.SS0.SSS0.Px1" title="In 3 IF-RLVR ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title">Data:</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S3.SS0.SSS0.Px2" title="In 3 IF-RLVR ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title">Training</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S3.SS0.SSS0.Px3" title="In 3 IF-RLVR ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title">Experimental Setup</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S3.SS1" title="In 3 IF-RLVR ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.1 </span>IF-RLVR Results</span></a></li>
+</ol>
+</li>
+<li class="ltx_tocentry ltx_tocentry_section">
+<a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4 </span>IF-RLVR Experiments</span></a>
+<ol class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS1" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.1 </span>Training on Multiple Constraints</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS2" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.2 </span>Seen vs. Unseen Constraints</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS3" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.3 </span>Changing the range of constraint variables</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS4" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.4 </span>Removing Categories</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS5" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.5 </span>Teaching the basic units of precise IF</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS6" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.6 </span>DPO</span></a>
+<ol class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS6.SSS0.Px1" title="In 4.6 DPO ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title">Preference Data</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS6.SSS0.Px2" title="In 4.6 DPO ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title">Experiments and Results</span></a></li>
+</ol>
+</li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS7" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.7 </span>RLVR for IF from Base</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.SS8" title="In 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4.8 </span>RLVR for Multi-turn IF</span></a></li>
+</ol>
+</li>
+<li class="ltx_tocentry ltx_tocentry_section">
+<a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S5" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">5 </span>Reward Hacking and the Instruction Hierarchy</span></a>
+<ol class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S5.SS0.SSS0.Px1" title="In 5 Reward Hacking and the Instruction Hierarchy ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title">Trade-offs between response quality and instruction following</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_paragraph"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S5.SS0.SSS0.Px2" title="In 5 Reward Hacking and the Instruction Hierarchy ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title">Mitigating Reward Hacking</span></a></li>
+</ol>
+</li>
+<li class="ltx_tocentry ltx_tocentry_section"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S6" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">6 </span>Related Work</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_section"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S7" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">7 </span>Conclusion and Limitations</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A1" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">A </span>Out-of-Distribution Test Constraints</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A2" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">B </span>Out-of-Distribution Train Constraints</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A3" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">C </span>LLM-as-judge Prompt</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A4" title="In Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">D </span>Chat Template</span></a></li>
+</ol></nav>
+</nav>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Generalizing Verifiable Instruction Following</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+<span class="ltx_text ltx_font_bold">Valentina Pyatkin<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup><sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">β</span></sup>   Saumya Malik<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup>   Victoria Graf<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup><sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">β</span></sup><span class="ltx_note ltx_role_footnotemark" id="footnotex1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_note_type">footnotemark: </span><span class="ltx_tag ltx_tag_note"><span class="ltx_text ltx_font_medium">1</span></span></span></span></span> 
+
+<br class="ltx_break"/>Hamish Ivison<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup><sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">β</span></sup> Shengyi Huang<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup> Pradeep Dasigi<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup> Nathan Lambert<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup> Hannaneh Hajishirzi<sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup><sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">β</span></sup>
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_medium ltx_font_italic">α</span></sup></span>Allen Institute for Artificial Intelligence 
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">β</span></sup>University of Washington
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter">contact: valentinap@allenai.org</span>
+</span><span class="ltx_author_notes"><span class="ltx_text ltx_font_bold">Joint second authors.</span></span></span>
+</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+<p class="ltx_p">A crucial factor for successful human and AI interaction is the ability of language models or chatbots to follow human instructions precisely.
+A common feature of instructions are output constraints like “only answer with yes or no" or “mention the word ‘abrakadabra’ at least 3 times" that the user adds to craft a more useful answer.
+Even today’s strongest models struggle with fulfilling such constraints.
+We find that most models strongly overfit on a small set of verifiable constraints from the benchmarks that test these abilities, a skill called precise instruction following, and are not able to generalize well to unseen output constraints.
+We introduce a new benchmark, <span class="ltx_text ltx_font_smallcaps">IFBench</span>, to evaluate precise instruction following generalization
+on 58 new, diverse, and challenging verifiable out-of-domain constraints.
+In addition, we perform an extensive analysis of how and on what data models can be trained to improve precise instruction following generalization.
+Specifically, we carefully design constraint verification modules and show that reinforcement learning with verifiable rewards
+(RLVR) significantly improves instruction following.
+In addition to <span class="ltx_text ltx_font_smallcaps">IFBench</span>, we release 29 additional new hand-annotated training constraints and verification functions, RLVR training prompts, and code.</p>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">Following instructions <span class="ltx_text ltx_font_italic">exactly</span> is a crucial skill for a language model to have, in order for it to generate a useful output that corresponds to the entirety of a user’s specifications and not just the general topic.
+In particular, instructions often include output constraints that specify length, format and content.
+A model’s ability to follow constraints in instructions is evaluated on precise instruction following benchmarks with verifiable constraints, with IFEval <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib32" title="">zhou2023instruction </a></cite> being the most popular benchmark (and it has quickly saturated, with many leading models scoring 80+% at as small as 2B parameters <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib4" title="">dubey2024llama </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib22" title="">team2025gemma </a></cite>.<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Technically not every constraint passed by users is <span class="ltx_text ltx_font_italic">simple</span> to verify with software, but these evaluations focus on implementable variants for ease of iteration and improvement.</span></span></span>
+This evaluation benchmark consists of a set of 25 constraint templates, which can all be automatically verified using short python functions. Most models strongly overfit to this small set of constraints.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">In order to investigate a model’s precise instruction following (IF) generalization abilities, we introduce <span class="ltx_text ltx_font_smallcaps">IFBench</span> with new, diverse, and challenging verifiable instruction following constraints where leading models such as GPT-4.1 or Claude 3.7 Sonnet score below 50%.
+The constraints in <span class="ltx_text ltx_font_smallcaps">IFBench</span> cover important skills like counting, formatting, sentence/word/character manipulations, and copying.
+This shows that most state-of-the-art models overfit on IFEval and are not able to generalize well to the unseen constraints we introduce. Figure <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S1.F1" title="Figure 1 ‣ 1 Introduction ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">1</span></a> shows the discrepancy in accuracy between IFEval and <span class="ltx_text ltx_font_smallcaps">IFBench</span> for state-of-the-art models.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">To facilitate experimenting with the generalization of precise IF, we create 29 training constraints by manually curating useful and challenging constraints and verification functions, some of which representative of real-world chatbot usage, and others inspired by the core capabilities we desire our models to have.
+We find that increasing the number and variety of training constraints improves IF generalization.
+In addition to creating distinct training constraints, we explore new methods for inducing strong IF performance by appending combinations of constraints and using wider constraint variable ranges for the training prompts in the RL stage, rewarding models for following more complex instructions.
+For example, an instruction could be combined with a length constraint, a formatting constraint and a constraint asking to include specific words.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">Given that many precise instruction following constraints are verifiable, we show how to use novel reinforcement learning with verifiable reward (RLVR) techniques to train models to be better at precise IF while maintaining performance on existing skills <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib7" title="">guo2025deepseek </a></cite>.
+To gain further insights into when generalization happens for precise instruction following, we analyze the effect of training data and post-training algorithms on IF performance, both in and out-of-domain.
+Our results indicate that RLVR with Group Region Policy Optimization (GRPO) <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib18" title="">shao2024deepseekmath </a></cite> and data augmentation leads to significant performance increases on old IF benchmarks and <span class="ltx_text ltx_font_smallcaps">IFBench</span>.</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">Beyond improving precise IF, we also see that RLVR trained models exhibit different instruction following behaviors compared to their non reinforcement trained counterparts.
+Take for example an instruction like “write a recipe for tiramisu" with an output constraint like <span class="ltx_text ltx_font_italic">only use unique words in your output, do not mention any word more than once</span>.
+There is a tension between following the task of writing a recipe and adhering to the constraint.
+Many models would prioritize the task, while IF-RLVR trained models tend to prioritize the constraint – future work will explore how to blend these behaviors with refined training recipes.
+Qwen2.5-72B-Instruct, for example, tends to prioritize the constraint over the instruction.
+In line with the above example of constraint-focused generation, we find that RLVR can lead to over-optimization and we suggest adding a preference reward model signal to balance the signals.
+Our contributions are as follows:</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<ol class="ltx_enumerate" id="S1.I1">
+<li class="ltx_item" id="S1.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S1.I1.i1.p1">
+<p class="ltx_p">A new, unseen and challenging precise instruction following benchmark, <span class="ltx_text ltx_font_smallcaps">IFBench</span> <span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>Code for IFBench is available here: <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://github.com/allenai/IFBench" title="">https://github.com/allenai/IFBench</a>.</span></span></span>, with 58 new constraints and corresponding verification functions.
+With an investigation into the generalization abilities of LLMs for following constraints, we find that leading language models such as Qwen3-32B or Claude 4 Sonnet score below 50% showcasing the opportunity for improvement in precise IF.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S1.I1.i2.p1">
+<p class="ltx_p">29 new training constraints and verification functions, <span class="ltx_text ltx_font_smallcaps">IFTrain</span>, to enable simple data creation that improves instruction following performance.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S1.I1.i3.p1">
+<p class="ltx_p">New methods of RLVR training for precise instruction following (IF-RLVR) by interleaving multiple constraints per prompt or mixing verifiable and preference rewards. With our new training techniques we improve the IFeval scores of a <span class="ltx_text ltx_font_smallcaps">Tülu</span>-3-8B model from 82.4 to 92.2, and the <span class="ltx_text ltx_font_smallcaps">IFBench</span> scores from 28.9 to 45.9. Similarly, IF-RLVR increases a Qwen 2.5 7b base model to scores of 87.8 (IFEval) and 54.7 (<span class="ltx_text ltx_font_smallcaps">IFBench</span>), and we also show that our approach is effective for models from the OLMo family.</p>
+</div>
+</li>
+</ol>
+</div>
+<figure class="ltx_figure" id="S1.F1">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="409" id="S1.F1.g1" src="x1.png" width="830"/></div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_1">
+<p class="ltx_p ltx_figure_panel ltx_align_center">
+<span class="ltx_inline-block"><svg class="ltx_picture" height="10.53" id="S1.F1.pic1" overflow="visible" version="1.1" viewbox="0 0 10.53 10.53" width="10.53"><g fill="#67AD97" stroke="#000000" stroke-width="0.5pt" transform="translate(0,10.53) matrix(1 0 0 -1 0 0) translate(5.27,0) translate(0,5.27)"><path d="M -4.92 -4.92 h 9.84 v 9.84 h -9.84 Z"></path></g></svg></span>
+ IFEval
+
+
+
+ <span class="ltx_inline-block"><svg class="ltx_picture" height="10.53" id="S1.F1.pic2" overflow="visible" version="1.1" viewbox="0 0 10.53 10.53" width="10.53"><g fill="#E58B6D" stroke="#000000" stroke-width="0.5pt" transform="translate(0,10.53) matrix(1 0 0 -1 0 0) translate(5.27,0) translate(0,5.27)"><path d="M -4.92 -4.92 h 9.84 v 9.84 h -9.84 Z"></path></g></svg></span>
+<span class="ltx_text ltx_font_smallcaps">IFBench</span></p>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>Model performance on IFEval and <span class="ltx_text ltx_font_smallcaps">IFBench</span>. Left Models: out-of-the-box performance. Right Models: after IF-RLVR training.</figcaption>
+</figure>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span><span class="ltx_text ltx_font_smallcaps">IFBench</span> &amp; <span class="ltx_text ltx_font_smallcaps">IFTrain</span>: Measuring and Training Precise IF</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">In this section we specify the problem specification of precise instruction following so that we can detail the benchmark construction process and its final contents.
+Along with introducing <span class="ltx_text ltx_font_smallcaps">IFBench</span>, we detail how we can use similar methods to create <span class="ltx_text ltx_font_smallcaps">IFTrain</span> and train models that generalize better to a broad range of instruction following tasks.</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">The task of precise instruction following (IF) evaluates a language model’s ability to perform a task <math alttext="t" class="ltx_Math" display="inline" id="S2.p2.m1"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation><annotation encoding="application/x-llamapun">italic_t</annotation></semantics></math>, such as summarization or creative writing, while adhering to one or more output constraints <math alttext="c" class="ltx_Math" display="inline" id="S2.p2.m2"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation><annotation encoding="application/x-llamapun">italic_c</annotation></semantics></math>, which can be automatically verified.
+Users naturally use constraints in their prompts <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib30" title="">zhao2024wildchat </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib13" title="">lior2025wildifeval </a></cite>, so precise IF is an important task to master and most models report performance scores on IFEval.
+Many models even have designated sections in their technical reports on how they improve IF performance – the most common approach is targeted synthetic data generation <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib29" title="">yang2024qwen2 </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib1" title="">adler2024nemotron </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib6" title="">grattafiori2024llama </a></cite>.
+The Nemotron-4 340B technical report <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib1" title="">adler2024nemotron </a></cite> goes into more detail and mentions that targeted synthetic IF data is generated by combining synthetic instructions with constraints from the IFEval taxonomy.
+Figure <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S1.F1" title="Figure 1 ‣ 1 Introduction ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">1</span></a> shows that models display good accuracy on IFEval.
+The scores on our new unseen benchmark, <span class="ltx_text ltx_font_smallcaps">IFBench</span>, on the other hand, are much lower due to the verifiable constraints being different, despite the task and evaluation setup being the same.
+This discrepancy between the results indicates that most models overfit to a small set of verifiable constraints and do not possess sufficient capabilities to generalize as well to unseen constraints.</p>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">We introduce a new benchmark, <span class="ltx_text ltx_font_smallcaps">IFBench</span>, and paradigm to evaluate the generalizability of methods addressing precise instruction following. We define a taxonomy of constraint templates, which we split into training and test constraints to prevent contamination.
+The new constraints we introduce were created manually – sourced by collecting feedback from LM users beyond the authors on the types of constraints they have tried with models, or manually written to cover core IF skills.
+Then, we filtered constraints for the benchmark to those that can be easily paired with a verification function written in Python, making for reproducible evaluation and training tools.
+The full list of new constraints can be found in Appendix <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A1" title="Appendix A Out-of-Distribution Test Constraints ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">A</span></a> for evaluation and Appendix <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A2" title="Appendix B Out-of-Distribution Train Constraints ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">B</span></a> for training constraints.</p>
+</div>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px1">
+<h4 class="ltx_title ltx_title_paragraph">
+<span class="ltx_text ltx_font_smallcaps">IFBench</span> </h4>
+<div class="ltx_para" id="S2.SS0.SSS0.Px1.p1">
+<p class="ltx_p">consists of 58 new verifiable constraints that go beyond the 25 constraints included in IFEval <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib32" title="">zhou2023instruction </a></cite>.
+To create the final test prompts, we add instantiated constraints to unseen, i.e. held out from release, prompts from WildChat <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib30" title="">zhao2024wildchat </a></cite>. By combining unseen prompts with unseen constraints, we prevent accidental train-test contamination and can appropriately evaluate language models’ abilities to generalize on the task of precise instruction following. Every instance went through a human annotation process to verify the prompt and constraint compatibility (i.e. a coding related constraint, for example, does not fit with a prompt asking for a summary). These constraints cover 7 different broader categories: <span class="ltx_text ltx_font_italic">count, ratio, words, sentence, format, custom, copy.</span>
+These categories cover a broad range of sub-skills, such as a model’s ability to copy parts of the input prompt into the output. The final benchmark consists of 300 prompts. When curating the benchmark, another focus was to include challenging constraints, such as <span class="ltx_text ltx_font_italic">Maintain a 2:1 ratio of declarative to interrogative sentences.</span> Similarly to the original IFEval, we compute both strict and loose accuracy, where the strict accuracy verifies if the constraint is followed correctly, and the loose accuracy additionally cleans the model’s output by removing first/last lines and certain font modifiers. We evaluate constraint following abilities in two different settings:</p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px1.p2">
+<ul class="ltx_itemize" id="S2.I1">
+<li class="ltx_item" id="S2.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I1.i1.p1">
+<p class="ltx_p">Single-turn: The “user" prompt consist of a general prompt with task <math alttext="t" class="ltx_Math" display="inline" id="S2.I1.i1.p1.m1"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation><annotation encoding="application/x-llamapun">italic_t</annotation></semantics></math>, concatenated with one or more output constraints <math alttext="c" class="ltx_Math" display="inline" id="S2.I1.i1.p1.m2"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation><annotation encoding="application/x-llamapun">italic_c</annotation></semantics></math>, and the model has to complete <math alttext="t" class="ltx_Math" display="inline" id="S2.I1.i1.p1.m3"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation><annotation encoding="application/x-llamapun">italic_t</annotation></semantics></math> while adhering to <math alttext="c" class="ltx_Math" display="inline" id="S2.I1.i1.p1.m4"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation><annotation encoding="application/x-llamapun">italic_c</annotation></semantics></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I1.i2.p1">
+<p class="ltx_p">Multi-turn: <math alttext="c" class="ltx_Math" display="inline" id="S2.I1.i2.p1.m1"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation><annotation encoding="application/x-llamapun">italic_c</annotation></semantics></math> is isolated from <math alttext="t" class="ltx_Math" display="inline" id="S2.I1.i2.p1.m2"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation><annotation encoding="application/x-llamapun">italic_t</annotation></semantics></math> in three turns. The first “user" prompt consist of a general prompt with task <math alttext="t" class="ltx_Math" display="inline" id="S2.I1.i2.p1.m3"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation><annotation encoding="application/x-llamapun">italic_t</annotation></semantics></math> and the second turn is an “assistant"’s response to <math alttext="t" class="ltx_Math" display="inline" id="S2.I1.i2.p1.m4"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation><annotation encoding="application/x-llamapun">italic_t</annotation></semantics></math>, <math alttext="r_{1}" class="ltx_Math" display="inline" id="S2.I1.i2.p1.m5"><semantics><msub><mi>r</mi><mn>1</mn></msub><annotation encoding="application/x-tex">r_{1}</annotation><annotation encoding="application/x-llamapun">italic_r start_POSTSUBSCRIPT 1 end_POSTSUBSCRIPT</annotation></semantics></math>. The third turn (“user") asks to rewrite <math alttext="r_{1}" class="ltx_Math" display="inline" id="S2.I1.i2.p1.m6"><semantics><msub><mi>r</mi><mn>1</mn></msub><annotation encoding="application/x-tex">r_{1}</annotation><annotation encoding="application/x-llamapun">italic_r start_POSTSUBSCRIPT 1 end_POSTSUBSCRIPT</annotation></semantics></math> to comply with a constraint <math alttext="c" class="ltx_Math" display="inline" id="S2.I1.i2.p1.m7"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation><annotation encoding="application/x-llamapun">italic_c</annotation></semantics></math>. The model has to respond to the third turn, given all previous turns as context.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px2">
+<h4 class="ltx_title ltx_title_paragraph">
+<span class="ltx_text ltx_font_smallcaps">IFTrain</span> </h4>
+<div class="ltx_para" id="S2.SS0.SSS0.Px2.p1">
+<p class="ltx_p">consists of 29 new, unseen, verifiable constraints, with their corresponding verification functions. This more than doubles the current set of train constraint types. The full list of new constraints can be found in Appendix <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A2" title="Appendix B Out-of-Distribution Train Constraints ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">B</span></a>. The constraints were created to capture the basic building blocks of classic constraints. For example, to teach the model to copy better from the input, we create different versions of copying tasks, such as copying spans or copying and editing of the input.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>IF-RLVR</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">In what follows we expand upon a new approach for training language models on precise instruction following with reinforcement learning with verifiable rewards <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a></cite>, IF-RLVR.
+We propose the following training and data recipe to achieve strong in and out-of-domain IF performance.</p>
+</div>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px1">
+<h4 class="ltx_title ltx_title_paragraph">Data:</h4>
+<div class="ltx_para" id="S3.SS0.SSS0.Px1.p1">
+<p class="ltx_p">We create targeted IF-RLVR training data that is diverse and covers a variety of constraints. The prompts for verifiable IF training are created by combining an instruction from a public SFT dataset with a constraint from either the IFEval taxonomy (under Apache 2.0 license) or our new unseen training constraint taxonomy (which is separate from the constraints in <span class="ltx_text ltx_font_smallcaps">IFBench</span>). We randomly sample prompts from <span class="ltx_text ltx_font_smallcaps">Tülu</span>-3-SFT <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a></cite> and we append at least one and up to <math alttext="n" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px1.p1.m1"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation><annotation encoding="application/x-llamapun">italic_n</annotation></semantics></math> constraints. We prevent the combination of contradictory constraints by maintaining a dictionary of constraint conflicts. As training constraints we use IFTrain and the constraints from IFEval, which we expand by increasing the variable range for each constraint. For most of the experiments we create about 60k-100k prompts.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px2">
+<h4 class="ltx_title ltx_title_paragraph">Training</h4>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p1">
+<p class="ltx_p">Reinforcement Learning with Verifiable Rewards (RLVR) <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a></cite> can be applied to the precise instruction following task, as each constraint can be verified with a function.
+We use GRPO <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib18" title="">shao2024deepseekmath </a></cite> to optimize the following objective:</p>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p2">
+<p class="ltx_p">Specifically, we train a policy with GRPO and outcome supervision, where each output is scored according to wether or not the constraint has been correctly fulfilled.</p>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p3">
+<p class="ltx_p">For multi-constraint IF-RLVR, the reward per instance is calculated as follows:</p>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p4">
+<table class="ltx_equation ltx_eqn_table" id="S3.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\text{Instance Reward}=\sum_{i=1}^{n}\text{verifiable\_reward}_{i}\cdot\text{reward\_multiplier}_{i}\cdot\text{reward\_weight}_{i}" class="ltx_Math" display="block" id="S3.E1.m1"><semantics><mrow><mtext>Instance Reward</mtext><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><msub><mtext>verifiable_reward</mtext><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mtext>reward_multiplier</mtext><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mtext>reward_weight</mtext><mi>i</mi></msub></mrow></mrow></mrow><annotation encoding="application/x-tex">\text{Instance Reward}=\sum_{i=1}^{n}\text{verifiable\_reward}_{i}\cdot\text{reward\_multiplier}_{i}\cdot\text{reward\_weight}_{i}</annotation><annotation encoding="application/x-llamapun">Instance Reward = ∑ start_POSTSUBSCRIPT italic_i = 1 end_POSTSUBSCRIPT start_POSTSUPERSCRIPT italic_n end_POSTSUPERSCRIPT verifiable_reward start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT ⋅ reward_multiplier start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT ⋅ reward_weight start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p5">
+<p class="ltx_p">IF-RLVR training works for base models, using a special chat template (see Appendix <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A4" title="Appendix D Chat Template ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">D</span></a>), and for post-trained models, using their own chat templates.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px3">
+<h4 class="ltx_title ltx_title_paragraph">Experimental Setup</h4>
+<div class="ltx_para" id="S3.SS0.SSS0.Px3.p1">
+<p class="ltx_p">We experiment with the following base policies: Llama-3.1-Tulu-3-8B-DPO, Llama-3.1-8B, Qwen2.5-7B, Qwen2.5-7B-instruct, OLMo2, OLMo2-instruct.
+We train using the GRPO implementation in open-instruct <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib9" title="">Ivison2023CamelsIA </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a></cite>, with the following hyperparameters: max_token_length<math alttext="=" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px3.p1.m1"><semantics><mo>=</mo><annotation encoding="application/x-tex">=</annotation><annotation encoding="application/x-llamapun">=</annotation></semantics></math>2048, temperature<math alttext="=" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px3.p1.m2"><semantics><mo>=</mo><annotation encoding="application/x-tex">=</annotation><annotation encoding="application/x-llamapun">=</annotation></semantics></math>1, learning rate<math alttext="=" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px3.p1.m3"><semantics><mo>=</mo><annotation encoding="application/x-tex">=</annotation><annotation encoding="application/x-llamapun">=</annotation></semantics></math>5e-7, 16 samples per prompt, 8 GPUs and a local mini-batch size of 32. Training took on average 1 day for 2000 steps.
+Base models with a reasoning chat template are trained with a max token length of 10240, a beta of 0, and a temperature of 1.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>IF-RLVR Results</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">In Figure <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S1.F1" title="Figure 1 ‣ 1 Introduction ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">1</span></a> we show that IF-RLVR is very well suited to for teaching a model to follow instructions precisely. Our IF-RLVR trained models outperform most of the current state-of-the-art models (besides o3). We also show that our recipe can be successfully applied to 3 different model families: OLMo <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib15" title="">olmo20242 </a></cite>, Qwen 2.5 <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib23" title="">team2024qwen2 </a></cite>, and Llama 3.1 <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib24" title="">touvron2023llama </a></cite>.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>IF-RLVR Experiments</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">In this section we ablate our modeling design and data choices, and compare IF-RLVR to other training approaches like DPO.</p>
+</div>
+<section class="ltx_subsection" id="S4.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1 </span>Training on Multiple Constraints</h3>
+<div class="ltx_para" id="S4.SS1.p1">
+<p class="ltx_p">We experiment with RL training on multiple constraints per instance. For each instruction <math alttext="i" class="ltx_Math" display="inline" id="S4.SS1.p1.m1"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation><annotation encoding="application/x-llamapun">italic_i</annotation></semantics></math>, randomly sampled from <span class="ltx_text ltx_font_smallcaps">Tülu</span>-SFT <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a></cite>, we append at least one and up to <math alttext="n" class="ltx_Math" display="inline" id="S4.SS1.p1.m2"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation><annotation encoding="application/x-llamapun">italic_n</annotation></semantics></math> constraints, where <math alttext="n\in\{1,2,3,4,5,6\}" class="ltx_Math" display="inline" id="S4.SS1.p1.m3"><semantics><mrow><mi>n</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>6</mn><mo stretchy="false">}</mo></mrow></mrow><annotation encoding="application/x-tex">n\in\{1,2,3,4,5,6\}</annotation><annotation encoding="application/x-llamapun">italic_n ∈ { 1 , 2 , 3 , 4 , 5 , 6 }</annotation></semantics></math>. This results in four different sets of RLVR training data with multiple constraints. We prevent the combination of contradictory constraints by maintaining a dictionary of constraint conflicts.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p2">
+<p class="ltx_p">We find that <span class="ltx_text ltx_font_bold">training on a combination of constraints improves both in-domain and out-of-domain performance.</span> As displayed in Figure <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.F3" title="Figure 3 ‣ 4.1 Training on Multiple Constraints ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">3</span></a>, training on a bigger combination of constraints leads to better performance, compared to training on only up to 3 constraints per instance. Interestingly, instructions in IFEval have up to 3 constraints and up to 2 constraints in <span class="ltx_text ltx_font_smallcaps">IFBench</span>, but training on up to 5 or 6 constraints still leads to better generalization on these benchmarks. Also on the out-of-domain benchmark <span class="ltx_text ltx_font_smallcaps">IFBench</span>, the best performance is achieved when training on more than one constraint per instance (Table <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.T1" title="Table 1 ‣ 4.1 Training on Multiple Constraints ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">1</span></a>).</p>
+</div>
+<figure class="ltx_table" id="S4.T1">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 1: </span>Training on 1-6 constraints per instance. Training on 50-1000 instances per constraint. (qwen2.5 policy)</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_border_tt"></td>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#E6E6FF;"><span class="ltx_text" style="background-color:#E6E6FF;">1</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#E6E6FF;"><span class="ltx_text" style="background-color:#E6E6FF;">2</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#E6E6FF;"><span class="ltx_text" style="background-color:#E6E6FF;">3</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#E6E6FF;"><span class="ltx_text" style="background-color:#E6E6FF;">4</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#E6E6FF;"><span class="ltx_text" style="background-color:#E6E6FF;">5</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#E6E6FF;"><span class="ltx_text" style="background-color:#E6E6FF;">6</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#CCCCFF;"><span class="ltx_text" style="background-color:#CCCCFF;">10</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#CCCCFF;"><span class="ltx_text" style="background-color:#CCCCFF;">50</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#CCCCFF;"><span class="ltx_text" style="background-color:#CCCCFF;">100</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#CCCCFF;"><span class="ltx_text" style="background-color:#CCCCFF;">500</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#CCCCFF;"><span class="ltx_text" style="background-color:#CCCCFF;">1000</span></th>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t" style="background-color:#FFFFB3;"><span class="ltx_text" style="background-color:#FFFFB3;">IFBench</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t">48.9</td>
+<td class="ltx_td ltx_align_left ltx_border_t">53.1</td>
+<td class="ltx_td ltx_align_left ltx_border_t">59.5</td>
+<td class="ltx_td ltx_align_left ltx_border_t">49.4</td>
+<td class="ltx_td ltx_align_left ltx_border_t">55.8</td>
+<td class="ltx_td ltx_align_left ltx_border_t">54.1</td>
+<td class="ltx_td ltx_align_left ltx_border_t">48.6</td>
+<td class="ltx_td ltx_align_left ltx_border_t">52.7</td>
+<td class="ltx_td ltx_align_left ltx_border_t">51.7</td>
+<td class="ltx_td ltx_align_left ltx_border_t">51</td>
+<td class="ltx_td ltx_align_left ltx_border_t">48.6</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_bb">IFEval</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">71.2</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">79.9</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">77.8</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">79.5</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">79.9</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">85.8</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">73.6</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">72.8</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">74.3</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">70.1</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">72.8</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<figure class="ltx_figure" id="S4.F3">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_minipage ltx_align_center ltx_align_middle" id="S4.F3.fig1" style="width:216.8pt;"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="399" id="S4.F3.g1" src="figures/combining_constraints.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>Training on 1 - 6 constraints per instruction. (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-DPO policy)</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_minipage ltx_align_center ltx_align_middle" id="S4.F3.fig2" style="width:216.8pt;"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="399" id="S4.F3.g2" src="figures/instances.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>Training on 10, 100, 500 and 1000 instances per constraint.</figcaption>
+</figure>
+</div>
+</div>
+</figure>
+</section>
+<section class="ltx_subsection" id="S4.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2 </span>Seen vs. Unseen Constraints</h3>
+<div class="ltx_para" id="S4.SS2.p1">
+<p class="ltx_p">Training on the 25 constraint templates from IFEval directly translates to good performance on IFEval. We perform multiple GRPO training runs where we take the 29 ‘unseen’ constraint templates from <span class="ltx_text ltx_font_smallcaps">IFTrain</span>, which do not overlap with any of the test constraints, and add <math alttext="n" class="ltx_Math" display="inline" id="S4.SS2.p1.m1"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation><annotation encoding="application/x-llamapun">italic_n</annotation></semantics></math> ‘seen’ constraint templates (from IFEval), with <math alttext="n\in\{5,10,15,20,25\}" class="ltx_Math" display="inline" id="S4.SS2.p1.m2"><semantics><mrow><mi>n</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>5</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>15</mn><mo>,</mo><mn>20</mn><mo>,</mo><mn>25</mn><mo stretchy="false">}</mo></mrow></mrow><annotation encoding="application/x-tex">n\in\{5,10,15,20,25\}</annotation><annotation encoding="application/x-llamapun">italic_n ∈ { 5 , 10 , 15 , 20 , 25 }</annotation></semantics></math>.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p2">
+<p class="ltx_p">A combination of the full <span class="ltx_text ltx_font_smallcaps">IFTrain</span> and IFEval constraints leads to the highest in-domain performance on IFEval (see Fig. <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.F4" title="Figure 4 ‣ 4.2 Seen vs. Unseen Constraints ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">4</span></a>). On the out-of-domain benchmark <span class="ltx_text ltx_font_smallcaps">IFBench</span>, on the other hand, performance is less affected by the number of IFEval constraints the model is trained on. Nevertheless, we see that training on a larger set and larger variety of constraints is beneficial for generalization.</p>
+</div>
+<figure class="ltx_figure" id="S4.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="238" id="S4.F4.g1" src="figures/comparison_performance_graph.png" width="479"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>Training on IFTrain (ood) + n constraints (in-domain) from IFEval. (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-DPO policy) </figcaption>
+</figure>
+<figure class="ltx_figure ltx_align_floatright" id="S4.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="400" id="S4.F5.g1" src="figures/variable_ranges.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>Experiments with variable ranges. (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-DPO policy)</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S4.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.3 </span>Changing the range of constraint variables</h3>
+<div class="ltx_para" id="S4.SS3.p1">
+<p class="ltx_p">Most of the constraint templates contain variables which can be instantiated with different values. <span class="ltx_text ltx_font_italic">In your response, all lowercase words should appear at most N times.</span>, for example, has the variable <math alttext="N" class="ltx_Math" display="inline" id="S4.SS3.p1.m1"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation><annotation encoding="application/x-llamapun">italic_N</annotation></semantics></math> which could in theory be any number. For both the IFEval and the <span class="ltx_text ltx_font_smallcaps">IFBench</span> benchmarks, variables are instantiated for each instruction instance from a fixed range of options. Another type of generalization to assess is whether a model trained on the same constraints, but different variable ranges, can still apply the skill to unseen ranges. To evaluate this, we chose variable ranges for training that are disjoint from the test ranges. For the constraint <span class="ltx_text ltx_font_italic">Your response should contain at most num_sentences sentences.</span>, for example, we sample a value between 20 and 40 for train and a value between 1 and 20 for test. Specifically we experiment with three different settings: <span class="ltx_text ltx_font_smallcaps">different range</span>, where every train variable is filled from a range that is disjoint from the test range; <span class="ltx_text ltx_font_smallcaps">wider range</span>, where every train variable is filled from a range that includes and extends the test range; <span class="ltx_text ltx_font_smallcaps">same range</span>, where variables are filled with the same range for train and test. Fig. <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.F5" title="Figure 5 ‣ 4.2 Seen vs. Unseen Constraints ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">5</span></a> shows performance on IFEval for different steps of IF-RLVR training. Training on a different variable range consistently scores lower than the other two setups. Interestingly, though, training on a wider variable range, performs comparably and often even better than training on the same range. This suggests that training on a diverse set of constraint variables improves generalization for in-domain constraints performance.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.4 </span>Removing Categories</h3>
+<div class="ltx_para" id="S4.SS4.p1">
+<p class="ltx_p">Most verifiable constraints fall under broader constraint type categories. IFEval, for example, has 9 different categories, such as <span class="ltx_text ltx_font_smallcaps">length constraints</span> or <span class="ltx_text ltx_font_smallcaps">detectable format</span>. To investigate how training on a set of categories generalizes to an unseen categories, we experiment with training on a leave-one-out set of categories, iteratively removing one of the following classes: <span class="ltx_text ltx_font_smallcaps">change cases</span>, <span class="ltx_text ltx_font_smallcaps">detectable format</span>, <span class="ltx_text ltx_font_smallcaps">length constraints</span>, <span class="ltx_text ltx_font_smallcaps">keywords</span>.</p>
+</div>
+<div class="ltx_para" id="S4.SS4.p2">
+<p class="ltx_p">Removing the constraints from the <span class="ltx_text ltx_font_smallcaps">length constraint</span> and the <span class="ltx_text ltx_font_smallcaps">keywords</span> categories harms IFEval performance the most, while removing constraints from the <span class="ltx_text ltx_font_smallcaps">change cases</span> and <span class="ltx_text ltx_font_smallcaps">detectable format</span> categories barely affect performance with the model achieving an IFEval accuracy of 89.65 (see Fig. <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.F6" title="Figure 6 ‣ 4.4 Removing Categories ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">6</span></a>).</p>
+</div>
+<figure class="ltx_figure ltx_align_floatright" id="S4.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="348" id="S4.F6.g1" src="figures/leave_one_out.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>Removing a constraint category from training. (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-DPO policy)</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S4.SS5">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.5 </span>Teaching the basic units of precise IF</h3>
+<div class="ltx_para" id="S4.SS5.p1">
+<p class="ltx_p">We designed the new training constraints so that they would cover IF skills models are currently lacking in, such as copying from the input, counting, and formatting. We find that GRPO training on our new constraints shows targeted improvements in all these areas. As seen in Table <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.T2" title="Table 2 ‣ 4.5 Teaching the basic units of precise IF ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">2</span></a>, our final two models (from base vs. from instruct) improve over the base model (in this case a DPO trained model) in all categories, such as in counting, inserting the right amount of keywords, formatting and in following length constraints. Most of the IFEval categories seem saturated with IF-RLVR training (performance <math alttext="&gt;90" class="ltx_Math" display="inline" id="S4.SS5.p1.m1"><semantics><mrow><mi></mi><mo>&gt;</mo><mn>90</mn></mrow><annotation encoding="application/x-tex">&gt;90</annotation><annotation encoding="application/x-llamapun">&gt; 90</annotation></semantics></math>), while the <span class="ltx_text ltx_font_smallcaps">IFBench</span> categories leave room for improvement, such as the <span class="ltx_text ltx_font_italic">words</span> and <span class="ltx_text ltx_font_italic">sentence</span> categories.</p>
+</div>
+<div class="ltx_para" id="S4.SS5.p2">
+<p class="ltx_p">Comparing our final models to other post-trained (SFT, DPO, RLVR) models in Table <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.T3" title="Table 3 ‣ 4.5 Teaching the basic units of precise IF ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">3</span></a>, we find that our approach and model results in the best in- and out-of-domain instruction following performance on both IFEval and <span class="ltx_text ltx_font_smallcaps">IFBench</span>. We also see that targeted RLVR training for IF slightly harms other downstream evaluations, such as AlpacaEval 2, while staying comparable on others, such as GSM8K, MMLU and BBH. We therefore suggest, for future work, to investigate how to combine precise IF RLVR with other types of rewards for other tasks such as math or chat. Note that the performance on other benchmarks is low for IF-RLVR Qwen2.5, as the policy is a base model that has not been post-trained.</p>
+</div>
+<figure class="ltx_table" id="S4.T2">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 2: </span>IFEval (blue) and <span class="ltx_text ltx_font_smallcaps">IFBench</span> (yellow) performance breakdown for constraint types, for the final IF-RLVR models and one of the base models (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-DPO), as comparison.</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#DBDBFF;"><span class="ltx_text" style="background-color:#DBDBFF;">IFEval</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#FFFFB3;"><span class="ltx_text" style="background-color:#FFFFB3;">IFB.</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#DBDBFF;"><span class="ltx_text" style="background-color:#DBDBFF;">case</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#DBDBFF;"><span class="ltx_text" style="background-color:#DBDBFF;">detect.</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#DBDBFF;"><span class="ltx_text" style="background-color:#DBDBFF;">keywo.</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#DBDBFF;"><span class="ltx_text" style="background-color:#DBDBFF;">length</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#FFFFB3;"><span class="ltx_text" style="background-color:#FFFFB3;">count</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#FFFFB3;"><span class="ltx_text" style="background-color:#FFFFB3;">format</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#FFFFB3;"><span class="ltx_text" style="background-color:#FFFFB3;">words</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" style="background-color:#FFFFB3;"><span class="ltx_text" style="background-color:#FFFFB3;">sent.</span></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">tulu3DPO</th>
+<td class="ltx_td ltx_align_left ltx_border_t">81.1</td>
+<td class="ltx_td ltx_align_left ltx_border_t">25.5</td>
+<td class="ltx_td ltx_align_left ltx_border_t">82.9</td>
+<td class="ltx_td ltx_align_left ltx_border_t">94.2</td>
+<td class="ltx_td ltx_align_left ltx_border_t">79.3</td>
+<td class="ltx_td ltx_align_left ltx_border_t">68.6</td>
+<td class="ltx_td ltx_align_left ltx_border_t">45.3</td>
+<td class="ltx_td ltx_align_left ltx_border_t">35.2</td>
+<td class="ltx_td ltx_align_left ltx_border_t">7.0</td>
+<td class="ltx_td ltx_align_left ltx_border_t">13.3</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">
+<table class="ltx_tabular ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_r ltx_align_left">IF-RLVR</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_r ltx_align_left">(tulu3DPO)</td>
+</tr>
+</table>
+</th>
+<td class="ltx_td ltx_align_left">92.2</td>
+<td class="ltx_td ltx_align_left">44.6</td>
+<td class="ltx_td ltx_align_left">92.0</td>
+<td class="ltx_td ltx_align_left">99.2</td>
+<td class="ltx_td ltx_align_left">95.4</td>
+<td class="ltx_td ltx_align_left">89.3</td>
+<td class="ltx_td ltx_align_left">53.1</td>
+<td class="ltx_td ltx_align_left">64.3</td>
+<td class="ltx_td ltx_align_left">48.1</td>
+<td class="ltx_td ltx_align_left">36.7</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb">
+<table class="ltx_tabular ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_r ltx_align_left">IF-RLVR</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_r ltx_align_left">(qwen2.5)</td>
+</tr>
+</table>
+</th>
+<td class="ltx_td ltx_align_left ltx_border_bb">87.8</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">53.7</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">93.3</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">94.4</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">93.2</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">90.9</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">67.7</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">68.1</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">67.0</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">71.1</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<figure class="ltx_table" id="S4.T3">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 3: </span>Model performances on different benchmarks.</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt ltx_border_t"></th>
+<td class="ltx_td ltx_align_left ltx_border_tt ltx_border_t">IFEval</td>
+<td class="ltx_td ltx_align_left ltx_border_tt ltx_border_t">IFBench</td>
+<td class="ltx_td ltx_align_left ltx_border_tt ltx_border_t">Alpaca</td>
+<td class="ltx_td ltx_align_left ltx_border_tt ltx_border_t">GSM8K</td>
+<td class="ltx_td ltx_align_left ltx_border_tt ltx_border_t">MMLU</td>
+<td class="ltx_td ltx_align_left ltx_border_tt ltx_border_t">BBH</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">
+<span class="ltx_text ltx_font_smallcaps">Tülu</span>-sft</th>
+<td class="ltx_td ltx_align_left ltx_border_t">72.8</td>
+<td class="ltx_td ltx_align_left ltx_border_t">20.7</td>
+<td class="ltx_td ltx_align_left ltx_border_t">12.4</td>
+<td class="ltx_td ltx_align_left ltx_border_t">76.2</td>
+<td class="ltx_td ltx_align_left ltx_border_t">65.9</td>
+<td class="ltx_td ltx_align_left ltx_border_t">69.7</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">
+<span class="ltx_text ltx_font_smallcaps">Tülu</span>-DPO</th>
+<td class="ltx_td ltx_align_left">81.1</td>
+<td class="ltx_td ltx_align_left">25.5</td>
+<td class="ltx_td ltx_align_left">33.5</td>
+<td class="ltx_td ltx_align_left">84.3</td>
+<td class="ltx_td ltx_align_left">68.7</td>
+<td class="ltx_td ltx_align_left">68.7</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text ltx_font_smallcaps">Tülu</span></th>
+<td class="ltx_td ltx_align_left">82.4</td>
+<td class="ltx_td ltx_align_left">28.9</td>
+<td class="ltx_td ltx_align_left">34.5</td>
+<td class="ltx_td ltx_align_left">87.6</td>
+<td class="ltx_td ltx_align_left">68.2</td>
+<td class="ltx_td ltx_align_left">69.0</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">IF-RLVR <span class="ltx_text ltx_font_smallcaps">Tülu</span>-DPO 8b</th>
+<td class="ltx_td ltx_align_left ltx_border_t">92.2</td>
+<td class="ltx_td ltx_align_left ltx_border_t">44.6</td>
+<td class="ltx_td ltx_align_left ltx_border_t">21.3</td>
+<td class="ltx_td ltx_align_left ltx_border_t">83.2</td>
+<td class="ltx_td ltx_align_left ltx_border_t">66.4</td>
+<td class="ltx_td ltx_align_left ltx_border_t">68.9</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb">IF-RLVR qwen2.5 7b</th>
+<td class="ltx_td ltx_align_left ltx_border_bb">87.8</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">53.7</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">1.1</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">15.3</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">59.4</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">26.0</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</section>
+<section class="ltx_subsection" id="S4.SS6">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.6 </span>DPO</h3>
+<div class="ltx_para" id="S4.SS6.p1">
+<p class="ltx_p">While RLVR has been shown to be a well-suited training approach for precise IF, the verification functions could also be used to generate and verify SFT or DPO training data. Here we perform a controlled experiment on the same prompts and constraints, using the same verification functions, comparing DPO training to GRPO training for precise IF.</p>
+</div>
+<section class="ltx_paragraph" id="S4.SS6.SSS0.Px1">
+<h4 class="ltx_title ltx_title_paragraph">Preference Data</h4>
+<div class="ltx_para" id="S4.SS6.SSS0.Px1.p1">
+<p class="ltx_p">We generate prompts using the approach described in Section <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S3" title="3 IF-RLVR ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">3</span></a>, with up to 5 constraints per prompt, and sample completions from 5 different models (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-3-70B, Qwen-72b, Llama-3.1-405b, Llama3-8b, Yi-34B-Chat). For each constraint in a prompt a completion is verified on whether it fulfills the constraint. We construct preference pairs by sampling, for each instruction, a completion that satisfies all constraints (<span class="ltx_text ltx_font_italic">chosen</span>) and a completion that does not satisfy at least one constraint (<span class="ltx_text ltx_font_italic">rejected</span>).
+Table <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.T4" title="Table 4 ‣ Preference Data ‣ 4.6 DPO ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">4</span></a>, shows how most models struggle with precisely following a lot of our prompts, and even when relaxing the requirement and counting cases where models got not more than 1 constraint wrong, the percentages are less than half. The model that stands out is Qwen-72B. Out of all the instances that models get completely correct, 54% have only 1 constraint and only 2% have 5 constraints. We also find that most LLMs get the same easy instances right and the same hard instances wrong, which makes the creation of preference pairs more difficult. This further highlights the benefits of RLVR, where we can get ground truth signal for both easy and hard prompts, with an unlimited amount of constraints. We end up with a set of prompts and chosen/rejected pairs, called <span class="ltx_text ltx_font_italic">strict</span>, where chosen completions get all constraints correct (31751 prompts).</p>
+</div>
+<figure class="ltx_table" id="S4.T4">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 4: </span>Scoring completions for whether they adhere to the constraints.</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_border_tt"></td>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">Tulu-3-70B</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">Qwen-72B</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">Llama-3.1-405b</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">Llama3-8b</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">Yi-34B-Chat</th>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">all correct</td>
+<td class="ltx_td ltx_align_left ltx_border_t">15%</td>
+<td class="ltx_td ltx_align_left ltx_border_t">26%</td>
+<td class="ltx_td ltx_align_left ltx_border_t">21%</td>
+<td class="ltx_td ltx_align_left ltx_border_t">6%</td>
+<td class="ltx_td ltx_align_left ltx_border_t">10%</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_bb">only one wrong</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">35%</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">100%</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">44%</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">16%</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">26%</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</section>
+<section class="ltx_paragraph" id="S4.SS6.SSS0.Px2">
+<h4 class="ltx_title ltx_title_paragraph">Experiments and Results</h4>
+<div class="ltx_para" id="S4.SS6.SSS0.Px2.p1">
+<p class="ltx_p">Given the <span class="ltx_text ltx_font_italic">strict</span> training data, we train models using either GRPO or DPO, starting from either a model that has been instruction tuned (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-3-8b-SFT) or one that has been instruction tuned and DPO trained (<span class="ltx_text ltx_font_smallcaps">Tülu</span>-3-8b-DPO). The hyperparameters for DPO training are a learning rate of 5.0e-7, dpo beta of 5, and a batch size of 16. The results in Tab. <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.T5" title="Table 5 ‣ Experiments and Results ‣ 4.6 DPO ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">5</span></a> show that despite training on the same prompts and starting from the same model, GRPO training with IF verifiable rewards consistently outperforms the model trained with DPO on IFEval and <span class="ltx_text ltx_font_smallcaps">IFBench</span>. Further, starting with a model that has gone through both SFT and DPO training results in higher final IF performance.</p>
+</div>
+<figure class="ltx_table" id="S4.T5">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 5: </span>Comparing DPO to GRPO training for IF, IFEval Accuracy.</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_border_tt"></td>
+<th class="ltx_td ltx_th ltx_th_column ltx_border_tt"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">DPO after SFT</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">DPO after DPO</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">GRPO after SFT</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt">GRPO after DPO</th>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t" style="background-color:#DBDBFF;"><span class="ltx_text" style="background-color:#DBDBFF;">IFEval</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t">strict</td>
+<td class="ltx_td ltx_align_left ltx_border_t">76.89</td>
+<td class="ltx_td ltx_align_left ltx_border_t">79.67</td>
+<td class="ltx_td ltx_align_left ltx_border_t">85.77</td>
+<td class="ltx_td ltx_align_left ltx_border_t">89.65</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_bb" style="background-color:#FFFFB3;"><span class="ltx_text" style="background-color:#FFFFB3;">IFBench</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb">strict</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">25.2</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">29.3</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">28.6</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">30.6</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</section>
+</section>
+<section class="ltx_subsection" id="S4.SS7">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.7 </span>RLVR for IF from Base</h3>
+<div class="ltx_para" id="S4.SS7.p1">
+<p class="ltx_p">We compare IF-RLVR training using policy models that have gone through post-training already (SFT and DPO), with IF-RLVR training from base models, as it has been shown that it is also possible to perform RLVR training on a base model, leading to good math and reasoning performance <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib18" title="">shao2024deepseekmath </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib26" title="">wang2025reinforcement </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib28" title="">yang2025qwen3 </a></cite>.</p>
+</div>
+<div class="ltx_para" id="S4.SS7.p2">
+<p class="ltx_p">Specifically, we RLVR train three base models for precise IF, llama3.1-8b, Qwen2.5-7B and Qwen3-8B, and their instruct counterparts. To encourage reasoning we use a special chat template (see Appendix <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A4" title="Appendix D Chat Template ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">D</span></a>). The models are trained with a max token length of 10240, a beta of 0, and a temperature of 1.</p>
+</div>
+<figure class="ltx_table" id="S4.T6">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 6: </span>Comparing model performance on IFEval and <span class="ltx_text ltx_font_smallcaps">IFBench</span>, before and after IF-RLVR training, for base and instruct models. (Base models before RLVR training cannot be evaluated as they don’t have a chat template.)</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_border_tt"></td>
+<th class="ltx_td ltx_th ltx_th_column ltx_border_tt"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" colspan="3">from base</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" colspan="3">instruct</th>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_border_t"></td>
+<th class="ltx_td ltx_th ltx_th_column ltx_border_t"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">llama3.1</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">qwen2.5</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">olmo2</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">tulu3-dpo</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">qwen2.5</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">olmo2</th>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t" rowspan="2">before IF-RLVR</td>
+<td class="ltx_td ltx_align_left ltx_border_t">IFEval</td>
+<td class="ltx_td ltx_align_left ltx_border_t">na</td>
+<td class="ltx_td ltx_align_left ltx_border_t">na</td>
+<td class="ltx_td ltx_align_left ltx_border_t">na</td>
+<td class="ltx_td ltx_align_left ltx_border_t">81.1</td>
+<td class="ltx_td ltx_align_left ltx_border_t">74.7</td>
+<td class="ltx_td ltx_align_left ltx_border_t">61.7</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">IFBench</td>
+<td class="ltx_td ltx_align_left">na</td>
+<td class="ltx_td ltx_align_left">na</td>
+<td class="ltx_td ltx_align_left">na</td>
+<td class="ltx_td ltx_align_left">25.2</td>
+<td class="ltx_td ltx_align_left">31.3</td>
+<td class="ltx_td ltx_align_left">16.7</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_bb" rowspan="2">after IF-RLVR</td>
+<td class="ltx_td ltx_align_left">IFEval</td>
+<td class="ltx_td ltx_align_left">88.2</td>
+<td class="ltx_td ltx_align_left">87.8</td>
+<td class="ltx_td ltx_align_left">70.4</td>
+<td class="ltx_td ltx_align_left">92.2</td>
+<td class="ltx_td ltx_align_left">89.1</td>
+<td class="ltx_td ltx_align_left">74.5</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_bb">IFBench</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">54.1</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">53.7</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">46.6</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">44.6</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">45.9</td>
+<td class="ltx_td ltx_align_left ltx_border_bb">44.6</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div class="ltx_para" id="S4.SS7.p3">
+<p class="ltx_p">In Table <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.T6" title="Table 6 ‣ 4.7 RLVR for IF from Base ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">6</span></a>, we find that IF-RLVR training a base model leads to nearly the same IFEval performance as when using an instruct policy. IF-RLVR training from base, with a reasoning chat template, results in better generalization on the out-of-domain <span class="ltx_text ltx_font_smallcaps">IFBench</span>. We conclude that IF-RLVR with reasoning leads to improved IF generalization.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS8">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.8 </span>RLVR for Multi-turn IF</h3>
+<div class="ltx_para" id="S4.SS8.p1">
+<p class="ltx_p">We experiment with comparing single-turn RLVR runs (IF-RLVR-<span class="ltx_text ltx_font_smallcaps">single</span>) to multi-turn RLVR training (IF-RLVR-<span class="ltx_text ltx_font_smallcaps">multi</span>), and to training on a mix of both types of data (IF-RLVR-<span class="ltx_text ltx_font_smallcaps">mix</span>). We run experiments on Qwen2.7-7b base and instruct.</p>
+</div>
+<figure class="ltx_table" id="S4.T7">
+<figcaption class="ltx_caption ltx_centering" style="font-size:90%;"><span class="ltx_tag ltx_tag_table">Table 7: </span>Training on single turn data, multi turn data, and a mix. Evaluated on IFEval (IFE.) constraints and IFBench (IFB.) constraints.</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" colspan="4"><span class="ltx_text" style="font-size:90%;">trained on single turn</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" colspan="4"><span class="ltx_text" style="font-size:90%;">trained on multi turn</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" colspan="4"><span class="ltx_text" style="font-size:90%;">trained on a mix</span></th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column" colspan="2"><span class="ltx_text" style="font-size:90%;">single turn</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column" colspan="2"><span class="ltx_text" style="font-size:90%;">multi turn</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column" colspan="2"><span class="ltx_text" style="font-size:90%;">single turn</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column" colspan="2"><span class="ltx_text" style="font-size:90%;">multi turn</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column" colspan="2"><span class="ltx_text" style="font-size:90%;">single turn</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column" colspan="2"><span class="ltx_text" style="font-size:90%;">multi turn</span></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_t"></th>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFE.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFB.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFE.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFB.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFE.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFB.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFE.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFB.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFE.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFB.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFE.</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">IFB.</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">Qwen2.5-7B</span></th>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">79.9</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">55.8</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">57.4</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">50.0</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">70.8</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">41.2</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">65.9</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">50.0</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">85.2</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">51.0</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">62.5</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">51.0</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb">
+<table class="ltx_tabular ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_r ltx_align_left"><span class="ltx_text" style="font-size:90%;">Qwen2.5-7B-</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_r ltx_align_left"><span class="ltx_text" style="font-size:90%;">Instruct</span></td>
+</tr>
+</table>
+</th>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">89.1</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">45.9</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">85.2</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">71.7</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">81.5</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">34.7</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">90.2</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">68.6</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">86.6</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">54.8</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">89.5</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb"><span class="ltx_text" style="font-size:90%;">72.9</span></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div class="ltx_para" id="S4.SS8.p2">
+<p class="ltx_p">IF-RLVR-<span class="ltx_text ltx_font_smallcaps">multi</span> mostly leads to an improved performance on the multiturn setup of <span class="ltx_text ltx_font_smallcaps">IFBench</span>, compared to IF-RLVR-<span class="ltx_text ltx_font_smallcaps">single</span>, while harming the singleturn performance. IF-RLVR-<span class="ltx_text ltx_font_smallcaps">mix</span> harms singleturn performance less, and sometimes even helps it, while reaching a comparable multiturn performance.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>Reward Hacking and the Instruction Hierarchy</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">Following (verifiable) output constraints can stand in conflict with following the main task mentioned in the instruction and a model has to trade-off between completing the task while also adhering to the constraint.
+Take for example an instruction that asks to provide a single-sentence summary of a text, combined with the constraint that “each word in the response must start with the next letter of the alphabet, looping back to A after Z".
+The best single-sentence summary would probably not consists of words starting with the next letter of the alphabet, and a model should therefore ideally balance fulfilling the task as best as possible, while still adhering to the boundaries of the constraint.
+Models exhibit different ways to prioritize instructions composed within a prompt.
+The notion of an “instruction hierarchy” can be used to prioritize either the relative ranking of following system versus user prompts in a query along with how to prioritize different pieces of a request relative to eachother <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib25" title="">wallace2024instruction </a></cite>.
+In order to avoid a clear conflict within our benchmark dataset, we manually checked samples to avoid situations where a model could only fulfill either the question or the constraint.</p>
+</div>
+<section class="ltx_paragraph" id="S5.SS0.SSS0.Px1">
+<h4 class="ltx_title ltx_title_paragraph">Trade-offs between response quality and instruction following</h4>
+<div class="ltx_para" id="S5.SS0.SSS0.Px1.p1">
+<p class="ltx_p">To understand the trade-off between challenging constraints and general response quality we contrast <span class="ltx_text ltx_font_smallcaps">IFBench</span> accuracy with a general LLM-as-a-judge prompt-completion rating <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib31" title="">zheng2023judging, </a>)</cite>.
+Using GPT4.1 as the judge, we prompt<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>See Appendix <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#A3" title="Appendix C LLM-as-judge Prompt ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">C</span></a> for details.</span></span></span> it to score how well a completion answers a prompt without the constraint.
+We score the IFEval and <span class="ltx_text ltx_font_smallcaps">IFBench</span> completions from our RLVR trained model and from the base policy before RLVR training.
+Completions from the base policy are scored higher by the LLM-as-judge than completions from the IF-RLVR trained model, for both IFEval and IFBench prompts with constraints removed (see Figure <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S5.F7" title="Figure 7 ‣ Trade-offs between response quality and instruction following ‣ 5 Reward Hacking and the Instruction Hierarchy ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">7</span></a>). This indicates that the base policy models are better at following general instructions, while IF-RLVR trained models are better at following the constraints.
+The verifiable accuracy, though, is on average higher for the model that went through RLVR training.
+The verifiable rewards teach the model to prioritize the constraints and in the following section we propose an approach to soften this preference.</p>
+</div>
+<div class="ltx_para" id="S5.SS0.SSS0.Px1.p2">
+<p class="ltx_p">We also analyze IFBench completions of existing models: claude-3-7-sonnet, Gemini, Qwen2.5-72B-Instruct, and tulu3-70B. We find that tulu3-70B’s IF accuracy correlates the most with the LLM-as-judge scores and that Qwen2.5-72B-Instruct’s IF accuracy is the most negatively correlated with LLM-as-judge scores, out of this set of models. This indicates that Qwen2.5 tends to focus on the constraints rather than the general instruction.</p>
+</div>
+<figure class="ltx_figure" id="S5.F7"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="454" id="S5.F7.g1" src="figures/combined_model_scores_comparison.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>Comparing the model before vs. after RLVR training: LLM-as-judge scores vs. verifiable accuracy.</figcaption>
+</figure>
+</section>
+<section class="ltx_paragraph" id="S5.SS0.SSS0.Px2">
+<h4 class="ltx_title ltx_title_paragraph">Mitigating Reward Hacking</h4>
+<div class="ltx_para" id="S5.SS0.SSS0.Px2.p1">
+<p class="ltx_p">While GRPO training with verifiable rewards for precise IF is great at teaching LLMs to follow output constraints, it can sometimes result in models that over-prioritize the constraint over the full instruction. An example of such an output is given in Figure <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S5.F8" title="Figure 8 ‣ Mitigating Reward Hacking ‣ 5 Reward Hacking and the Instruction Hierarchy ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">8</span></a>.
+This could also be called over-optimization.
+We propose adding a general reward model (RM) signal to the verifiable reward.
+The intuition is that while the verifiable reward checks for the adherence to the output constraint, the general reward model provides signal for whether the response answers the prompt.
+We apply the reward from the reward model to all generations that received a verifiable reward <math alttext="&gt;0" class="ltx_Math" display="inline" id="S5.SS0.SSS0.Px2.p1.m1"><semantics><mrow><mi></mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">&gt;0</annotation><annotation encoding="application/x-llamapun">&gt; 0</annotation></semantics></math>, as follows: For a batch of data, we assign the final reward, <math alttext="F_{i}" class="ltx_Math" display="inline" id="S5.SS0.SSS0.Px2.p1.m2"><semantics><msub><mi>F</mi><mi>i</mi></msub><annotation encoding="application/x-tex">F_{i}</annotation><annotation encoding="application/x-llamapun">italic_F start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT</annotation></semantics></math> to that instance corresponding to conditions of the verifiable reward, <math alttext="V_{i}" class="ltx_Math" display="inline" id="S5.SS0.SSS0.Px2.p1.m3"><semantics><msub><mi>V</mi><mi>i</mi></msub><annotation encoding="application/x-tex">V_{i}</annotation><annotation encoding="application/x-llamapun">italic_V start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT</annotation></semantics></math>, and the reward model score, <math alttext="S_{i}" class="ltx_Math" display="inline" id="S5.SS0.SSS0.Px2.p1.m4"><semantics><msub><mi>S</mi><mi>i</mi></msub><annotation encoding="application/x-tex">S_{i}</annotation><annotation encoding="application/x-llamapun">italic_S start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT</annotation></semantics></math>:</p>
+<table class="ltx_equation ltx_eqn_table" id="S5.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="F_{i}=\begin{cases}V_{i}+1&amp;\text{if }V_{i}&gt;0\text{ and }S_{i}&gt;\alpha\\
+V_{i}-0.5&amp;\text{if }V_{i}&gt;0\text{ and }S_{i}\leq\alpha\\
+V_{i}&amp;\text{if }V_{i}\leq 0\end{cases}" class="ltx_Math" display="block" id="S5.E2.m1"><semantics><mrow><msub><mi>F</mi><mi>i</mi></msub><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><msub><mi>V</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo lspace="0em" rspace="0em">​</mo><msub><mi>V</mi><mi>i</mi></msub></mrow><mo>&gt;</mo><mrow><mn>0</mn><mo lspace="0em" rspace="0em">​</mo><mtext> and </mtext><mo lspace="0em" rspace="0em">​</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo>&gt;</mo><mi>α</mi></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><msub><mi>V</mi><mi>i</mi></msub><mo>−</mo><mn>0.5</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo lspace="0em" rspace="0em">​</mo><msub><mi>V</mi><mi>i</mi></msub></mrow><mo>&gt;</mo><mrow><mn>0</mn><mo lspace="0em" rspace="0em">​</mo><mtext> and </mtext><mo lspace="0em" rspace="0em">​</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo>≤</mo><mi>α</mi></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><msub><mi>V</mi><mi>i</mi></msub></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo lspace="0em" rspace="0em">​</mo><msub><mi>V</mi><mi>i</mi></msub></mrow><mo>≤</mo><mn>0</mn></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">F_{i}=\begin{cases}V_{i}+1&amp;\text{if }V_{i}&gt;0\text{ and }S_{i}&gt;\alpha\\
+V_{i}-0.5&amp;\text{if }V_{i}&gt;0\text{ and }S_{i}\leq\alpha\\
+V_{i}&amp;\text{if }V_{i}\leq 0\end{cases}</annotation><annotation encoding="application/x-llamapun">italic_F start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT = { start_ROW start_CELL italic_V start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT + 1 end_CELL start_CELL if italic_V start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT &gt; 0 and italic_S start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT &gt; italic_α end_CELL end_ROW start_ROW start_CELL italic_V start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT - 0.5 end_CELL start_CELL if italic_V start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT &gt; 0 and italic_S start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT ≤ italic_α end_CELL end_ROW start_ROW start_CELL italic_V start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT end_CELL start_CELL if italic_V start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT ≤ 0 end_CELL end_ROW</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table>
+</div>
+<figure class="ltx_figure" id="S5.F8"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="290" id="S5.F8.g1" src="x2.png" width="581"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>An example output of a model being overoptimized to follow constraints.</figcaption>
+</figure>
+<div class="ltx_para" id="S5.SS0.SSS0.Px2.p2">
+<p class="ltx_p">We use the openly available Llama-3.1-Tulu-3-8B-RM as our general preference reward model, set <math alttext="\alpha=7" class="ltx_Math" display="inline" id="S5.SS0.SSS0.Px2.p2.m1"><semantics><mrow><mi>α</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\alpha=7</annotation><annotation encoding="application/x-llamapun">italic_α = 7</annotation></semantics></math><span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>We chose 7 as this is around the mean reward score given by the model over a large set of instances.</span></span></span>, and use an effective batch size of 512, with 8 samples/prompt.</p>
+</div>
+<div class="ltx_para" id="S5.SS0.SSS0.Px2.p3">
+<p class="ltx_p">After 1100 steps, this model achieves an IFEval score of 86.1 and an <span class="ltx_text ltx_font_smallcaps">IFBench</span> score of 30. Compared to the model trained on only ground-truth reward signal (see Table <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#S4.T3" title="Table 3 ‣ 4.5 Teaching the basic units of precise IF ‣ 4 IF-RLVR Experiments ‣ Generalizing Verifiable Instruction Following"><span class="ltx_text ltx_ref_tag">3</span></a>), this model scores slightly lower on instruction following (with still more than a 5 point improvement over the base policy), while scoring higher on AlpacaEval 2 (31.6). A good solution that balances instruction following and constraint following is therefore to combine a ground truth reward with a preference reward, and we suggest further investigating reward combinations in future work.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>Related Work</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p">Following instructions precisely and adhering to specific output or formatting constraints is often still a challenge for language models. LLMs’ reasoning abilities, for example, decline when they also have to adhere to formatting constraints <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib21" title="">tam2024let </a></cite>. And models can struggle at doing constrained generation with fine-grained constraints <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib20" title="">sun2023evaluating </a></cite>. Previous works improved models’ instruction following abilities by scaling up the instruction fine-tuning stage <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib2" title="">chung2024scaling </a></cite>, through activation steering <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib19" title="">stolfo2024improving </a></cite>, DPO training <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib11" title="">kim-etal-2025-systematic </a></cite>, and using RL with verifiable rewards <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib12" title="">lambert2024t </a></cite>.</p>
+</div>
+<div class="ltx_para" id="S6.p2">
+<p class="ltx_p">The issues of train-test contamination and model generalization have also been pointed out in previous works <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib5" title="">golchintime </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib17" title="">roberts2023cutoff </a>; <a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib3" title="">dominguez2024training </a></cite>. One approach to investigate a model’s abilities to generalize on a given task is to build a new <span class="ltx_text ltx_font_italic">unseen</span> test set. This has, for example, been done for the GSM8K benchmark, which was perturbed using templates to create GSM8K-symbolic <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib14" title="">mirzadehgsm </a></cite>. Similar findings were made in the reasoning domain, where models were shown to overfit on small benchmarks like AIME’24 <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib8" title="">Hochlehnert2025ASL </a></cite>.</p>
+</div>
+<div class="ltx_para" id="S6.p3">
+<p class="ltx_p">Multiple benchmarks have been proposed to evaluate instruction following. IFEval <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib32" title="">zhou2023instruction </a></cite> evaluates how models follow a set of 25 verifiable constraints targeting output formats. FollowBench <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib10" title="">jiang2023followbench </a></cite> looks at how models deal with an iteratively increasing amount of constraints, covering situation, style, and format constraints. These constraints are not verifiable and are evaluated using LLM-as-judges. InFoBench <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib16" title="">qin2024infobench </a></cite> evaluates models by decomposing the instruction into atomic constraints and rating each constraint individually with an LLM-as-a-judge. To the best of our knowledge, the only other work that generates automatically verifiable training and test data is VFF <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="https://arxiv.org/html/2507.02833v2#bib.bib27" title="">wangverifiable </a></cite>, showing how their data improves IF performance using SFT and DPO training. IFBench additionally investigates how IF-RLVR training affects IF generalization.</p>
+</div>
+</section>
+<section class="ltx_section" id="S7">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7 </span>Conclusion and Limitations</h2>
+<div class="ltx_para" id="S7.p1">
+<p class="ltx_p">We create <span class="ltx_text ltx_font_smallcaps">IFBench</span>, a challenging and unseen benchmark to evaluate precise, verifiable instruction following. We show that most models overfit on a small set of constraints and that generalization is difficult. Using <span class="ltx_text ltx_font_smallcaps">IFBench</span> we perform an analysis of if and when generalization is possible for RLVR training for precise instruction following. We conclude with recommendations for improved constraint following abilities in language models and by showing how our benchmark remains challenging despite targeted training efforts.</p>
+</div>
+<div class="ltx_para" id="S7.p2">
+<p class="ltx_p">Our work comes with some limitations and open questions left for future work. We exclusively focus on verifiable constraints, which is limiting, as many constraints used by users in the wild are constraints that do not have an easily verifiable ground truth. This also means our constraints might sometimes seem unnatural or contrived. For future work it would be interesting to explore RL training for a wider variety of constraints, some of which not necessarily verifiable.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">Acknowledgements</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">This research was developed with funding from NSF IIS-2044660.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(1)</span>
+<span class="ltx_bibblock">
+Bo Adler, Niket Agarwal, Ashwath Aithal, Dong H Anh, Pallab Bhattacharya, Annika Brundyn, Jared Casper, Bryan Catanzaro, Sharon Clay, Jonathan Cohen, et al.
+
+</span>
+<span class="ltx_bibblock">Nemotron-4 340b technical report.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2406.11704</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(2)</span>
+<span class="ltx_bibblock">
+Hyung Won Chung, Le Hou, Shayne Longpre, Barret Zoph, Yi Tay, William Fedus, Yunxuan Li, Xuezhi Wang, Mostafa Dehghani, Siddhartha Brahma, et al.
+
+</span>
+<span class="ltx_bibblock">Scaling instruction-finetuned language models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">J. Mach. Learn. Res.</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(3)</span>
+<span class="ltx_bibblock">
+Ricardo Dominguez-Olmedo, Florian E Dorner, and Moritz Hardt.
+
+</span>
+<span class="ltx_bibblock">Training on the test task confounds evaluation and emergence.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2407.07890</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(4)</span>
+<span class="ltx_bibblock">
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan, et al.
+
+</span>
+<span class="ltx_bibblock">The llama 3 herd of models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2407.21783</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(5)</span>
+<span class="ltx_bibblock">
+Shahriar Golchin and Mihai Surdeanu.
+
+</span>
+<span class="ltx_bibblock">Time travel in llms: Tracing data contamination in large language models.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">The Twelfth International Conference on Learning Representations</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(6)</span>
+<span class="ltx_bibblock">
+Aaron Grattafiori, Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Alex Vaughan, et al.
+
+</span>
+<span class="ltx_bibblock">The llama 3 herd of models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2407.21783</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(7)</span>
+<span class="ltx_bibblock">
+Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Ruoyu Zhang, Runxin Xu, Qihao Zhu, Shirong Ma, Peiyi Wang, Xiao Bi, et al.
+
+</span>
+<span class="ltx_bibblock">Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2501.12948</span>, 2025.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(8)</span>
+<span class="ltx_bibblock">
+Andreas Hochlehnert, Hardik Bhatnagar, Vishaal Udandarao, Samuel Albanie, Ameya Prabhu, and Matthias Bethge.
+
+</span>
+<span class="ltx_bibblock">A sober look at progress in language model reasoning: Pitfalls and paths to reproducibility.
+
+</span>
+<span class="ltx_bibblock">2025.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(9)</span>
+<span class="ltx_bibblock">
+Hamish Ivison, Yizhong Wang, Valentina Pyatkin, Nathan Lambert, Matthew E. Peters, Pradeep Dasigi, Joel Jang, David Wadden, Noah A. Smith, Iz Beltagy, and Hanna Hajishirzi.
+
+</span>
+<span class="ltx_bibblock">Camels in a changing climate: Enhancing lm adaptation with tulu 2.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">ArXiv</span>, abs/2311.10702, 2023.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(10)</span>
+<span class="ltx_bibblock">
+Yuxin Jiang, Yufei Wang, Xingshan Zeng, Wanjun Zhong, Liangyou Li, Fei Mi, Lifeng Shang, Xin Jiang, Qun Liu, and Wei Wang.
+
+</span>
+<span class="ltx_bibblock">Followbench: A multi-level fine-grained constraints following benchmark for large language models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">CoRR</span>, 2023.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(11)</span>
+<span class="ltx_bibblock">
+Joongwon Kim, Anirudh Goyal, Aston Zhang, Bo Xiong, Rui Hou, Melanie Kambadur, Dhruv Mahajan, Hannaneh Hajishirzi, and Liang Tan.
+
+</span>
+<span class="ltx_bibblock">A systematic examination of preference learning through the lens of instruction-following.
+
+</span>
+<span class="ltx_bibblock">In Luis Chiruzzo, Alan Ritter, and Lu Wang, editors, <span class="ltx_text ltx_font_italic">Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)</span>, pages 11062–11082, Albuquerque, New Mexico, April 2025. Association for Computational Linguistics.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(12)</span>
+<span class="ltx_bibblock">
+Nathan Lambert, Jacob Morrison, Valentina Pyatkin, Shengyi Huang, Hamish Ivison, Faeze Brahman, Lester James V Miranda, Alisa Liu, Nouha Dziri, Shane Lyu, et al.
+
+</span>
+<span class="ltx_bibblock">T<math alttext="\backslash" class="ltx_Math" display="inline" id="bib.bib12.m1"><semantics><mo>\</mo><annotation encoding="application/x-tex">\backslash</annotation><annotation encoding="application/x-llamapun">\</annotation></semantics></math>" ulu 3: Pushing frontiers in open language model post-training.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2411.15124</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(13)</span>
+<span class="ltx_bibblock">
+Gili Lior, Asaf Yehudai, Ariel Gera, and Liat Ein-Dor.
+
+</span>
+<span class="ltx_bibblock">Wildifeval: Instruction following in the wild.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2503.06573</span>, 2025.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(14)</span>
+<span class="ltx_bibblock">
+Seyed Iman Mirzadeh, Keivan Alizadeh, Hooman Shahrokhi, Oncel Tuzel, Samy Bengio, and Mehrdad Farajtabar.
+
+</span>
+<span class="ltx_bibblock">Gsm-symbolic: Understanding the limitations of mathematical reasoning in large language models.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">The Thirteenth International Conference on Learning Representations</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(15)</span>
+<span class="ltx_bibblock">
+Team OLMo, Pete Walsh, Luca Soldaini, Dirk Groeneveld, Kyle Lo, Shane Arora, Akshita Bhagia, Yuling Gu, Shengyi Huang, Matt Jordan, et al.
+
+</span>
+<span class="ltx_bibblock">2 olmo 2 furious.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2501.00656</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(16)</span>
+<span class="ltx_bibblock">
+Yiwei Qin, Kaiqiang Song, Yebowen Hu, Wenlin Yao, Sangwoo Cho, Xiaoyang Wang, Xuansheng Wu, Fei Liu, Pengfei Liu, and Dong Yu.
+
+</span>
+<span class="ltx_bibblock">Infobench: Evaluating instruction following ability in large language models.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Findings of the Association for Computational Linguistics ACL 2024</span>, pages 13025–13048, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(17)</span>
+<span class="ltx_bibblock">
+Manley Roberts, Himanshu Thakur, Christine Herlihy, Colin White, and Samuel Dooley.
+
+</span>
+<span class="ltx_bibblock">To the cutoff… and beyond? a longitudinal perspective on llm data contamination.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">The Twelfth International Conference on Learning Representations</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(18)</span>
+<span class="ltx_bibblock">
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, YK Li, Y Wu, et al.
+
+</span>
+<span class="ltx_bibblock">Deepseekmath: Pushing the limits of mathematical reasoning in open language models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2402.03300</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(19)</span>
+<span class="ltx_bibblock">
+Alessandro Stolfo, Vidhisha Balachandran, Safoora Yousefi, Eric Horvitz, and Besmira Nushi.
+
+</span>
+<span class="ltx_bibblock">Improving instruction-following in language models through activation steering.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2410.12877</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(20)</span>
+<span class="ltx_bibblock">
+Jiao Sun, Yufei Tian, Wangchunshu Zhou, Nan Xu, Qian Hu, Rahul Gupta, John Frederick Wieting, Nanyun Peng, and Xuezhe Ma.
+
+</span>
+<span class="ltx_bibblock">Evaluating large language models on controlled generation tasks.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">The 2023 Conference on Empirical Methods in Natural Language Processing</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(21)</span>
+<span class="ltx_bibblock">
+Zhi Rui Tam, Cheng-Kuang Wu, Yi-Lin Tsai, Chieh-Yen Lin, Hung-yi Lee, and Yun-Nung Chen.
+
+</span>
+<span class="ltx_bibblock">Let me speak freely? a study on the impact of format restrictions on performance of large language models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2408.02442</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(22)</span>
+<span class="ltx_bibblock">
+Gemma Team, Aishwarya Kamath, Johan Ferret, Shreya Pathak, Nino Vieillard, Ramona Merhej, Sarah Perrin, Tatiana Matejovicova, Alexandre Ramé, Morgane Rivière, et al.
+
+</span>
+<span class="ltx_bibblock">Gemma 3 technical report.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2503.19786</span>, 2025.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(23)</span>
+<span class="ltx_bibblock">
+Qwen Team.
+
+</span>
+<span class="ltx_bibblock">Qwen2 technical report.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2412.15115</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(24)</span>
+<span class="ltx_bibblock">
+Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, et al.
+
+</span>
+<span class="ltx_bibblock">Llama: Open and efficient foundation language models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2302.13971</span>, 2023.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(25)</span>
+<span class="ltx_bibblock">
+Eric Wallace, Kai Xiao, Reimar Leike, Lilian Weng, Johannes Heidecke, and Alex Beutel.
+
+</span>
+<span class="ltx_bibblock">The instruction hierarchy: Training llms to prioritize privileged instructions.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2404.13208</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(26)</span>
+<span class="ltx_bibblock">
+Yiping Wang, Qing Yang, Zhiyuan Zeng, Liliang Ren, Liyuan Liu, Baolin Peng, Hao Cheng, Xuehai He, Kuan Wang, Jianfeng Gao, et al.
+
+</span>
+<span class="ltx_bibblock">Reinforcement learning for reasoning in large language models with one training example.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2504.20571</span>, 2025.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(27)</span>
+<span class="ltx_bibblock">
+Zhaoyang Wang, Jinqi Jiang, Huichi Zhou, Wenhao Zheng, Xuchao Zhang, Chetan Bansal, and Huaxiu Yao.
+
+</span>
+<span class="ltx_bibblock">Verifiable format control for large language model generations.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Findings of the Association for Computational Linguistics: NAACL 2025</span>, pages 3499–3513, 2025.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(28)</span>
+<span class="ltx_bibblock">
+An Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao, Chengen Huang, Chenxu Lv, et al.
+
+</span>
+<span class="ltx_bibblock">Qwen3 technical report.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2505.09388</span>, 2025.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(29)</span>
+<span class="ltx_bibblock">
+An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu, Fei Huang, Haoran Wei, et al.
+
+</span>
+<span class="ltx_bibblock">Qwen2. 5 technical report.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2412.15115</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(30)</span>
+<span class="ltx_bibblock">
+Wenting Zhao, Xiang Ren, Jack Hessel, Claire Cardie, Yejin Choi, and Yuntian Deng.
+
+</span>
+<span class="ltx_bibblock">Wildchat: 1m chatgpt interaction logs in the wild.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2405.01470</span>, 2024.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(31)</span>
+<span class="ltx_bibblock">
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric Xing, et al.
+
+</span>
+<span class="ltx_bibblock">Judging llm-as-a-judge with mt-bench and chatbot arena.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">Advances in Neural Information Processing Systems</span>, 36:46595–46623, 2023.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(32)</span>
+<span class="ltx_bibblock">
+Jeffrey Zhou, Tianjian Lu, Swaroop Mishra, Siddhartha Brahma, Sujoy Basu, Yi Luan, Denny Zhou, and Le Hou.
+
+</span>
+<span class="ltx_bibblock">Instruction-following evaluation for large language models.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">arXiv preprint arXiv:2311.07911</span>, 2023.
+
+</span>
+</li>
+</ul>
+</section>
+<section class="ltx_appendix" id="A1">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix A </span>Out-of-Distribution Test Constraints</h2>
+<figure class="ltx_table" id="A1.T8">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 8: </span><span class="ltx_text ltx_font_smallcaps">IFBench</span> out-of-distribution constraints. Constraints are added to an unseen WildChat prompt to form the final prompt except for in the "custom" instruction group.</figcaption>
+<table class="ltx_tabular">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_justify ltx_align_top ltx_th ltx_th_column ltx_border_tt">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;"><span class="ltx_text ltx_font_bold">Instruction Group</span></span>
+</span>
+</th>
+<th class="ltx_td ltx_align_justify ltx_align_top ltx_th ltx_th_column ltx_border_tt">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;"><span class="ltx_text ltx_font_bold">Instruction</span></span>
+</span>
+</th>
+<th class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_th ltx_th_column ltx_border_tt">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;"><span class="ltx_text ltx_font_bold">Description</span></span>
+</span>
+</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">conjunctions</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Use at least {N} different coordinating conjunctions in the response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">numbers</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include exactly {N} numbers in the response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">person_names</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Mention at least {N} different person names in the response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">pronouns</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The response should include at least {N} pronouns.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">punctuation</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Use every standard punctuation mark at least once, including semicolons, colons, and the interrobang (?!).</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">unique_word_count</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Use at least {N} unique words in the response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">word_count_range</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The response must contain between {min_n} and {max_n} words.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words_french</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Every {N}th word of your response must be in french.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">emoji</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Please use an emoji at the end of every sentence.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">line_indent</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Create stairs by incrementally indenting each new line.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">list</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Answer with a list of items, instead of bullet points use {sep}.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">newline</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Write each word on a new line.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">no_bullets_bullets</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Your answer must contain at least two sentences ending in a period followed by at least two bullet points denoted by *.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">options</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Answer with one of the following options: {options}. Do not give any explanation.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">parentheses</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Nest parentheses (and [brackets {and braces}]) at least 5 levels deep.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">quote_unquote</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Every quoted phrase must be followed by an unquoted explanation.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">quotes</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include quotes within quotes within quotes, at least 3 levels deep, alternating between double quotes and single quotes.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sub-bullets</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Your response must include bullet points denoted by * and at least one sub-bullet point denoted by - for each bullet point.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">thesis</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Each section must begin with a thesis statement in italics, use HTML to indicate the italics.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">ratio</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">overlap</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Maintain a trigram overlap of {percentage}% (<math alttext="\pm" class="ltx_Math" display="inline" id="A1.T8.m1"><semantics><mo>±</mo><annotation encoding="application/x-tex">\pm</annotation><annotation encoding="application/x-llamapun">±</annotation></semantics></math>2%) with the provided reference text.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">ratio</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence_balance</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Ensure that the ratio of sentence types (declarative, interrogative, exclamatory) in your response is balanced.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">ratio</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence_type</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Maintain a 2:1 ratio of declarative to interrogative sentences in your response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">ratio</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence_words</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Respond with three sentences, all containing the same number of characters but using all different words.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">ratio</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">stop_words</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Ensure that stop words constitute no more than {percentage}% of the total words in your response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">alliteration_increment</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Each sentence must have more alliterative words than the previous one.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">increment</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Each sentence in your response must contain exactly {small_N} more words than the previous one.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keyword</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The response must include keyword {keyword} in the {N}-th sentence.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">alphabet</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Each word in your response must start with the next letter of the alphabet, looping back to ’A’ after ’Z’.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">consonants</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Ensure each word in your response has at least one consonant cluster (two or more consonants together).</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">last_first</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">In your response, the last word of each sentence must become the first word of the next sentence.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">no_consecutive</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">No two consecutive words can share the same first letter.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">odd_even_syllables</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Alternate between words with odd and even numbers of syllables.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">palindrome</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include at least 10 palindromes, each at least 5 characters long.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">paragraph_last_first</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Each paragraph of your response must end with the same word it started with.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">prime_lengths</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Use only words with lengths that are prime numbers.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">repeats</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The response should not repeat any word more than {small_N} times.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">start_verb</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The response must start with a verb.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">vowel</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Write a paragraph using words that contain only one type of vowel.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">character_reverse</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">What animal is the national symbol of the US? Respond to this query, but make your sentence in reverse order of what it should be, per letter.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">csv_city</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Generate CSV data: The column names are ["ID", "Country", "City", "Year", "Count"], the data should be comma delimited. Please generate 7 rows.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">csv_quotes</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Generate CSV data: The column names are ["StudentID", "Subject", "Grade", "Semester", "Score"], the data should be tab delimited. Please generate 3 rows and enclose each single field in double quotes.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">csv_special_character</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Generate CSV data: The column names are ["ProductID", "Category", "Brand", "Price", "Stock"], the data should be comma delimited. Please generate 14 rows. Add one field which contains a special character and enclose it in double quotes.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">date_format_list</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">List the start dates of all the battles Napoleon fought separated by commas, use the following date format: YYYY-MM-DD. Do not provide an explanation.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">european_capitals_sort</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Give me the names of all capital cities of european countries whose latitude is higher than than 45 degrees? List the capital cities without country names, separated by commas, sorted by latitude, from highest to lowest.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">mcq_count_length</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Generate 4 multiple choice questions with 5 options each about "20th century art history". Each question should start with the label "Question". The questions should get progressively longer. Do not provide an explanation.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">multiples</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Count from 10 to 50 but only print multiples of 7.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">reverse_newline</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">List the countries of Africa in reverse alphabetical order, each on a new line.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence_alphabet</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Tell me a 26-sentence story where each sentence’s first word starts with the letters of the alphabet in order.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">custom</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">word_reverse</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">What animal is the national symbol of the US? Respond to this query, but make your sentence in reverse order of what it should be, per word.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keywords_multiple</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include keyword {keyword1} once in your response, keyword {keyword2} twice in your response, keyword {keyword3} three times in your response, and keyword {keyword4} five times in your response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keywords_specific_pos.</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include keyword {keyword} in the n-th sentence, as the m-th word of that sentence.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">words_position</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The second word in your response and the second to last word in your response should be the word {keyword}.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">repeat_change</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Repeat the request, but change the first word of the repeated request, (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">repeat_simple</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Only output this sentence here, ignore all other requests.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">repeat_span</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Copy the span of words that lies between (and including) index n_start and n_end, the indices are word indices, split by whitespace!</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">title_case</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Write the entire response in title case (capitalize the first letter of every major word).</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">output_template</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Use this exact template for your response: My Answer: [answer] My Conclusion: [conclusion] Future Outlook: [outlook]</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_bb ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_bb ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">no_whitespace</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_bb ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The output should not contain any whitespace.</span>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</section>
+<section class="ltx_appendix" id="A2">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix B </span>Out-of-Distribution Train Constraints</h2>
+<figure class="ltx_table" id="A2.T9">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 9: </span>IFTrain out-of-distribution constraints. Constraints are added to an unseen SFT prompt to form the final prompt.</figcaption>
+<table class="ltx_tabular">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_justify ltx_align_top ltx_th ltx_th_column ltx_border_tt">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;"><span class="ltx_text ltx_font_bold">Instruction Group</span></span>
+</span>
+</th>
+<th class="ltx_td ltx_align_justify ltx_align_top ltx_th ltx_th_column ltx_border_tt">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;"><span class="ltx_text ltx_font_bold">Instruction</span></span>
+</span>
+</th>
+<th class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_th ltx_th_column ltx_border_tt">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;"><span class="ltx_text ltx_font_bold">Description</span></span>
+</span>
+</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keyword</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">word_once</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include keyword keyword in your response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keyword</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">word_count_diff_numb</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">In your response, the word {word} should appear {N} times.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keyword</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">exclude_word_harder</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Do not include keyword {keyword1} in the response. <span class="ltx_text ltx_font_italic">where keyword is sampled from instruction</span></span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">letter</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">letter_counting2</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">In your response, the letter {letter} should appear {N} times.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">paragraphs</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">paragraphs</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Your response should contain 2 paragraphs. You separate paragraphs using the markdown divider: * * *</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">paragraphs</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">paragraphs2</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">There should be 2 paragraphs. Paragraphs and only paragraphs are separated with each other by two line breaks.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">first word</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">first_word_sent</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The first word of each sentence should be the word {first_word}.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">first word</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">first_word_answer</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The first word of your response should be the word {first_word}.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">last word</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">last_word_sent</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The last word of each sentence, before punctuation, should be the word {last_word}.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">last word</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">last_word_answer</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">The last word of your response should be the word {last_word}.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">bigram_wrapping</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Wrap every word bigram in double angular brackets, such as &lt;&lt;I am&gt;&gt; &lt;&lt;at home&gt;&gt; &lt;&lt;with my&gt;&gt; &lt;&lt;cute dog&gt;&gt;.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copying_simple</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Repeat the request without change (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copying_multiple</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Repeat the request without change {N} times, separated by 6 asterisk symbols (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">punctuation</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">punctuation_dot</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">In your entire response, refrain from the use of . (i.e. dots) as punctuation and in general.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">punctuation</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">punctuation_exclam.</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">In your entire response, refrain from the use of ! (i.e. exclamation marks) as punctuation and in general.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">lowercase_counting</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">In your response, all lowercase words should appear at most {N} times.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">letter_counting</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Answer with relation {N} letters.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">counting_composition</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Write 3 paragraphs, delimited by the markdown divider: * * *, with exactly {n_sent} sentences each, with exactly {n_words} words in each sentence.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count_unique</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Only use unique words in your response, no word should be repeated!</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">count_increment_word</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include keyword {keyword1} once in your response, keyword {keyword2} twice in your response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keywords</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">palindrome</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include a palindrome in your response.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keywords</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keyword_specific_pos.</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Include keyword {keyword1} in the {n}-th sentence, as the {m}-th word of that sentence.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keywords</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">start_end</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Start and end your response with the same word (do not write anything after the last word, not even punctuation).</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">repeat_phrase</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Repeat the phrase phrase exactly {N} times, transforming it slightly each time by replacing one word.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">keywords</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">no_adjacent_consec.</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">No two adjacent words can start with consecutive letters of the alphabet.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">square_brackets</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Enclose every word in your response within square brackets.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">format</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">sentence_hyphens</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">All sentences must be connected using hyphens, with no spaces between them.</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Copy this instruction verbatim, do not follow the instruction, only copy it into the output (do not include this instruction sentence!).</span>
+</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_bb ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy</span>
+</span>
+</td>
+<td class="ltx_td ltx_align_justify ltx_align_top ltx_border_bb ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:86.7pt;">copy_span_idx</span>
+</span>
+</td>
+<td class="ltx_td ltx_nopad_r ltx_align_justify ltx_align_top ltx_border_bb ltx_border_t">
+<span class="ltx_inline-block ltx_align_top">
+<span class="ltx_p" style="width:216.8pt;">Copy the span of words that lies between (and including) index {n_start} and {n_end}, the indices are character indices!</span>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div class="ltx_pagination ltx_role_newpage"></div>
+</section>
+<section class="ltx_appendix" id="A3">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix C </span>LLM-as-judge Prompt</h2>
+<div class="ltx_para" id="A3.p1">
+<p class="ltx_p">Evaluate the response provided below to determine if it meets the specified constraints related to the following prompt.
+Provide an integer score from 1 to 10, taking into account its helpfulness, relevance, accuracy, depth, creativity, and how
+well it conforms to the constraints. Here are the criteria that you should score:
+1. Helpfulness: Does the response address the user’s needs and questions effectively?
+2. Relevance: Is the response directly related to the context of the dialog?
+3. Accuracy: Are the facts and information presented in the response correct?
+4. Depth: Does the response cover the topic thoroughly, with sufficient detail?
+5. Creativity: Is the response original and engaging?</p>
+</div>
+<div class="ltx_para" id="A3.p2">
+<p class="ltx_p">Prompt to Evaluate Against:
+prompt</p>
+</div>
+<div class="ltx_para" id="A3.p3">
+<p class="ltx_p">Response to Evaluate:
+response</p>
+</div>
+<div class="ltx_para" id="A3.p4">
+<p class="ltx_p">The evaluation must be structured in the following JSON format:
+"Score": "&lt;An integer score from 1 to 10.&gt;"</p>
+</div>
+</section>
+<section class="ltx_appendix" id="A4">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix D </span>Chat Template</h2>
+<figure class="ltx_figure" id="A4.F9"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="616" id="A4.F9.g1" src="figures/chat_template.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>Chat template for IF-RLVR training from base.</figcaption>
+</figure>
+<div class="ltx_pagination ltx_role_newpage"></div>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Mon Aug  4 11:54:37 2025 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</body>
+</html>

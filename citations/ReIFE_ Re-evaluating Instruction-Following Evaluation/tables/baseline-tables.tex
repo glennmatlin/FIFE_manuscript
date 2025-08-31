@@ -1,0 +1,91 @@
+\definecolor{close}{rgb}{0.98, 0.93, 0.93} 
+\definecolor{open}{rgb}{0.96, 0.99, 0.99} 
+\definecolor{rm}{rgb}{1, 1, 0.85}
+\definecolor{ft}{rgb}{0.95, 0.85, 0.98}
+
+
+
+
+
+\definecolor{close}{rgb}{1,1,1} 
+\definecolor{open}{rgb}{1,1,1} 
+\definecolor{rm}{rgb}{1,1,1}
+\definecolor{ft}{rgb}{1,1,1}
+\definecolor{closerow}{rgb}{0.3,0.3,1} 
+\definecolor{openrow}{rgb}{0.5,0.3,0.1} 
+\definecolor{ftrow}{rgb}{0.3,0.5,0.5}
+\definecolor{rmrow}{rgb}{1,0,0}
+
+% \renewcommand{\arraystretch}{1.1} 
+\begin{table}[t!]
+\small
+\centering
+\addtolength{\tabcolsep}{-0.7pt} 
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Model} & \textbf{\natshort} & \textbf{\advshort} & \textbf{\mtshort}  & \textbf{\insshort} & \textbf{\texttt{Avg.}}\\
+\midrule
+\rowcolor{closerow!25}\multicolumn{6}{l}{Proprietary LLMs}  \\ 
+\rowcolor{close} gpt-4o-24-08-06  & \textbf{97.5}    & 84.5                 & 79.8          & \textbf{81.3}   & \textbf{85.7} \\
+\rowcolor{close} o1-mini-24-09-12 & 92.5             & \textbf{88.6}        & 79.0          & \textbf{81.3}   & 85.3          \\
+\rowcolor{close} gpt-4-0613         & 95.5             & 79.3                 & \underline{81.5}          & 80.4            & 84.2          \\
+\rowcolor{close} gpt-4o-24-05-13  & 95.5             & 80.7                 & 79.5          & 80.3            & 84.0          \\
+\rowcolor{close} claude-3.5-sonnet  & 91.0             & 81.2                 & 78.5          & 77.5            & 82.0          \\
+\rowcolor{close} claude-3-opus      & 94.0             & 76.8                 & 75.5          & 74.1            & 80.1          \\
+\rowcolor{close} mistral-large      & 90.0             & 72.1                 & 79.0          & 78.5            & 79.9          \\
+\rowcolor{close} gemini-1.5-pro     & 87.0             & 74.9                 & 78.5          & 75.7            & 79.0          \\
+\rowcolor{close} gemini-1.5-flash   & 87.5             & 71.3                 & 77.8          & 77.5            & 78.5          \\
+\rowcolor{close} gpt-4o-mini        & 88.5             & 68.3                 & 80.2          & 76.6            & 78.4          \\
+\rowcolor{close} gemini-1.0-pro     & 85.5             & 54.5                 & 70.8          & 68.7            & 69.9          \\
+\rowcolor{close} gpt-3.5-turbo-0125 & 82.5             & 36.4                 & 72.8          & 63.5            & 63.8          \\
+\rowcolor{close} claude-3-haiku     & 76.0             & 42.9                 & 68.8          & 62.8            & 62.6          \\ 
+\rowcolor{openrow!20}\multicolumn{6}{l}{Open-source LLMs}  \\ 
+\rowcolor{open} llama-3.1-405b     & \underline{94.0}             & \underline{83.1}                 & 81.5          & \underline{79.6}            & \underline{84.5}          \\
+\rowcolor{open} llama-3.1-70b      & 90.5             & 79.3                 & 82.2 & 79.4            & 82.9          \\
+\rowcolor{open} llama-3-70b        & 87.0             & 72.7                 & 80.0          & 78.6            & 79.6          \\
+\rowcolor{open} qwen-2-72b         & 92.5             & 69.4                 & 82.2 & 73.1            & 79.3          \\
+\rowcolor{open} qwen-2.5-72b       & 90.5             & 67.7                 & \textbf{82.5} & 74.1            & 78.7          \\
+\rowcolor{open} qwen-1.5-72b       & 88.5             & 59.7                 & 75.0          & 69.2            & 73.1          \\
+\rowcolor{open} glm-4-9b           & 86.0             & 55.0                 & 73.5          & 73.4            & 72.0          \\
+\rowcolor{open} yi-1.5-34b         & 86.5             & 56.6                 & 73.8          & 66.9            & 70.9          \\
+\rowcolor{open} tulu-2-dpo-70b     & 85.5             & 58.9                 & 73.2          & 66.1            & 70.9          \\
+\rowcolor{open} tulu-2-70b         & 86.5             & 58.0                 & 74.5          & 64.7            & 70.9          \\
+\rowcolor{open} mixtral-8x7b       & 80.5             & 58.9                 & 73.0          & 68.7            & 70.3          \\
+\rowcolor{open} yi-1.5-9b          & 85.0             & 59.1                 & 72.5          & 63.1            & 69.9          \\
+\rowcolor{open} qwen-1.5-32b       & 85.5             & 47.3                 & 76.8          & 66.2            & 68.9          \\
+\rowcolor{open} llama-3.1-8b       & 78.0             & 50.9                 & 72.5          & 66.5            & 67.0          \\
+\rowcolor{open} llama-2-70b        & 80.0             & 32.4                 & 72.2          & 66.9            & 62.9          \\
+\rowcolor{open} llama-3-8b         & 70.5             & 43.6                 & 72.5          & 61.7            & 62.1          \\
+\rowcolor{open} mistral-7b-v0.3    & 64.5             & 48.0                 & 66.3          & 60.6            & 59.8          \\
+\rowcolor{open} tulu-2-dpo-13b     & 67.0             & 38.6                 & 65.5          & 61.2            & 58.1          \\
+\rowcolor{open} tulu-2-13b         & 65.5             & 38.6                 & 65.5          & 61.8            & 57.8          \\
+\rowcolor{open} llama-2-13b        & 65.0             & 36.4                 & 66.8          & 60.8            & 57.2          \\
+\rowcolor{open} tulu-2-dpo-7b      & 56.0             & 43.4                 & 58.5          & 58.9            & 54.2          \\
+\rowcolor{open} gemma-7b           & 52.5             & 39.3                 & 64.5          & 57.4            & 53.4          \\
+\rowcolor{open} tulu-2-7b          & 45.5             & 46.9                 & 55.2          & 57.8            & 51.4          \\
+\rowcolor{open} llama-2-7b         & 42.5             & 49.5                 & 52.0          & 56.4            & 50.1          \\
+\rowcolor{open} gemma-2b           & 42.5             & 44.8                 & 54.5          & 56.6            & 49.6          \\
+\rowcolor{rmrow!15}\multicolumn{6}{l}{Reward Models}  \\ 
+\rowcolor{rm} offsetbias-rm      & 93.0             & 77.1                 & 81.0          & 74.0            & 81.3          \\
+\rowcolor{rm} nemotron-4-340b & 95.0             &  84.6        & 75.5          & 69.3            & 81.1          \\
+\rowcolor{ftrow!25}\multicolumn{6}{l}{Fine-tuned LLMs}  \\ 
+\rowcolor{ft} offsetbias-lm      & 88.0             & 79.9                 & 80.0          & 74.8            & 80.7          \\
+\rowcolor{ft} prometheus-2  & 83.0             & 37.3                 & 76.0          & 64.4            & 65.2          \\
+\midrule
+avg. & 80.7    & 60.2      & 73.4 & 69.3   & 70.9  \\
+\bottomrule
+\end{tabular}
+\addtolength{\tabcolsep}{+0.7pt} 
+% \vspace{-3mm}
+\caption{Evaluation accuracy of various base LLMs with the base evaluation protocol.
+Models are ordered by their performance.
+% 
+\natshort is \llmbarnatural, \advshort is \adversarial, \mtshort is \mtbench, \insshort is \instrusum. Best column performance is bolded, and best group performance is underlined.
+% 
+}
+% \vspace{-5mm}
+\label{tab:baseline} 
+\end{table}
+
+
+% \renewcommand{\arraystretch}{1.2} 
