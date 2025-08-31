@@ -2,39 +2,33 @@
 #import "/logo.typ": LaTeX, LaTeXe, TeX
 
 #let affls = (
-  airi: ("AIRI", "Moscow", "Russia"),
-  skoltech: (
-    department: "AI Center",
-    institution: "Skoltech",
-    location: "Moscow",
-    country: "Russia"),
-  skoltech2: (
-    department: "AI Center",
-    institution: "Skoltech",
-    location: "Moscow",
-    country: "Russia"),
+  gatech: (
+    department: "College of Computing",
+    institution: "Georgia Institute of Technology",
+    location: "Atlanta, Georgia",
+    country: "USA"),
 )
 
 #let authors = (
-  (name: "Firstname1 Lastname1",
-   affl: "skoltech",
-   email: "author@example.org",
-   equal: true),
-  (name: "Firstname2 Lastname2", affl: ("airi", "skoltech"), equal: true),
+  (name: "Glenn Matlin",
+   affl: "gatech",
+   email: "glenn@gatech.edu"),
+  (name: "Siddharth Siddharth",
+   affl: "gatech",
+   email: "siddharth@gmail.com"),
+  (name: "Sudheer Chava",
+   affl: "gatech",
+   email: "sudheer.chava@gatech.edu"),
 )
 
 #show: neurips2025.with(
-  title: [Formatting Instructions For NeurIPS 2025],
+  title: [IFF: Instruction Following for Finance],
   authors: (authors, affls),
-  keywords: ("Machine Learning", "NeurIPS"),
+  keywords: ("Large Language Models", "Instruction Following", "Natural Language Processing", "Benchmarking", "Finance"),
   abstract: [
-    The abstract paragraph should be indented ½ inch (3 picas) on both the
-    left- and right-hand margins. Use 10 point type, with a vertical spacing
-    (leading) of 11 points. The word *Abstract* must be centered, bold, and in
-    point size 12. Two line spaces precede the abstract. The abstract must be
-    limited to one paragraph.
+  Large Language Models (LLMs) have demonstrated impressive abilities to follow human instructions, yet their effectiveness in specialized domains like finance remains under-explored. In this high-stakes domain, where precision, compliance, and domain-specific knowledge are paramount, the reliable execution of complex instructions is critical. This paper introduces the Financial Instruction-Following Evaluation (FIFE) benchmark, a comprehensive framework designed to systematically assess the instruction-following capabilities of LLMs in the financial sector. FIFE integrates two key evaluation approaches: a suite of over 50 holistic, multi-step financial tasks spanning classification, extraction, question answering, and summarization; and a set of over 40 verifiable instruction types with automated checks for strict and loose compliance. Using this dual framework, we evaluate a wide range of proprietary (GPT-4, Claude 2, Gemini) and open-source (LLaMA-2, BloombergGPT) models in a zero-shot setting. Our key findings reveal that: (1) Top-tier proprietary models like GPT-4 achieve the highest accuracy, outperforming the best open-source models by a significant margin, yet still do not achieve perfect compliance. (2) All models, including the most advanced ones, struggle with tasks requiring multi-step numerical reasoning and strict adherence to complex constraints. (3) Domain-specific pre-training provides a performance boost but does not close the gap with larger, general-purpose models that have undergone extensive instruction tuning. We release the FIFE benchmark to facilitate further research into developing more reliable and aligned LLMs for the financial domain.
   ],
-  bibliography: bibliography("main.bib"),
+  bibliography: bibliography("zotero.bib"),
   bibliography-opts: (title: none, full: true),  // Only for example paper.
   appendix: [
     #include "appendix.typ"
