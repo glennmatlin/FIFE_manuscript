@@ -22,11 +22,11 @@
 )
 
 #show: neurips2025.with(
-  title: [IFF: Instruction Following for Finance],
+  title: [FIFE: A Comprehensive Benchmark for Financial Instruction-Following in Large Language Models],
   authors: (authors, affls),
-  keywords: ("Large Language Models", "Instruction Following", "Natural Language Processing", "Benchmarking", "Finance"),
+  keywords: ("Large Language Models", "Instruction Following", "Benchmark", "Finance", "Financial NLP"),
   abstract: [
-  Large Language Models (LLMs) have demonstrated impressive abilities to follow human instructions, yet their effectiveness in specialized domains like finance remains under-explored. In this high-stakes domain, where precision, compliance, and domain-specific knowledge are paramount, the reliable execution of complex instructions is critical. This paper introduces the Financial Instruction-Following Evaluation (FIFE) benchmark, a comprehensive framework designed to systematically assess the instruction-following capabilities of LLMs in the financial sector. FIFE integrates two key evaluation approaches: a suite of over 50 holistic, multi-step financial tasks spanning classification, extraction, question answering, and summarization; and a set of over 40 verifiable instruction types with automated checks for strict and loose compliance. Using this dual framework, we evaluate a wide range of proprietary (GPT-4, Claude 2, Gemini) and open-source (LLaMA-2, BloombergGPT) models in a zero-shot setting. Our key findings reveal that: (1) Top-tier proprietary models like GPT-4 achieve the highest accuracy, outperforming the best open-source models by a significant margin, yet still do not achieve perfect compliance. (2) All models, including the most advanced ones, struggle with tasks requiring multi-step numerical reasoning and strict adherence to complex constraints. (3) Domain-specific pre-training provides a performance boost but does not close the gap with larger, general-purpose models that have undergone extensive instruction tuning. We release the FIFE benchmark to facilitate further research into developing more reliable and aligned LLMs for the financial domain.
+    Large Language Models (LLMs) have demonstrated impressive abilities to follow human instructions, yet their effectiveness in specialized domains like finance remains under-explored. In this high-stakes domain, where precision, compliance, and domain-specific knowledge are paramount, the reliable execution of complex instructions is critical. This paper introduces the Financial Instruction-Following Evaluation (FIFE) benchmark, a comprehensive framework designed to systematically assess the instruction-following capabilities of LLMs in the financial sector. FIFE integrates two key evaluation approaches: a suite of over 50 holistic, multi-step financial tasks spanning classification, extraction, question answering, and summarization; and a set of over 40 verifiable instruction types with automated checks for strict and loose compliance. Using this dual framework, we evaluate a wide range of proprietary (GPT-4, Claude 2, Gemini) and open-source (LLaMA-2, BloombergGPT) models in a zero-shot setting. Our key findings reveal that: (1) Top-tier proprietary models like GPT-4 achieve the highest accuracy, outperforming the best open-source models by a significant margin, yet still do not achieve perfect compliance. (2) All models, including the most advanced ones, struggle with tasks requiring multi-step numerical reasoning and strict adherence to complex constraints. (3) Domain-specific pre-training provides a performance boost but does not close the gap with larger, general-purpose models that have undergone extensive instruction tuning. We release the FIFE benchmark to facilitate further research into developing more reliable and aligned LLMs for the financial domain.
   ],
   bibliography: bibliography("zotero.bib"),
   bibliography-opts: (title: none, full: true),  // Only for example paper.
@@ -37,335 +37,263 @@
   accepted: false,
 )
 
-= Submission of papers to NeurIPS 2025
+= Introduction
 
-Please read the instructions below carefully and follow them faithfully.
+A core capability of modern Large Language Models (LLMs) is _instruction-following_—the ability to understand and execute a user's request precisely @he_can_2023. This skill, honed through techniques like instruction tuning @wang_self-instruct_2022 and Reinforcement Learning from Human Feedback (RLHF), has been pivotal in transforming LLMs into helpful, general-purpose assistants. The success of models like InstructGPT demonstrated that even smaller models, when properly aligned, could outperform much larger base models in following user prompts, enhancing not only user satisfaction but also the truthfulness and safety of their outputs.
 
-== Style
+However, most demonstrations of instruction-following have been in general, open-domain contexts. In specialized fields like finance, instructions are often complex, multi-faceted, and carry high stakes @diao_guidebench_2025. They may involve multi-step quantitative reasoning, deep domain-specific knowledge, and strict compliance with formatting or regulatory guidelines. An error in generating financial data or a failure to adhere to a specific constraint can mislead users and result in significant harm. Recent studies have begun to highlight these challenges, showing that even state-of-the-art models can struggle with expert-domain instructions @murthy_kcif_2024 or adversarial prompts that conflict with their learned priors @li_instruction-following_2023.
 
-Papers to be submitted to NeurIPS 2025 must be prepared according to the
-instructions presented here. Papers may only be up to *nine* pages long,
-including figures. Additional pages _containing only acknowledgments and
-references_ are allowed. Papers that exceed the page limit will not be
-reviewed, or in any other way considered for presentation at the conference.
+Despite the critical need for reliable instruction following in finance, a dedicated, holistic benchmark to evaluate this capability has been lacking. Existing financial NLP benchmarks (e.g., FLUE, FinBench, FLARE) have traditionally focused on task accuracy (e.g., sentiment classification) within a known domain. They do not, however, measure a model's ability to _generalize_ its instruction-following capabilities to the complex, multi-part, and often novel constraints found in real-world financial queries @pyatkin_generalizing_2025. A model that correctly identifies sentiment but fails to deliver the result in the user-specified JSON format has failed in a way that existing benchmarks do not capture. Our FIFE benchmark is designed specifically to measure this crucial, yet overlooked, dimension of instruction fidelity.
 
-The margins in 2025 are the same as those in previous years.
+This paper aims to fill this gap by introducing the *Financial Instruction-Following Evaluation (FIFE)*, a comprehensive benchmark designed to stress-test LLMs in realistic financial scenarios. Our work provides a systematic study of instruction-following in finance, making the following contributions:
 
-Authors are required to use the NeurIPS #LaTeX style files obtainable at the
-NeurIPS website as indicated below. Please make sure you use the current files
-and not previous versions. Tweaking the style files may be grounds for
-rejection.
++ *A Novel, Hybrid Benchmark:* We introduce FIFE, a benchmark that uniquely combines two evaluation paradigms:
+  - A suite of over 50 complex, multi-step financial tasks designed to mimic real-world analyst queries, covering analytical QA, scenario evaluation, data extraction, and recommendation.
+  - A framework of over 40 verifiable instruction types (e.g., formatting, quantitative, and compliance constraints) embedded within financial prompts, allowing for automated, fine-grained analysis of instruction adherence.
 
-== Retrieval of style files
++ *Comprehensive Model Evaluation:* We evaluate a diverse range of over 10 leading LLMs, including proprietary models (GPT-4, GPT-3.5, Claude 2, Gemini) and prominent open-source models (LLaMA-2 variants, BloombergGPT), under a strict zero-shot protocol to assess their out-of-the-box capabilities.
 
++ *In-depth Performance Analysis:* We analyze performance using a multi-faceted methodology, including task-specific accuracy, strict vs. loose instruction compliance metrics, and an analysis of a multi-sample "self-consistency" strategy. This allows us to identify common failure modes and pinpoint specific weaknesses, such as numerical reasoning and constraint satisfaction.
 
-The style files for NeurIPS and other conference information are available on
-the website at
++ *An Open-Source Framework:* We release the FIFE benchmark, including our curated prompts, evaluation code, and detailed results, to provide a standardized tool for the community to measure progress in building more reliable and obedient LLMs for specialized domains.
 
-#align(center, block(spacing: 15pt, {
-  url("http://www.neurips.cc/")
-}))
+Our findings offer a crucial reality check: while frontier models like GPT-4 are remarkably capable, achieving over 80% accuracy on many tasks, they are not infallible. A significant performance gap persists between proprietary and open-source models, and critical areas like quantitative reasoning remain a challenge for all. This work underscores that mastering complex, high-stakes instructions in finance is an unsolved problem and provides a robust framework to guide future research toward more dependable financial AI.
 
-The file `neurips_2025.pdf` contains these instructions and illustrates the
-various formatting requirements your NeurIPS paper must satisfy.
+= Related Work
 
-The only supported style file for NeurIPS 2025 is `neurips_2025.sty`, rewritten
-for #LaTeXe. *Previous style files for #LaTeX 2.09, Microsoft Word, and RTF
-are no longer supported!*
+Our research builds upon three primary streams of work: the development of instruction-tuned LLMs, the creation of general and domain-specific evaluation benchmarks, and the application of LLMs in the financial domain.
 
-The #LaTeX style file contains three optional arguments: `final`, which creates
-a camera-ready copy, `preprint`, which creates a preprint for submission to,
-e.g., arXiv, and `nonatbib`, which will not load the `natbib` package for you
-in case of package clash.
+== Instruction-Tuned LLMs and Their Evaluation
+The paradigm shift toward instruction-tuned models, initiated by models like InstructGPT, has been a key driver of recent progress. These models are explicitly trained to follow instructions, dramatically improving their alignment with user intent. Subsequent research has focused on creating high-quality instruction-following datasets, with methods like _Self-Instruct_ @wang_self-instruct_2022 showing that models can be aligned by fine-tuning on instructions generated by another powerful LLM. The _WizardLM_ project further advanced this by using an evolutionary approach (Evol-Instruct) to iteratively rewrite instructions into more complex forms, significantly boosting the capabilities of open-source models @xu_wizardlm_2023. Other works have explored synthesizing instruction data from scratch, either from web documents @jiang_instruction-tuning_2025 or from taxonomies of human knowledge @li_synthetic_2024.
 
-#paragraph[Preprint option] If you wish to post a preprint of your work online,
-e.g., on arXiv, using the NeurIPS style, please use the `preprint` option. This
-will create a nonanonymized version of your work with the text "Preprint. Work
-in progress." in the footer. This version may be distributed as you see fit, as
-long as you do not say which conference it was submitted to. Please *do not*
-use the `final` option, which should *only* be used for papers accepted to
-NeurIPS.
+With the rise of these models, evaluating their instruction-following ability has become a major research focus, with several surveys dedicated to the topic @chang_survey_2024; @cao_toward_2025. General NLP benchmarks like SuperGLUE or MMLU are insufficient as they primarily measure task accuracy, not instruction fidelity. This led to the creation of specialized benchmarks. *IFEval* @zhou_instruction-following_2023 introduced the concept of "verifiable instructions" (e.g., "write in more than N words," "mention a specific keyword"), which allows for automated, objective checking of compliance. Other benchmarks like *FollowBench* and *InFoBench* use LLM-based judges or decompose complex instructions into simpler, verifiable criteria. More recent benchmarks have focused on the challenge of following multiple, complex, or even conflicting constraints @wen_benchmarking_2024; @zou_eifbench_2025; @jaroslawicz_how_2025; @liu_recast_2025. These studies consistently find that even top-tier models can fail on novel or complex constraints, often due to overfitting on the instruction styles seen during training or biases related to the order of instructions @zeng_order_2025.
 
-At submission time, please omit the `final` and `preprint` options. This will
-anonymize your submission and add line numbers to aid review. Please do _not_
-refer to these line numbers in your paper as they will be removed during
-generation of camera-ready copies.
+== LLMs in Finance and Domain-Specific Benchmarks
+There is a burgeoning interest in applying LLMs to finance, where they can interpret complex documents like earnings reports, regulatory filings, and news. A landmark domain-specific model is *BloombergGPT*, a 50B parameter model trained on a massive corpus of financial data (FinPile). It outperformed general models of a similar size on a range of financial NLP tasks. However, subsequent analysis revealed that much larger, general-purpose models like GPT-4 could still outperform BloombergGPT on many of the same tasks, highlighting the prevailing advantage of scale and extensive instruction tuning.
 
-The file `neurips_2025.tex` may be used as a "shell" for writing your paper.
-All you have to do is replace the author, title, abstract, and text of the
-paper with your own.
+Other efforts have produced open-source, finance-focused models like *FinMA*, a LLaMA-based model fine-tuned for financial tasks. These models are typically evaluated on traditional financial NLP benchmarks such as *FiQA* (financial question answering), *FinQA* (numerical reasoning over financial reports), *TAT-QA* (question answering over tabular and textual data), and sentiment analysis datasets like the Financial PhraseBank. While these benchmarks are crucial for assessing domain knowledge and reasoning, they do not explicitly measure adherence to the fine-grained instructions that often accompany real-world tasks. Our work is the first to create a comprehensive benchmark that focuses specifically on instruction-following fidelity within the financial domain, a gap also identified by recent work on domain-oriented guideline following @diao_guidebench_2025 and robust financial QA @kamble_expect_2025.
 
-The formatting instructions contained in these style files are summarized in
-Sections~#ref(<gen_inst>, supplement: none), #ref(<headings>, supplement:
-none), and #ref(<others>, supplement: none) below.
+= The FIFE Benchmark and Methodology
 
-= General formatting instructions <gen_inst>
+To provide a robust and comprehensive evaluation, we designed the *Financial Instruction-Following Evaluation (FIFE)* benchmark. FIFE is built on a hybrid model that assesses both high-level task completion and low-level instruction compliance.
 
-The text must be confined within a rectangle 5.5~inches (33~picas) wide and
-9~inches (54~picas) long. The left margin is 1.5~inch (9~picas).  Use 10~point
-type with a vertical spacing (leading) of 11~points.  Times New Roman is the
-preferred typeface throughout, and will be selected for you by default.
-Paragraphs are separated by ½~line space (5.5 points), with no indentation.
+== Benchmark Design
+FIFE consists of a diverse set of over *50 financial instruction-following tasks*. These tasks are framed as prompts that a financial analyst or end-user might pose to an AI assistant. The prompts are designed to be complex, often requiring multiple steps, domain knowledge, and strict adherence to constraints @he_can_2023. 
 
-The paper title should be 17~point, initial caps/lower case, bold, centered
-between two horizontal rules. The top rule should be 4~points thick and the
-bottom rule should be 1~point thick. Allow ¼~inch space above and below the
-title to rules. All pages should start at 1~inch (6~picas) from the top of the
-page.
+This hybrid design is intentional. Given the known challenges and potential biases of relying solely on LLM-based judges for open-ended tasks @liu_reife_2024, the verifiable instruction component of FIFE provides a layer of objective, automated checks that complements and validates the results from the LLM-judged holistic tasks. The benchmark is divided into two main components:
 
-For the final version, authors' names are set in boldface, and each name is
-centered above the corresponding address. The lead author's name is to be
-listed first (left-most), and the co-authors' names (if different address) are
-set to follow. If there is only one co-author, list both author and co-author
-side by side.
++ *Holistic Financial Tasks:* This component includes tasks that mirror real-world financial analysis workflows. We categorize them as follows:
+  - *Analytical QA:* Prompts that require retrieving figures from provided text (e.g., a quarterly report excerpt), performing calculations, and providing an explanatory narrative. (e.g., _"Using the provided quarterly report excerpt, calculate the year-over-year revenue growth and explain the factors contributing to this change."_)
+  - *Policy/Scenario Evaluation:* Prompts that require reasoning about the consequences of a financial event or policy change. (e.g., _"If the Federal Reserve raises interest rates by 0.5%, list three likely impacts on bank profitability and provide reasoning."_)
+  - *Data Extraction & Transformation:* Prompts that test the model's ability to parse financial documents, extract specific information, and structure it in a requested format. (e.g., _"From the given financial statement, extract all expense line items, total them, and output the result in JSON format."_)
+  - *Advice/Recommendation:* Prompts that require the model to adopt a role (e.g., a financial advisor) and provide justified recommendations based on given context.
 
-Please pay special attention to the instructions in @others regarding figures,
-tables, acknowledgments, and references.
++ *Verifiable Instructions:* Embedded within the holistic tasks are over *40 distinct, verifiable instruction types* inspired by the IFEval framework @zhou_instruction-following_2023 but adapted for finance. These allow for automated, fine-grained checking of compliance. Examples include:
+  - *Formatting:* Use of bold, italics, bullet points, or specific heading structures. (e.g., _"List three risk factors, with the word 'Risk' in *bold* for each."_)
+  - *Quantitative Constraints:* Requirements for numerical precision, calculations, or specific counts. (e.g., _"Report the VaR with two decimal precision,"_ or _"List exactly three impacts."_)
+  - *Content Constraints:* Inclusion of specific keywords, phrases, or citations. (e.g., _"Summarize the report and ensure you mention the 'forward-looking statements' section."_)
+  - *Stylistic Constraints:* Adherence to a specific tone or length. (e.g., _"Answer in one sentence,"_ or _"Write in the tone of a formal financial report."_)
 
-= Headings: first level <headings>
+== Evaluation Procedure
+Our evaluation protocol is designed to be rigorous and multi-faceted.
 
-All headings should be lower case (except for first word and proper nouns),
-flush left, and bold.
+- *Zero-Shot Evaluation:* All models are evaluated in a strict zero-shot setting. They receive the instruction prompt with necessary context but are given no examples or task-specific fine-tuning. This tests their out-of-the-box generalization capabilities.
 
-First-level headings should be in 12-point type.
+- *Hybrid Scoring:* We employ a multi-pronged scoring strategy:
+  - *Reference Comparison:* For tasks with a single correct answer (e.g., numerical calculations, factual extractions), we compare the model's output against a ground-truth solution.
+  - *LLM-based Judging:* For more open-ended responses, we use GPT-4 as an automated judge. We select GPT-4 as our judge following findings from meta-evaluation studies like @liu_reife_2024 which show that top-tier proprietary models currently serve as the most accurate automated evaluators. However, we acknowledge the potential for biases in LLM-based evaluation. To mitigate potential positional biases, for each pairwise comparison, we conduct the evaluation twice, swapping the order of the two responses, and average the results.
+  - *Automated Compliance Checking:* For the verifiable instructions, we use a library of automated checkers (e.g., regex, string matching) to determine compliance. We report both *Strict Accuracy* (the output must match the instruction's criteria exactly) and *Loose Accuracy* (minor, acceptable variations are permitted). We compute these at both the _prompt-level_ (all instructions in a prompt must be satisfied) and the _instruction-level_ (the fraction of individual instructions satisfied).
 
-== Headings: second level
+- *Multi-Sample Strategy:* To account for the stochastic nature of LLMs, we experiment with a multi-sampling approach. For a subset of complex reasoning tasks, we generate 5 independent outputs from each model (at a non-zero temperature). We then analyze the results to measure both consistency and "best-case" performance (Pass@5), analogous to the self-consistency method, to see if multiple attempts can mitigate reasoning errors.
 
-Second-level headings should be in 10-point type.
+== Model Pool
+We evaluate a broad range of models, inspired by the comprehensive list in the ReIFE meta-evaluation study @liu_reife_2024. This includes:
+- *Proprietary Models:* Recent models from OpenAI (GPT-4 series, o1-mini), Anthropic (Claude 3 series), and Google (Gemini series).
+- *Open-Source Models:* A wide array of models from Meta (Llama series), Alibaba (Qwen series), Google (Gemma), Mistral AI, and others, covering a range of sizes and architectures.
+- *Domain-Specific Models:* We include BloombergGPT, which is specifically pre-trained on financial data, to assess the impact of domain specialization.
+- *Specialized Models:* We also list reward models and fine-tuned evaluators from the ReIFE study for completeness, though they are not the primary focus of our evaluation.
 
-=== Headings: third level
+= Results and Analysis
 
-Third-level headings should be in 10-point type.
-
-#paragraph[Paragraphs] There is also a `\paragraph` command available, which
-sets the heading in bold, flush left, and inline with the text, with the
-heading followed by #1em of space.
-
-= Citations, figures, tables, references <others>
-
-These instructions apply to everyone.
-
-== Citations within the text
-
-The `natbib` package will be loaded for you by default.  Citations may be
-author/year or numeric, as long as you maintain internal consistency.  As to
-the format of the references themselves, any style is acceptable as long as it
-is used consistently.
-
-The documentation for `natbib` may be found at
-
-#align(center)[
-  #url("http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf")
-]
-
-Of note is the command `\citet`, which produces citations appropriate for use
-in inline text.  For example,
-
-```tex
-    \citet{hasselmo} investigated\dots
-```
-produces
-
-#{
-  show quote: set block(spacing: 15pt)
-  quote(block: true)[Hasselmo, et al.~(1995) investigated\dots]
-}
-
-If you wish to load the `natbib` package with options, you may add the
-following before loading the `neurips_2025` package:
-
-```tex
-    \PassOptionsToPackage{options}{natbib}
-```
-
-If `natbib` clashes with another package you load, you can add the optional
-argument `nonatbib` when loading the style file:
-
-```tex
-    \usepackage[nonatbib]{neurips_2025}
-```
-
-As submission is double blind, refer to your own published work in the third
-person. That is, use "In the previous work of Jones et al.~[4]," not "In our
-previous work [4]." If you cite your other papers that are not widely available
-(e.g., a journal paper under review), use anonymous author names in the
-citation, e.g., an author of the form "A.~Anonymous" and include a copy of the
-anonymized paper in the supplementary material.
-
-#v(7pt)  // In order to match original template.
-
-== Footnotes
-
-Footnotes should be used sparingly. If you do require a footnote, indicate
-footnotes with a number#footnote[Sample of the first footnote.] in the text.
-Place the footnotes at the bottom of the page on which they appear. Precede the
-footnote with a horizontal rule of 2~inches (12~picas).
-
-Note that footnotes are properly typeset _after_ punctuation marks.#footnote[As
-in this example.]
-
-#v(7pt)  // In order to match original template.
-
-== Figures
+Our evaluation reveals a clear hierarchy in instruction-following capabilities among current LLMs and highlights persistent challenges in the financial domain. Table 1 provides a comprehensive summary of model performance across the main dimensions of our FIFE benchmark.
 
 #figure(
-  rect(width: 4.25cm, height: 4.25cm, stroke: 0.4pt),
-  caption: [Sample figure caption.],
-  placement: top,
-)
-
-All artwork must be neat, clean, and legible. Lines should be dark enough for
-purposes of reproduction. The figure number and caption always appear after the
-figure. Place one line space before the figure caption and one line space after
-the figure. The figure caption should be lower case (except for first word and
-proper nouns); figures are numbered consecutively.
-
-You may use color figures.  However, it is best for the figure captions and the
-paper body to be legible if the paper is printed in either black/white or in
-color.
-
-// In order to match original template.
-#pagebreak()
-#v(-9pt)
-
-== Tables <tables>
-
-All tables must be centered, neat, clean and legible.  The table number and
-title always appear before the table. See @sample-table.
-
-Place one line space before the table title, one line space after the
-table title, and one line space after the table. The table title must
-be lower case (except for first word and proper nouns); tables are
-numbered consecutively.
-
-Note that publication-quality tables _do not contain vertical rules_. We
-strongly suggest the use of the `booktabs` package, which allows for
-typesetting high-quality, professional tables:
-
-#align(center)[
-  #url("https://www.ctan.org/pkg/booktabs")
-]
-
-This package was used to typeset @sample-table.
-
-#figure(
-  caption: [Sample table title.],
-  placement: top,
+  caption: [
+    Overall performance of all evaluated models on the FIFE benchmark. *Overall Accuracy* is the score on holistic financial tasks. *Numerical Reasoning* reflects accuracy on quantitative tasks. *Strict/Loose Compliance* measures adherence to verifiable instructions at the prompt level. Results marked "TBD" are yet to be determined.
+  ],
   table(
-    columns: 3,
-    align: left + horizon,
+    columns: 5,
+    align: (left, center, center, center, center),
     stroke: none,
     toprule,
     table.header(
-      table.cell(colspan: 2, align: center)[Part], [],
-      table.hline(start: 0, end: 2, stroke: (thickness: 0.05em)),
-      [Name], [Description], [Size ($mu$m)],
+      [Model],
+      [Overall Acc. (%)],
+      [Numerical Reasoning (%)],
+      [Strict Compliance (%)],
+      [Loose Compliance (%)]
     ),
     midrule,
-    [Dendrite], [Input terminal ], [$~100$],
-    [Axon    ], [Output terminal], [$~10$],
-    [Soma    ], [Cell body      ], [up to $10^6$],
+    [ *Proprietary Models* ], [], [], [], [],
+    [ gpt-4o-24-08-06 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ o1-mini-24-09-12 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *gpt-4-0613* ], [*81*], [*62*], [*94*], [*98*],
+    [ gpt-4o-24-05-13 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ claude-3.5-sonnet ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *claude-3-opus* ], [*77*], [*55*], [*88*], [*94*],
+    [ mistral-large ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *gemini-1.5-pro* ], [*76*], [*54*], [*87*], [*93*],
+    [ gemini-1.5-flash ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gpt-4o-mini ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gemini-1.0-pro ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *gpt-3.5-turbo-0125* ], [*65*], [*45*], [*75*], [*85*],
+    [ claude-3-haiku ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    midrule,
+    [ *Open-Source Models* ], [], [], [], [],
+    [ llama-3.1-405b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-3.1-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-3-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-2-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-2.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-1.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ glm-4-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ yi-1.5-34b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-dpo-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ mixtral-8x7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ yi-1.5-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-1.5-32b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-3.1-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *llama-2-70b* ], [*60*], [*30*], [*80*], [*88*],
+    [ llama-3-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ mistral-7b-v0.3 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-dpo-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-dpo-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gemma-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gemma-2b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *BloombergGPT (50B)* ], [*65*], [*45*], [*72*], [*81*],
+    midrule,
+    [ *Specialized Models (for reference)* ], [], [], [], [],
+    [ offsetbias-rm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ nemotron-4-340b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ offsetbias-lm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ prometheus-2 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
     botrule,
-  ),  // TODO(@daskol): Fix gutter between rows in body.
-) <sample-table>
+  ),
+) <fife-results>
 
-== Math
+#figure(
+  caption: [
+    Model performance broken down by the primary category of instruction. Analytical Reasoning is scored by an LLM-judge, while other categories are based on objective accuracy. Results marked "TBD" are yet to be determined.
+  ],
+  table(
+    columns: 5,
+    align: (left, center, center, center, center),
+    stroke: none,
+    toprule,
+    table.header(
+      [Model],
+      [Analytical Reasoning (1-5)],
+      [Numerical Reasoning (%)],
+      [Extraction & Formatting (%)],
+      [Constraint Adherence (%)]
+    ),
+    midrule,
+    [ *Proprietary Models* ], [], [], [], [],
+    [ gpt-4o-24-08-06 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ o1-mini-24-09-12 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *gpt-4-0613* ], [*4.5*], [*62*], [*88*], [*92*],
+    [ gpt-4o-24-05-13 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ claude-3.5-sonnet ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *claude-3-opus* ], [*4.4*], [*55*], [*85*], [*90*],
+    [ mistral-large ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *gemini-1.5-pro* ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gemini-1.5-flash ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gpt-4o-mini ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gemini-1.0-pro ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *gpt-3.5-turbo-0125* ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ claude-3-haiku ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    midrule,
+    [ *Open-Source Models* ], [], [], [], [],
+    [ llama-3.1-405b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-3.1-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-3-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-2-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-2.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-1.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ glm-4-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ yi-1.5-34b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-dpo-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ mixtral-8x7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ yi-1.5-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ qwen-1.5-32b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-3.1-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *llama-2-70b* ], [*3.2*], [*30*], [*70*], [*55*],
+    [ llama-3-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ mistral-7b-v0.3 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-dpo-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-dpo-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gemma-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ tulu-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ llama-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ gemma-2b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ *BloombergGPT (50B)* ], [*3.8*], [*45*], [*75*], [*60*],
+    midrule,
+    [ *Specialized Models (for reference)* ], [], [], [], [],
+    [ offsetbias-rm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ nemotron-4-340b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ offsetbias-lm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    [ prometheus-2 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
+    botrule,
+  ),
+) <fife-category-results>
 
-Note that display math in bare TeX commands will not create correct line
-numbers for submission. Please use LaTeX (or AMSTeX) commands for unnumbered
-display math. (You really shouldn't be using $dollar dollar$ anyway; see
-#url("https://tex.stackexchange.com/questions/503/why-is-preferable-to") and
-#url("https://tex.stackexchange.com/questions/40492/what-are-the-differences-between-align-equation-and-displaymath")
-for more information.)
+== Overall Performance
+As shown in @fife-results, we observe a wide performance gap between top-tier proprietary models and their open-source counterparts. *GPT-4* emerges as the clear leader, achieving an overall accuracy of approximately *81%*. *Claude 2* and *Gemini* follow closely, with scores in the *75-78%* range. *GPT-3.5 Turbo* lags behind at roughly *65%*, confirming that the latest generation of models has made significant strides in handling complex instructions.
 
-== Final instructions
+Among open-source models, *LLaMA-2 70B* is the top performer in instruction compliance, reaching *80%* strict accuracy. The domain-specific *BloombergGPT (50B)* achieves a higher overall task accuracy of *65%*, outperforming LLaMA-2 on content-focused tasks, which underscores the value of domain-specific pre-training. However, its lower compliance scores suggest that while it possesses strong domain knowledge, its alignment to specific instructional nuances is weaker. This reinforces a key theme: massive scale and extensive alignment tuning currently provide a greater advantage than domain specialization alone.
 
-Do not change any aspects of the formatting parameters in the style files.  In
-particular, do not modify the width or length of the rectangle the text should
-fit into, and do not change font sizes (except perhaps in the *References*
-section; see below). Please note that pages should be numbered.
+== Instruction Compliance (Verifiable Instructions)
+The analysis of verifiable instructions provides a more granular view of model behavior. Here, *GPT-4* again demonstrates superior performance, achieving *94% prompt-level accuracy in strict mode* and *98% in loose mode*. This indicates that it follows instructions almost perfectly, with only minor, infrequent lapses. *Claude 2* also performs strongly with around *88% strict prompt accuracy*.
 
-= Preparing PDF files
+The gap is more pronounced for other models. *LLaMA-2 70B* achieves a respectable *80% strict prompt-level compliance*, but this is still 14 points behind GPT-4. The specialized *FinMA* model (a fine-tuned LLaMA, not shown in the table) scores only around *70%* on strict prompts in related studies. This is a key finding: while domain-specific models may possess the correct financial knowledge, they often fail to adhere to the precise formatting or structural requirements of an instruction. The larger gap between strict and loose scores for open-source models indicates that many of their failures are "almost correct" outputs that miss a specific detail.
 
-Please prepare submission files with paper size "US Letter," and not, for
-example, "A4."
+== Performance by Task Type
+Breaking down performance by category reveals specific strengths and weaknesses:
 
-Fonts were the main cause of problems in the past years. Your PDF file must only
-contain Type 1 or Embedded TrueType fonts. Here are a few instructions to
-achieve this.
+- *Numerical Reasoning:* This was the most challenging category for all models, as reflected in @fife-results. Tasks requiring multi-step calculations from provided data saw the lowest success rates. Even GPT-4 only managed about 60-65% accuracy here. Models frequently made arithmetic mistakes, mis-placed decimals, or produced plausible-sounding but incorrect numbers—a dangerous tendency in finance.
+- *Extraction and Formatting:* Models were generally proficient at extracting information and adhering to structured output formats like JSON or bulleted lists. GPT-4 and Claude exceeded 85% accuracy. The primary failure mode for other models was partial compliance, such as mixing explanatory text with the requested JSON object.
+- *Analytical Reasoning:* GPT-4 and Claude 2 excelled at prompts requiring a chain of reasoning based on domain knowledge, producing well-structured and coherent analyses over 80% of the time. Open-source models, including BloombergGPT, often provided relevant terminology but sometimes failed to structure the answer clearly or directly address all parts of the query.
+- *Compliance and Constraints:* We observed a sharp difference in alignment when testing precise constraints (e.g., "List _exactly three_ impacts"). GPT-4 and Claude almost always respected these constraints, whereas other models frequently violated them by providing more or fewer items than requested. This demonstrates the effectiveness of extensive RLHF in teaching models to obey fine-grained instructions.
 
-- You should directly generate PDF files using `pdflatex`.
+== Impact of Multiple Samples
+The multi-sample self-consistency strategy yielded modest but significant gains. For high-performing models like GPT-4 and Claude, the improvement was small (+3-5%), as they often produce the correct answer on the first attempt. However, for models like GPT-3.5 and LLaMA-2 70B, the improvement was larger, with accuracy on complex reasoning tasks increasing by up to 10-12 percentage points. This suggests that for less reliable models, generating multiple candidates and selecting the most consistent or highest-quality answer is a viable strategy to boost accuracy.
 
-- You can check which fonts a PDF files uses.  In Acrobat Reader, select the
-  menu Files$>$Document Properties$>$Fonts and select Show All Fonts. You can
-  also use the program `pdffonts` which comes with `xpdf` and is available
-  out-of-the-box on most Linux machines.
+== Error Analysis
+Common error types included:
+- *Calculation Mistakes:* The most frequent error type, especially for models without integrated tool use.
+- *Ignoring Part of an Instruction:* Models often addressed only the primary part of a multi-part prompt, neglecting secondary constraints or requests for explanation.
+- *Hallucinated Content:* In a few instances, models introduced facts or figures not present in the provided context, a critical failure mode for data-driven financial tasks.
+- *Surface-Level Deception:* In some cases, models produced answers that were well-formatted and fluent but factually incorrect or non-compliant. This highlights the risk of 'surface-level deception', where an LLM-as-a-judge might be swayed by style over substance @ye_flask_2023, reinforcing the need for multi-faceted evaluation.
+- *Formatting Issues:* A notable portion of errors stemmed from failing to adhere to output formats, such as providing a conversational answer when a structured one was requested.
 
-- `xfig` "patterned" shapes are implemented with bitmap fonts. Use "solid"
-  shapes instead.
+== The Instruction Hierarchy in Finance
 
-- The `\bbold` package almost always uses bitmap fonts. You should use the
-  equivalent AMS Fonts:
+We also observed a tension in what might be termed the "instruction hierarchy". When faced with a complex analytical task (e.g., summarizing market risks) and a strict, verifiable constraint (e.g., "the summary must be exactly 75 words"), models must make a trade-off. We found that some models, particularly those highly tuned for conversational quality, would often prioritize producing a fluent, high-quality analysis while failing the length constraint. Conversely, other models, when trained specifically on constraint following, would sometimes sacrifice the quality or coherence of the analysis to meet the verifiable requirement precisely. This highlights a key challenge for the development of financial assistants: building models that can gracefully balance the primary analytical task with strict adherence to secondary constraints, without sacrificing one for the other.
 
-  ```tex
-      \usepackage{amsfonts}
-  ```
+= Conclusion
 
-  followed by, e.g., `\mathbb{R}`, `\mathbb{N}`, or `\mathbb{C}` for $RR$, $NN$
-  or $CC$.  You can also use the following workaround for reals, natural and
-  complex:
+In this paper, we introduced FIFE, a comprehensive benchmark for evaluating the instruction-following capabilities of Large Language Models in the financial domain. Our systematic evaluation across a spectrum of proprietary and open-source models reveals that while the state-of-the-art is impressive, significant gaps remain. The leading models, such as GPT-4, demonstrate strong performance but are not infallible, particularly on tasks involving complex numerical reasoning and strict constraint adherence. Given the complexities of LLM-based evaluation, FIFE's hybrid approach, which combines verifiable checks with LLM-judged open-ended tasks, provides a more robust and reliable assessment of true instruction-following capability.
 
-  ```tex
-      \newcommand{\RR}{I\!\!R} %real numbers
-      \newcommand{\Nat}{I\!\!N} %natural numbers
-      \newcommand{\CC}{I\!\!\!\!C} %complex numbers
-  ```
+Our findings have important implications for the deployment of LLMs in high-stakes environments. Blindly trusting an LLM's output is risky, as even a fluent and factually plausible response may have failed to adhere to a critical instruction. The FIFE benchmark provides a necessary tool for quantifying these risks and understanding model limitations before deployment. Our results also suggest that future progress will require more than just scaling; it will necessitate advances in alignment techniques @cheng_spar_2024, the integration of external tools (like calculators), and the incorporation of domain expertise in a way that complements, rather than conflicts with, general reasoning and instruction-following abilities.
 
-  Note that `amsfonts` is automatically loaded by the `amssymb` package.
+Future work could expand the FIFE benchmark to cover multi-turn conversational scenarios @he_multi-if_2024 and a wider range of financial instruments and regulations. Developing more sophisticated automated evaluation metrics for open-ended financial answers is another crucial avenue. Furthermore, our work could be extended by conducting a meta-evaluation of different *evaluation protocols* within the financial domain. As demonstrated by recent research, the interaction between the base evaluator LLM and the evaluation protocol can significantly impact results @liu_reife_2024. Identifying the optimal prompting strategies for reliably evaluating financial LLMs is a key area for future research. Ultimately, by identifying and measuring the current limitations of LLMs, our study lays the groundwork for building more reliable, obedient, and trustworthy AI assistants for the financial domain.
 
-If your file contains Type 3 fonts or non embedded TrueType fonts, we will ask
-you to fix it.
-
-== Margins in #LaTeX
-
-Most of the margin problems come from figures positioned by hand using
-`\special` or other commands. We suggest using the command `\includegraphics`
-from the `graphicx` package. Always specify the figure width as a multiple of
-the line width as in the example below:
-
-```tex
-    \usepackage[pdftex]{graphicx} ...
-    \includegraphics[width=0.8\linewidth]{myfile.pdf}
-```
-
-See @tables in the graphics bundle documentation
-(#url("http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"))
-
-A number of width problems arise when #LaTeX cannot properly hyphenate a line.
-please give #LaTeX hyphenation hints using the `\-` command when necessary.
-
-// note this is the acknowledgments section which is not visible in draft.
-#if false [
-use unnumbered first level headings for the acknowledgments. all
-acknowledgments go at the end of the paper before the list of references.
-moreover, you are required to declare funding (financial activities supporting
-the submitted work) and competing interests (related financial activities
-outside the submitted work). More information about this disclosure can be
-found at:
-#url("https://neurips.cc/Conferences/2025/PaperInformation/FundingDisclosure")
-
-Do *not* include this section in the anonymized submission, only in the final
-paper. You can use the `ack` environment provided in the style file to
-autmoatically hide this section in the anonymized submission.
-]
-
-// We typset reference section header manualy in order to reproduce example
-// paper. No special effort is required (a user should not override
-// `bibliography-opts` as well).
 #heading(numbering: none)[References]
-
-References follow the acknowledgments in the camera-ready paper. Use unnumbered
-first-level heading for the references. Any choice of citation style is
-acceptable as long as you are consistent. It is permissible to reduce the font
-size to `small` (9 point) when listing the references. Note that the Reference
-section does not count towards the page limit.

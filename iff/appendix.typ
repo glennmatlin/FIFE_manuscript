@@ -1,5 +1,15 @@
-= Appendix / supplemental material
+#heading(level: 1, numbering: "A")[Further Related Work]
 
-Optionally include supplemental material (complete proofs, additional
-experiments and plots) in appendix. All such materials *SHOULD be included in
-the main submission*.
+Our work builds upon a rich body of research in evaluating and improving large language models. This appendix provides a brief overview of additional relevant literature that, while not cited directly in the main body, provides important context for our contributions.
+
+*Dynamic and Contamination-Resistant Evaluation:*
+Several recent works have focused on the limitations of static benchmarks, which are vulnerable to data contamination. Dynamic evaluation methods have been proposed to address this, such as *DyVal* @zhu_dyval_2024, which uses graph-based transformations to generate new evaluation samples with controlled complexity. This line of work was extended by *DARG* @zhang_darg_2024, which uses adaptive reasoning graphs, and *MPA* @zhu_dynamic_2024, which uses meta-probing agents. A comprehensive survey on these methods can be found in @chen_recent_2025. In the code domain, *DynaCode* @hu_dynacode_2025 provides a dynamic, complexity-aware benchmark for code generation.
+
+*Improving and Analyzing Instruction Following:*
+Beyond benchmarking, many studies have explored methods to enhance instruction-following. *Instructive Decoding* @kim_instructive_2023 proposes a contrastive decoding method to refine responses. @heo_llms_2024 investigates whether LLMs' internal states correlate with their instruction-following success, while @heo_llms_2024-1 examines their ability to estimate uncertainty in this context. @venkateswaran_spotlight_2025 introduces a method for dynamically steering model attention to user-specified instructions. For improving performance on soft constraints, @ren_step-by-step_2025 proposes a curriculum learning paradigm. Reinforcement learning with verifiable rewards is another promising direction, as explored by *VerIF* @peng_verif_2025.
+
+*Evaluation Frameworks and Protocols:*
+Developing robust evaluation protocols is another active area of research. *FLASK* @ye_flask_2023 introduces a fine-grained evaluation based on skill sets. *INSTRUCTEVAL* @chia_instructeval_2023 presents a holistic suite for evaluating problem-solving, writing, and alignment. *The BiGGen Bench* @kim_biggen_2024 uses instance-specific criteria to evaluate nine distinct capabilities. @perlitz_efficient_2023 investigates methods for reducing the computational cost of benchmarking without compromising reliability. For generating evaluation criteria themselves, *TICK* @cook_ticking_2024 uses LLMs to create checklists, and *PROMPTEVALS* @vir_promptevals_2025 provides a dataset of assertions and guardrails for production pipelines.
+
+*Instruction Following for Code:*
+In the domain of code generation, several benchmarks have been developed to assess instruction following. *CodeIF* @yan_codeif_2025 is a benchmark specifically for instruction-following in code generation scenarios. @yuan_evaluating_2023 evaluates various instruction-tuned models on code comprehension and generation tasks.
