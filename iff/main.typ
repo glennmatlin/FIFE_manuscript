@@ -2,25 +2,23 @@
 #import "/logo.typ": LaTeX, LaTeXe, TeX
 
 #let affls = (
-  airi: ("AIRI", "Moscow", "Russia"),
-  skoltech: (
-    department: "AI Center",
-    institution: "Skoltech",
-    location: "Moscow",
-    country: "Russia"),
-  skoltech2: (
-    department: "AI Center",
-    institution: "Skoltech",
-    location: "Moscow",
-    country: "Russia"),
+  gatech: (
+    department: "College of Computing",
+    institution: "Georgia Institute of Technology",
+    location: "Atlanta, Georgia",
+    country: "USA"),
 )
 
 #let authors = (
-  (name: "Firstname1 Lastname1",
-   affl: "skoltech",
-   email: "author@example.org",
-   equal: true),
-  (name: "Firstname2 Lastname2", affl: ("airi", "skoltech"), equal: true),
+  (name: "Glenn Matlin",
+   affl: "gatech",
+   email: "glenn@gatech.edu"),
+  (name: "Siddharth Siddharth",
+   affl: "gatech",
+   email: "siddharth@gmail.com"),
+  (name: "Sudheer Chava",
+   affl: "gatech",
+   email: "sudheer.chava@gatech.edu"),
 )
 
 #show: neurips2025.with(
@@ -34,7 +32,7 @@
     point size 12. Two line spaces precede the abstract. The abstract must be
     limited to one paragraph.
   ],
-  bibliography: bibliography("main.bib"),
+  bibliography: bibliography("zotero.bib"),
   bibliography-opts: (title: none, full: true),  // Only for example paper.
   appendix: [
     #include "appendix.typ"
