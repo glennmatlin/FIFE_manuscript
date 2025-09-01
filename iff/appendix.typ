@@ -45,7 +45,7 @@ The framework's operation is driven by the interaction between its key modules, 
 )
 
 -   *`build_input_jsonl`*: This script generates the benchmark's test cases. It accesses the `instructions_registry` to combine various instruction types and parameters into complex financial prompts, which are then saved to a `JSONL` file.
--   *`generate_responses`*: This module takes the generated prompts and uses its integrated, multi-provider LLM Gateway to query external models (e.g., GPT-4, Claude 3). It handles API communication, error handling, and caching, saving the model-generated text into a responses `JSONL` file.
+-   *`generate_responses`*: This module takes the generated prompts and uses its integrated, multi-provider LM Gateway to query external models (e.g., GPT-4, Claude 3). It handles API communication, error handling, and caching, saving the model-generated text into a responses `JSONL` file.
 -   *`evaluation_bin`*: This is the main evaluation runner. It uses `evaluation_lib` to load the prompts and their corresponding responses.
 -   *`evaluation_lib`*: The core evaluation engine. For each prompt, it retrieves the required instruction-checking logic from the `instructions_registry`. It then executes the "Strict" or "Loose" evaluation algorithm against the model's response.
 -   *`instructions_registry`*: A central mapping that holds all available instruction-checking classes. This registry pattern allows for easy discovery and instantiation of the correct validation logic based on an instruction's unique ID.
