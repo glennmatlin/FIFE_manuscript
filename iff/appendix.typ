@@ -290,6 +290,86 @@ List the three deficiencies as bullets and end with the remediation deadline <sp
 - The back-testing window used is inadequate.
 Remediation deadline: <font color="red">**2025-10-31**</font>
 `
+
+The example below illustrates another case in which the model does adhere to the prompt, again producing outputs that match the specified instructions and formatting.
+
+`
+#### Prompt
+
+Create a detailed checklist for the loan-closing team, covering the settlement of a seven hundred fifty million-dollar leveraged-loan allocation scheduled for tomorrow on ClearPar. The checklist must be grouped into three sections: Booking, Know Your Customer (KYC), and Cash Settlement. Each step within the checklist should be preceded by an empty tick box written as [ ]. After the checklist, add the sign-off line:
+Ops Lead: ______
+Follow the group headings exactly and append the sign-off line.
+
+#### Response (Passed)
+
+# Booking
+
+[ ] Verify loan allocation amount of $750,000,000 in ClearPar system  
+[ ] Confirm settlement date matches tomorrow's business date  
+[ ] Validate borrower entity details and loan facility information  
+[ ] Check trade confirmation details against original allocation notice  
+[ ] Ensure proper booking codes and GL accounts are assigned  
+[ ] Verify interest rate, spread, and payment frequency parameters  
+[ ] Confirm loan maturity date and amortization schedule  
+[ ] Review and approve any fee structures (commitment, facility, agent fees)  
+[ ] Validate collateral details and security interest documentation  
+[ ] Ensure proper risk weighting and regulatory capital allocation  
+[ ] Confirm booking system integration with downstream systems  
+[ ] Generate and review preliminary booking entries  
+
+# Know Your Customer (KYC)
+
+[ ] Verify borrower KYC documentation is current and complete  
+[ ] Confirm beneficial ownership information is up to date  
+[ ] Check sanctions screening results for all related parties  
+[ ] Validate anti-money laundering (AML) compliance status  
+[ ] Review politically exposed person (PEP) screening results  
+[ ] Confirm customer due diligence (CDD) documentation  
+[ ] Verify enhanced due diligence (EDD) requirements if applicable  
+[ ] Check regulatory watch list screening results  
+[ ] Validate customer risk rating and approval status  
+[ ] Confirm compliance with know your customer's customer (KYCC) requirements  
+[ ] Review any adverse media or negative news screening results  
+[ ] Ensure all KYC exceptions have proper approvals  
+
+# Cash Settlement
+
+[ ] Confirm settlement instructions in ClearPar match internal records  
+[ ] Verify correspondent banking relationships for settlement  
+[ ] Check available liquidity and funding arrangements  
+[ ] Validate wire transfer instructions and beneficiary details  
+[ ] Confirm settlement currency and any FX requirements  
+[ ] Review nostro account balances for settlement currency  
+[ ] Verify cut-off times for same-day settlement processing  
+[ ] Check for any settlement holds or restrictions  
+[ ] Confirm backup settlement procedures are in place  
+[ ] Validate settlement reporting requirements  
+[ ] Ensure proper cash management and liquidity monitoring  
+[ ] Prepare settlement confirmation and reporting documentation  
+
+Ops Lead: ______
+`
+
+Selection prompts are effective because they require the model to generate outputs that fit into a rigid structure, leaving little room for ambiguity. This ensures we can clearly evaluate whether the model followed the exact formatting rules and constraints.
+
+`
+#### Prompt
+
+FinOps review for Q2-25 cloud spend: AWS Compute $650 k, Storage $280 k, Network $90 k, Other $120 k (Total $1.14 m); Azure Compute $540 k, Storage $180 k, Network $60 k, Other $70 k (Total $0.85 m); GCP Compute $720 k, Storage $210 k, Network $70 k, Other $50 k (Total $1.05 m). Build a table by provider and line item, add a Grand Total row, and flag every quarterly cost above $1 million with ⚠.
+Show the Grand Total row and mark each cost > $1 m with ⚠.
+
+#### Response (PASSED)
+
+| Provider | Compute | Storage | Network | Other | Total |
+|----------|---------|---------|---------|-------|-------|
+| AWS      | $650k   | $280k   | $90k    | $120k | $1.14m ⚠ |
+| Azure    | $540k   | $180k   | $60k    | $70k  | $0.85m |
+| GCP      | $720k   | $210k   | $70k    | $50k  | $1.05m ⚠ |
+| **Grand Total** | **$1.91m ⚠** | **$670k** | **$220k** | **$240k** | **$3.04m ⚠** |
+
+`
+
+
 == Instruction Registry
 
 This section provides a comprehensive registry of all instructions used.
