@@ -57,13 +57,17 @@ The framework's operation is driven by the interaction between its key modules, 
 -   *`finance_instructions`*: This module contains the implementation for each specific financial instruction (e.g., `FinBoldIntroItalicRisk`, `FinCreditSpreadCarryTable`). Each checker inherits from a base class and implements the specific logic required to validate its constraint.
 -   *`instructions_util`*: Provides foundational text-processing functions (e.g., `count_words`, `has_table`) used by the individual instruction checkers in `finance_instructions`.
 
-== A.3 Design Patterns
+== Design Patterns
 
 The architecture leverages several key software design patterns to enhance its flexibility and maintainability:
 
 -   *Registry Pattern:* The `instructions_registry` acts as a central point of contact for all instruction checkers, decoupling the evaluation engine from the concrete implementation of the checkers.
 -   *Strategy Pattern:* The use of "Strict" and "Loose" evaluation modes is a classic example of the Strategy pattern. The main evaluation library can switch between these different evaluation algorithms at runtime without changing its core logic.
 -   *Factory Pattern:* The framework uses a factory approach to dynamically create instances of instruction-checker classes from the registry based on the IDs specified in a given prompt.
+
+= Comprehensive Documentation of Prompt Design, Instructions, and Model Outputs
+
+This appendix provides detailed information on the prompts, instructions, and resulting outputs used in our experiments
 
 == System Prompt
 
@@ -123,3 +127,7 @@ BLANK-LINE RULE
 - Unless a specific blank-line pattern is requested (e.g., "one blank line between Block 1 and Block 2"), produce no blank lines. When a pattern is requested, follow it exactly and avoid any additional blank lines.
 
 ```
+
+== Sample Prompts
+
+Representative examples of prompts are provided to illustrate the variety and structure of inputs used.
