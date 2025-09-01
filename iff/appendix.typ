@@ -160,7 +160,7 @@ This appendix provides detailed information on the prompts and instructions used
 
 == System Prompt
 
-The LMs are primed using the following system/agent prompt to aid in aligning with our instruction-following and improve baseline performance.
+The LLMs are primed using the following system prompt to aid in aligning with our instruction following and improve performance.
 
 ```
 
@@ -245,7 +245,6 @@ The bank is scheduling a release of the core payments switch identified as relea
 
 This section presents representative outputs of Llama 4 Maverick, including both correct and incorrect responses, to illustrate model performance for both strict and loose mode.
 
-=== Strict Mode
 
 The model produces outputs that fully adhere to the prompt, meeting all specified instructions and correctly following the intended structure and formatting.
 
@@ -285,3 +284,8 @@ List the three deficiencies as bullets and end with the remediation deadline <sp
 - The back-testing window used is inadequate.
 Remediation deadline: <font color="red">**2025-10-31**</font>
 `
+== Instruction Registry
+
+This section provides a comprehensive registry of all instructions used.
+
+
