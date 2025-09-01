@@ -37,6 +37,37 @@
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
 }
 
+@misc{wen_benchmarking_2024-1,
+	title = {Benchmarking Complex Instruction-Following with Multiple Constraints Composition},
+	url = {http://arxiv.org/abs/2407.03978},
+	doi = {10.48550/arXiv.2407.03978},
+	abstract = {Instruction following is one of the fundamental capabilities of large language models ({LLMs}). As the ability of {LLMs} is constantly improving, they have been increasingly applied to deal with complex human instructions in real-world scenarios. Therefore, how to evaluate the ability of complex instruction-following of {LLMs} has become a critical research problem. Existing benchmarks mainly focus on modeling different types of constraints in human instructions while neglecting the composition of different constraints, which is an indispensable constituent in complex instructions. To this end, we propose {ComplexBench}, a benchmark for comprehensively evaluating the ability of {LLMs} to follow complex instructions composed of multiple constraints. We propose a hierarchical taxonomy for complex instructions, including 4 constraint types, 19 constraint dimensions, and 4 composition types, and manually collect a high-quality dataset accordingly. To make the evaluation reliable, we augment {LLM}-based evaluators with rules to effectively verify whether generated texts can satisfy each constraint and composition. Furthermore, we obtain the final evaluation score based on the dependency structure determined by different composition types. {ComplexBench} identifies significant deficiencies in existing {LLMs} when dealing with complex instructions with multiple constraints composition.},
+	number = {{arXiv}:2407.03978},
+	publisher = {{arXiv}},
+	author = {Wen, Bosi and Ke, Pei and Gu, Xiaotao and Wu, Lindong and Huang, Hao and Zhou, Jinfeng and Li, Wenchuang and Hu, Binxin and Gao, Wendy and Xu, Jiaxin and Liu, Yiming and Tang, Jie and Wang, Hongning and Huang, Minlie},
+	urldate = {2025-09-01},
+	date = {2024-10-31},
+	eprinttype = {arxiv},
+	eprint = {2407.03978 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{lu_bizfinbench_2025,
+	title = {{BizFinBench}: A Business-Driven Real-World Financial Benchmark for Evaluating {LLMs}},
+	url = {http://arxiv.org/abs/2505.19457},
+	doi = {10.48550/arXiv.2505.19457},
+	shorttitle = {{BizFinBench}},
+	abstract = {Large language models excel in general tasks, yet assessing their reliability in logic-heavy, precision-critical domains like finance, law, and healthcare remains challenging. To address this, we introduce {BizFinBench}, the first benchmark specifically designed to evaluate {LLMs} in real-world financial applications. {BizFinBench} consists of 6,781 well-annotated queries in Chinese, spanning five dimensions: numerical calculation, reasoning, information extraction, prediction recognition, and knowledge-based question answering, grouped into nine fine-grained categories. The benchmark includes both objective and subjective metrics. We also introduce {IteraJudge}, a novel {LLM} evaluation method that reduces bias when {LLMs} serve as evaluators in objective metrics. We benchmark 25 models, including both proprietary and open-source systems. Extensive experiments show that no model dominates across all tasks. Our evaluation reveals distinct capability patterns: (1) In Numerical Calculation, Claude-3.5-Sonnet (63.18) and {DeepSeek}-R1 (64.04) lead, while smaller models like Qwen2.5-{VL}-3B (15.92) lag significantly; (2) In Reasoning, proprietary models dominate ({ChatGPT}-o3: 83.58, Gemini-2.0-Flash: 81.15), with open-source models trailing by up to 19.49 points; (3) In Information Extraction, the performance spread is the largest, with {DeepSeek}-R1 scoring 71.46, while Qwen3-1.7B scores 11.23; (4) In Prediction Recognition, performance variance is minimal, with top models scoring between 39.16 and 50.00. We find that while current {LLMs} handle routine finance queries competently, they struggle with complex scenarios requiring cross-concept reasoning. {BizFinBench} offers a rigorous, business-aligned benchmark for future research. The code and dataset are available at https://github.com/{HiThink}-Research/{BizFinBench}.},
+	number = {{arXiv}:2505.19457},
+	publisher = {{arXiv}},
+	author = {Lu, Guilong and Guo, Xuntao and Zhang, Rongjunchen and Zhu, Wenqiao and Liu, Ji},
+	urldate = {2025-09-01},
+	date = {2025-05-26},
+	eprinttype = {arxiv},
+	eprint = {2505.19457 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Computational Engineering, Finance, and Science},
+}
+
 @article{he_can_2023,
 	title = {Can Large Language Models Understand Real-World Complex Instructions?},
 	rights = {{arXiv}.org perpetual, non-exclusive license},
@@ -124,6 +155,25 @@ Version Number: 5},
 	note = {Publisher: {arXiv}
 Version Number: 4},
 	keywords = {Artificial Intelligence (cs.{AI}), Computation and Language (cs.{CL}), {FOS}: Computer and information sciences},
+}
+
+@unpublished{reddy_docfinqa_2024,
+	title = {{DocFinQA}: A long-context financial reasoning dataset},
+	url = {http://arxiv.org/abs/2401.06915},
+	abstract = {Research in quantitative reasoning within the financial domain indeed
+necessitates the use of realistic tasks and data, primarily because of the
+significant impact of decisions made in business and finance. Financial
+professionals often interact with documents hundreds of pages long, but
+most research datasets drastically reduce this context length. To address
+this, we introduce a long-document financial {QA} task. We augment 7,621
+questions from the existing {FinQA} dataset with full-document context,
+extending the average context length for each question from under 700
+words in {FinQA} to 123k words in {DocFinQA}. We conduct extensive experiments
+of retrieval-based {QA} pipelines and long-context language models on the
+augmented data. Our results show that {DocFinQA} provides challenges for
+even the strongest, state-of-the-art systems.},
+	author = {Reddy, Varshini and Koncel-Kedziorski, Rik and Lai, Viet Dac and Tanner, Chris},
+	date = {2024-01-12},
 }
 
 @misc{hu_dynacode_2025,
@@ -233,6 +283,21 @@ Version Number: 1},
 	keywords = {Computer Science - Computation and Language},
 }
 
+@misc{matlin_finance_2025,
+	title = {Finance Language Model Evaluation ({FLaME})},
+	url = {http://arxiv.org/abs/2506.15846},
+	doi = {10.48550/arXiv.2506.15846},
+	abstract = {Language Models ({LMs}) have demonstrated impressive capabilities with core Natural Language Processing ({NLP}) tasks. The effectiveness of {LMs} for highly specialized knowledge-intensive tasks in finance remains difficult to assess due to major gaps in the methodologies of existing evaluation frameworks, which have caused an erroneous belief in a far lower bound of {LMs}' performance on common Finance {NLP} ({FinNLP}) tasks. To demonstrate the potential of {LMs} for these {FinNLP} tasks, we present the first holistic benchmarking suite for Financial Language Model Evaluation ({FLaME}). We are the first research paper to comprehensively study {LMs} against 'reasoning-reinforced' {LMs}, with an empirical study of 23 foundation {LMs} over 20 core {NLP} tasks in finance. We open-source our framework software along with all data and results.},
+	number = {{arXiv}:2506.15846},
+	publisher = {{arXiv}},
+	author = {Matlin, Glenn and Okamoto, Mika and Pardawala, Huzaifa and Yang, Yang and Chava, Sudheer},
+	urldate = {2025-09-01},
+	date = {2025-06-18},
+	eprinttype = {arxiv},
+	eprint = {2506.15846 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Computational Engineering, Finance, and Science},
+}
+
 @misc{yuan_finllms_2024,
 	title = {{FinLLMs}: A Framework for Financial Reasoning Dataset Generation with Large Language Models},
 	url = {http://arxiv.org/abs/2401.10744},
@@ -247,6 +312,17 @@ Version Number: 1},
 	eprinttype = {arxiv},
 	eprint = {2401.10744 [cs]},
 	keywords = {Computer Science - Artificial Intelligence},
+}
+
+@inproceedings{chen_finqa_2021,
+	location = {Stroudsburg, {PA}, {USA}},
+	title = {{FinQA}: A dataset of numerical reasoning over financial data},
+	url = {http://dx.doi.org/10.18653/v1/2021.emnlp-main.300},
+	doi = {10.18653/v1/2021.emnlp-main.300},
+	eventtitle = {Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing},
+	publisher = {Association for Computational Linguistics},
+	author = {Chen, Zhiyu and Chen, Wenhu and Smiley, Charese and Shah, Sameena and Borova, Iana and Langdon, Dylan and Moussa, Reema and Beane, Matt and Huang, Ting-Hao and Routledge, Bryan and Wang, William Yang},
+	date = {2021},
 }
 
 @article{ye_flask_2023,
@@ -293,6 +369,22 @@ Version Number: 4},
 	eprint = {2507.02833 [cs]},
 	note = {version: 1},
 	keywords = {Computer Science - Computation and Language},
+}
+
+@misc{wu_golden_2024,
+	title = {Golden Touchstone: A Comprehensive Bilingual Benchmark for Evaluating Financial Large Language Models},
+	url = {http://arxiv.org/abs/2411.06272},
+	doi = {10.48550/arXiv.2411.06272},
+	shorttitle = {Golden Touchstone},
+	abstract = {As large language models become increasingly prevalent in the financial sector, there is a pressing need for a standardized method to comprehensively assess their performance. However, existing finance benchmarks often suffer from limited language and task coverage, as well as challenges such as low-quality datasets and inadequate adaptability for {LLM} evaluation. To address these limitations, we propose "Golden Touchstone", the first comprehensive bilingual benchmark for financial {LLMs}, which incorporates representative datasets from both Chinese and English across eight core financial {NLP} tasks. Developed from extensive open source data collection and industry-specific demands, this benchmark includes a variety of financial tasks aimed at thoroughly assessing models' language understanding and generation capabilities. Through comparative analysis of major models on the benchmark, such as {GPT}-4o Llama3, {FinGPT} and {FinMA}, we reveal their strengths and limitations in processing complex financial information. Additionally, we open-sourced Touchstone-{GPT}, a financial {LLM} trained through continual pre-training and financial instruction tuning, which demonstrates strong performance on the bilingual benchmark but still has limitations in specific tasks.This research not only provides the financial large language models with a practical evaluation tool but also guides the development and optimization of future research. The source code for Golden Touchstone and model weight of Touchstone-{GPT} have been made publicly available at {\textbackslash}url\{https://github.com/{IDEA}-{FinAI}/Golden-Touchstone\}, contributing to the ongoing evolution of {FinLLMs} and fostering further research in this critical area.},
+	number = {{arXiv}:2411.06272},
+	publisher = {{arXiv}},
+	author = {Wu, Xiaojun and Liu, Junxi and Su, Huanyi and Lin, Zhouchi and Qi, Yiyan and Xu, Chengjin and Su, Jiajun and Zhong, Jiajie and Wang, Fuwei and Wang, Saizhuo and Hua, Fengrui and Li, Jia and Guo, Jian},
+	urldate = {2025-09-01},
+	date = {2024-11-09},
+	eprinttype = {arxiv},
+	eprint = {2411.06272 [cs]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Computational Engineering, Finance, and Science},
 }
 
 @article{diao_guidebench_2025,
@@ -434,22 +526,6 @@ Version Number: 2},
 	keywords = {Computer Science - Computation and Language},
 }
 
-@misc{touvron_llama_2023-1,
-	title = {{LLaMA}: Open and Efficient Foundation Language Models},
-	url = {http://arxiv.org/abs/2302.13971},
-	doi = {10.48550/arXiv.2302.13971},
-	shorttitle = {{LLaMA}},
-	abstract = {We introduce {LLaMA}, a collection of foundation language models ranging from 7B to 65B parameters. We train our models on trillions of tokens, and show that it is possible to train state-of-the-art models using publicly available datasets exclusively, without resorting to proprietary and inaccessible datasets. In particular, {LLaMA}-13B outperforms {GPT}-3 (175B) on most benchmarks, and {LLaMA}-65B is competitive with the best models, Chinchilla-70B and {PaLM}-540B. We release all our models to the research community.},
-	number = {{arXiv}:2302.13971},
-	publisher = {{arXiv}},
-	author = {Touvron, Hugo and Lavril, Thibaut and Izacard, Gautier and Martinet, Xavier and Lachaux, Marie-Anne and Lacroix, Timothée and Rozière, Baptiste and Goyal, Naman and Hambro, Eric and Azhar, Faisal and Rodriguez, Aurelien and Joulin, Armand and Grave, Edouard and Lample, Guillaume},
-	urldate = {2025-09-01},
-	date = {2023-02-27},
-	eprinttype = {arxiv},
-	eprint = {2302.13971 [cs]},
-	keywords = {Computer Science - Computation and Language},
-}
-
 @inproceedings{hwang_llms_2025,
 	location = {Vienna, Austria},
 	title = {{LLMs} can be easily Confused by Instructional Distractions},
@@ -490,6 +566,22 @@ Version Number: 2},
 	keywords = {Computer Science - Computation and Language},
 }
 
+@misc{huang_open-finllms_2025,
+	title = {Open-{FinLLMs}: Open Multimodal Large Language Models for Financial Applications},
+	url = {http://arxiv.org/abs/2408.11878},
+	doi = {10.48550/arXiv.2408.11878},
+	shorttitle = {Open-{FinLLMs}},
+	abstract = {Financial {LLMs} hold promise for advancing financial tasks and domain-specific applications. However, they are limited by scarce corpora, weak multimodal capabilities, and narrow evaluations, making them less suited for real-world application. To address this, we introduce {\textbackslash}textit\{Open-{FinLLMs}\}, the first open-source multimodal financial {LLMs} designed to handle diverse tasks across text, tabular, time-series, and chart data, excelling in zero-shot, few-shot, and fine-tuning settings. The suite includes {FinLLaMA}, pre-trained on a comprehensive 52-billion-token corpus; {FinLLaMA}-Instruct, fine-tuned with 573K financial instructions; and {FinLLaVA}, enhanced with 1.43M multimodal tuning pairs for strong cross-modal reasoning. We comprehensively evaluate Open-{FinLLMs} across 14 financial tasks, 30 datasets, and 4 multimodal tasks in zero-shot, few-shot, and supervised fine-tuning settings, introducing two new multimodal evaluation datasets. Our results show that Open-{FinLLMs} outperforms afvanced financial and general {LLMs} such as {GPT}-4, across financial {NLP}, decision-making, and multi-modal tasks, highlighting their potential to tackle real-world challenges. To foster innovation and collaboration across academia and industry, we release all codes (https://anonymous.4open.science/r/{PIXIU}2-0D70/B1D7/{LICENSE}) and models under {OSI}-approved licenses.},
+	number = {{arXiv}:2408.11878},
+	publisher = {{arXiv}},
+	author = {Huang, Jimin and Xiao, Mengxi and Li, Dong and Jiang, Zihao and Yang, Yuzhe and Zhang, Yifei and Qian, Lingfei and Wang, Yan and Peng, Xueqing and Ren, Yang and Xiang, Ruoyu and Chen, Zhengyu and Zhang, Xiao and He, Yueru and Han, Weiguang and Chen, Shunian and Shen, Lihang and Kim, Daniel and Yu, Yangyang and Cao, Yupeng and Deng, Zhiyang and Li, Haohang and Feng, Duanyu and Dai, Yongfu and Somasundaram, {VijayaSai} and Lu, Peng and Xiong, Guojun and Liu, Zhiwei and Luo, Zheheng and Yao, Zhiyuan and Weng, Ruey-Ling and Qiu, Meikang and Smith, Kaleb E. and Yu, Honghai and Lai, Yanzhao and Peng, Min and Nie, Jian-Yun and Suchow, Jordan W. and Liu, Xiao-Yang and Wang, Benyou and Lopez-Lira, Alejandro and Xie, Qianqian and Ananiadou, Sophia and Tsujii, Junichi},
+	urldate = {2025-09-01},
+	date = {2025-06-07},
+	eprinttype = {arxiv},
+	eprint = {2408.11878 [cs]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Computational Engineering, Finance, and Science, Quantitative Finance - Computational Finance},
+}
+
 @inproceedings{zeng_order_2025,
 	location = {Vienna, Austria},
 	title = {Order Matters: Investigate the Position Bias in Multi-constraint Instruction Following},
@@ -521,6 +613,22 @@ Version Number: 2},
 	date = {2025-03-03},
 	eprinttype = {arxiv},
 	eprint = {2502.17204 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{xie_pixiu_2023,
+	title = {{PIXIU}: A Large Language Model, Instruction Data and Evaluation Benchmark for Finance},
+	url = {http://arxiv.org/abs/2306.05443},
+	doi = {10.48550/arXiv.2306.05443},
+	shorttitle = {{PIXIU}},
+	abstract = {Although large language models ({LLMs}) has shown great performance on natural language processing ({NLP}) in the financial domain, there are no publicly available financial tailtored {LLMs}, instruction tuning datasets, and evaluation benchmarks, which is critical for continually pushing forward the open-source development of financial artificial intelligence ({AI}). This paper introduces {PIXIU}, a comprehensive framework including the first financial {LLM} based on fine-tuning {LLaMA} with instruction data, the first instruction data with 136K data samples to support the fine-tuning, and an evaluation benchmark with 5 tasks and 9 datasets. We first construct the large-scale multi-task instruction data considering a variety of financial tasks, financial document types, and financial data modalities. We then propose a financial {LLM} called {FinMA} by fine-tuning {LLaMA} with the constructed dataset to be able to follow instructions for various financial tasks. To support the evaluation of financial {LLMs}, we propose a standardized benchmark that covers a set of critical financial tasks, including five financial {NLP} tasks and one financial prediction task. With this benchmark, we conduct a detailed analysis of {FinMA} and several existing {LLMs}, uncovering their strengths and weaknesses in handling critical financial tasks. The model, datasets, benchmark, and experimental results are open-sourced to facilitate future research in financial {AI}.},
+	number = {{arXiv}:2306.05443},
+	publisher = {{arXiv}},
+	author = {Xie, Qianqian and Han, Weiguang and Zhang, Xiao and Lai, Yanzhao and Peng, Min and Lopez-Lira, Alejandro and Huang, Jimin},
+	urldate = {2025-09-01},
+	date = {2023-06-08},
+	eprinttype = {arxiv},
+	eprint = {2306.05443 [cs]},
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
 }
 
@@ -588,7 +696,22 @@ Version Number: 2},
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
 }
 
-@misc{wang_self-instruct_2023,
+@report{wang_self-instruct_2023,
+	title = {Self-Instruct: Aligning Language Models with Self-Generated Instructions},
+	url = {http://arxiv.org/abs/2212.10560},
+	shorttitle = {Self-Instruct},
+	abstract = {Large "instruction-tuned" language models (i.e., finetuned to respond to instructions) have demonstrated a remarkable ability to generalize zero-shot to new tasks. Nevertheless, they depend heavily on human-written instruction data that is often limited in quantity, diversity, and creativity, therefore hindering the generality of the tuned model. We introduce Self-Instruct, a framework for improving the instruction-following capabilities of pretrained language models by bootstrapping off their own generations. Our pipeline generates instructions, input, and output samples from a language model, then filters invalid or similar ones before using them to finetune the original model. Applying our method to the vanilla {GPT}3, we demonstrate a 33\% absolute improvement over the original model on Super-{NaturalInstructions}, on par with the performance of {InstructGPT}-001, which was trained with private user data and human annotations. For further evaluation, we curate a set of expert-written instructions for novel tasks, and show through human evaluation that tuning {GPT}3 with Self-Instruct outperforms using existing public instruction datasets by a large margin, leaving only a 5\% absolute gap behind {InstructGPT}-001. Self-Instruct provides an almost annotation-free method for aligning pre-trained language models with instructions, and we release our large synthetic dataset to facilitate future studies on instruction tuning. Our code and data are available at https://github.com/yizhongw/self-instruct.},
+	number = {{arXiv}:2212.10560},
+	institution = {{arXiv}},
+	author = {Wang, Yizhong and Kordi, Yeganeh and Mishra, Swaroop and Liu, Alisa and Smith, Noah A. and Khashabi, Daniel and Hajishirzi, Hannaneh},
+	urldate = {2025-09-01},
+	date = {2023-05-25},
+	eprinttype = {arxiv},
+	eprint = {2212.10560 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{wang_self-instruct_2023-1,
 	title = {Self-Instruct: Aligning Language Models with Self-Generated Instructions},
 	url = {http://arxiv.org/abs/2212.10560},
 	doi = {10.48550/arXiv.2212.10560},
@@ -598,21 +721,6 @@ Version Number: 2},
 	publisher = {{arXiv}},
 	author = {Wang, Yizhong and Kordi, Yeganeh and Mishra, Swaroop and Liu, Alisa and Smith, Noah A. and Khashabi, Daniel and Hajishirzi, Hannaneh},
 	urldate = {2025-08-31},
-	date = {2023-05-25},
-	eprinttype = {arxiv},
-	eprint = {2212.10560 [cs]},
-	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
-}
-
-@report{wang_self-instruct_2023-1,
-	title = {Self-Instruct: Aligning Language Models with Self-Generated Instructions},
-	url = {http://arxiv.org/abs/2212.10560},
-	shorttitle = {Self-Instruct},
-	abstract = {Large "instruction-tuned" language models (i.e., finetuned to respond to instructions) have demonstrated a remarkable ability to generalize zero-shot to new tasks. Nevertheless, they depend heavily on human-written instruction data that is often limited in quantity, diversity, and creativity, therefore hindering the generality of the tuned model. We introduce Self-Instruct, a framework for improving the instruction-following capabilities of pretrained language models by bootstrapping off their own generations. Our pipeline generates instructions, input, and output samples from a language model, then filters invalid or similar ones before using them to finetune the original model. Applying our method to the vanilla {GPT}3, we demonstrate a 33\% absolute improvement over the original model on Super-{NaturalInstructions}, on par with the performance of {InstructGPT}-001, which was trained with private user data and human annotations. For further evaluation, we curate a set of expert-written instructions for novel tasks, and show through human evaluation that tuning {GPT}3 with Self-Instruct outperforms using existing public instruction datasets by a large margin, leaving only a 5\% absolute gap behind {InstructGPT}-001. Self-Instruct provides an almost annotation-free method for aligning pre-trained language models with instructions, and we release our large synthetic dataset to facilitate future studies on instruction tuning. Our code and data are available at https://github.com/yizhongw/self-instruct.},
-	number = {{arXiv}:2212.10560},
-	institution = {{arXiv}},
-	author = {Wang, Yizhong and Kordi, Yeganeh and Mishra, Swaroop and Liu, Alisa and Smith, Noah A. and Khashabi, Daniel and Hajishirzi, Hannaneh},
-	urldate = {2025-09-01},
 	date = {2023-05-25},
 	eprinttype = {arxiv},
 	eprint = {2212.10560 [cs]},
@@ -664,6 +772,40 @@ Version Number: 2},
 	eprinttype = {arxiv},
 	eprint = {2501.04945 [cs]},
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@unpublished{pardawala_subjective-qa_2024,
+	title = {{SubjECTive}-{QA}: Measuring subjectivity in Earnings Call Transcripts' {QA} through six-dimensional feature analysis},
+	url = {http://arxiv.org/abs/2410.20651},
+	abstract = {Fact-checking is extensively studied in the context of misinformation and
+disinformation, addressing objective inaccuracies. However, a softer form
+of misinformation involves responses that are factually correct but lack
+certain features such as clarity and relevance. This challenge is
+prevalent in formal Question-Answer ({QA}) settings such as press
+conferences in finance, politics, sports, and other domains, where
+subjective answers can obscure transparency. Despite this, there is a lack
+of manually annotated datasets for subjective features across multiple
+dimensions. To address this gap, we introduce {SubjECTive}-{QA}, a human
+annotated dataset on Earnings Call Transcripts' ({ECTs}) {QA} sessions as the
+answers given by company representatives are often open to subjective
+interpretations and scrutiny. The dataset includes 49,446 annotations for
+long-form {QA} pairs across six features: Assertive, Cautious, Optimistic,
+Specific, Clear, and Relevant. These features are carefully selected to
+encompass the key attributes that reflect the tone of the answers provided
+during {QA} sessions across different domain. Our findings are that the
+best-performing Pre-trained Language Model ({PLM}), {RoBERTa}-base, has
+similar weighted F1 scores to Llama-3-70b-Chat on features with lower
+subjectivity, such as Relevant and Clear, with a mean difference of 2.17\%
+in their weighted F1 scores. The models perform significantly better on
+features with higher subjectivity, such as Specific and Assertive, with a
+mean difference of 10.01\% in their weighted F1 scores. Furthermore,
+testing {SubjECTive}-{QA}'s generalizability using {QAs} from White House Press
+Briefings and Gaggles yields an average weighted F1 score of 65.97\% using
+our best models for each feature, demonstrating broader applicability
+beyond the financial domain. {SubjECTive}-{QA} is publicly available under the
+{CC} {BY} 4.0 license},
+	author = {Pardawala, Huzaifa and Sukhani, Siddhant and Shah, Agam and Kejriwal, Veer and Pillai, Abhishek and Bhasin, Rohan and {DiBiasio}, Andrew and Mandapati, Tarun and Adha, Dhruv and Chava, Sudheer},
+	date = {2024-10-27},
 }
 
 @misc{li_synthetic_2024,
@@ -778,6 +920,25 @@ Version Number: 1},
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
 }
 
+@unpublished{shah_trillion_2023,
+	title = {Trillion dollar words: A new financial dataset, task \& market analysis},
+	url = {http://arxiv.org/abs/2305.07972},
+	abstract = {Monetary policy pronouncements by Federal Open Market Committee ({FOMC}) are
+a major driver of financial market returns. We construct the largest
+tokenized and annotated dataset of {FOMC} speeches, meeting minutes, and
+press conference transcripts in order to understand how monetary policy
+influences financial markets. In this study, we develop a novel task of
+hawkish-dovish classification and benchmark various pre-trained language
+models on the proposed dataset. Using the best-performing model
+({RoBERTa}-large), we construct a measure of monetary policy stance for the
+{FOMC} document release days. To evaluate the constructed measure, we study
+its impact on the treasury market, stock market, and macroeconomic
+indicators. Our dataset, models, and code are publicly available on
+Huggingface and {GitHub} under {CC} {BY}-{NC} 4.0 license.},
+	author = {Shah, Agam and Paturi, Suvan and Chava, Sudheer},
+	date = {2023-05-13},
+}
+
 @misc{peng_verif_2025,
 	title = {{VerIF}: Verification Engineering for Reinforcement Learning in Instruction Following},
 	url = {http://arxiv.org/abs/2506.09942},
@@ -792,6 +953,22 @@ Version Number: 1},
 	eprinttype = {arxiv},
 	eprint = {2506.09942 [cs]},
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{shah_when_2022,
+	title = {{WHEN} {FLUE} {MEETS} {FLANG}: Benchmarks and Large Pre-trained Language Model for Financial Domain},
+	url = {http://arxiv.org/abs/2211.00083},
+	doi = {10.48550/arXiv.2211.00083},
+	shorttitle = {{WHEN} {FLUE} {MEETS} {FLANG}},
+	abstract = {Pre-trained language models have shown impressive performance on a variety of tasks and domains. Previous research on financial language models usually employs a generic training scheme to train standard model architectures, without completely leveraging the richness of the financial data. We propose a novel domain specific Financial {LANGuage} model ({FLANG}) which uses financial keywords and phrases for better masking, together with span boundary objective and in-filing objective. Additionally, the evaluation benchmarks in the field have been limited. To this end, we contribute the Financial Language Understanding Evaluation ({FLUE}), an open-source comprehensive suite of benchmarks for the financial domain. These include new benchmarks across 5 {NLP} tasks in financial domain as well as common benchmarks used in the previous research. Experiments on these benchmarks suggest that our model outperforms those in prior literature on a variety of {NLP} tasks. Our models, code and benchmark data are publicly available on Github and Huggingface.},
+	number = {{arXiv}:2211.00083},
+	publisher = {{arXiv}},
+	author = {Shah, Raj Sanjay and Chawla, Kunal and Eidnani, Dheeraj and Shah, Agam and Du, Wendi and Chava, Sudheer and Raman, Natraj and Smiley, Charese and Chen, Jiaao and Yang, Diyi},
+	urldate = {2025-09-01},
+	date = {2022-10-31},
+	eprinttype = {arxiv},
+	eprint = {2211.00083 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
 }
 
 @report{xu_wizardlm_2025,
