@@ -2,80 +2,88 @@
 #import "@preview/bloated-neurips:0.7.0": botrule, midrule, neurips2025, paragraph, toprule, url
 
 = Appendix: Models
-
-// === Appendix table (metadata only; same row order as results)
-#let prov-col  = 7.0em
-#let fam-col   = 9.0em
-#let id-col    = 20.0em
-#let small-col = 5.0em
-#let notes-col = 20.0em
-#let pad       = (x: 3.0pt, y: 1.4pt)
+#let prov-col  = 7em
+#let fam-col   = 10em
+#let id-col    = 16em
+#let small-col = 5em
+#let notes-col = 8em
+#let pad       = (x: 2.5pt, y: 1.6pt)
 #set text(size: 9pt)
 
+#let band-prop = rgb("#eee9fb")
+#let band-source = rgb("#f3eee1")
+#let band-weight = rgb("#e6eef2")
+
 #table(
-  columns: (prov-col, fam-col, id-col, small-col, small-col, small-col, notes-col),
+  columns: (prov-col, fam-col, id-col, small-col, small-col, small-col),
   align: (x, y) => if x in (3,4,5) { right } else { left },
   inset: pad,
   stroke: none,
   toprule,
-  table.header([*Provider*], [*Family*], [*Model ID*], [*MaxTok*], [*Temp*], [*Top‑p*], [*Notes*]),
+  table.header([*Provider*], [*Family*], [*Model*], [*MaxTok*], [*Temp*], [*Top-p*]),
   midrule,
-  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-llama-70B], [4096], [0.20], [0.90], [nan],
-  [Anthropic], [Claude Sonnet], [anthropic/claude-3-7-sonnet-20250219], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-llama-405B], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [GPT-4o], [openai/gpt-4o], [4096], [0.20], [0.90], [nan],
-  [Anthropic], [Claude Opus], [anthropic/claude-opus-4-1-20250805], [4096], [], [], [The model does not accept both top_p and temp only one needs to be sent.],
-  [Anthropic], [Claude Opus], [anthropic/claude-opus-4-20250514], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Moonshot], [moonshotai/Kimi-K2-Instruct], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [OpenAI O-Series], [openai/o3], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [GPT-4.1], [openai/gpt-4.1], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-R1-0528-tput], [], [], [], [nan],
-  [OpenAI], [OpenAI O-Series], [openai/o4-mini], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-V3.1], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [OpenAI O-Series], [openai/o1], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-V3], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [OpenAI O-Series], [openai/o3-mini], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-R1-Distill-Llama-70B], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Arcee AI], [arcee-ai/virtuoso-large], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [GPT-4o], [openai/gpt-4o-mini], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Z.ai GLM], [zai-org/GLM-4.5-Air-FP8], [4096], [0.20], [0.90], [nan],
-  [Anthropic], [Claude Haiku], [anthropic/claude-3-5-haiku-20241022], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [GPT-5], [openai/gpt-5-mini], [4096], [1.00], [], [nan],
-  [Together.ai], [OpenAI GPT-OSS], [openai/gpt-oss-120b], [4096], [0.20], [0.90], [Not a mistake],
-  [Together.ai], [OpenAI GPT-OSS], [openai/gpt-oss-20b], [4096], [0.20], [0.90], [Not a mistake],
-  [Anthropic], [Claude Haiku], [anthropic/claude-3-haiku-20240307], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-R1-Distill-Qwen-14B], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [GPT-4.1], [openai/gpt-4.1-nano], [4096], [0.20], [0.90], [nan],
-  [OpenAI], [GPT-5], [openai/gpt-5], [4096], [1.00], [], [returned empty string as responses for a lot of prompts],
-  [OpenAI], [GPT-4.1], [openai/gpt-4.1-mini], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-llama-109B-MoE], [4096], [0.20], [0.90], [nan],
-  [Anthropic], [Claude Sonnet], [anthropic/claude-sonnet-4-20250514], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-deepseek-671b], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Marin Community], [marin-community/marin-8b-instruct], [2048], [0.20], [0.90], [Max token limit is 4096],
-  [OpenAI], [GPT-5], [openai/gpt-5-nano], [4096], [1.00], [], [nan],
-  [OpenAI], [OpenAI O-Series], [openai/o3-pro], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 4], [meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 3.3], [meta-llama/Llama-3.3-70B-Instruct-Turbo-Free], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 4], [meta-llama/Llama-4-Scout-17B-16E-Instruct], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 3.3], [meta-llama/Llama-3.3-70B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 3.1], [meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Qwen], [Qwen/QwQ-32B], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Qwen3], [Qwen/Qwen3-235B-A22B-Instruct-2507-tput], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Qwen 2.5], [Qwen/Qwen2.5-72B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 3], [meta-llama/Llama-3-70b-chat-hf], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Mistral AI], [mistralai/Mistral-Small-24B-Instruct-2501], [4096], [0.20], [0.90], [nan],
-  [AI2], [OLMo 2], [allenai/OLMo-2-0325-32B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
-  [Together.ai], [Meta Llama 3.1], [meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Google Gemma], [google/gemma-3n-E4B-it], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 3], [meta-llama/Meta-Llama-3-8B-Instruct-Lite], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Qwen 2.5], [Qwen/Qwen2.5-7B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
-  [AI2], [OLMo 2], [allenai/OLMo-2-1124-13B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
-  [AI2], [OLMo 2], [allenai/OLMo-2-1124-7B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
-  [Together.ai], [Mistral AI], [mistralai/Mistral-7B-Instruct-v0.3], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Meta Llama 3.2], [meta-llama/Llama-3.2-3B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Mistral AI], [mistralai/Mistral-7B-Instruct-v0.2], [4096], [0.20], [0.90], [nan],
-  [Together.ai], [Mistral AI], [mistralai/Mistral-7B-Instruct-v0.1], [4096], [0.20], [0.90], [nan],
-  [AI2], [OLMo 2], [allenai/OLMo-2-0425-1B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
+
+  // Closed-source LMs
+  table.cell(colspan: 6, fill: band-prop, inset: (x: 6pt, y: 2pt))[*Closed-source LMs*],
+  [OpenAI], [O-Series], [o4-mini], [4096], [0.20], [0.90],
+  [OpenAI], [O-Series], [o3], [4096], [0.20], [0.90],
+  [OpenAI], [O-Series], [o3-mini], [4096], [0.20], [0.90],
+  [OpenAI], [O-Series], [o1], [4096], [0.20], [0.90],
+  [OpenAI], [GPT-5], [gpt-5], [4096], [1.00], [],
+  [OpenAI], [GPT-5], [gpt-5-mini], [4096], [1.00], [],
+  [OpenAI], [GPT-5], [gpt-5-nano], [4096], [1.00], [],
+  [OpenAI], [GPT-4.1], [gpt-4.1], [4096], [0.20], [0.90],
+  [OpenAI], [GPT-4.1], [gpt-4.1-mini], [4096], [0.20], [0.90],
+  [OpenAI], [GPT-4.1], [gpt-4.1-nano], [4096], [0.20], [0.90],
+  [OpenAI], [GPT-4o], [gpt-4o], [4096], [0.20], [0.90],
+  [OpenAI], [GPT-4o], [gpt-4o-mini], [4096], [0.20], [0.90],
+  [Anthropic], [Claude Opus], [claude-opus-4-1-20250805], [4096], [], [],
+  [Anthropic], [Claude Opus], [claude-opus-4-20250514], [4096], [0.20], [0.90],
+  [Anthropic], [Claude Sonnet], [claude-sonnet-4-20250514], [4096], [0.20], [0.90],
+  [Anthropic], [Claude Sonnet], [claude-3-7-sonnet-20250219], [4096], [0.20], [0.90],
+  [Anthropic], [Claude Haiku], [claude-3-5-haiku-20241022], [4096], [0.20], [0.90],
+  [Anthropic], [Claude Haiku], [claude-3-haiku-20240307], [4096], [0.20], [0.90],
+
+  // Open-source LMs
+  table.cell(colspan: 6, fill: band-source, inset: (x: 6pt, y: 2pt))[*Open-source LMs*],
+  [Cirrascale], [OLMo 2], [OLMo-2-0325-32B-Instruct], [2048], [0.20], [0.90],
+  [TogetherAI], [Marin], [marin-8b-instruct], [2048], [0.20], [0.90],
+  [Cirrascale], [OLMo 2], [OLMo-2-1124-13B-Instruct], [2048], [0.20], [0.90],
+  [Cirrascale], [OLMo 2], [OLMo-2-1124-7B-Instruct], [2048], [0.20], [0.90],
+  [Cirrascale], [OLMo 2], [OLMo-2-0425-1B-Instruct], [2048], [0.20], [0.90],
+
+  // Open-weight LMs
+  table.cell(colspan: 6, fill: band-weight, inset: (x: 6pt, y: 2pt))[*Open-weight LMs*],
+  [Together.ai], [Meta Llama 4], [Llama-4-Maverick-17B-128E-Instruct-FP8], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 4], [Llama-4-Scout-17B-16E-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 3], [Llama-3.3-70B-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 3], [Meta-Llama-3.1-405B-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 3], [Llama-3.3-70B-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Deep Cogito], [cogito-v2-preview-llama-70B], [4096], [0.20], [0.90],
+  [Together.ai], [Deep Cogito], [cogito-v2-preview-llama-405B], [4096], [0.20], [0.90],
+  [Together.ai], [Qwen], [QwQ-32B], [4096], [0.20], [0.90],
+  [Together.ai], [Qwen], [Qwen3-235B-A22B-Instruct-2507-tput], [4096], [0.20], [0.90],
+  [Together.ai], [Moonshot], [Kimi-K2-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Qwen], [Qwen2.5-72B-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [DeepSeek], [DeepSeek-R1-0528-tput], [], [], [],
+  [Together.ai], [DeepSeek], [DeepSeek-V3.1], [4096], [0.20], [0.90],
+  [Together.ai], [DeepSeek], [DeepSeek-V3], [4096], [0.20], [0.90],
+  [Together.ai], [DeepSeek], [DeepSeek-R1-Distill-Llama-70B], [4096], [0.20], [0.90],
+  [Together.ai], [GPT-OSS], [gpt-oss-120b], [4096], [0.20], [0.90],
+  [Together.ai], [GPT-OSS], [gpt-oss-20b], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 3], [Llama-3-70b-chat-hf], [4096], [0.20], [0.90],
+  [Together.ai], [DeepSeek], [DeepSeek-R1-Distill-Qwen-14B], [4096], [0.20], [0.90],
+  [Together.ai], [Mistral AI], [Mistral-Small-24B-Instruct-2501], [4096], [0.20], [0.90],
+  [Together.ai], [Deep Cogito], [cogito-v2-preview-llama-109B-MoE], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 3.1], [Meta-Llama-3.1-8B-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Google Gemma], [gemma-3n-E4B-it], [4096], [0.20], [0.90],
+  [Together.ai], [Deep Cogito], [cogito-v2-preview-deepseek-671b], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 3], [Meta-Llama-3-8B-Instruct-Lite], [4096], [0.20], [0.90],
+  [Together.ai], [Qwen 2.5], [Qwen2.5-7B-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Mistral AI], [Mistral-7B-Instruct-v0.3], [4096], [0.20], [0.90],
+  [Together.ai], [Meta Llama 3.2], [Llama-3.2-3B-Instruct], [4096], [0.20], [0.90],
+  [Together.ai], [Mistral AI], [Mistral-7B-Instruct-v0.2], [4096], [0.20], [0.90],
+  [Together.ai], [Mistral AI], [Mistral-7B-Instruct-v0.1], [4096], [0.20], [0.90],
   botrule,
 )
 
@@ -142,13 +150,14 @@ The architecture leverages several key software design patterns to enhance its f
 -   *Strategy Pattern:* The use of "Strict" and "Loose" evaluation modes is a classic example of the Strategy pattern. The main evaluation library can switch between these different evaluation algorithms at runtime without changing its core logic.
 -   *Factory Pattern:* The framework uses a factory approach to dynamically create instances of instruction-checker classes from the registry based on the IDs specified in a given prompt.
 
-= Comprehensive Documentation of Prompt Design, Instructions, and Model Outputs
+= Appendix: Evaluation Dataset
+// Comprehensive Documentation of Prompt Design, Instructions, and Model Outputs
 
-This appendix provides detailed information on the prompts, instructions, and resulting outputs used in our experiments
+This appendix provides detailed information on the prompts and instructions used in our experiments, along with samples of model outputs.
 
 == System Prompt
 
-The LLMs are primed using the following prompt to follow the instructions
+The LMs are primed using the following system/agent prompt to aid in aligning with our instruction-following and improve baseline performance.
 
 ```
 
@@ -231,3 +240,45 @@ The bank is scheduling a release of the core payments switch identified as relea
 
 == Sample Responses
 
+This section presents representative outputs of Llama 4 Maverick, including both correct and incorrect responses, to illustrate model performance for both strict and loose mode.
+
+=== Strict Mode
+
+The model produces outputs that fully adhere to the prompt, meeting all specified instructions and correctly following the intended structure and formatting.
+
+`
+#### Prompt
+
+Write about 250 words on Meta’s Q3 setup using only the facts below. Include upside levers (Reels RPM, tighter opex) and downside watch items (foreign exchange drag, ads macro). Do not invent data.
+ Facts: revenue $36.8 billion; EBIT margin 39%.
+Begin with one sentence in bold stating your overall call. Add the heading "Upside Watch" followed by exactly three bullets, then the heading "Downside Watch" followed by exactly three bullets; each bullet must begin with one of these tokens : Increase, Tighten, Improve, Monitor, Reduce, Shift, Manage. If your opening bold sentence contains the word "probably".Insert a single bold line that reads "Confidence: Low." immediately before the final line. Finish with one italic line "Downside risk: FX drag; ads macro.".
+
+#### Response (PASSED)
+
+**Meta is probably well-positioned for Q3 given its historical performance and current trends.**
+ Upside Watch
+- Improve Reels RPM as the format continues to gain traction.
+- Tighten opex by optimizing operational efficiencies.
+- Increase ad load without compromising user experience.
+ Downside Watch
+- Monitor foreign exchange fluctuations that could negatively impact revenue.
+- Manage ads macro environment that may affect advertiser spending.
+- Reduce dependence on a single revenue stream to mitigate potential risks.
+**Confidence: Low.**
+*Downside risk: FX drag; ads macro.*`
+
+The example below illustrates a case in which the model does not fully adhere to the prompt, producing outputs that deviate from the specified instructions and formatting requirements. In this instance, the model fails to follow multiple instructions provided in the prompt.
+
+`
+#### Prompt
+
+Summarize the three deficiencies identified by the model-risk audit in mortgage prepayment model version 5.2. The deficiencies are: an outdated seasoning curve, a missing macroeconomic linkage for refinancing incentive, and an inadequate back-testing window. Present them clearly and concisely, without adding or inventing any further issues.
+List the three deficiencies as bullets and end with the remediation deadline <span style="color:red">2025-10-31</span> in bold red text.
+
+#### Response (FAILED)
+
+- The mortgage prepayment model version 5.2 has an outdated seasoning curve.
+- The model lacks a macroeconomic linkage for refinancing incentive.
+- The back-testing window used is inadequate.
+Remediation deadline: <font color="red">**2025-10-31**</font>
+`

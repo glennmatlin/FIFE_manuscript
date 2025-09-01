@@ -1,0 +1,17 @@
+
+// - *Numerical Reasoning.* We find this to be the most challenging category for all models. We observe the lowest success rates for tasks requiring multi-step calculations from provided data. Even GPT-4 only achieves about 60-65% accuracy here. We find that models frequently make arithmetic mistakes, mis-place decimals, or produce plausible-sounding but incorrect numbers—a dangerous tendency in finance.
+// - *Extraction and Formatting.* We find that models are generally proficient at extracting information and adhering to structured output formats like JSON or bulleted lists. GPT-4 and Claude exceed 85% accuracy. We observe that the primary failure mode for other models is partial compliance, such as mixing explanatory text with the requested JSON object.
+// - *Analytical Reasoning.* We find that GPT-4 and Claude 2 excel at prompts requiring a chain of reasoning based on domain knowledge. They produce well-structured and coherent analyses over 80% of the time. We observe that open-source models often provide relevant terminology but sometimes fail to structure the answer clearly or directly address all parts of the query.
+// - *Compliance and Constraints.* We observed a sharp difference in alignment when testing precise constraints (e.g., "List _exactly three_ impacts"). GPT-4 and Claude almost always respected these constraints, whereas other models frequently violated them by providing more or fewer items than requested. This demonstrates the effectiveness of extensive RLHF in teaching models to obey fine-grained instructions.
+
+// == Error Analysis
+// We identify several common error types:
+// - *Calculation Mistakes:* The most frequent error type, especially for models without integrated tool use.
+// - *Ignoring Part of an Instruction:* Models often addressed only the primary part of a multi-part prompt, neglecting secondary constraints or requests for explanation.
+// - *Hallucinated Content:* In a few instances, models introduced facts or figures not present in the provided context, a critical failure mode for data-driven financial tasks.
+// - *Surface-Level Deception:* In some cases, models produced answers that were well-formatted and fluent but factually incorrect or non-compliant. This highlights the risk of 'surface-level deception', where an LM-as-a-judge might be swayed by style over substance @ye_flask_2023, reinforcing the need for multi-faceted evaluation.
+// - *Formatting Issues.* We find that a notable portion of errors result from failing to adhere to output formats, such as providing a conversational answer when a structured one was requested.
+
+// == The Instruction Hierarchy in Finance
+
+// We also observe a tension in what we term the "instruction hierarchy." When faced with a complex analytical task (e.g., summarizing market risks) and a strict, verifiable constraint (e.g., "the summary must be exactly 75 words"), models must make a trade-off. We find that some models, particularly those highly tuned for conversational quality, often prioritize producing a fluent, high-quality analysis while failing the length constraint. Conversely, we find that other models, when trained specifically on constraint following, sometimes sacrifice the quality or coherence of the analysis to meet the verifiable requirement precisely. We believe this highlights a key challenge for the development of financial assistants: building models that can gracefully balance the primary analytical task with strict adherence to secondary constraints, without sacrificing one for the other.

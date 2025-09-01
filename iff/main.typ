@@ -9,8 +9,8 @@
 }
 
 #let num_prompts = "100"
-#let num_instruction_types = "over 40"
-#let num_models_evaluated = "over 20"
+#let num_instruction_types = "88"
+#let num_models_evaluated = "57"
 
 #let affls = (
   gatech: (
@@ -61,7 +61,7 @@
 
 = Introduction
 
-Large language models (LLMs) have become general-purpose interfaces for information work, but their value hinges on the ability to *follow instructions precisely*, not just produce plausible text@radford_language_nodate @touvron_llama_2023. Instruction tuning and preference-based reinforcement learning improve obedience to user directives @wei_chain--thought_2023 @ouyang_training_2022, and a recent wave of benchmarks has shown both progress and clear gaps. Verifiable-constraint suites (e.g., IFEval) test formatting and content rules automatically @zhou_instruction-following_2023; SIFo examines multi-step, sequential directives @chen_recent_2025; DIM-Bench targets distraction and instruction ambiguity @hwang_llms_2025; and IFBench/IFTrain study generalization and training with verifiable rewards @pyatkin_generalizing_2025. Across these settings, modern LLMs still fail when instructions are long, compositional, or conditional in nature.
+Language models (LMs) have become general-purpose interfaces for information work, but their value hinges on the ability to *follow instructions precisely*, not just produce plausible text@radford_language_nodate @touvron_llama_2023. Instruction tuning and preference-based reinforcement learning improve obedience to user directives @wei_chain--thought_2023 @ouyang_training_2022, and a recent wave of benchmarks has shown both progress and clear gaps. Verifiable-constraint suites (e.g., IFEval) test formatting and content rules automatically @zhou_instruction-following_2023; SIFo examines multi-step, sequential directives @chen_recent_2025; DIM-Bench targets distraction and instruction ambiguity @hwang_llms_2025; and IFBench/IFTrain study generalization and training with verifiable rewards @pyatkin_generalizing_2025. Across these settings, modern LLMs still fail when instructions are long, compositional, or conditional in nature.
 
 Finance raises the bar further. Real workflows blend domain reasoning with strict, machine-checkable constraints,e.g. "Create a  table with exact headers, sort by spread descending, bold values above a threshold, normalize currency codes, and end with a disclaimer." In such contexts, an answer that is factually right but format-noncompliant can still be operationally useless (downstream scripts break; compliance reviews fail).Despite this critical need, no dedicated benchmark exists for evaluating instruction-following in finance. Existing financial NLP benchmarks, such as FLUE and FLAME *(citations here along with another finance benchmark not from fsil)* focus on task-specific accuracy (e.g., sentiment classification, QA, NER). They do not, however, measure a model's ability to follow the complex, multi-part constraints of real-world financial queries @pyatkin_generalizing_2025. For instance, a model that correctly identifies sentiment but fails to deliver the result in a user-specified format exhibits a failure mode that these benchmarks do not capture. We design the IFF benchmark to measure this crucial, yet overlooked, dimension of instruction fidelity,to check whether a model adheres to the requested format, ordering, counts, or style constraints that professionals actually require.
 
@@ -85,58 +85,65 @@ We address this gap by introducing the *Instruction Following for Finance (IFF)*
 = Related Work
 
 
-Our research builds on the combined effort from literature that can be grouped in three strands: methods for aligning and tuning language models to follow instructions, benchmark suites for measuring instruction adherence, and 
+Our research builds on the combined effort from literature that can be grouped in three strands: methods for aligning and tuning language models to follow instructions, benchmark suites for measuring instruction adherence, and [todo]
 
 
 == Instruction Tuning and Evaluation
 
-Instruction tuning and preference-based fine-tuning methods such as InstructGPT @ouyang_training_2022 and efforts like Self-Insstruct @wang_self-instruct_2023 and WizardLM @xu_wizardlm_2025 have improved model compliance with general user directives. Evaluations of these models have relied on broad benchmarks such as SuperGlUE or MMLU. Broad benchmarks measure task accuracy but not fidelity to fine0grained constraints. More targeted studies like IFEval @zhou_instruction-following_2023 and its successors @chen_recent_2025; @hwang_llms_2025 have introduced verifiable instructions—machine-checkable constraints on length, formatting, or keyword inclusion—to automate compliance checking. However, these evaluations are largely domain-agnostic, and the constraints they test do not capture the specialized demands of financial workflows. 
+Instruction tuning and preference-based fine-tuning methods such as InstructGPT @ouyang_training_2022 and efforts like Self-Instruct @wang_self-instruct_2023 and WizardLM @xu_wizardlm_2025 have improved model compliance with general user directives. Evaluations of these models have relied on broad benchmarks such as SuperGlUE or MMLU. Broad benchmarks measure task accuracy but not consistency to fine-grained constraints. More targeted studies like IFEval @zhou_instruction-following_2023 and its successors @chen_recent_2025; @hwang_llms_2025 have introduced verifiable instructions—machine-checkable constraints on length, formatting, or keyword inclusion—to automate compliance checking. However, these evaluations are largely domain-agnostic, and the constraints they test do not capture the specialized demands of financial workflows. 
 
-== LMs in Finance and Domain-Specific Benchmarks
-We are seeing a burgeoning interest in applying LMs to finance, where they can interpret complex documents like earnings reports, regulatory filings, and news. This has led to open-source, finance-focused models like *FinMA*, a LLaMA-based model fine-tuned for financial tasks. Typically, these models are evaluated on traditional financial NLP benchmarks such as *FiQA* (financial question answering), *FinQA* (numerical reasoning), *TAT-QA* (tabular and textual QA), and sentiment analysis datasets. While these benchmarks are crucial for assessing domain knowledge, they do not measure adherence to the fine-grained instructions that accompany real-world tasks. We create the first comprehensive benchmark that focuses specifically on instruction-following fidelity within the financial domain. This addresses a gap also identified by recent work on domain-oriented guideline following @diao_guidebench_2025 and robust financial QA @kamble_expect_2025.
+== Complexity of Financial Tasks
 
-= The IFF Benchmark and Methodology
+Financial applications are subject to constraints beyond those targeted by general instruction-tuned benchmarks. Tasks often require multi-step reasoning, strict output formatting schemes, and regulatory-driven constraints. Existing benchmarks such as FiQA, FinQA, and TAT-QA primarily focus on sentiment analysis, numerical QA, or hybrid table-text reasoning. These datasets are valuable for measuring domain knowledge and reasoning accuracy. On the other hand, they do not test whether models adhere to procedural instructions. This gap is critical in practice. Financial outputs that are factually accurate but structurally non-compliant may be unusable for downstream systems or regulatory review.
 
-We designed the *Instruction Following for Finance (IFF)* benchmark for robust and comprehensive evaluation. We build IFF on a hybrid model that assesses both high-level task completion and low-level instruction compliance.
+== Evaluation Methodologies for Instruction Compliance
 
-== Benchmark Design
-The IFF benchmark contains over *#num_prompts financial instruction-following tasks*. We frame these tasks as prompts that a financial analyst might pose to an AI assistant. We design the prompts to be complex, requiring multiple steps, domain knowledge, and strict adherence to constraints @he_can_2023. 
+Constraint-based benchmarks generally distinguish between prompt-level accuracy (a prompt passes only if all embedded instructions are satisfied) and instruction-level accuracy (the proportion of constraints followed). This dual reporting structure, first used in IFEval and adopted in subsequent suites @wen_benchmarking_2024; @zou_eifbench_2025; @jaroslawicz_how_2025, highlights the trade-offs between holistic success and partial compliance. At the same time, normalization strategies have been proposed to account for superficial artifacts like extra whitespace or Markdown tokens that cause strict failures despite semantic correctness @liu_recast_2025.
 
-We intentionally use a hybrid design. Given the known challenges of relying on LM-based judges for open-ended tasks @liu_reife_2024, we include a verifiable instruction component in IFF. This component provides a layer of objective, automated checks that complements and validates the results from the LM-judged holistic tasks. We divide the benchmark into two main components:
+== 
 
-*Holistic Financial Tasks:* This component includes tasks that mirror real-world financial analysis workflows. We categorize them as follows:
-  - *Analytical QA:* Prompts that require retrieving figures from provided text (e.g., a quarterly report excerpt), performing calculations, and providing an explanatory narrative. (e.g., _"Using the provided quarterly report excerpt, calculate the year-over-year revenue growth and explain the factors contributing to this change."_)
-  - *Policy/Scenario Evaluation:* Prompts that require reasoning about the consequences of a financial event or policy change. (e.g., _"If the Federal Reserve raises interest rates by 0.5%, list three likely impacts on bank profitability and provide reasoning."_)
-  - *Data Extraction & Transformation:* Prompts that test the model's ability to parse financial documents, extract specific information, and structure it in a requested format. (e.g., _"From the given financial statement, extract all expense line items, total them, and output the result in JSON format."_)
-  - *Advice/Recommendation:* Prompts that require the model to adopt a role (e.g., a financial advisor) and provide justified recommendations based on given context.
+= The IFF Benchmark
 
-+ *Holistic Financial Tasks.* This component includes tasks that mirror real-world financial analysis workflows. We categorize them as follows:
-  - *Analytical QA.* We design prompts that require the model to retrieve figures from text, perform calculations, and provide an explanatory narrative. (e.g., _"Using the provided quarterly report excerpt, calculate the year-over-year revenue growth and explain the factors contributing to this change."_)
-  - *Policy/Scenario Evaluation.* We create prompts that require the model to reason about the consequences of a financial event or policy change. (e.g., _"If the Federal Reserve raises interest rates by 0.5%, list three likely impacts on bank profitability and provide reasoning."_)
-  - *Data Extraction & Transformation.* We test the model's ability to parse financial documents, extract specific information, and structure it in a requested format. (e.g., _"From the given financial statement, extract all expense line items, total them, and output the result in JSON format."_)
-  - *Advice/Recommendation.* We instruct the model to adopt a role (e.g., a financial advisor) and provide justified recommendations based on a given context.
+IFF Benchmark targets instruction following in finance rather than open-ended problem solving. We build IFF on a hybrid model that assesses both high-level task completion and low-level instruction compliance.
 
-+ *Verifiable Instructions.* We embed over *#num_instruction_types distinct, verifiable instruction types* within the holistic tasks. These are inspired by the IFEval framework @zhou_instruction-following_2023 but adapted for finance. This allows for automated, fine-grained checking of compliance. Examples include:
-  - *Formatting.* We require the use of bold, italics, bullet points, or specific heading structures. (e.g., _"List three risk factors, with the word 'Risk' in *bold* for each."_)
-  - *Quantitative Constraints.* We specify requirements for numerical precision, calculations, or specific counts. (e.g., _"Report the VaR with two decimal precision,"_ or _"List exactly three impacts."_)
-  - *Content Constraints.* We mandate the inclusion of specific keywords, phrases, or citations. (e.g., _"Summarize the report and ensure you mention the 'forward-looking statements' section."_)
-  - *Stylistic Constraints.* We require adherence to a specific tone or length. (e.g., _"Answer in one sentence,"_ or _"Write in the tone of a formal financial report."_)
+== Design and scope
 
-== Evaluation Procedure
-We design our evaluation protocol to be rigorous and multi-faceted.
+(here insert a figure with bunch of prompt types)
+Instruction Following for Finance (IFF) pairs *realistic finance prompts with verifiable output constraints*. Instead of a handful of reusable task families, we built a broad, SME-curated set of distinct prompts that mirror day-to-day work products such as ops run-books, settlement checklists, filing packs, recap tables, and short memos. The design emphasizes controllability over fluency: structured outputs dominate (especially tables and checklists) and many items enforce exact cardinality, fixed ordering, and explicit styling. Formatting is treated as part of correctness, not presentation.Everything is contained in conext prompt avoiding hallucinations within model and giving equal opopportunity's all models.
 
-- *Zero-Shot Evaluation.* We evaluate all models in a strict zero-shot setting. We provide the instruction prompt with necessary context but give no examples or task-specific fine-tuning. This tests their out-of-the-box generalization capabilities.
+All instances are single-turn but embed multiple sub-instructions through three patterns. AND requires the model to satisfy several independent constraints at once (e.g., exact row count and sorted columns and a bolded header). CHAIN sequences steps whose outputs feed the next step (e.g., extract → transform → format), so order matters and partial compliance is insufficient. NESTED (selection) is conditional branching: the prompt specifies alternatives and the model must pick the correct branch and meet its local constraints (if condition A then follow rule set R₁; else follow R₂). In finance this covers common policies such as formatting that depends on a threshold, jurisdiction, or data availability. This composition covers the bulk of realistic analyst workflows without requiring dialogue turns.overage is intentionally long-tailed: the benchmark spans a wide range of finance sub-domains, with many appearing only once, so instruction fidelity must transfer across topics rather than overfit to a narrow vertical. A detailed breakdown of formats and constraint types appears in Appendix A. *(Do we have it in appendix A?*)
 
-- *Hybrid Scoring:* We employ a multi-pronged scoring strategy:
-  - *Reference Comparison:* For tasks with a single correct answer (e.g., numerical calculations, factual extractions), we compare the model's output against a ground-truth solution.
-  - *LM-based Judging.* For more open-ended responses, we use GPT-4 as an automated judge. We select GPT-4 as our judge because meta-evaluation studies like @liu_reife_2024 show that top-tier proprietary models are currently the most accurate automated evaluators. We acknowledge the potential for biases in LM-based evaluation. To mitigate potential positional biases, we conduct each pairwise comparison twice, swapping the order of the two responses, and average the results.
-  - *Automated Compliance Checking.* To check for instruction compliance, we employ a dual-mode evaluation protocol to distinguish between perfect adherence and "almost correct" responses.
-    + *Strict Mode.* This mode enforces an exact match against all instruction requirements. We parse the model's response exactly as provided, with no tolerance for formatting variations or minor deviations.
-    + *Loose Mode.* Recognizing that models may produce semantically correct but stylistically imperfect output, this mode is more forgiving. Before checking compliance, our engine generates several variants of the model's response by systematically removing common LLM-induced artifacts (e.g., conversational preambles, markdown formatting, extra whitespace). We consider an instruction passed if *any* variant meets the constraint.
+// The IFF benchmark contains over *#num_prompts financial instruction-following tasks*. We frame these tasks as prompts that a financial analyst might pose to an AI assistant. We design the prompts to be complex, requiring multiple steps, domain knowledge, and strict adherence to constraints @he_can_2023. 
+
+// We intentionally use a hybrid design. Given the known challenges of relying on LM-based judges for open-ended tasks @liu_reife_2024, we include a verifiable instruction component in IFF. This component provides a layer of objective, automated checks that complements and validates the results from the LM-judged holistic tasks. We divide the benchmark into two main components:
+
+// *Holistic Financial Tasks:* This component includes tasks that mirror real-world financial analysis workflows. We categorize them as follows:
+//   - *Analytical QA:* Prompts that require retrieving figures from provided text (e.g., a quarterly report excerpt), performing calculations, and providing an explanatory narrative. (e.g., _"Using the provided quarterly report excerpt, calculate the year-over-year revenue growth and explain the factors contributing to this change."_)
+//   - *Policy/Scenario Evaluation:* Prompts that require reasoning about the consequences of a financial event or policy change. (e.g., _"If the Federal Reserve raises interest rates by 0.5%, list three likely impacts on bank profitability and provide reasoning."_)
+//   - *Data Extraction & Transformation:* Prompts that test the model's ability to parse financial documents, extract specific information, and structure it in a requested format. (e.g., _"From the given financial statement, extract all expense line items, total them, and output the result in JSON format."_)
+//   - *Advice/Recommendation:* Prompts that require the model to adopt a role (e.g., a financial advisor) and provide justified recommendations based on given context.
+
+// + *Verifiable Instructions.* We embed over *#num_instruction_types distinct, verifiable instruction types* within the holistic tasks. These are inspired by the IFEval framework @zhou_instruction-following_2023 but adapted for finance. This allows for automated, fine-grained checking of compliance. Examples include:
+//   - *Formatting.* We require the use of bold, italics, bullet points, or specific heading structures. (e.g., _"List three risk factors, with the word 'Risk' in *bold* for each."_)
+//   - *Quantitative Constraints.* We specify requirements for numerical precision, calculations, or specific counts. (e.g., _"Report the VaR with two decimal precision,"_ or _"List exactly three impacts."_)
+//   - *Content Constraints.* We mandate the inclusion of specific keywords, phrases, or citations. (e.g., _"Summarize the report and ensure you mention the 'forward-looking statements' section."_)
+//   - *Stylistic Constraints.* We require adherence to a specific tone or length. (e.g., _"Answer in one sentence,"_ or _"Write in the tone of a formal financial report."_)
+
+// == Evaluation Procedure
+// We design our evaluation protocol to be rigorous and multi-faceted.
+
+// - *Zero-Shot Evaluation.* We evaluate all models in a strict zero-shot setting. We provide the instruction prompt with necessary context but give no examples or task-specific fine-tuning. This tests their out-of-the-box generalization capabilities.
+
+// - *Hybrid Scoring:* We employ a multi-pronged scoring strategy:
+//   - *Reference Comparison:* For tasks with a single correct answer (e.g., numerical calculations, factual extractions), we compare the model's output against a ground-truth solution.
+//   - *LM-based Judging.* For more open-ended responses, we use GPT-4 as an automated judge. We select GPT-4 as our judge because meta-evaluation studies like @liu_reife_2024 show that top-tier proprietary models are currently the most accurate automated evaluators. We acknowledge the potential for biases in LM-based evaluation. To mitigate potential positional biases, we conduct each pairwise comparison twice, swapping the order of the two responses, and average the results.
+//   - *Automated Compliance Checking.* To check for instruction compliance, we employ a dual-mode evaluation protocol to distinguish between perfect adherence and "almost correct" responses.
+//     + *Strict Mode.* This mode enforces an exact match against all instruction requirements. We parse the model's response exactly as provided, with no tolerance for formatting variations or minor deviations.
+//     + *Loose Mode.* Recognizing that models may produce semantically correct but stylistically imperfect output, this mode is more forgiving. Before checking compliance, our engine generates several variants of the model's response by systematically removing common LLM-induced artifacts (e.g., conversational preambles, markdown formatting, extra whitespace). We consider an instruction passed if *any* variant meets the constraint.
   
-    Using these two modes, we report two primary metrics:
-    + *Prompt-Level Accuracy.* A binary score where a prompt passes only if the model satisfies *all* of its embedded instructions.
-    + *Instruction-Level Accuracy.* The percentage of individual instructions the model successfully follows across the entire benchmark, providing a granular view of model capabilities.
+//     Using these two modes, we report two primary metrics:
+//     + *Prompt-Level Accuracy.* A binary score where a prompt passes only if the model satisfies *all* of its embedded instructions.
+//     + *Instruction-Level Accuracy.* The percentage of individual instructions the model successfully follows across the entire benchmark, providing a granular view of model capabilities.
 
 == Evaluation Procedure
 Our evaluation protocol is designed to be rigorous and multi-faceted.
@@ -158,18 +165,8 @@ Our evaluation protocol is designed to be rigorous and multi-faceted.
 - *Multi-Sample Strategy:* To account for the stochastic nature of LMs, we experiment with a multi-sampling approach. For a subset of complex reasoning tasks, we generate 3 independent outputs from each model (at a non-zero temperature). We then analyze the results to measure both consistency and "best-case" performance (Pass\@3), analogous to the self-consistency method, to see if multiple attempts can mitigate reasoning errors.
 */
 
-=== Framework and Tooling
-LMLMLMWe support our evaluation protocol with a robust and extensible framework that we designed for comprehensive research.
-
-- *Provider-Agnostic LLM Gateway.* To facilitate the evaluation of a wide array of language models, we build a unified LLM Gateway on the `litellm` library. This gateway abstracts the API requirements of different model providers, which lets us seamlessly switch between and compare models from various sources (e.g., OpenAI, Anthropic, Together AI, Google, and Microsoft Azure).
-
-- *Comprehensive Metadata Collection.* For every API call, we automatically record a detailed set of metrics, including token usage (prompt, completion, and total), API latency in milliseconds, and the estimated financial cost of the call. We save this metadata alongside the evaluation results to provide a rich dataset for analyzing the performance, cost, and efficiency of different models.
-
-- *Extensible Instruction Framework.* We design the benchmark for continuous growth. The framework's architecture, centered around a central instruction registry, lets researchers easily add new, more complex instructions by implementing a simple checker class. This ensures that the benchmark can evolve alongside the capabilities of language models.
-
-
-
-// @liu_reife_2024
+=== Framework
+We support our evaluation protocol with a robust and extensible framework that we designed for comprehensive research. To facilitate the evaluation of a wide array of language models, we use the `litellm` library to act as our gateway for LM providers, which lets us compare models from various sources. For every API call, we automatically record all metrics, including token usage (prompt, completion, and total), API latency in milliseconds, and the financial cost of the call. We save this metadata alongside the evaluation results for post-generation analysis. The framework is centered around the central instruction registry which is where definitions of instruction types and verification methods are stored. Researchers can add new and even more complex instructions by implementing a simple checker class. 
 
 = Results
 We evaluate a broad range of models, covering various sizes and architectures. Our evaluation includes closed-source, open-source, and open-weight models. In Table 1 below, we present the performance metrics for each model using both strict and loose verification for instruction correctness.
@@ -181,7 +178,6 @@ We evaluate a broad range of models, covering various sizes and architectures. O
 #set text(size: 9pt)
 #let band-prop = rgb("#eee9fb")
 #let band-source = rgb("#f3eee1")
-// #let band-   = rgb("#fae2e7")
 #let band-weight   = rgb("#e6eef2")
 
 #table(
@@ -221,16 +217,16 @@ We evaluate a broad range of models, covering various sizes and architectures. O
 
   table.cell(colspan: 3, fill: band-weight, inset: (x: 6pt, y: 2pt))[*Open-weight LMs*],
   [meta-llama-4-llama-4-maverick-17b-128e-instruct-fp8], [*76.1*], [*79.5*],
-  [meta-llama-3.3-llama-3.3-70b-instruct-turbo-free], [71.6], [72.7],
+  [meta-llama-3.3-llama-3.3-70b-instruct-free], [71.6], [72.7],
   [meta-llama-4-llama-4-scout-17b-16e-instruct], [70.5], [75.5],
-  [meta-llama-3.3-llama-3.3-70b-instruct-turbo], [70.5], [71.6],
-  [meta-llama-3.1-405b-instruct-turbo], [67.0], [72.7],
+  [meta-llama-3.3-llama-3.3-70b-instruct], [70.5], [71.6],
+  [meta-llama-3.1-405b-instruct], [67.0], [72.7],
   [deep-cogito-cogito-v2-preview-llama-70b], [69.3], [73.9],
   [deep-cogito-cogito-v2-preview-llama-405b], [64.8], [67.0],
   [qwen-qwq-32b], [63.6], [64.8],
   [qwen3-235b-a22b-instruct-2507-tput], [61.4], [67.0],
   [moonshot-kimi-k2-instruct], [60.2], [63.6],
-  [qwen-2.5-qwen2.5-72b-instruct-turbo], [59.1], [63.6],
+  [qwen-2.5-qwen2.5-72b-instruct], [59.1], [63.6],
   [deepseek-r1-0528-tput], [59.1], [60.2],
   [deepseek-v3.1], [58.0], [59.1],
   [deepseek-v3], [56.8], [60.2],
@@ -241,13 +237,13 @@ We evaluate a broad range of models, covering various sizes and architectures. O
   [deepseek-r1-distill-qwen-14b], [50.0], [53.4],
   [mistral-ai-mistral-small-24b-instruct-2501], [47.7], [51.1],
   [deep-cogito-cogito-v2-preview-llama-109b-moe], [45.5], [62.5],
-  [meta-llama-3.1-8b-instruct-turbo], [44.3], [48.9],
+  [meta-llama-3.1-8b-instruct], [44.3], [48.9],
   [google-gemma-gemma-3n-e4b-it], [42.0], [45.5],
   [deep-cogito-cogito-v2-preview-deepseek-671b], [40.9], [54.5],
   [meta-llama-3-8b-instruct-lite], [39.8], [47.7],
-  [qwen-2.5-qwen2.5-7b-instruct-turbo], [35.2], [37.5],
+  [qwen-2.5-qwen2.5-7b-instruct], [35.2], [37.5],
   [mistral-ai-mistral-7b-instruct-v0.3], [28.4], [34.1],
-  [meta-llama-3.2-llama-3.2-3b-instruct-turbo], [28.4], [29.5],
+  [meta-llama-3.2-llama-3.2-3b-instruct], [28.4], [29.5],
   [mistral-ai-mistral-7b-instruct-v0.2], [27.3], [34.1],
   [mistral-ai-mistral-7b-instruct-v0.1], [19.3], [21.6],
   botrule,
@@ -255,37 +251,7 @@ We evaluate a broad range of models, covering various sizes and architectures. O
 
 
 == Overall Performance
-We observe a wide performance gap between top-tier proprietary models and their open-source counterparts. We find that *GPT-4* is the clear leader, achieving an overall accuracy of approximately *81%*. *Claude 2* and *Gemini* follow, with scores in the *75-78%* range. *GPT-3.5 Turbo* lags behind at roughly *65%*, which confirms that the latest generation of models has made significant strides in handling complex instructions.
-
-Among open-source models, *LLaMA-2 70B* is the top performer in instruction compliance, reaching *80%* strict accuracy. This reinforces a key theme: massive scale and extensive alignment tuning currently provide a greater advantage than domain specialization alone.
-
-== Instruction Compliance (Verifiable Instructions)
-When we analyze the verifiable instructions, we get a more granular view of model behavior. Here, *GPT-4* again demonstrates superior performance. We find that it achieves *94% prompt-level accuracy in strict mode* and *98% in loose mode*. This indicates that it follows instructions almost perfectly, with only minor, infrequent lapses. *Claude 2* also performs strongly, with around *88% strict prompt accuracy*.
-
-The gap is more pronounced for other models. *LLaMA-2 70B* achieves a respectable *80% strict prompt-level compliance*, but this is still 14 points behind GPT-4. The specialized *FinMA* model (a fine-tuned LLaMA, not shown in the table) scores only around *70%* on strict prompts in related studies. We find that while domain-specific models may possess the correct financial knowledge, they often fail to adhere to the precise formatting or structural requirements of an instruction. The larger gap between strict and loose scores for open-source models indicates that many of their failures are "almost correct" outputs that miss a specific detail.
-
-== Performance by Task Type
-Breaking down performance by category reveals specific strengths and weaknesses:
-
-== Performance by Task Type
-When we break down the performance by category, we reveal specific strengths and weaknesses:
-
-- *Numerical Reasoning.* We find this to be the most challenging category for all models. We observe the lowest success rates for tasks requiring multi-step calculations from provided data. Even GPT-4 only achieves about 60-65% accuracy here. We find that models frequently make arithmetic mistakes, mis-place decimals, or produce plausible-sounding but incorrect numbers—a dangerous tendency in finance.
-- *Extraction and Formatting.* We find that models are generally proficient at extracting information and adhering to structured output formats like JSON or bulleted lists. GPT-4 and Claude exceed 85% accuracy. We observe that the primary failure mode for other models is partial compliance, such as mixing explanatory text with the requested JSON object.
-- *Analytical Reasoning.* We find that GPT-4 and Claude 2 excel at prompts requiring a chain of reasoning based on domain knowledge. They produce well-structured and coherent analyses over 80% of the time. We observe that open-source models often provide relevant terminology but sometimes fail to structure the answer clearly or directly address all parts of the query.
-- *Compliance and Constraints.* We observed a sharp difference in alignment when testing precise constraints (e.g., "List _exactly three_ impacts"). GPT-4 and Claude almost always respected these constraints, whereas other models frequently violated them by providing more or fewer items than requested. This demonstrates the effectiveness of extensive RLHF in teaching models to obey fine-grained instructions.
-
-== Error Analysis
-We identify several common error types:
-- *Calculation Mistakes:* The most frequent error type, especially for models without integrated tool use.
-- *Ignoring Part of an Instruction:* Models often addressed only the primary part of a multi-part prompt, neglecting secondary constraints or requests for explanation.
-- *Hallucinated Content:* In a few instances, models introduced facts or figures not present in the provided context, a critical failure mode for data-driven financial tasks.
-- *Surface-Level Deception:* In some cases, models produced answers that were well-formatted and fluent but factually incorrect or non-compliant. This highlights the risk of 'surface-level deception', where an LM-as-a-judge might be swayed by style over substance @ye_flask_2023, reinforcing the need for multi-faceted evaluation.
-- *Formatting Issues.* We find that a notable portion of errors result from failing to adhere to output formats, such as providing a conversational answer when a structured one was requested.
-
-== The Instruction Hierarchy in Finance
-
-We also observe a tension in what we term the "instruction hierarchy." When faced with a complex analytical task (e.g., summarizing market risks) and a strict, verifiable constraint (e.g., "the summary must be exactly 75 words"), models must make a trade-off. We find that some models, particularly those highly tuned for conversational quality, often prioritize producing a fluent, high-quality analysis while failing the length constraint. Conversely, we find that other models, when trained specifically on constraint following, sometimes sacrifice the quality or coherence of the analysis to meet the verifiable requirement precisely. We believe this highlights a key challenge for the development of financial assistants: building models that can gracefully balance the primary analytical task with strict adherence to secondary constraints, without sacrificing one for the other.
+We observe a wide performance gap between top-tier proprietary models and their open-source counterparts. We find that ??????? is the clear leader, achieving an overall accuracy of approximately ???. Both ????? and ????? follow, with scores in the ????? range. ????lags behind at roughly ????, which confirms that the latest generation of models has made significant strides in handling complex instructions. Among open-source models, ???? is the top performer in instruction compliance, reaching ???? strict accuracy. When we analyze across each instruction type, we get a more granular view of model behavior. Here, ??? again demonstrates superior performance. We find that it achieves ??? prompt-level accuracy in strict mode and ??? in loose mode. This indicates that it follows instructions almost perfectly, with only minor, infrequent lapses. ??? also performs strongly, with around ??? strict prompt accuracy. The gap is more pronounced for other models. ??? achieves a respectable ??? strict prompt-level compliance, but this is still ??? points behind ???. We find that models often fail to adhere to the precise formatting or structural requirements of an instruction. The larger gap between strict and loose scores for open-source models indicates that many of their failures are "almost correct" outputs that miss a specific detail.
 
 == Limitations
 
