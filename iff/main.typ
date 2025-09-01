@@ -1,6 +1,7 @@
 #import "@preview/bloated-neurips:0.7.0": botrule, midrule, neurips2025, paragraph, toprule, url
 #import "/logo.typ": LaTeX, LaTeXe, TeX
 
+
 // #bibliography("zotero.bib")
 
 #let draft(content) = {
@@ -47,7 +48,7 @@
   authors: (authors, affls),
   keywords: ("Language Models", "Instruction Following", "Benchmark", "Finance", "Financial NLP"),
   abstract: [
-    Although Language Models (LMs) excel at following general instructions, their reliability in high-stakes domains like finance is not yet established. We find that errors from complex instructions, such as hallucinations or incorrect calculations, limit their adoption where precision is paramount. To address this, we introduce the *Instruction Following for Finance (IFF)* benchmark, a rigorous evaluation suite designed to assess the advanced instruction-following capabilities of LMs in the financial domain. We construct IFF with #num_prompts human-authored prompts that mirror complex financial analysis tasks, and we embed over #num_instruction_types distinct, verifiable constraints to enable automated, fine-grained compliance checking.
+    s `IFF`  `IFF` LM `IFF`  `IFF` Although Language Models (LMs) excel at following general instructions, their reliability in high-stakes domains like finance is not yet established. We find that errors from complex instructions, such as hallucinations or incorrect calculations, limit their adoption where precision is paramount. To address this, we introduce the *Instruction Following for Finance (IFF)* benchmark, a rigorous evaluation suite designed to assess the advanced instruction-following capabilities of LMs in the financial domain. We construct IFF with #num_prompts human-authored prompts that mirror complex financial analysis tasks, and we embed over #num_instruction_types distinct, verifiable constraints to enable automated, fine-grained compliance checking.
 
     We evaluate over #num_models_evaluated leading proprietary and open-source models in a zero-shot setting. We find that while top-tier proprietary models achieve the highest accuracy, they still fall short of perfect compliance, and they significantly outperform the best open-source models. We find that all models struggle with multi-step numerical reasoning and adherence to precise constraints. Furthermore, we identify a Pareto frontier between task accuracy and instruction-following fidelity, where models often sacrifice one for the other. We release the IFF benchmark and our evaluation framework to facilitate research into building more reliable and obedient LMs for the financial domain.
   ],
@@ -62,24 +63,26 @@
 
 = Introduction
 
-Language Models (LMs) have seen recent success, driven primarily by their ability to follow instructions. Techniques like instruction tuning and reinforcement learning (RL) have proven effective at aligning models to user intent @wang_self-instruct_2023; @he_can_2023. However, most evaluations focus on general-domain tasks. In high-stakes fields like finance, instructions are often complex and multi-step, making instruction fidelity a critical point of failure @diao_guidebench_2025.
+Large language models (LLMs) have become general-purpose interfaces for information work, but their value hinges on the ability to *follow instructions precisely*, not just produce plausible text@radford_language_nodate @touvron_llama_2023. Instruction tuning and preference-based reinforcement learning improve obedience to user directives @wei_chain--thought_2023 @ouyang_training_2022, and a recent wave of benchmarks has shown both progress and clear gaps. Verifiable-constraint suites (e.g., IFEval) test formatting and content rules automatically @zhou_instruction-following_2023; SIFo examines multi-step, sequential directives @chen_recent_2025; DIM-Bench targets distraction and instruction ambiguity @hwang_llms_2025; and IFBench/IFTrain study generalization and training with verifiable rewards @pyatkin_generalizing_2025. Across these settings, modern LLMs still fail when instructions are long, compositional, or conditional in nature.
 
-Financial professionals require LMs to perform multi-step quantitative reasoning, apply deep domain knowledge, and adhere to strict formatting and compliance constraints dictated by regulatory and procedural guidelines. An error in a generated financial report or a failure to follow a specific constraint can have significant consequences. Recent studies confirm these challenges, showing that even state-of-the-art models struggle with expert-domain instructions @murthy_kcif_2025 and adversarial prompts that conflict with their learned priors @li_instruction-following_2023.
+Finance raises the bar further. Real workflows blend domain reasoning with strict, machine-checkable constraints,e.g. "Create a  table with exact headers, sort by spread descending, bold values above a threshold, normalize currency codes, and end with a disclaimer." In such contexts, an answer that is factually right but format-noncompliant can still be operationally useless (downstream scripts break; compliance reviews fail).Despite this critical need, no dedicated benchmark exists for evaluating instruction-following in finance. Existing financial NLP benchmarks, such as FLUE and FLAME *(citations here along with another finance benchmark not from fsil)* focus on task-specific accuracy (e.g., sentiment classification, QA, NER). They do not, however, measure a model's ability to follow the complex, multi-part constraints of real-world financial queries @pyatkin_generalizing_2025. For instance, a model that correctly identifies sentiment but fails to deliver the result in a user-specified format exhibits a failure mode that these benchmarks do not capture. We design the IFF benchmark to measure this crucial, yet overlooked, dimension of instruction fidelity,to check whether a model adheres to the requested format, ordering, counts, or style constraints that professionals actually require.
 
-Despite this critical need, no dedicated benchmark exists for evaluating instruction-following in finance. Existing financial NLP benchmarks, such as FLUE and FLAME, focus on task-specific accuracy (e.g., sentiment classification). They do not, however, measure a model's ability to follow the complex, multi-part constraints of real-world financial queries @pyatkin_generalizing_2025. For instance, a model that correctly identifies sentiment but fails to deliver the result in a user-specified JSON format exhibits a failure mode that these benchmarks do not capture. We design the IFF benchmark to measure this crucial, yet overlooked, dimension of instruction fidelity.
+// Language Models (LMs) have seen recent success, driven primarily by their ability to follow instructions. Techniques like instruction tuning and reinforcement learning (RL) have proven effective at aligning models to user intent @wang_self-instruct_2023; @he_can_2023. However, most evaluations focus on general-domain tasks. In high-stakes fields like finance, instructions are often complex and multi-step, making instruction fidelity a critical point of failure @diao_guidebench_2025.
 
-We address this gap by introducing the *Instruction Following for Finance (IFF)*, a comprehensive benchmark designed to stress-test LMs in realistic financial scenarios. In this paper, we make the following contributions:
+// Financial professionals require LLMs to perform multi-step quantitative reasoning, apply deep domain knowledge, and adhere to strict formatting and compliance constraints dictated by regulatory and procedural guidelines. An error in a generated financial report or a failure to follow a specific constraint can have significant consequences. Recent studies confirm these challenges, showing that even state-of-the-art models struggle with expert-domain instructions @murthy_kcif_2025 and adversarial prompts that conflict with their learned priors @li_instruction-following_2023.
 
+We address this gap by introducing the *Instruction Following for Finance (IFF)*, a finance-grounded benchmark that stress-tests LLMs under realistic, verifiable constraints.Our contributions are:
+// + *A Novel, Hybrid Benchmark.* We design and introduce IFF, a benchmark that combines two evaluation paradigms: a suite of #num_prompts complex financial tasks and a framework of over #num_instruction_types verifiable instruction types for automated, fine-grained analysis.
 
-+ *A Novel, Hybrid Benchmark.* We design and introduce IFF, a benchmark that combines two evaluation paradigms: a suite of #num_prompts complex financial tasks and a framework of over #num_instruction_types verifiable instruction types for automated, fine-grained analysis.
++ *Finance-native, verifiable benchmark*. IFF pairs a compact but diverse suite of real-world finance tasks (e.g., bond-spread tables, AML triage notes, settlement run-books) with a library of verifiable instruction types. These cover structural/format rules (markdown tables with exact headers, ordered checklists), compositional directives (sorting, filtering, “exactly N items,” inclusion/exclusion), typography/markup (bold/italic/underline, footnotes, LaTeX snippets), and normalization conventions common in finance (e.g., currency codes over symbols). Each item ships with deterministic checkers for fast, reproducible scoring.
 
 + *Comprehensive Model Evaluation.* We evaluate over #num_models_evaluated leading proprietary and open-source LMs in a strict zero-shot setting to assess their out-of-the-box capabilities.
 
 + *In-depth Performance Analysis.* We analyze performance using a multi-faceted methodology, including task-specific accuracy and instruction compliance metrics. Our analysis identifies common failure modes and pinpoints specific weaknesses, such as numerical reasoning and constraint satisfaction.
 
-+ *An Open-Source Framework.* We release the IFF benchmark, evaluation code, and results as a standardized tool to measure progress in building more reliable LMs for specialized domains.
++ *An Open-Source Framework.* We release the prompts, verifiers, and evaluation code to enable apples-to-apples comparisons and to support future work on verifiable-reward training for precision instruction following in high-stakes domains.
 
-Our findings offer a crucial reality check: while frontier models like GPT-4 are remarkably capable, they are not infallible. We observe a significant performance gap between proprietary and open-source models, and we find that quantitative reasoning remains a challenge for all models. We conclude that mastering complex, high-stakes instructions in finance is an unsolved problem and offer a robust framework to guide future research toward more dependable financial AI.
+(*TBD:After results section to update our findings)* findings offer a crucial reality check: while frontier models like GPT-4 are remarkably capable, they are not infallible. We observe a significant performance gap between proprietary and open-source models, and we find that quantitative reasoning remains a challenge for all models. We conclude that mastering complex, high-stakes instructions in finance is an unsolved problem and offer a robust framework to guide future research toward more dependable financial AI.
 
 = Related Work
 
@@ -146,7 +149,7 @@ Our evaluation protocol is designed to be rigorous and multi-faceted.
   - *LM-based Judging:* For more open-ended responses, we use GPT-4 as an automated judge. We select GPT-4 as our judge following findings from meta-evaluation studies like @liu_reife_2024 which show that top-tier proprietary models currently serve as the most accurate automated evaluators. However, we acknowledge the potential for biases in LM-based evaluation. To mitigate potential positional biases, for each pairwise comparison, we conduct the evaluation twice, swapping the order of the two responses, and average the results.
   - *Automated Compliance Checking:* // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // To check for instruction compliance, we employ a dual-mode evaluation protocol designed to distinguish between perfect adherence and "almost correct" responses.
     + *Strict Mode:* This mode enforces an exact match against all instruction requirements. The model's response is parsed exactly as provided, with no tolerance for formatting variations or minor deviations.
-    + *Loose Mode:* Recognizing that models may produce semantically correct but stylistically imperfect output, this mode is more forgiving. Before checking compliance, the engine generates several variants of the model's response by systematically removing common LLM-induced artifacts (e.g., conversational preambles, markdown formatting, extra whitespace). An instruction is passed if *any* variant meets the constraint.
+    + *Loose Mode:* Recognizing that models may produce semantically correct but stylistically imperfect output, this mode is more forgiving. Before checking compliance, the engine generates several variants of the model's response by systematically removing common LM-induced artifacts (e.g., conversational preambles, markdown formatting, extra whitespace). An instruction is passed if *any* variant meets the constraint.
   
     Using these two modes, we report two primary metrics:
     + *Prompt-Level Accuracy:* A binary score where a prompt passes only if *all* of its embedded instructions are satisfied.
@@ -157,7 +160,7 @@ Our evaluation protocol is designed to be rigorous and multi-faceted.
 */
 
 === Framework and Tooling
-We support our evaluation protocol with a robust and extensible framework that we designed for comprehensive research.
+LMLMLMWe support our evaluation protocol with a robust and extensible framework that we designed for comprehensive research.
 
 - *Provider-Agnostic LLM Gateway.* To facilitate the evaluation of a wide array of language models, we build a unified LLM Gateway on the `litellm` library. This gateway abstracts the API requirements of different model providers, which lets us seamlessly switch between and compare models from various sources (e.g., OpenAI, Anthropic, Together AI, Google, and Microsoft Azure).
 
@@ -173,101 +176,95 @@ We evaluate a broad range of models, inspired by the comprehensive list in the R
 
 = Results and Analysis
 
-In our evaluation, we find a clear hierarchy in instruction-following capabilities among current LMs and identify persistent challenges in the financial domain. In Table 1, we provide a comprehensive summary of model performance across the main dimensions of our IFF benchmark.
+In our evaluation, we find a clear hierarchy in instruction-following capabilities among current LMs and identify persistent challenges in the financial domain. In Table 1, we provide a comprehensive summary of model performance across the main dimensions of our `IFF` benchmark.
+// ---- Tuning knobs (change here if you need slightly tighter/wider layout)
+#let name-col = 16.8em        // model name column width
+#let num-col  = 5.1em         // numeric column width (used for all five metrics)
+#let pad      = (x: 4.5pt, y: 1.6pt)  // cell padding
+#let txtsize  = 9pt
 
-#import "@preview/booktabs:0.0.4": toprule, midrule, bottomrule
+// Group header bands (very subtle)
+#let band-prop = rgb("#eee9fb")
+#let band-open = rgb("#f3eee1")
+#let band-rm   = rgb("#fae2e7")
+#let band-ft   = rgb("#e6eef2")
 
-#let results-table = {
-  // Define colours and spacing
-  let zebra = rgb("F5F7FA")
-  let group_fill = rgb("EEF2F7")
+#set text(size: txtsize)
 
+// Optional caption line (not a float; remove if you don’t want it):
+#align(center, emph([Table 1.]) + [  Compact safety leaderboard (higher is better).])
 
-  // Data rows: (model, natural, adversarial, MT, Ins, average)
-  let rows = (
-    ("Proprietary LLMs",),
-    ("gpt-4o-24-08-06", 97.5, 84.5, 79.8, 81.3, 85.7),
-    ("o1-mini-24-09-12", 92.5, 88.6, 79.0, 89.1, 87.3),
-    ("gpt-4-0613", 95.5, 79.3, 81.5, 91.0, 86.8),
-    ("claude-3-opus", 94.0, 76.8, 75.5, 74.1, 80.1),
-    ("Open-source LLMs",),
-    ("llama-3.1-405b", 94.0, 83.1, 81.5, 79.6, 84.5),
-    ("llama-3.1-70b", 90.5, 79.3, 82.2, 80.2, 83.1),
-    ("qwen-2-72b", 92.5, 69.4, 82.7, 79.6, 81.1),
-    ("llama-2-70b", 82.5, 34.7, 72.8, 80.2, 67.6),
-    ("Reward Models",),
-    ("offsetbias-rm", 93.0, 77.1, 81.0, 74.0, 81.3),
-    ("nemotron-4-340b", 95.0, 84.6, 75.5, 69.3, 81.1),
-  )
+#table(
+  columns: (name-col, num-col, num-col, num-col, num-col, num-col),
+  align: (x, y) => if x == 0 { left } else { right },
+  inset: pad,
+  stroke: none,
 
-  // Compute the best value per metric
-  let metrics_max = range(1, 6).map(i =>
-    rows.filter(row => row.len() > 1)
-        .map(row => row.at(i))
-        .filter(v => type(v) != "string")
-        .max()
-  )
+  // Header
+  toprule,
+  table.header([*Model*], [*Nat.*], [*Adv.*], [*MT.*], [*Ins.*], [*Avg.*]),
+  midrule,
 
-  // Format numbers
-  let fmt(v) = if type(v) == "string" {
-    v
-  } else if v == round(v) {
-    str(v)
-  } else {
-    str(round(v, digits: 1))
-  }
+  // Proprietary LLMs
+  table.cell(colspan: 6, fill: band-prop, inset: (x: 6pt, y: 2pt))[*Proprietary LLMs*],
+  [gpt-4o-24-08-06], [*97.5*], [84.5], [79.8], [*81.3*], [*85.7*],
+  [o1-mini-24-09-12], [92.5], [*88.6*], [79.0], [81.3], [85.3],
+  [gpt-4-0613], [95.5], [79.3], [81.5], [80.4], [84.2],
+  [gpt-4o-24-05-13], [95.5], [80.7], [79.5], [80.3], [84.0],
+  [claude-3.5-sonnet], [91.0], [81.2], [78.5], [77.5], [82.0],
+  [claude-3-opus], [94.0], [76.8], [75.5], [74.1], [80.7],
+  [mistral-large], [90.0], [72.1], [79.0], [78.5], [79.9],
+  [gemini-1.5-pro], [87.0], [74.9], [78.5], [75.7], [79.7],
+  [gemini-1.5-flash], [87.5], [71.3], [77.7], [77.5], [78.5],
+  [gpt-4o-mini], [88.5], [68.3], [80.2], [76.6], [78.4],
+  [gemini-1.0-pro], [85.5], [54.5], [70.8], [68.7], [69.9],
+  [gpt-3.5-turbo-0125], [82.5], [36.4], [72.8], [63.5], [63.8],
+  [claude-3-haiku], [76.0], [42.9], [68.8], [62.8], [62.6],
 
-  figure(
-    table(
-      columns: (1fr, auto, auto, auto, auto, auto),
-      align: (left, center, center, center, center, center),
-      stroke: none,
-      toprule(),
-      table.header(
-        [Model],
-        [Nat.],
-        [Adv.],
-        [MT.],
-        [Ins.],
-        [Avg.],
-      ),
-      midrule(),
-      for (i, row) in rows.enumerate() {
-        if row.len() == 1 {
-          table.row(
-            fill: group_fill,
-            table.cell(colspan: 6)[#text(weight: "bold", row.at(0))]
-          )
-        } else {
-          let row_fill = if calc.rem(i, 2) != 0 { zebra } else { white }
-          table.row(
-            fill: row_fill,
-            if row.at(0).contains("gpt-4") {
-              strong(row.at(0))
-            } else {
-              row.at(0)
-            },
-            ..range(1, 6).map(j => {
-              let v = row.at(j)
-              if type(v) != "string" and v == metrics_max.at(j-1) {
-                strong(fmt(v))
-              } else {
-                fmt(v)
-              }
-            })
-          )
-        }
-      },
-      bottomrule(),
-    ),
-    caption: [
-      *IFF base evaluation results.* "Nat." = LLMBar-Natural, "Adv." = LLMBar-Adversarial,
-      "MT." = MTBench, and "Ins." = InstruSum. Best values per metric are *bold*.
-    ]
-  )
-}
+  // Open-source LLMs
+  table.cell(colspan: 6, fill: band-open, inset: (x: 6pt, y: 2pt))[*Open-source LLMs*],
+  [llama-3.1-405b], [94.0], [83.1], [81.5], [79.6], [84.5],
+  [llama-3.1-70b], [90.5], [79.3], [82.2], [79.4], [82.9],
+  [llama-3-70b], [87.0], [72.7], [80.0], [78.6], [79.6],
+  [qwen-2-72b], [92.5], [69.4], [82.2], [73.1], [79.3],
+  [qwen-2.5-72b], [90.5], [67.7], [*82.5*], [74.1], [78.7],
+  [qwen-1.5-72b], [88.5], [59.7], [75.0], [69.2], [73.1],
+  [glm-4-9b], [86.0], [55.0], [73.5], [73.4], [72.0],
+  [yi-1.5-34b], [86.5], [56.6], [73.8], [66.9], [70.9],
+  [tulu-2-dpo-70b], [85.5], [58.9], [73.2], [66.1], [70.9],
+  [tulu-2-70b], [86.5], [58.0], [74.5], [64.7], [70.9],
+  [mixtral-8x7b], [80.5], [59.8], [73.0], [68.7], [70.9],
+  [yi-1.5-9b], [85.0], [59.1], [72.5], [63.1], [69.9],
+  [qwen-1.5-32b], [85.5], [47.3], [76.8], [66.2], [68.9],
+  [llama-3.1-8b], [78.0], [50.9], [72.5], [66.5], [67.0],
+  [llama-2-70b], [80.0], [32.4], [72.2], [66.9], [62.9],
+  [llama-3-8b], [75.0], [43.6], [72.5], [61.7], [62.1],
+  [mistral-7b-v0.3], [64.5], [48.0], [66.3], [60.6], [59.8],
+  [tulu-2-dpo-13b], [67.0], [38.6], [65.5], [61.2], [58.1],
+  [tulu-2-13b], [65.5], [38.6], [66.5], [61.8], [57.8],
+  [llama-2-13b], [68.0], [35.3], [66.8], [60.3], [57.8],
+  [tulu-2-dpo-7b], [56.0], [43.4], [58.5], [58.9], [54.2],
+  [gemma-7b], [52.5], [39.3], [64.5], [57.4], [53.4],
+  [tulu-2-7b], [45.5], [46.9], [55.2], [57.8], [51.4],
+  [llama-2-7b], [42.5], [49.5], [52.0], [56.4], [50.1],
+  [gemma-2b], [42.5], [44.8], [54.5], [56.6], [49.6],
 
-results-table
+  // Reward Models
+  table.cell(colspan: 6, fill: band-rm, inset: (x: 6pt, y: 2pt))[*Reward Models*],
+  [offsetbias-rm], [93.0], [77.1], [81.0], [74.0], [81.3],
+  [nemotron-4-340b], [95.0], [84.6], [75.5], [69.3], [81.1],
+
+  // Fine-tuned LLMs
+  table.cell(colspan: 6, fill: band-ft, inset: (x: 6pt, y: 2pt))[*Fine-tuned LLMs*],
+  [offsetbias-lm], [88.0], [79.9], [80.0], [74.8], [80.7],
+  [prometheus-2], [83.0], [37.3], [76.0], [64.4], [65.2],
+
+  // Footer row
+  midrule,
+  [*avg.*], [80.7], [60.2], [73.4], [69.3], [70.9],
+  botrule,
+)
+
 == Overall Performance
 We observe a wide performance gap between top-tier proprietary models and their open-source counterparts. We find that *GPT-4* is the clear leader, achieving an overall accuracy of approximately *81%*. *Claude 2* and *Gemini* follow, with scores in the *75-78%* range. *GPT-3.5 Turbo* lags behind at roughly *65%*, which confirms that the latest generation of models has made significant strides in handling complex instructions.
 
@@ -331,7 +328,7 @@ A key limitation of this study is that our evaluation relies on a single respons
 
 = Conclusion
 
-In this paper, we introduced IFF, a comprehensive benchmark for evaluating the instruction-following capabilities of Language Models in the financial domain. Our systematic evaluation of proprietary and open-source models reveals that while the state-of-the-art is impressive, significant gaps remain. We find that the leading models, such as GPT-4, demonstrate strong performance but are not infallible, particularly on tasks involving complex numerical reasoning and strict constraint adherence. Given the complexities of LLM-based evaluation, we believe that IFF's hybrid approach, which combines verifiable checks with LLM-judged open-ended tasks, provides a more robust and reliable assessment of true instruction-following capability.
+In this paper, we introduced IFF, a comprehensive benchmark for evaluating the instruction-following capabilities of Language Models in the financial domain. Our systematic evaluation adherence to constraintsLM``LM``of proprietary and open-source models reveals that while the state-of-the-art is impressive, significant gaps remain. We find that the leading models, such as GPT-4, demonstrate strong performance but are not infallible, particularly on tasks involving complex numerical reasoning and strict constraint adherence. Given the complexities of LLM-based evaluation, we believe that IFF's hybrid approach, which combines verifiable checks with LLM-judged open-ended tasks, provides a more robust and reliable assessment of true instruction-following capability.
 
 We believe our findings have important implications for the deployment of LMs in high-stakes environments. We show that blindly trusting an LM's output is risky, as even a fluent and factually plausible response may have failed to adhere to a critical instruction. We provide the IFF benchmark as a necessary tool for quantifying these risks and understanding model limitations before deployment. Our results also suggest that future progress will require more than just scaling; it will necessitate advances in alignment techniques @cheng_spar_2025, the integration of external tools (like calculators), and the incorporation of domain expertise in a way that complements, rather than conflicts with, general reasoning and instruction-following abilities.
 
