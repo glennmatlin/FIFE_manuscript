@@ -147,6 +147,8 @@ We evaluate a broad range of models, inspired by the comprehensive list in the R
 
 Our evaluation reveals a clear hierarchy in instruction-following capabilities among current LMs and highlights persistent challenges in the financial domain. Table 1 provides a comprehensive summary of model performance across the main dimensions of our IFF benchmark.
 
+#import "@preview/booktabs:0.0.4": toprule, midrule, bottomrule
+
 #let results-table = {
   // Define colours and spacing
   let zebra = rgb("F5F7FA")
@@ -193,7 +195,12 @@ Our evaluation reveals a clear hierarchy in instruction-following capabilities a
       stroke: none,
       toprule(),
       table.header(
-        [Model], [Nat.], [Adv.], [MT.], [Ins.], [Avg.],
+        [Model],
+        [Nat.],
+        [Adv.],
+        [MT.],
+        [Ins.],
+        [Avg.],
       ),
       midrule(),
       for (i, row) in rows.enumerate() {
@@ -203,8 +210,9 @@ Our evaluation reveals a clear hierarchy in instruction-following capabilities a
             table.cell(colspan: 6)[#text(weight: "bold", row.at(0))]
           )
         } else {
+          let row_fill = if calc.rem(i, 2) != 0 { zebra } else { white }
           table.row(
-            fill: if i % 2 == 0 { zebra } else { white },
+            fill: row_fill,
             if row.at(0).contains("gpt-4") {
               strong(row.at(0))
             } else {
