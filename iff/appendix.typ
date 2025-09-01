@@ -1,4 +1,4 @@
-#import "@preview/mermaid:0.1.1": mermaid
+#import "@preview/pintorita:0.1.4": render
 
 = Appendix: IFF System Architecture
 
@@ -18,7 +18,7 @@ The system is organized into four distinct logical layers:
 The framework's operation is driven by the interaction between its key modules, as illustrated in the component dependency diagram.
 
 #figure(
-  mermaid(
+  render(
     """
     graph TD
         A[evaluation_bin] --> B[evaluation_lib]
@@ -27,7 +27,8 @@ The framework's operation is driven by the interaction between its key modules, 
         D --> F[instructions_util]
         G[build_input_jsonl] --> C
         H[generate_responses] --> I[External API]
-    """
+    """,
+    kind: "graphviz",
   ),
   caption: [Component Dependency Diagram]
 )
