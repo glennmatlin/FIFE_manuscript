@@ -19,27 +19,30 @@ The framework's operation is driven by the interaction between its key modules, 
 
 #figure(
   diagram(
-    node-stroke: 1pt,
-    spacing: 4em,
-    node-fill: rgb("d7e3f4"),
-    edge("-|>"),
+    cell-size: (40mm, 20mm),
+    edge-stroke: 0.8pt,
+    edge-corner-radius: 4pt,
+    mark-scale: 90%,
 
-    let evb = node("evaluation_bin"),
-    let evl = node("evaluation_lib"),
-    let ir = node("instructions_registry"),
-    let fi = node("finance_instructions"),
-    let iu = node("instructions_util"),
-    let bij = node("build_input_jsonl"),
-    let gr = node("generate_responses"),
-    let ea = node("External API"),
+    // Nodes
+    component((0, 0), [build_input_jsonl]),
+    component((0, 1), [evaluation_bin]),
+    component((0, 2), [generate_responses]),
+
+    component((1, 1), [evaluation_lib]),
+    component((1, 2), [External API]),
+
+    component((2, 1), [instructions_registry]),
+    component((3, 1), [finance_instructions]),
+    component((4, 1), [instructions_util]),
 
     // Edges
-    edge(start: evb, end: evl),
-    edge(start: evl, end: ir),
-    edge(start: ir, end: fi),
-    edge(start: fi, end: iu),
-    edge(start: bij, end: ir),
-    edge(start: gr, end: ea)
+    edge((0, 1), (1, 1), "-|>"), 
+    edge((1, 1), (2, 1), "-|>"), 
+    edge((0, 0), (2, 1), "-|>"), 
+    edge((0, 2), (1, 2), "-|>"), 
+    edge((2, 1), (3, 1), "-|>"), 
+    edge((3, 1), (4, 1), "-|>"),
   ),
   caption: [Component Dependency Diagram]
 )
