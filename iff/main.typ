@@ -42,9 +42,9 @@
 )
 
 #show: neurips2025.with(
-  title: [Instruction Following for Finance (`IFF`): \
-  Verifying the Ability of Language Models  \
-  for Complex Financial Instruction Following],
+  title: [Instruction following for finance (`IFF`): 
+  Verifying the ability of language models  
+  for complex financial instruction following],
   authors: (authors, affls),
   keywords: ("Language Models", "Instruction Following", "Benchmark", "Finance", "Financial NLP"),
   abstract: [
@@ -82,7 +82,7 @@ We address this gap by introducing the *Instruction Following for Finance (IFF)*
 
 (*TBD:After results section to update our findings)* findings offer a crucial reality check: while frontier models like GPT-4 are remarkably capable, they are not infallible. We observe a significant performance gap between proprietary and open-source models, and we find that quantitative reasoning remains a challenge for all models. We conclude that mastering complex, high-stakes instructions in finance is an unsolved problem and offer a robust framework to guide future research toward more dependable financial AI.
 
-= Related Work
+= Related work
 
 
 Our research builds on the combined effort from literature that can be grouped in three strands: methods for aligning and tuning language models to follow instructions, benchmark suites for measuring instruction adherence, and [todo]
@@ -111,7 +111,7 @@ IFF Benchmark targets instruction following in finance rather than open-ended pr
 (here insert a figure with bunch of prompt types)
 Instruction Following for Finance (IFF) pairs *realistic finance prompts with verifiable output constraints*. Instead of a handful of reusable task families, we built a broad, SME-curated set of distinct prompts that mirror day-to-day work products such as ops run-books, settlement checklists, filing packs, recap tables, and short memos. The design emphasizes controllability over fluency: structured outputs dominate (especially tables and checklists) and many items enforce exact cardinality, fixed ordering, and explicit styling. Formatting is treated as part of correctness, not presentation.Everything is contained in conext prompt avoiding hallucinations within model and giving equal opopportunity's all models.
 
-All instances are single-turn but embed multiple sub-instructions through three patterns. AND requires the model to satisfy several independent constraints at once (e.g., exact row count and sorted columns and a bolded header). CHAIN sequences steps whose outputs feed the next step (e.g., extract → transform → format), so order matters and partial compliance is insufficient. NESTED (selection) is conditional branching: the prompt specifies alternatives and the model must pick the correct branch and meet its local constraints (if condition A then follow rule set R₁; else follow R₂). In finance this covers common policies such as formatting that depends on a threshold, jurisdiction, or data availability. This composition covers the bulk of realistic analyst workflows without requiring dialogue turns.overage is intentionally long-tailed: the benchmark spans a wide range of finance sub-domains, with many appearing only once, so instruction fidelity must transfer across topics rather than overfit to a narrow vertical. A detailed breakdown of formats and constraint types appears in Appendix A. *(Do we have it in appendix A?*)
+All instances are single-turn but embed multiple sub-instructions through three patterns. AND requires the model to satisfy several independent constraints at once (e.g., exact row count and sorted columns and a bolded header). CHAIN sequences steps whose outputs feed the next step (e.g., extract → transform → format), so order matters and partial compliance is insufficient. NESTED (selection) is conditional branching: the prompt specifies alternatives and the model must pick the correct branch and meet its local constraints (if condition A then follow rule set R₁; else follow R₂). In finance this covers common policies such as formatting that depends on a threshold, jurisdiction, or data availability. This composition covers the bulk of realistic analyst workflows without requiring dialogue turns.overage is intentionally long-tailed: the benchmark spans a wide range of finance sub-domains, with many appearing only once, so instruction fidelity must transfer across topics rather than overfit to a narrow vertical. A detailed breakdown of formats and constraint types appears in the appendix. *(Do we have it in appendix A?*)
 
 // The IFF benchmark contains over *#num_prompts financial instruction-following tasks*. We frame these tasks as prompts that a financial analyst might pose to an AI assistant. We design the prompts to be complex, requiring multiple steps, domain knowledge, and strict adherence to constraints @he_can_2023. 
 
@@ -129,7 +129,7 @@ All instances are single-turn but embed multiple sub-instructions through three 
 //   - *Content Constraints.* We mandate the inclusion of specific keywords, phrases, or citations. (e.g., _"Summarize the report and ensure you mention the 'forward-looking statements' section."_)
 //   - *Stylistic Constraints.* We require adherence to a specific tone or length. (e.g., _"Answer in one sentence,"_ or _"Write in the tone of a formal financial report."_)
 
-// == Evaluation Procedure
+// == Evaluation procedure
 // We design our evaluation protocol to be rigorous and multi-faceted.
 
 // - *Zero-Shot Evaluation.* We evaluate all models in a strict zero-shot setting. We provide the instruction prompt with necessary context but give no examples or task-specific fine-tuning. This tests their out-of-the-box generalization capabilities.
@@ -145,7 +145,7 @@ All instances are single-turn but embed multiple sub-instructions through three 
 //     + *Prompt-Level Accuracy.* A binary score where a prompt passes only if the model satisfies *all* of its embedded instructions.
 //     + *Instruction-Level Accuracy.* The percentage of individual instructions the model successfully follows across the entire benchmark, providing a granular view of model capabilities.
 
-== Evaluation Procedure
+== Evaluation procedure
 Our evaluation protocol is designed to be rigorous and multi-faceted.
 
 - *Zero-Shot Evaluation:* All models are evaluated in a strict zero-shot setting. They receive the instruction prompt with necessary context but are given no examples or task-specific fine-tuning. This tests their out-of-the-box generalization capabilities.
@@ -249,7 +249,7 @@ We evaluate a broad range of models, covering various sizes and architectures. O
     [mistral-ai-mistral-7b-instruct-v0.1], [19.3], [21.6],
     botrule,
   ),
-  caption: [Model Performance on the IFF Benchmark],
+  caption: [Model performance on the IFF Benchmark],
 ) <results-table>
 
 

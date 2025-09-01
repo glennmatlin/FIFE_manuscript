@@ -8,7 +8,7 @@
 #let small-col = 5em
 #let notes-col = 8em
 #let pad       = (x: 2.5pt, y: 1.6pt)
-#set text(size: 9pt)
+#
 
 #let band-prop = rgb("#eee9fb")
 #let band-source = rgb("#f3eee1")
@@ -87,7 +87,7 @@
     [Together.ai], [Mistral AI], [Mistral-7B-Instruct-v0.1], [4096], [0.20], [0.90],
     botrule,
   ),
-  caption: [Models Evaluated in this Study],
+  caption: [Models evaluated in this study],
 ) <appendix-models-table>
 
 = Appendix: Evaluation Framework
