@@ -11,60 +11,6 @@
 
 = NeurIPS Paper Checklist
 
-// BEGIN INSTRUCTIONS
-
-// The checklist is designed to encourage best practices for responsible machine
-// learning research, addressing issues of reproducibility, transparency, research
-// ethics, and societal impact. Do not remove the checklist: *The papers not
-// including the checklist will be desk rejected.* The checklist should follow the
-// references and precede the (optional) supplemental material.  The checklist
-// does NOT count towards the page limit.
-
-// Please read the checklist guidelines carefully for information on how to answer
-// these questions. For each question in the checklist:
-
-// - You should answer #answerYes, #answerNo, or #answerNA.
-// - #answerNA means either that the question is Not Applicable for that
-//   particular paper or the relevant information is Not Available.
-// - Please provide a short (1–2 sentence) justification right after your answer
-//   (even for NA).
-
-// *The checklist answers are an integral part of your paper submission.* They are
-// visible to the reviewers, area chairs, senior area chairs, and ethics
-// reviewers. You will be asked to also include it (after eventual revisions) with
-// the final version of your paper, and its final version will be published with
-// the paper.
-
-// The reviewers of your paper will be asked to use the checklist as one of the
-// factors in their evaluation. While "#answerYes" is generally preferable to
-// "#answerNo", it is perfectly acceptable to answer "#answerNo" provided a
-// proper justification is given (e.g., "error bars are not reported because it
-// would be too computationally expensive" or "we were unable to find the license
-// for the dataset we used"). In general, answering "#answerNo" or "#answerNA"
-// is not grounds for rejection. While the questions are phrased in a binary way,
-// we acknowledge that the true answer is often more nuanced, so please just use
-// your best judgment and write a justification to elaborate. All supporting
-// evidence can appear either in the main paper or the supplemental material,
-// provided in appendix. If you answer #answerYes to a question, in the
-// justification please point to the section(s) where related material for the
-// question can be found.
-
-// IMPORTANT, please:
-
-// #block({
-//   set list(indent: 1em)
-//   [
-//   - *Delete this instruction block, but keep the section heading "NeurIPS paper
-//     checklist",*
-//   -  *Keep the checklist subsection headings, questions/answers and guidelines
-//     below.*
-//   - *Do not modify the questions and only use the provided macros for your
-//     answers.*
-//   ]
-// })
-
-// // END INSTRUCTIONS
-
 #let claim(
   name: [], question: [], answer: [], justification: [], guidelines: [],
 ) = {
@@ -91,8 +37,8 @@
   question: [
     Do the main claims made in the abstract and introduction accurately reflect
     the paper's contributions and scope?],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerYes,
+  justification: [The abstract and introduction claim to introduce a new benchmark, `IFF`, for financial instruction following, present a large-scale evaluation of modern LMs, and release the associated code and data. These contributions are described in detail in the Methodology section and the results are presented in the Results section. The appendix provides further details on the models, framework, and dataset.],
   guidelines: [
   - The answer NA means that the abstract and introduction do not include the
     claims made in the paper.
@@ -115,8 +61,8 @@
     Does the paper discuss the limitations of the work performed by the
     authors?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerYes,
+  justification: [The paper includes a dedicated "Limitations" section. We discuss that our evaluation relies on a single response sample per model, which may not fully account for stochastic model outputs, and note that this was due to the high API costs of generating multiple responses.],
   guidelines: [
     - The answer NA means that the paper has no limitation while the answer No
       means that the paper has limitations, but those are not discussed in the
@@ -165,8 +111,8 @@
     For each theoretical result, does the paper provide the full set of
     assumptions and a complete (and correct) proof?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNA,
+  justification: [This paper introduces a new benchmark and reports empirical findings. It does not include any theoretical results, theorems, or proofs.],
   guidelines: [
     - The answer NA means that the paper does not include theoretical results.
 
@@ -196,8 +142,8 @@
     main claims and/or conclusions of the paper (regardless of whether the code
     and data are provided or not)?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerYes,
+  justification: [We provide detailed descriptions of our evaluation methodology, including the "strict" and "loose" accuracy metrics. The appendix contains the full list of models evaluated and their hyperparameters, a description of the evaluation framework, and representative examples from our benchmark dataset to ensure our results can be reproduced.],
   guidelines: [
     - The answer NA means that the paper does not include experiments.
 
@@ -250,8 +196,8 @@
     instructions to faithfully reproduce the main experimental results, as
     described in supplemental material?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerYes,
+  justification: [Yes, we are releasing the complete benchmark, including all prompts, instructions, and evaluation code, under an open-source license. For the review process, we provide an anonymized link to the repository. The public URL will be included in the final camera-ready version of the paper.],
   guidelines: [
     - The answer NA means that paper does not include experiments requiring
       code.
@@ -295,8 +241,8 @@
     splits, hyperparameters, how they were chosen, type of optimizer, etc.)
     necessary to understand the results?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerYes,
+  justification: [Our study evaluates existing models in a zero-shot setting, so no training was performed. We provide all relevant testing details in the appendix, which includes a table of the models used and the specific inference hyperparameters (e.g., temperature, max tokens) for each one.],
   guidelines: [
     - The answer NA means that the paper does not include experiments.
 
@@ -315,8 +261,8 @@
     appropriate information about the statistical significance of the
     experiments?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNo,
+  justification: [We report the exact accuracy scores for each model on our benchmark based on a single run. We do not report error bars or conduct statistical significance tests, as our current evaluation is based on a single response generated for each prompt. This is noted as a limitation in our paper.],
   guidelines: [
     - The answer NA means that the paper does not include experiments.
 
@@ -357,8 +303,8 @@
     computer resources (type of compute workers, memory, time of execution)
     needed to reproduce the experiments?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNo,
+  justification: [We do not provide a detailed breakdown of the compute resources used to run our evaluation framework. The majority of the models evaluated were accessed via third-party APIs, meaning the computational load for model inference was handled externally. For the self-hosted open-source models, the required resources are specified in their respective documentation.],
   guidelines: [
     - The answer NA means that the paper does not include experiments.
 
@@ -380,8 +326,8 @@
     the NeurIPS Code of Ethics
     #url("https://neurips.cc/public/EthicsGuidelines")
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerYes,
+  justification: [We have reviewed the NeurIPS Code of Ethics and confirm our research is in full compliance. The benchmark dataset was authored by the research team and does not contain any real-world, sensitive, or personally identifiable information. Our work does not involve human subjects.],
   guidelines: [
     - The answer NA means that the authors have not reviewed the NeurIPS Code
       of Ethics.
@@ -399,8 +345,8 @@
     Does the paper discuss both potential positive societal impacts and
     negative societal impacts of the work performed?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNo,
+  justification: [Our paper focuses on the positive impact of improving model reliability in finance. While we acknowledge the risks of instruction-following failures, we do not include a detailed discussion of potential negative societal impacts or malicious uses of more capable models. Our work is foundational, intended to improve evaluation rather than deploy a new application.],
   guidelines: [
     - The answer NA means that there is no societal impact of the work
       performed.
@@ -443,8 +389,8 @@
     responsible release of data or models that have a high risk for misuse
     (e.g., pretrained language models, image generators, or scraped datasets)?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNA,
+  justification: [This question is not applicable. Our paper introduces a benchmark dataset of synthetic prompts and evaluation code, not a new generative model or a scraped dataset. The prompts are authored by the research team and do not contain sensitive or private information, posing a low risk of misuse.],
   guidelines: [
     - The answer NA means that the paper poses no such risks.
 
@@ -469,8 +415,8 @@
     used in the paper, properly credited and are the license and terms of use
     explicitly mentioned and properly respected?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNo,
+  justification: [We credit the creators of the models we evaluate by citing their original research papers. However, we do not explicitly state the license or terms of use for each model in the paper itself. The models used are all well-known and their licensing information is publicly available.],
   guidelines: [
     - The answer NA means that the paper does not use existing assets.
 
@@ -505,8 +451,8 @@
     Are new assets introduced in the paper well documented and is the
     documentation provided alongside the assets?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerYes,
+  justification: [Yes, the new asset (`IFF` benchmark) is documented throughout the paper. We detail its design principles and content in the Methodology section. The appendix provides further details on the framework architecture, and we include a README file with usage instructions in the public code repository.],
   guidelines: [
     - The answer NA means that the paper does not release new assets.
 
@@ -528,8 +474,8 @@
     paper include the full text of instructions given to participants and
     screenshots, if applicable, as well as details about compensation (if any)?
   ],
-  answer: TODO,  // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNA,
+  justification: [Not applicable. Our paper does not involve crowdsourcing or research with human subjects. The benchmark prompts were created by the authors of the paper.],
   guidelines: [
     - The answer NA means that the paper does not involve crowdsourcing nor
       research with human subjects.
@@ -555,8 +501,8 @@
     approval/review based on the requirements of your country or institution)
     were obtained?
   ],
-  answer: TODO, // Replace by answerYes, answerNo, or answerNA.
-  justification: TODO,
+  answer: answerNA,
+  justification: [Not applicable. As our research did not involve human subjects, Institutional Review Board (IRB) approval was not required.],
   guidelines: [
     - The answer NA means that the paper does not involve crowdsourcing nor
       research with human subjects.
