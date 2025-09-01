@@ -87,7 +87,7 @@
     [Together.ai], [Mistral AI], [Mistral-7B-Instruct-v0.1], [4096], [0.20], [0.90],
     botrule,
   ),
-  caption: [Models evaluated in this study],
+  caption: [Models evaluated in this study. The table lists all proprietary, open-source, and open-weight models along with their configuration parameters.],
 ) <appendix-models-table>
 
 = Appendix: Evaluation Framework

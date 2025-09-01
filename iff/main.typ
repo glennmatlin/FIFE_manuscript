@@ -249,7 +249,7 @@ We evaluate a broad range of models, covering various sizes and architectures. O
     [mistral-ai-mistral-7b-instruct-v0.1], [19.3], [21.6],
     botrule,
   ),
-  caption: [Model performance on the IFF Benchmark],
+  caption: [Model performance on the IFF benchmark. "Strict" denotes perfect adherence to all instructions, while "Loose" allows for minor formatting variations.],
 ) <results-table>
 
 
