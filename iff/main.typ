@@ -147,9 +147,90 @@ We evaluate a broad range of models, inspired by the comprehensive list in the R
 
 Our evaluation reveals a clear hierarchy in instruction-following capabilities among current LMs and highlights persistent challenges in the financial domain. Table 1 provides a comprehensive summary of model performance across the main dimensions of our IFF benchmark.
 
+#let results-table = {
+  // Define colours and spacing
+  let zebra = rgb("F5F7FA")
+  let group_fill = rgb("EEF2F7")
 
+  // Data rows: (model, natural, adversarial, MT, Ins, average)
+  let rows = (
+    ("Proprietary LLMs",),
+    ("gpt-4o-24-08-06", 97.5, 84.5, 79.8, 81.3, 85.7),
+    ("o1-mini-24-09-12", 92.5, 88.6, 79.0, 89.1, 87.3),
+    ("gpt-4-0613", 95.5, 79.3, 81.5, 91.0, 86.8),
+    ("claude-3-opus", 94.0, 76.8, 75.5, 74.1, 80.1),
+    ("Open-source LLMs",),
+    ("llama-3.1-405b", 94.0, 83.1, 81.5, 79.6, 84.5),
+    ("llama-3.1-70b", 90.5, 79.3, 82.2, 80.2, 83.1),
+    ("qwen-2-72b", 92.5, 69.4, 82.7, 79.6, 81.1),
+    ("llama-2-70b", 82.5, 34.7, 72.8, 80.2, 67.6),
+    ("Reward Models",),
+    ("offsetbias-rm", 93.0, 77.1, 81.0, 74.0, 81.3),
+    ("nemotron-4-340b", 95.0, 84.6, 75.5, 69.3, 81.1),
+  )
 
+  // Compute the best value per metric
+  let metrics_max = range(1, 6).map(i =>
+    rows.filter(row => row.len() > 1)
+        .map(row => row.at(i))
+        .filter(v => type(v) != "string")
+        .max()
+  )
 
+  // Format numbers
+  let fmt(v) = if type(v) == "string" {
+    v
+  } else if v == round(v) {
+    str(v)
+  } else {
+    str(round(v, digits: 1))
+  }
+
+  figure(
+    table(
+      columns: (1fr, auto, auto, auto, auto, auto),
+      align: (left, center, center, center, center, center),
+      stroke: none,
+      toprule(),
+      table.header(
+        [Model], [Nat.], [Adv.], [MT.], [Ins.], [Avg.],
+      ),
+      midrule(),
+      for (i, row) in rows.enumerate() {
+        if row.len() == 1 {
+          table.row(
+            fill: group_fill,
+            table.cell(colspan: 6)[#text(weight: "bold", row.at(0))]
+          )
+        } else {
+          table.row(
+            fill: if i % 2 == 0 { zebra } else { white },
+            if row.at(0).contains("gpt-4") {
+              strong(row.at(0))
+            } else {
+              row.at(0)
+            },
+            ..range(1, 6).map(j => {
+              let v = row.at(j)
+              if type(v) != "string" and v == metrics_max.at(j-1) {
+                strong(fmt(v))
+              } else {
+                fmt(v)
+              }
+            })
+          )
+        }
+      },
+      bottomrule(),
+    ),
+    caption: [
+      *IFF base evaluation results.* "Nat." = LLMBar-Natural, "Adv." = LLMBar-Adversarial,
+      "MT." = MTBench, and "Ins." = InstruSum. Best values per metric are *bold*.
+    ]
+  )
+}
+
+results-table
 
 == Overall Performance
 We observe a wide performance gap between top-tier proprietary models and their open-source counterparts. *GPT-4* emerges as the clear leader, achieving an overall accuracy of approximately *81%*. *Claude 2* and *Gemini* follow closely, with scores in the *75-78%* range. *GPT-3.5 Turbo* lags behind at roughly *65%*, confirming that the latest generation of models has made significant strides in handling complex instructions.

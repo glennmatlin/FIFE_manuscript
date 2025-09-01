@@ -1,19 +1,4 @@
-#import "@preview/pintorita:0.1.4"
-
-#show raw.where(lang: "pintora"): it => pintorita.render(it.text)
-
-```pintora
-mindmap
-@param layoutDirection TB
-+ UML Diagrams
-++ Behavior Diagrams
-+++ Sequence Diagram
-+++ State Diagram
-+++ Activity Diagram
-++ Structural Diagrams
-+++ Class Diagram
-+++ Component Diagram
-```
+#import "@preview/fletcher:0.5.8": diagram, node, edge
 
 = Appendix: IFF System Architecture
 
@@ -32,33 +17,32 @@ The system is organized into four distinct logical layers:
 
 The framework's operation is driven by the interaction between its key modules, as illustrated in the component dependency diagram.
 
-// #figure(
-//   render(
-//   ```pintora
-//   mindmap
-//         A[evaluation_bin] --> B[evaluation_lib]
-//         B --> C[instructions_registry]
-//         C --> D[finance_instructions]
-//         D --> F[instructions_util]
-//         G[build_input_jsonl] --> C
-//         H[generate_responses] --> I[External API]
-//   ```
-//   ),
-//   caption: [Component Dependency Diagram]
-// )
+#figure(
+  diagram(
+    node-stroke: 1pt,
+    spacing: 4em,
+    node-fill: rgb("d7e3f4"),
+    edge("-|>"),
 
-```pintora
-mindmap
-@param layoutDirection TB
-+ UML Diagrams
-++ Behavior Diagrams
-+++ Sequence Diagram
-+++ State Diagram
-+++ Activity Diagram
-++ Structural Diagrams
-+++ Class Diagram
-+++ Component Diagram
-```
+    let evb = node("evaluation_bin"),
+    let evl = node("evaluation_lib"),
+    let ir = node("instructions_registry"),
+    let fi = node("finance_instructions"),
+    let iu = node("instructions_util"),
+    let bij = node("build_input_jsonl"),
+    let gr = node("generate_responses"),
+    let ea = node("External API"),
+
+    // Edges
+    edge(evb, evl),
+    edge(evl, ir),
+    edge(ir, fi),
+    edge(fi, iu),
+    edge(bij, ir),
+    edge(gr, ea)
+  ),
+  caption: [Component Dependency Diagram]
+)
 
 -   *`build_input_jsonl`*: This script generates the benchmark's test cases. It accesses the `instructions_registry` to combine various instruction types and parameters into complex financial prompts, which are then saved to a `JSONL` file.
 -   *`generate_responses`*: This module takes the generated prompts and uses its integrated, multi-provider LLM Gateway to query external models (e.g., GPT-4, Claude 3). It handles API communication, error handling, and caching, saving the model-generated text into a responses `JSONL` file.
