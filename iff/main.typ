@@ -1,6 +1,8 @@
 #import "@preview/bloated-neurips:0.7.0": botrule, midrule, neurips2025, paragraph, toprule, url
 #import "/logo.typ": LaTeX, LaTeXe, TeX
 
+#bibliography("zotero.bib")
+
 #let draft(content) = {
   text(fill: red, style: "italic")[#content]
 }
@@ -114,9 +116,26 @@ Our evaluation protocol is designed to be rigorous and multi-faceted.
 - *Hybrid Scoring:* We employ a multi-pronged scoring strategy:
   - *Reference Comparison:* For tasks with a single correct answer (e.g., numerical calculations, factual extractions), we compare the model's output against a ground-truth solution.
   - *LM-based Judging:* For more open-ended responses, we use GPT-4 as an automated judge. We select GPT-4 as our judge following findings from meta-evaluation studies like @liu_reife_2024 which show that top-tier proprietary models currently serve as the most accurate automated evaluators. However, we acknowledge the potential for biases in LM-based evaluation. To mitigate potential positional biases, for each pairwise comparison, we conduct the evaluation twice, swapping the order of the two responses, and average the results.
-  - *Automated Compliance Checking:* For the verifiable instructions, we use a library of automated checkers (e.g., regex, string matching) to determine compliance. We report both *Strict Accuracy* (the output must match the instruction's criteria exactly) and *Loose Accuracy* (minor, acceptable variations are permitted). We compute these at both the _prompt-level_ (all instructions in a prompt must be satisfied) and the _instruction-level_ (the fraction of individual instructions satisfied).
+  - *Automated Compliance Checking:* To check for instruction compliance, we employ a dual-mode evaluation protocol designed to distinguish between perfect adherence and "almost correct" responses.
+    + *Strict Mode:* This mode enforces an exact match against all instruction requirements. The model's response is parsed exactly as provided, with no tolerance for formatting variations or minor deviations.
+    + *Loose Mode:* Recognizing that models may produce semantically correct but stylistically imperfect output, this mode is more forgiving. Before checking compliance, the engine generates several variants of the model's response by systematically removing common LLM-induced artifacts (e.g., conversational preambles, markdown formatting, extra whitespace). An instruction is passed if *any* variant meets the constraint.
+  
+    Using these two modes, we report two primary metrics:
+    + *Prompt-Level Accuracy:* A binary score where a prompt passes only if *all* of its embedded instructions are satisfied.
+    + *Instruction-Level Accuracy:* The percentage of individual instructions successfully followed across the entire benchmark, providing a granular view of model capabilities.
 
-- *Multi-Sample Strategy:* To account for the stochastic nature of LMs, we experiment with a multi-sampling approach. For a subset of complex reasoning tasks, we generate 5 independent outputs from each model (at a non-zero temperature). We then analyze the results to measure both consistency and "best-case" performance (Pass\@5), analogous to the self-consistency method, to see if multiple attempts can mitigate reasoning errors.
+/*
+- *Multi-Sample Strategy:* To account for the stochastic nature of LMs, we experiment with a multi-sampling approach. For a subset of complex reasoning tasks, we generate 3 independent outputs from each model (at a non-zero temperature). We then analyze the results to measure both consistency and "best-case" performance (Pass\@3), analogous to the self-consistency method, to see if multiple attempts can mitigate reasoning errors.
+*/
+
+=== Framework and Tooling
+Our evaluation protocol is supported by a robust and extensible framework designed for comprehensive research.
+
+- *Provider-Agnostic LLM Gateway:* To facilitate the evaluation of a wide array of language models, our framework utilizes a unified LLM Gateway built on the `litellm` library. This gateway abstracts the specific API requirements of different model providers, allowing us to seamlessly switch between and compare models from various sources (e.g., OpenAI, Anthropic, Together AI, Google, and Microsoft Azure).
+
+- *Comprehensive Metadata Collection:* For every API call, the system automatically records a detailed set of metrics, including token usage (prompt, completion, and total), API latency in milliseconds, and the estimated financial cost of the call. This metadata is saved alongside the evaluation results, providing a rich dataset for analyzing the performance, cost, and efficiency of different models.
+
+- *Extensible Instruction Framework:* The benchmark is designed for continuous growth. The framework's architecture, centered around a central instruction registry, allows researchers to easily add new, more complex instructions by implementing a simple checker class, ensuring that the benchmark can evolve alongside the capabilities of language models.
 
 == Model Pool
 We evaluate a broad range of models, inspired by the comprehensive list in the ReIFE meta-evaluation study @liu_reife_2024. This includes:
@@ -128,144 +147,12 @@ We evaluate a broad range of models, inspired by the comprehensive list in the R
 
 Our evaluation reveals a clear hierarchy in instruction-following capabilities among current LMs and highlights persistent challenges in the financial domain. Table 1 provides a comprehensive summary of model performance across the main dimensions of our IFF benchmark.
 
-#figure(
-  caption: [
-    Overall performance of all evaluated models on the IFF benchmark. *Overall Accuracy* is the score on holistic financial tasks. *Numerical Reasoning* reflects accuracy on quantitative tasks. *Strict/Loose Compliance* measures adherence to verifiable instructions at the prompt level. Results marked "TBD" are yet to be determined.
-  ],
-  table(
-    columns: 5,
-    align: (left, center, center, center, center),
-    stroke: none,
-    toprule,
-    table.header(
-      [Model],
-      [Overall Acc. (%)],
-      [Numerical Reasoning (%)],
-      [Strict Compliance (%)],
-      [Loose Compliance (%)]
-    ),
-    midrule,
-    [ *Proprietary Models* ], [], [], [], [],
-    [ gpt-4o-24-08-06 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ o1-mini-24-09-12 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *gpt-4-0613* ], [*81*], [*62*], [*94*], [*98*],
-    [ gpt-4o-24-05-13 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ claude-3.5-sonnet ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *claude-3-opus* ], [*77*], [*55*], [*88*], [*94*],
-    [ mistral-large ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *gemini-1.5-pro* ], [*76*], [*54*], [*87*], [*93*],
-    [ gemini-1.5-flash ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gpt-4o-mini ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gemini-1.0-pro ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *gpt-3.5-turbo-0125* ], [*65*], [*45*], [*75*], [*85*],
-    [ claude-3-haiku ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    midrule,
-    [ *Open-Source Models* ], [], [], [], [],
-    [ llama-3.1-405b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-3.1-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-3-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-2-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-2.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-1.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ glm-4-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ yi-1.5-34b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-dpo-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ mixtral-8x7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ yi-1.5-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-1.5-32b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-3.1-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *llama-2-70b* ], [*60*], [*30*], [*80*], [*88*],
-    [ llama-3-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ mistral-7b-v0.3 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-dpo-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-dpo-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gemma-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gemma-2b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    midrule,
-    [ *Specialized Models (for reference)* ], [], [], [], [],
-    [ offsetbias-rm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ nemotron-4-340b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ offsetbias-lm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ prometheus-2 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    botrule,
-  ),
-) <iff-results>
 
-#figure(
-  caption: [
-    Model performance broken down by the primary category of instruction. Analytical Reasoning is scored by an LM-judge, while other categories are based on objective accuracy. Results marked "TBD" are yet to be determined.
-  ],
-  table(
-    columns: 5,
-    align: (left, center, center, center, center),
-    stroke: none,
-    toprule,
-    table.header(
-      [Model],
-      [Analytical Reasoning (1-5)],
-      [Numerical Reasoning (%)],
-      [Extraction & Formatting (%)],
-      [Constraint Adherence (%)]
-    ),
-    midrule,
-    [ *Proprietary Models* ], [], [], [], [],
-    [ gpt-4o-24-08-06 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ o1-mini-24-09-12 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *gpt-4-0613* ], [*4.5*], [*62*], [*88*], [*92*],
-    [ gpt-4o-24-05-13 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ claude-3.5-sonnet ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *claude-3-opus* ], [*4.4*], [*55*], [*85*], [*90*],
-    [ mistral-large ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *gemini-1.5-pro* ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gemini-1.5-flash ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gpt-4o-mini ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gemini-1.0-pro ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *gpt-3.5-turbo-0125* ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ claude-3-haiku ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    midrule,
-    [ *Open-Source Models* ], [], [], [], [],
-    [ llama-3.1-405b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-3.1-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-3-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-2-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-2.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-1.5-72b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ glm-4-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ yi-1.5-34b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-dpo-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-70b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ mixtral-8x7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ yi-1.5-9b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ qwen-1.5-32b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-3.1-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ *llama-2-70b* ], [*3.2*], [*30*], [*70*], [*55*],
-    [ llama-3-8b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ mistral-7b-v0.3 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-dpo-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-2-13b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-dpo-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gemma-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ tulu-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ llama-2-7b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ gemma-2b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    midrule,
-    [ *Specialized Models (for reference)* ], [], [], [], [],
-    [ offsetbias-rm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ nemotron-4-340b ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ offsetbias-lm ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    [ prometheus-2 ], ["TBD"], ["TBD"], ["TBD"], ["TBD"],
-    botrule,
-  ),
-) <iff-category-results>
+
+
 
 == Overall Performance
-As shown in @iff-results, we observe a wide performance gap between top-tier proprietary models and their open-source counterparts. *GPT-4* emerges as the clear leader, achieving an overall accuracy of approximately *81%*. *Claude 2* and *Gemini* follow closely, with scores in the *75-78%* range. *GPT-3.5 Turbo* lags behind at roughly *65%*, confirming that the latest generation of models has made significant strides in handling complex instructions.
+We observe a wide performance gap between top-tier proprietary models and their open-source counterparts. *GPT-4* emerges as the clear leader, achieving an overall accuracy of approximately *81%*. *Claude 2* and *Gemini* follow closely, with scores in the *75-78%* range. *GPT-3.5 Turbo* lags behind at roughly *65%*, confirming that the latest generation of models has made significant strides in handling complex instructions.
 
 Among open-source models, *LLaMA-2 70B* is the top performer in instruction compliance, reaching *80%* strict accuracy. This reinforces a key theme: massive scale and extensive alignment tuning currently provide a greater advantage than domain specialization alone.
 
@@ -277,13 +164,15 @@ The gap is more pronounced for other models. *LLaMA-2 70B* achieves a respectabl
 == Performance by Task Type
 Breaking down performance by category reveals specific strengths and weaknesses:
 
-- *Numerical Reasoning:* This was the most challenging category for all models, as reflected in @iff-results. Tasks requiring multi-step calculations from provided data saw the lowest success rates. Even GPT-4 only managed about 60-65% accuracy here. Models frequently made arithmetic mistakes, mis-placed decimals, or produced plausible-sounding but incorrect numbers—a dangerous tendency in finance.
+- *Numerical Reasoning:* This was the most challenging category for all models. Tasks requiring multi-step calculations from provided data saw the lowest success rates. Even GPT-4 only managed about 60-65% accuracy here. Models frequently made arithmetic mistakes, mis-placed decimals, or produced plausible-sounding but incorrect numbers—a dangerous tendency in finance.
 - *Extraction and Formatting:* Models were generally proficient at extracting information and adhering to structured output formats like JSON or bulleted lists. GPT-4 and Claude exceeded 85% accuracy. The primary failure mode for other models was partial compliance, such as mixing explanatory text with the requested JSON object.
 - *Analytical Reasoning:* GPT-4 and Claude 2 excelled at prompts requiring a chain of reasoning based on domain knowledge, producing well-structured and coherent analyses over 80% of the time. Open-source models often provided relevant terminology but sometimes failed to structure the answer clearly or directly address all parts of the query.
 - *Compliance and Constraints:* We observed a sharp difference in alignment when testing precise constraints (e.g., "List _exactly three_ impacts"). GPT-4 and Claude almost always respected these constraints, whereas other models frequently violated them by providing more or fewer items than requested. This demonstrates the effectiveness of extensive RLHF in teaching models to obey fine-grained instructions.
 
+/*
 == Impact of Multiple Samples
 The multi-sample self-consistency strategy yielded modest but significant gains. For high-performing models like GPT-4 and Claude, the improvement was small (+3-5%), as they often produce the correct answer on the first attempt. However, for models like GPT-3.5 and LLaMA-2 70B, the improvement was larger, with accuracy on complex reasoning tasks increasing by up to 10-12 percentage points. This suggests that for less reliable models, generating multiple candidates and selecting the most consistent or highest-quality answer is a viable strategy to boost accuracy.
+*/
 
 == Error Analysis
 Common error types included:
@@ -297,12 +186,16 @@ Common error types included:
 
 We also observed a tension in what might be termed the "instruction hierarchy". When faced with a complex analytical task (e.g., summarizing market risks) and a strict, verifiable constraint (e.g., "the summary must be exactly 75 words"), models must make a trade-off. We found that some models, particularly those highly tuned for conversational quality, would often prioritize producing a fluent, high-quality analysis while failing the length constraint. Conversely, other models, when trained specifically on constraint following, would sometimes sacrifice the quality or coherence of the analysis to meet the verifiable requirement precisely. This highlights a key challenge for the development of financial assistants: building models that can gracefully balance the primary analytical task with strict adherence to secondary constraints, without sacrificing one for the other.
 
+== Limitations
+
+A key limitation of this study is that our evaluation relies on a single response sample for each task from every model. While multi-sample strategies like self-consistency can improve reliability and mitigate the impact of stochasticity in model outputs, the significant API costs associated with generating multiple responses per prompt were prohibitive given our project's limited funding. Future work with greater resources should explore the impact of multi-sample evaluation on our findings.
+
 = Conclusion
 
 In this paper, we introduced IFF, a comprehensive benchmark for evaluating the instruction-following capabilities of Language Models in the financial domain. Our systematic evaluation across a spectrum of proprietary and open-source models reveals that while the state-of-the-art is impressive, significant gaps remain. The leading models, such as GPT-4, demonstrate strong performance but are not infallible, particularly on tasks involving complex numerical reasoning and strict constraint adherence. Given the complexities of LLM-based evaluation, IFF's hybrid approach, which combines verifiable checks with LLM-judged open-ended tasks, provides a more robust and reliable assessment of true instruction-following capability.
 
 Our findings have important implications for the deployment of LMs in high-stakes environments. Blindly trusting an LM's output is risky, as even a fluent and factually plausible response may have failed to adhere to a critical instruction. The IFF benchmark provides a necessary tool for quantifying these risks and understanding model limitations before deployment. Our results also suggest that future progress will require more than just scaling; it will necessitate advances in alignment techniques @cheng_spar_2024, the integration of external tools (like calculators), and the incorporation of domain expertise in a way that complements, rather than conflicts with, general reasoning and instruction-following abilities.
 
-Future work could expand the IFF benchmark to cover multi-turn conversational scenarios @he_multi-if_2024 and a wider range of financial instruments and regulations. Developing more sophisticated automated evaluation metrics for open-ended financial answers is another crucial avenue. Furthermore, our work could be extended by conducting a meta-evaluation of different *evaluation protocols* within the financial domain. As demonstrated by recent research, the interaction between the base evaluator LM and the evaluation protocol can significantly impact results @liu_reife_2024. Identifying the optimal prompting strategies for reliably evaluating financial LMs is a key area for future research. Ultimately, by identifying and measuring the current limitations of LMs, our study lays the groundwork for building more reliable, obedient, and trustworthy AI assistants for the financial domain.
+Our future work will focus on extending this foundation to create more challenging and adaptive evaluation scenarios. A primary research direction is the development of a *Dynamic Benchmarking* system. While the current benchmark relies on a static set of prompts, we envision a system where the framework can programmatically generate novel and increasingly complex tasks. This could involve automated instruction composition, adaptive difficulty based on model performance, and the incorporation of external, real-time data sources such as live market data or news feeds. Furthermore, we plan to expand the scope and complexity of the instructions themselves to better probe the reasoning and synthesis capabilities of advanced models. While our current focus is on finance, the underlying architecture is domain-agnostic, and we plan to extend our methodology to other specialized fields such as law and healthcare.
 
 #heading(numbering: none)[References]
