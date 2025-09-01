@@ -23,18 +23,27 @@
   (name: "Glenn Matlin",
    affl: "gatech",
    email: "glenn@gatech.edu"),
-  (name: "Siddharth Siddharth",
+  (name: "Siddharth",
    affl: "gatech",
-   email: "siddharth@gmail.com"),
+   email: "siddharth889@gmail.com"),
+  (name: "Anirudh JM",
+   affl: "gatech",
+   email: "amahesh64@gatech.edu"),
+  (name: "Aditya Shukla",
+   affl: "gatech",
+   email: "ashukla73@gatech.edu"),
+  (name: "Yahya Hassan",
+   affl: "gatech",
+   email: "yhassan30@gatech.edu"),
   (name: "Sudheer Chava",
    affl: "gatech",
    email: "sudheer.chava@gatech.edu"),
 )
 
 #show: neurips2025.with(
-  title: [Instruction Following for Finance: \
-  Verifying the Ability of Language Models to
-  Reinforce Complex Financial Instruction Following],
+  title: [Instruction Following for Finance (`IFF`): \
+  Verifying the Ability of Language Models  \
+  for Complex Financial Instruction Following],
   authors: (authors, affls),
   keywords: ("Language Models", "Instruction Following", "Benchmark", "Finance", "Financial NLP"),
   abstract: [
@@ -154,6 +163,7 @@ Our evaluation reveals a clear hierarchy in instruction-following capabilities a
   let zebra = rgb("F5F7FA")
   let group_fill = rgb("EEF2F7")
 
+
   // Data rows: (model, natural, adversarial, MT, Ins, average)
   let rows = (
     ("Proprietary LLMs",),
@@ -239,7 +249,6 @@ Our evaluation reveals a clear hierarchy in instruction-following capabilities a
 }
 
 results-table
-
 == Overall Performance
 We observe a wide performance gap between top-tier proprietary models and their open-source counterparts. *GPT-4* emerges as the clear leader, achieving an overall accuracy of approximately *81%*. *Claude 2* and *Gemini* follow closely, with scores in the *75-78%* range. *GPT-3.5 Turbo* lags behind at roughly *65%*, confirming that the latest generation of models has made significant strides in handling complex instructions.
 
