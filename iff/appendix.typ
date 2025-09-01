@@ -1,8 +1,8 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 #import "@preview/bloated-neurips:0.7.0": botrule, midrule, neurips2025, paragraph, toprule, url
 
-= Appendix: Models
 #pagebreak()
+= Appendix: Models
 #let prov-col  = 7em
 #let fam-col   = 10em
 #let id-col    = 16em
@@ -295,94 +295,185 @@ Remediation deadline: <font color="red">**2025-10-31**</font>
 This section provides a comprehensive registry of all instructions used.
 
 
-1. count:word_count_range
-2. fin:equities_bold_intro_italic_risk
-3. fin:credit_table_spread_vs_carry
-4. fin:fx_calc_codeblock_limit
-5. fin:compliance_rule10b5_numbered
-6. fin:ops_settlement_checklist
-7. fin:ir_six_bullets_verb_buyback
-8. fin:treasury_liquidity_risk_section
-9. fin:deriv_black76_latex_sigma
-10. fin:risk_var_numbered_boldusd
-11. fin:pe_subheaders_dashes
-12. fin:quant_pseudocode_comments
-13. fin:crypto_recap_percent_italic
-14. fin:abs_table_then_comments
-15. fin:reit_underline_wordlimit
-16. fin:structured_protect_terms
-17. fin:ecb_timestamp_boldrates
-18. fin:ratings_three_numbered
-19. fin:pension_table_footnote
-20. fin:margin_im_alert
-21. fin:etf_timed_checklist
-22. fin:fintech_swot_licence_italic
-23. fin:cet1_formula_block_end
-24. fin:ma_synergies_arrows
-25. fin:esg_scopes_bold
-26. fin:tax_carried_interest
-27. fin:ifrs17_callout_two
-28. fin:retail_liquidity_underline
-29. fin:embond_yield_boldprice
-30. fin:rrp_drivers_subs_bold
-31. fin:climate_grid_critical
-32. fin:syndicate_table_boldcover
-33. fin:aml_numbered_high
-34. fin:xccy_basis_tldr_latex
-35. fin:clearpar_groups_signoff
-36. fin:modelrisk_deadline
-37. fin:carbon_divergences_two
-38. fin:clo_table_italic_shortest
-39. fin:vc_proscons_underline_terms
-40. fin:ndf_numbered_bold_vals
-41. fin:lch_margin_timestamp_code
-42. fin:marketing_irr_threehashtags
-43. fin:project_keyparties_boldusd
-44. fin:finops_table_grandtotal_warn
-45. fin:payments_iso20022_qa_underline
-46. fin:munis_tey_footnote_bold
-47. fin:index_rebal_subject_bullets
-48. fin:correlations_table_red
-49. fin:scf_redflags_callout_limit
-50. fin:sdr_csv_italic_note
-51. fin:eqderivs_gamma_table_bold
-52. fin:muni_budget_gap_snapshot
-53. fin:esg_csrd_checklist
-54. fin:settlement_runbook_notes
-55. fin:ma_board_slide_apextech
-56. fin:rmbs_poolcard_stratification
-57. fin:fxhedge_calendar_novamed
-58. fin:airline_fuel_exposuremap
-59. fin:aml_case_northbridge
-60. fin:treasury_monthend_runsheet
-61. fin:rm_securitization_factsheet
-62. fin:pe_quarterly_letter_skeleton
-63. fin:claims_reserve_rollforward
-64. fin:merchant_chargeback_pack
-65. fin:jetfuel_hedgeplan_outline
-66. fin:bank_gap_snapshot
-67. fin:lockup_monitoring_plan
-68. fin:branchclosure_oakview_plan
-69. fin:merchant_onboarding_arcadia
-70. fin:realestate_valuation_runbook
-71. fin:greenbond_allocation_riverton
-72. fin:procurement_cards_auditpack
-73. fin:research_blueharbor_compliance
-74. fin:payments_cutover_runbook
-75. fin:venturedebt_covenant_monitor
-76. fin:payments_switch_cutover_runbook
-77. fin:restricted_list_adds_table
-78. fin:fund_profile_fees_contact
-79. fin:treasury_accounts_rationalization
-80. fin:sec_filing_pack_zephyr
-81. fin:esg_extract_orion_2024
-82. fin:credit_limit_changes_summary
-83. fin:saas_amendment_change_json
-84. fin:pci_scope_extract_2025
-85. fin:ap_payment_run_2025_10_15
-86. fin:tax_1099_candidates_2025
-87. fin:saas_quanta_commercial_controls
-88. fin:revops_deals_hygiene_q4_2025
-89. fin:ir_roadshow_blueharbor_oct2025
 
+// 1. count:word_count_range
+// 2. fin:equities_bold_intro_italic_risk
+// 3. fin:credit_table_spread_vs_carry
+// 4. fin:fx_calc_codeblock_limit
+// 5. fin:compliance_rule10b5_numbered
+// 6. fin:ops_settlement_checklist
+// 7. fin:ir_six_bullets_verb_buyback
+// 8. fin:treasury_liquidity_risk_section
+// 9. fin:deriv_black76_latex_sigma
+// 10. fin:risk_var_numbered_boldusd
+// 11. fin:pe_subheaders_dashes
+// 12. fin:quant_pseudocode_comments
+// 13. fin:crypto_recap_percent_italic
+// 14. fin:abs_table_then_comments
+// 15. fin:reit_underline_wordlimit
+// 16. fin:structured_protect_terms
+// 17. fin:ecb_timestamp_boldrates
+// 18. fin:ratings_three_numbered
+// 19. fin:pension_table_footnote
+// 20. fin:margin_im_alert
+// 21. fin:etf_timed_checklist
+// 22. fin:fintech_swot_licence_italic
+// 23. fin:cet1_formula_block_end
+// 24. fin:ma_synergies_arrows
+// 25. fin:esg_scopes_bold
+// 26. fin:tax_carried_interest
+// 27. fin:ifrs17_callout_two
+// 28. fin:retail_liquidity_underline
+// 29. fin:embond_yield_boldprice
+// 30. fin:rrp_drivers_subs_bold
+// 31. fin:climate_grid_critical
+// 32. fin:syndicate_table_boldcover
+// 33. fin:aml_numbered_high
+// 34. fin:xccy_basis_tldr_latex
+// 35. fin:clearpar_groups_signoff
+// 36. fin:modelrisk_deadline
+// 37. fin:carbon_divergences_two
+// 38. fin:clo_table_italic_shortest
+// 39. fin:vc_proscons_underline_terms
+// 40. fin:ndf_numbered_bold_vals
+// 41. fin:lch_margin_timestamp_code
+// 42. fin:marketing_irr_threehashtags
+// 43. fin:project_keyparties_boldusd
+// 44. fin:finops_table_grandtotal_warn
+// 45. fin:payments_iso20022_qa_underline
+// 46. fin:munis_tey_footnote_bold
+// 47. fin:index_rebal_subject_bullets
+// 48. fin:correlations_table_red
+// 49. fin:scf_redflags_callout_limit
+// 50. fin:sdr_csv_italic_note
+// 51. fin:eqderivs_gamma_table_bold
+// 52. fin:muni_budget_gap_snapshot
+// 53. fin:esg_csrd_checklist
+// 54. fin:settlement_runbook_notes
+// 55. fin:ma_board_slide_apextech
+// 56. fin:rmbs_poolcard_stratification
+// 57. fin:fxhedge_calendar_novamed
+// 58. fin:airline_fuel_exposuremap
+// 59. fin:aml_case_northbridge
+// 60. fin:treasury_monthend_runsheet
+// 61. fin:rm_securitization_factsheet
+// 62. fin:pe_quarterly_letter_skeleton
+// 63. fin:claims_reserve_rollforward
+// 64. fin:merchant_chargeback_pack
+// 65. fin:jetfuel_hedgeplan_outline
+// 66. fin:bank_gap_snapshot
+// 67. fin:lockup_monitoring_plan
+// 68. fin:branchclosure_oakview_plan
+// 69. fin:merchant_onboarding_arcadia
+// 70. fin:realestate_valuation_runbook
+// 71. fin:greenbond_allocation_riverton
+// 72. fin:procurement_cards_auditpack
+// 73. fin:research_blueharbor_compliance
+// 74. fin:payments_cutover_runbook
+// 75. fin:venturedebt_covenant_monitor
+// 76. fin:payments_switch_cutover_runbook
+// 77. fin:restricted_list_adds_table
+// 78. fin:fund_profile_fees_contact
+// 79. fin:treasury_accounts_rationalization
+// 80. fin:sec_filing_pack_zephyr
+// 81. fin:esg_extract_orion_2024
+// 82. fin:credit_limit_changes_summary
+// 83. fin:saas_amendment_change_json
+// 84. fin:pci_scope_extract_2025
+// 85. fin:ap_payment_run_2025_10_15
+// 86. fin:tax_1099_candidates_2025
+// 87. fin:saas_quanta_commercial_controls
+// 88. fin:revops_deals_hygiene_q4_2025
+// 89. fin:ir_roadshow_blueharbor_oct2025
+
+
+
+1. fin:equities_bold_intro_italic_risk
+2. fin:credit_table_spread_vs_carry
+3. fin:fx_calc_codeblock_limit
+4. fin:compliance_rule10b5_numbered
+5. fin:ops_settlement_checklist
+6. fin:ir_six_bullets_verb_buyback
+7. fin:treasury_liquidity_risk_section
+8. fin:deriv_black76_latex_sigma
+9. fin:risk_var_numbered_boldusd
+10. fin:pe_subheaders_dashes
+11. fin:quant_pseudocode_comments
+12. fin:crypto_recap_percent_italic
+13. fin:abs_table_then_comments
+14. fin:reit_underline_wordlimit
+15. fin:structured_protect_terms
+16. fin:ecb_timestamp_boldrates
+17. fin:ratings_three_numbered
+18. fin:pension_table_footnote
+19. fin:margin_im_alert
+20. fin:etf_timed_checklist
+21. fin:fintech_swot_licence_italic
+22. fin:cet1_formula_block_end
+23. fin:ma_synergies_arrows
+24. fin:esg_scopes_bold
+25. fin:tax_carried_interest
+26. fin:ifrs17_callout_two
+27. fin:retail_liquidity_underline
+28. fin:embond_yield_boldprice
+29. fin:rrp_drivers_subs_bold
+30. fin:climate_grid_critical
+31. fin:syndicate_table_boldcover
+32. fin:aml_numbered_high
+33. fin:xccy_basis_tldr_latex
+34. fin:clearpar_groups_signoff
+35. fin:modelrisk_deadline
+36. fin:carbon_divergences_two
+37. fin:clo_table_italic_shortest
+38. fin:vc_proscons_underline_terms
+39. fin:ndf_numbered_bold_vals
+40. fin:lch_margin_timestamp_code
+41. fin:marketing_irr_threehashtags
+42. fin:project_keyparties_boldusd
+43. fin:finops_table_grandtotal_warn
+44. fin:payments_iso20022_qa_underline
+45. fin:munis_tey_footnote_bold
+46. fin:index_rebal_subject_bullets
+47. fin:correlations_table_red
+48. fin:scf_redflags_callout_limit
+49. fin:sdr_csv_italic_note
+50. fin:eqderivs_gamma_table_bold
+51. fin:muni_budget_gap_snapshot
+52. fin:esg_csrd_checklist
+53. fin:settlement_runbook_notes
+54. fin:ma_board_slide_apextech
+55. fin:rmbs_poolcard_stratification
+56. fin:fxhedge_calendar_novamed
+57. fin:airline_fuel_exposuremap
+58. fin:aml_case_northbridge
+59. fin:treasury_monthend_runsheet
+60. fin:rm_securitization_factsheet
+61. fin:pe_quarterly_letter_skeleton
+62. fin:claims_reserve_rollforward
+63. fin:merchant_chargeback_pack
+64. fin:jetfuel_hedgeplan_outline
+65. fin:bank_gap_snapshot
+66. fin:lockup_monitoring_plan
+67. fin:branchclosure_oakview_plan
+68. fin:merchant_onboarding_arcadia
+69. fin:realestate_valuation_runbook
+70. fin:greenbond_allocation_riverton
+71. fin:procurement_cards_auditpack
+72. fin:research_blueharbor_compliance
+73. fin:payments_cutover_runbook
+74. fin:venturedebt_covenant_monitor
+75. fin:payments_switch_cutover_runbook
+76. fin:restricted_list_adds_table
+77. fin:fund_profile_fees_contact
+78. fin:treasury_accounts_rationalization
+79. fin:sec_filing_pack_zephyr
+80. fin:esg_extract_orion_2024
+81. fin:credit_limit_changes_summary
+82. fin:saas_amendment_change_json
+83. fin:pci_scope_extract_2025
+84. fin:ap_payment_run_2025_10_15
+85. fin:tax_1099_candidates_2025
+86. fin:saas_quanta_commercial_controls
+87. fin:revops_deals_hygiene_q4_2025
+88. fin:ir_roadshow_blueharbor_oct2025
 
