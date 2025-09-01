@@ -34,12 +34,12 @@ The framework's operation is driven by the interaction between its key modules, 
     let ea = node("External API"),
 
     // Edges
-    edge(evb, evl),
-    edge(evl, ir),
-    edge(ir, fi),
-    edge(fi, iu),
-    edge(bij, ir),
-    edge(gr, ea)
+    edge(start: evb, end: evl),
+    edge(start: evl, end: ir),
+    edge(start: ir, end: fi),
+    edge(start: fi, end: iu),
+    edge(start: bij, end: ir),
+    edge(start: gr, end: ea)
   ),
   caption: [Component Dependency Diagram]
 )
