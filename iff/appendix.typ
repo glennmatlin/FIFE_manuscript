@@ -159,7 +159,7 @@ Benchmark construction begins with build_input_jsonl, which assembles test cases
 The registry pattern appears in instructions_registry, which centralizes the association between instruction identifiers and checker implementations so that the evaluation engine does not depend on concrete classes. The strategy pattern governs evaluation behavior, allowing Strict and Loose modes to be selected at runtime without changing the engine’s control flow. The factory pattern is used when instantiating checkers from identifiers in a prompt; evaluation_lib requests a class from the registry, constructs the checker with any provided parameters, and executes validation. This combination allows new instructions to be added by registering a checker class, without modifying orchestration code or other components.
 
 
-= Appendix: Evaluation Dataset
+= Appendix: Evaluation Dataset <sec:dataset-examples>
 // Comprehensive Documentation of Prompt Design, Instructions, and Model Outputs
 
 This appendix provides detailed information on the prompts and instructions used in our experiments, along with samples of model outputs.
