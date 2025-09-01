@@ -1,12 +1,89 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+#import "@preview/bloated-neurips:0.7.0": botrule, midrule, neurips2025, paragraph, toprule, url
 
-= IFF System Architecture
+= Appendix: Models
 
-We designed the IFF evaluation framework as a modular architecture to ensure maintainability and scalability. 
+// === Appendix table (metadata only; same row order as results)
+#let prov-col  = 7.0em
+#let fam-col   = 9.0em
+#let id-col    = 20.0em
+#let small-col = 5.0em
+#let notes-col = 20.0em
+#let pad       = (x: 3.0pt, y: 1.4pt)
+#set text(size: 9pt)
 
-== Layered Architecture
+#table(
+  columns: (prov-col, fam-col, id-col, small-col, small-col, small-col, notes-col),
+  align: (x, y) => if x in (3,4,5) { right } else { left },
+  inset: pad,
+  stroke: none,
+  toprule,
+  table.header([*Provider*], [*Family*], [*Model ID*], [*MaxTok*], [*Temp*], [*Top‑p*], [*Notes*]),
+  midrule,
+  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-llama-70B], [4096], [0.20], [0.90], [nan],
+  [Anthropic], [Claude Sonnet], [anthropic/claude-3-7-sonnet-20250219], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-llama-405B], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [GPT-4o], [openai/gpt-4o], [4096], [0.20], [0.90], [nan],
+  [Anthropic], [Claude Opus], [anthropic/claude-opus-4-1-20250805], [4096], [], [], [The model does not accept both top_p and temp only one needs to be sent.],
+  [Anthropic], [Claude Opus], [anthropic/claude-opus-4-20250514], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Moonshot], [moonshotai/Kimi-K2-Instruct], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [OpenAI O-Series], [openai/o3], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [GPT-4.1], [openai/gpt-4.1], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-R1-0528-tput], [], [], [], [nan],
+  [OpenAI], [OpenAI O-Series], [openai/o4-mini], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-V3.1], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [OpenAI O-Series], [openai/o1], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-V3], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [OpenAI O-Series], [openai/o3-mini], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-R1-Distill-Llama-70B], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Arcee AI], [arcee-ai/virtuoso-large], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [GPT-4o], [openai/gpt-4o-mini], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Z.ai GLM], [zai-org/GLM-4.5-Air-FP8], [4096], [0.20], [0.90], [nan],
+  [Anthropic], [Claude Haiku], [anthropic/claude-3-5-haiku-20241022], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [GPT-5], [openai/gpt-5-mini], [4096], [1.00], [], [nan],
+  [Together.ai], [OpenAI GPT-OSS], [openai/gpt-oss-120b], [4096], [0.20], [0.90], [Not a mistake],
+  [Together.ai], [OpenAI GPT-OSS], [openai/gpt-oss-20b], [4096], [0.20], [0.90], [Not a mistake],
+  [Anthropic], [Claude Haiku], [anthropic/claude-3-haiku-20240307], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [DeepSeek], [deepseek-ai/DeepSeek-R1-Distill-Qwen-14B], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [GPT-4.1], [openai/gpt-4.1-nano], [4096], [0.20], [0.90], [nan],
+  [OpenAI], [GPT-5], [openai/gpt-5], [4096], [1.00], [], [returned empty string as responses for a lot of prompts],
+  [OpenAI], [GPT-4.1], [openai/gpt-4.1-mini], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-llama-109B-MoE], [4096], [0.20], [0.90], [nan],
+  [Anthropic], [Claude Sonnet], [anthropic/claude-sonnet-4-20250514], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Deep Cogito], [deepcogito/cogito-v2-preview-deepseek-671b], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Marin Community], [marin-community/marin-8b-instruct], [2048], [0.20], [0.90], [Max token limit is 4096],
+  [OpenAI], [GPT-5], [openai/gpt-5-nano], [4096], [1.00], [], [nan],
+  [OpenAI], [OpenAI O-Series], [openai/o3-pro], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 4], [meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 3.3], [meta-llama/Llama-3.3-70B-Instruct-Turbo-Free], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 4], [meta-llama/Llama-4-Scout-17B-16E-Instruct], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 3.3], [meta-llama/Llama-3.3-70B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 3.1], [meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Qwen], [Qwen/QwQ-32B], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Qwen3], [Qwen/Qwen3-235B-A22B-Instruct-2507-tput], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Qwen 2.5], [Qwen/Qwen2.5-72B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 3], [meta-llama/Llama-3-70b-chat-hf], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Mistral AI], [mistralai/Mistral-Small-24B-Instruct-2501], [4096], [0.20], [0.90], [nan],
+  [AI2], [OLMo 2], [allenai/OLMo-2-0325-32B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
+  [Together.ai], [Meta Llama 3.1], [meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Google Gemma], [google/gemma-3n-E4B-it], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 3], [meta-llama/Meta-Llama-3-8B-Instruct-Lite], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Qwen 2.5], [Qwen/Qwen2.5-7B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
+  [AI2], [OLMo 2], [allenai/OLMo-2-1124-13B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
+  [AI2], [OLMo 2], [allenai/OLMo-2-1124-7B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
+  [Together.ai], [Mistral AI], [mistralai/Mistral-7B-Instruct-v0.3], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Meta Llama 3.2], [meta-llama/Llama-3.2-3B-Instruct-Turbo], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Mistral AI], [mistralai/Mistral-7B-Instruct-v0.2], [4096], [0.20], [0.90], [nan],
+  [Together.ai], [Mistral AI], [mistralai/Mistral-7B-Instruct-v0.1], [4096], [0.20], [0.90], [nan],
+  [AI2], [OLMo 2], [allenai/OLMo-2-0425-1B-Instruct], [2048], [0.20], [0.90], [Max conttext is 4096, so taking 2048 to keep results same.],
+  botrule,
+)
 
-The system is organized into four distinct logical layers:
+= Appendix: Evaluation Framework
+
+== Architecture
+
+We designed the `IFF` framework with a simple modular architecture to ensure maintainability and reproducibility. The system is organized into four distinct parts:
 
 1.  *Application Layer:* This is the top-most layer that provides the user interface for interacting with the framework. It includes command-line scripts such as `evaluation_bin.py` for running evaluations and `generate_responses.py` for generating model outputs.
 2.  *Business Logic Layer:* This layer contains the core functionality of the framework. It includes the `evaluation_lib.py` module, which orchestrates the evaluation process, and the instruction modules (`finance_instructions`, `instructions_registry`) that define the logic for each verifiable constraint.
@@ -131,3 +208,26 @@ BLANK-LINE RULE
 == Sample Prompts
 
 Representative examples of prompts are provided to illustrate the variety and structure of inputs used.
+
+
+=== Single Output Prompts
+
+```
+
+Prompt
+Rates quants want a 150-word explainer of how the SOFR–TONA basis feeds into cross-currency-swap valuation. TL;DR: the basis spread is added to one leg so both discount curves align before fair-value logic is applied. Close with the adjustment formula. 
+Instruction: Begin with exact italicised TL;DR sentence above and end with a fenced LaTeX formula block showing the basis-spread adjustment. 
+
+```
+
+=== Chained Output Prompts
+
+```
+
+Prompt
+The bank is scheduling a release of the core payments switch identified as release twenty twenty five point zero nine. The change window runs from Saturday twelve September two thousand twenty five at twenty two hundred hours until Sunday thirteen September two thousand twenty five at zero four hundred hours local time. The update affects instant bank transfers, automated clearing house files, and card authorisation routing. The contingency plan is to return to the prior production version within thirty minutes if specific failure indicators appear. Prepare a cutover runbook that coordinates technology, operations, and communications. Instruction: Begin with a one sentence goal statement, then set out the runbook in order: (1) provide a timeline table with columns time, activity, owner, and success signal from pre change to post change; (2) write three checklists titled pre cutover, cutover, and post cutover using Markdown checkboxes for items such as freezes, backups, message drains, smoke tests, and reconciliation; (3) add a short section titled rollback triggers that lists the exact indicators that require a return to the prior version; (4) conclude with a communications tree naming who is notified at start, at checkpoints, and at completion. Output in Markdown only.
+
+```
+
+== Sample Responses
+
