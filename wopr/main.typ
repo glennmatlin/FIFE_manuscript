@@ -7,7 +7,7 @@
   in Language-based and Open-Ended War Games],
   authors: (
     (
-      name: "Glenn,Parv,Evan,Stu,Yixiong,Ryan,Mark,Issac",
+      name: "Glenn Matlin,Parv,Evan,Stu,Yixiong,Ryan,Mark,Issac",
       affiliation: [Georgia Institute of Technology],
       email: "wopr@gatech.edu",
     ),
