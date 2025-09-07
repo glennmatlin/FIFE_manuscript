@@ -214,7 +214,7 @@ procedural adjudicator. This includes the vast majority of board games with a so
 rigid scoring rules, such as Diplomacy and Settlers of Catan.
 
 Of the quadrants, this quadrant is one of the most explored in its relation to AI, with extensive
-research—especially with wargames such as Diplomacy, most notably Meta’s Cicero [@cicero]. With rigid
+research—especially with wargames such as Diplomacy, most notably Meta’s Cicero [@meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022]. With rigid
 adjudication mechanisms and often rigid procedural agent mechanisms, games in this quadrant
 are mechanically simple to run and evaluate, which leads to the popularity of this category.
 
@@ -511,7 +511,7 @@ Information is borrowed from Figure "Emphasis of selected structured analytical 
 
 *Qualitative wargame:* Games relying on narrative adjudication or subject matter expert judgment with minimal or no numeric scoring. Tabletop seminar games with after-action discussions represent this category.
 
-*Language-centric game:* Formats where progress depends fundamentally on *textual or spoken communication* among actors (human or LLM). CICERO Diplomacy and conflict negotiations exemplify this approach [@cicero], contrasting with action-based games like StarCraft with micromanagement handled by LLM-powered bots.
+*Language-centric game:* Formats where progress depends fundamentally on *textual or spoken communication* among actors (human or LLM). CICERO Diplomacy and conflict negotiations exemplify this approach [@meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022], contrasting with action-based games like StarCraft with micromanagement handled by LLM-powered bots.
 
 // (Removed: failure‑mode vocabulary, since not a focus of this paper.)
 
