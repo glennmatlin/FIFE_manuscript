@@ -106,12 +106,12 @@ design choices matter for realism and usefulness.
 == Background
 // Riedl says we might neeed background and definitions as separate, and not in related works. signposting is ok. one option to keep this in related work is to present and cite all the terminology used by others and why we use and extend it. we also would present things here we disagree with etc but we are likely in the former category so we just need to communicate what we do. communicate these sections in terms of related works rather than WE DEFINE. we would want to place our diffs at the end. we should use this section to lay down what others say and really adopt and lay it on them. this is the section for all the others
 === wargame
-We define “wargame” as “a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events” [@wargame-def-1; @wargame-def-2; @wargame-def-3]. For this paper, we use the following working definition:
+We define “wargame” as “a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events” [@perla_what_1985; @noauthor_wargaming_2017; @caffrey_toward_nodate]. For this paper, we use the following working definition:
 + Ongoing conflict between actors with opposing interests or needs;
 + A synthetic environment that enables agent choice and feedback;
 + Agents make decisions and experience consequences via adjudication or rules;
-+ Strategic reasoning uses information about other agents and the environment [@wargame-methods-1; @wargame-methods-2; @wargame-methods-3; @wargame-methods-4].
-For our purposes, we adopt The RAND Corporation’s definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” [@rand-ai-def-1; @rand-ai-def-2].
++ Strategic reasoning uses information about other agents and the environment [@coulthart_whats_2017; @james_markley_strategic_2015; @perla_what_1985; @page_modeling_nodate].
+For our purposes, we adopt policy definitions of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” [@national_security_commission_on_artificial_intelligence_final_2021; @sayler_artificial_2019].
 === serious game
 “Serious games” are games designed for purposes beyond entertainment—such as training,
 education, analysis, or policy exploration. Wargames can be considered a subset of serious
@@ -124,7 +124,7 @@ selected to support learning and analysis rather than spectacle.
 Current approaches fall into two broad families: (1) human‑computer wargames used in
 defense and policy contexts, and (2) strict rule‑based games (e.g., board or digital games like
 Diplomacy). Human‑computer wargames rely heavily on subject‑matter experts (SMEs) for
-scenario design, player actions, and adjudication [@sme-wargame-1; @sme-wargame-2]. Seminar‑style formats prioritize
+scenario design, player actions, and adjudication [@coulthart_whats_2017; @perla_what_1985]. Seminar‑style formats prioritize
 argumentation and open‑ended decision‑making.\
 
 By contrast, most automation and AI for wargaming has targeted “quantitative” games with
@@ -132,13 +132,13 @@ discrete moves and predictable outcomes, using traditional AI or expert systems.
 struggle with the ambiguity, creativity, and multi‑party interactions central to seminar formats.
 Computational support exists for tightly scoped kinetic or logistical simulations (e.g., Monte
 Carlo tree search; reinforcement learning) over specific mechanics, but offers little help with
-narrative argumentation [@auto-wargame-1; @auto-wargame-2; @auto-wargame-3]. Such approaches often have limited interpretability, poor
+narrative argumentation [@black_scaling_2024; @page_modeling_nodate]. Such approaches often have limited interpretability, poor
 generalization to novel scenarios, and difficulty handling long‑form, multi‑party discourse.\
 While militaries have begun experimenting with LLMs, there is no established methodology for
 integrating them into open‑ended, qualitative formats. Early experiments that let off‑the‑shelf
 LLMs “play” scripted moves showed brittle reasoning, hallucination, and rule non‑adherence
-[@early-llm-play-1; @early-llm-play-2; @early-llm-play-3; @early-llm-play-4; @early-llm-play-5]. Open‑ended wargames remain predominantly human‑driven because they
-require creativity, persuasion, and negotiation—not merely optimal move search [@human-driven-1; @human-driven-2; @human-driven-3].
+[@lamparth_human_2024; @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022; @wu_enhance_2024; @xu_exploring_2023; @xu_language_2023]. Open‑ended wargames remain predominantly human‑driven because they
+require creativity, persuasion, and negotiation—not merely optimal move search [@perla_why_2011; @noauthor_wargaming_2017; @coulthart_whats_2017].
 ==== Analytical
 Analytical wargaming emphasizes formal rules, codified mechanics, and quantitative outcomes.
 It favors repeatability and narrow uncertainty, supports deterministic or stochastic models,
@@ -150,7 +150,7 @@ and qualitative adjudication to explore alternative futures.
 == seminal works in the field that help define it  Artificial Intelligence in Wargaming 
 Foundational defense wargaming literature establishes core definitions, taxonomies of formats
 (seminar, matrix, kriegsspiel, computer‑assisted), and adjudication philosophies (rigid rules vs.
-free adjudication) [@foundational-handbook; @mod-wargaming-handbook]. These works emphasize
+free adjudication) [@james_markley_strategic_2015; @noauthor_wargaming_2017]. These works emphasize
 intent, uncertainty management, and the central role of facilitation and expert judgment in
 producing insight rather than scorekeeping. Practitioner handbooks and RAND‑style studies
 standardize scenario design, injects, decision capture, and after‑action analysis. Together, this
@@ -164,11 +164,11 @@ open‑ended narrative argumentation and multi‑party persuasion typical of sem
 formats.
 == other lit reviews, other game papers
 Surveys of LLMs in games and simulation describe agents that negotiate, plan, or role‑play in
-constrained environments [@survey-llm-games-1; @survey-llm-agents-1]; work on Diplomacy combines
-language models with planning and tool use [@cicero; @diplomacy-llm-1]; and multi‑agent LLM frameworks
-explore coordination, debate, and self‑critique [@multiagent-llm-1; @multiagent-llm-2]. Parallel reviews
+constrained environments [@ma_computational_2024; @zhang_llm_2024]; work on Diplomacy combines
+language models with planning and tool use [@meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022; @lamparth_human_2024]; and multi‑agent LLM frameworks
+explore coordination, debate, and self‑critique [@zhang_llm_2024; @yao_spin-bench_2025]. Parallel reviews
 in defense communities catalog AI for training and analysis but emphasize quantitative or kinetic
-models [@defense-ai-review-1].
+models [@geist_understanding_nodate].
 
 Across these threads, reporting is heterogeneous and evaluation often short‑horizon or
 subjective; prompts and facilitation procedures are rarely standardized; and open‑ended,
