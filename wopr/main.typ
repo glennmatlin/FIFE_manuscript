@@ -1,7 +1,7 @@
 #import "@preview/tracl:0.6.1": *
 
 #show: doc => acl(doc,
-  anonymous: true,
+  anonymous: false,
   title: [Shall We Wordplay a Game?\
   Language Model Agents as Players and Adjudicators\
   in Highly Creative and Open-Ended War Games],
@@ -14,30 +14,37 @@
     (
       name: "Parv",
       affiliation: [Georgia Institute of Technology],
+      email:"@gatech.edu",
     ),
     (
       name: "Evan",
       affiliation: [Georgia Institute of Technology],
+      email:"@gatech.edu",
     ),
     (
       name: "Stu",
       affiliation: [Georgia Institute of Technology],
+      email:"@gatech.edu",
     ),
     (
       name: "Yixiong",
       affiliation: [Georgia Institute of Technology],
+      email:"@gatech.edu",
     ),
     (
       name: "Ryan",
       affiliation: [Georgia Institute of Technology],
-    ),
-    (
-      name: "Mark",
-      affiliation: [Georgia Institute of Technology],
+      email:"@gatech.edu",
     ),
     (
       name: "Isaac",
       affiliation: [Georgia Institute of Technology],
+      email:"@gatech.edu",
+    ),
+    (
+      name: "Mark",
+      affiliation: [Georgia Institute of Technology],
+      email:"@gatech.edu",
     ),
   ),
 )
@@ -236,7 +243,12 @@ Reality is highly creative and higher creativity provides more value as a seriou
 - Diplomatic Simulation
 - Generalized Social Simulation
 
-*Q4 takes advantage of improving AI capabilities*. LLMs are trending toward longer time‑horizon
+*Q4 takes advantage of improving AI capabilities*. 
+Starting off as just a bank of ideas and substance for this section.
+
+Flow of section: Wargames which have an economic, financial, or business application/involvement. Settlers of Catan is a classic example, Monopoly, Power Grid, and Imperial are all other games I want to look into. Once we talk about the actual games, I want to discuss the actual applications of financial markets, business markets, and economic markets and how some problems in these spaces can be reduced to an idea of a wargame based on the definition we use above. Finally, we will conclude this discussion with an overall analysis of why we think the application of AI in the field of wargames can be beneficial to the sectors of business, economics, and finance.
+
+LLMs are trending toward longer time‑horizon
 competence [METR Paper], expanding context windows [CITE], and retrieval across long contexts
 [CITE]. They also show gains in persuasion, creative writing, and qualified judgment [CITE],
 suggesting a path toward more capable agents and adjudicators. Therefore, Q4 games are well‑
@@ -653,4 +665,4 @@ All search strings must surface these five.
 ]
 */
 
-#bibliography("refs.bib", style: "association-for-computational-linguistics-blinky.csl")
+#bibliography("zotero.bib", style: "association-for-computational-linguistics-blinky.csl")
