@@ -2,14 +2,14 @@
 
 #show: doc => acl(doc,
   anonymous: true,
-  title: [Shall We Wordplay a Game? \
-  A Scoping Literature Review for Large Language Models \
-  in Language-based and Open-Ended War Games],
+  title: [Shall We Wordplay a Game?\
+  Language Model Agents as Players and Adjudicators\
+  in Highly Creative and Open-Ended War Games],
   authors: (
     (
       name: "Glenn Matlin",
       affiliation: [Georgia Institute of Technology],
-      email: "wopr@gatech.edu",
+      email: "glenn@gatech.edu",
     ),
     (
       name: "Parv",
