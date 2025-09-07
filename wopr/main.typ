@@ -2,14 +2,14 @@
 
 #show: doc => acl(doc,
   anonymous: true,
-  title: [Shall We Wordplay a Game? \
-  A Scoping Literature Review for Large Language Models \
-  in Language-based and Open-Ended War Games],
+  title: [Shall We Wordplay a Game?\
+  Language Model Agents as Players and Adjudicators\
+  in Highly Creative and Open-Ended War Games],
   authors: (
     (
-      name: "Glenn Matlin,Parv,Evan,Stu,Yixiong,Ryan,Mark,Issac",
+      name: "Glenn Matlin,Parv,Stu,Yixiong,Ryan,Isaac,Evan,Rehan,Soham,Mark Riedl",
       affiliation: [Georgia Institute of Technology],
-      email: "wopr@gatech.edu",
+      email: "glenn@gatech.edu",
     ),
   ),
 )
@@ -40,25 +40,32 @@ c1 the lit survey, paper info, the hard work done
 c2 the scoping of the open ended fully creative game space and highlighting the importance of the emerging area
 c3 we highlight problems, research directions, provide information and resources, etc.
 
-= Related Work
-== Background
+mention claims in contributions
+
+and ontology new is contribution
+
+= Background
 // Riedl says we might neeed background and definitions as separate, and not in related works. signposting is ok. one option to keep this in related work is to present and cite all the terminology used by others and why we use and extend it. we also would present things here we disagree with etc but we are likely in the former category so we just need to communicate what we do. communicate these sections in terms of related works rather than WE DEFINE. we would want to place our diffs at the end. we should use this section to lay down what others say and really adopt and lay it on them. this is the section for all the others
-=== wargame
-We define “wargame” as “a multi-faceted depiction of conflict with one or more parties in which the participants' decisions influence the future outcomes of events” [5, 12, 28]. For this research, we adopt the following definition of wargames: 
+== wargames
+The community defines “wargame” as “a multi-faceted depiction of conflict with one or more parties in which the participants' decisions influence the future outcomes of events” [5, 12, 28]. For this research, we adopt the following definition of wargames: 
 + Ongoing conflict from opposing interests or needs occurring inside of a … 
 + Synthetic environment created to enable agent choice and behavior where … 
 + Agents will make decisions and experience the consequences of the results and … 
 + Use reasoning, analysis, and planning to engage in strategic thinking while taking into consideration information on other agents and the environment. [2, 11, 20, 33]. 
 For our purposes, we adopt The RAND Corporation’s definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” [31, 37].
-=== serious game
-#lorem(25)
 
-=== Creative vs Analytical
+== serious game
+[[Riedl change starts]] in order to avoid someone jumping down throat about serious games as tutoring games we should introduce a term or use an adjective to specialize it to wargames or social decision making. decision making is important here. drawing inference wont be enough. we want to specifically avoid the aspect of 'serious games' that are educational ie chess is serious game for toddlers so serious is relative to the human. we have to define the usage itself ie decision making for social decisions policy etc define it sepcifically be defensive [[Reidl change ends]]
+
+== Creative vs Analytical
 [original text]
 Current wargaming approaches rely heavily on human subject-matter experts (SMEs) for scenario development, player actions, and adjudication[11, 12]. One of the most useful types of exercises is a predominantly human-driven process with qualitative “seminar-style” games, which value argumentation and open-ended decision-making.\
 
+
+[[Riedl proposed change starts]] I think it would helpful and important to mention the concept of input/output spaces and how they are semantically different. [[change ends]]\
+
 [[isaac proposed changes]]
-Current wargaming approaches could often be divided into two types: human-computer wargames (like in military wargames) and strict rule based war games (such as board games like Diplomacy).
+Current wargaming approaches could often be divided into two types: human-computer wargames (like in military wargames) and strict rule based war games (such as board games like Diplomacy).\
 
 Human-computer wargames rely heavily on human subject-matter experts (SMEs) for scenario development, player actions, and adjudication[11, 12]. One of the most useful types of exercises is a predominantly human-driven process with qualitative “seminar-style” games, which value argumentation and open-ended decision-making.\
 
@@ -66,27 +73,33 @@ However, the existing computer automation and AI for wargaming literature focuse
 [[isaac changes end]]
 
 The existing computer automation and AI for wargaming literature focuses on “quantitative” games with discrete moves and predictable outcomes, using traditional AI or expert systems. These systems lack the capacity to handle the ambiguity, creativity, and complex human interactions central to the seminar wargaming format we focus on. Computational support exists for tightly scoped kinetic or logistical simulations using Monte Carlo tree search or Reinforcement Learning over specific gaming mechanics, but prior methods provide little help with narrative argumentation [13, 17, 29]. These approaches suffer from limited interpretability, poor generalization to novel scenarios, and inability to handle the semantic complexity of long-form multi-party argumentation.\
+
 While militaries have begun experimenting with LMs, there is no established methodology for integrating them into these open-ended, qualitative analytical formats. Early experiments that allowed off‑the‑shelf LMs to “play” scripted moves showed brittle reasoning, hallucination, and non‑compliance with rules [7, 22, 38, 45, 46–49]. As a result, open‑ended wargames remain predominantly human‑driven because they require creativity, persuasion, and negotiation and not only merely optimal move search [24, 25, 30].
-==== Analytical
-#lorem(25)
-==== Creative
-#lorem(25)
-== seminal works in the field that help define it  Artificial Intelligence in Wargaming 
-#lorem(50)
-== other lit reviews, other game papers
-#lorem(50)
-// Riedl: in terms of defenseive writing we should definitely have this section for other lit reviews and discuss how others wrote and worked here but we should also provide deficencies. i.e., this one doesn't focus on experiments; ie, this paper is very broad and does not scope out. ie the paper is old. point to 2-4 and describe how they arent doing what we need to do in the paper. describe the insufficiencies gently and properly. and therefore we need this new review.
 
-// Riedl: we should present the paper for review with the methodology before and we can flip it after. we do want a paragraph here or two. we need to provide it for reviewers ahead of time. it should be very very vshort and just to explain there was thought and meticulous work etc great. let them chase everything else in appendices. 
+= Related Works
+signpost  the purpose of this section clearly. talk about how we are not including results papers
 
-= Results
-#lorem(20)
+note that anything that can be understood in the introduction should be put there instead perhaps
+
+make sure that when we discuss other lit reviews we are making it clear why we justify
+
+== AI for wargames (non experiment papers)
+== Language Models as Game Agents
+== Other literature reviews on LMs for games
+#lorem(50)
+[[Riedl]] in terms of defenseive writing we should definitely have this section for other lit reviews and discuss how others wrote and worked here but we should also provide deficencies. i.e., this one doesn't focus on experiments; ie, this paper is very broad and does not scope out. ie the paper is old. point to 2-4 and describe how they arent doing what we need to do in the paper. describe the insufficiencies gently and properly. and therefore we need this new review. we should present the paper for review with the methodology before and we can flip it after. we do want a paragraph here or two. we need to provide it for reviewers ahead of time. it should be very very vshort and just to explain there was thought and meticulous work etc great. let them chase everything else in appendices. [[/Riedl]]
+
+= Results (jibber jabbering) (Landscape of Games) (Analysis of AI Creativity for Wargames) (something that describes the) (the framework for understanding creativity in games)
+
+
 time analysis, etc.
 Paper stats, quant info, etc
 1graphs here
+[[geigh]] justify why thi sis good, what we did, why its needed, etc.[[/g]]
 
-// Riedl: I think it would helpful and important to mention the concept of input/output spaces and how they are semantically different. 
+pull in the story here. what are people trying and thinking?
 
+make the contribution clear of the Y axis, and how it addresses specific examples etc.
 
 == breakdown of each quadrant in analytical vs creative aspect (open endedness)
 #image("creativity_quadrants.png") 
@@ -111,8 +124,6 @@ This quadrant covers war games with often high procedural, expressive players an
 == Q4 is uniquely important for analysis (workshop this wording)
 Games providing ample opportunity for both agent and adjudicator creativity are highly valuable to achieve traditional aims of wargaming: [name a couple axes for wargaming for which Q4 does quite well, cite each]. However, few studies (PERCENTAGE, n=NUMBER) automated approaches to construction and evaluation of wargames in Q4, and 
 
-// Riedl: in order to avoid someone jumping down throat about serious games as tutoring games we should introduce a term or use an adjective to specialize it to wargames or social decision making. decision making is important here. drawing inference wont be enough. we want to specifically avoid the aspect of 'serious games' that are educational ie chess is serious game for toddlers so serious is relative to the human. we have to define the usage itself ie decision making for social decisions policy etc define it sepcifically be defensive
-
 *Q4 is highest value in serious game*
 Reality is highly creative and higher creativity provides more value as a serious game. 
 
@@ -133,11 +144,9 @@ A paragraph introducing param efficient fine-tuning and ICL - I think these tech
 
 == Analysis of Q4 (qualitative)
 here, we talk about the papers in q4 only and characterize them
-
-// riedl: we should explicitly have a section on research problems and what can be larned by working on those.
-// real time multi agent planning -- mech interpability -- avoiding bias and echochambers
-
-// riedl: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
+[[riedl start]] we should explicitly have a section on research problems and what can be larned by working on those.
+real time multi agent planning -- mech interpability -- avoiding bias and echochambers
+have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc. [[reidl]]
 
 == discussion
 we just talk about whatever
@@ -187,21 +196,33 @@ Other effects may include:
 
 I could go into way more detail but that would turn into a series of very repetitive narratives about who/what/when/where/how. I could also go into other vectors that target the wargame system and other information about the wargame, results, analysis, etc.--but that's just "regular" cybersecurity stuff.
 
+=== International Diplomacy (isaac)
+- why international diplomacy?
+  - commplex and highly creative
+  - expressive creativity at similar scale as procedural
+  - wide applicability
+  - high stakes
+  - RISK
+  - HAI
+
+// International diplomacy are high value. 
+  
+While military simulation are commonly done due to lower creativity on agent and/or adjudicator, diplomatic simulation are often highly social based and therefore require high creativity typically on both agent and adjudicator. In addition, diplomatic simulation are highly creative both procedurally and expressively because of its focus on language while in other creative simulations, the high expressive creativity are throttled by low procedural creativity (e.g. military war games and certain business simulations with limited action space). In diplomatic simulations, procedural creativity matches expressive creativity on the action space. Strongly similar to business and organizational simulations, diplomatic simulations are highly.
 
 
-=== concerns about international diplomacy (isaac)
-- shift from military -> diplomacy
-- 
+
+
 
 === business/organization wargames (glenn and rohan)
 
 === social deception, persuasion, and deduction (ryan and evan)
 points to discuss:
--LLMs need to be able to understand competing narratives and frameworks and how it can utilize current narratives/info streams to achieve its goals.
--Current studies show that LLMs are good at constructing viable narratives but currently suffer from harnessing a consistent strategy (Digital Player, Strategic Behavior of Large Language Models, AMONGAGENTS)
-- In the real world, especially one embraced in conflict, competing narratives and information warfare run rampant, an LLM must be able to discern deception from adversaries, persuasion from over-zealous friendly newssources, and be able to create a ground truth deduction that accruately reflects the real world instead of confirming biases. 
--Current academic research proposes human intervention in these models in order to prevent issues with reliability, biases, and provide oversight (Reducing the Risks of Artificial Intelligence)
--While open-ended scenarios such as warfare or negotiations are not solely based on the principals of social deduction, future LLMs would be wise to incorporate findings from this area of research as a way of hardening AI to adversarial attacks, either from data poisoning, jailbreaking, or even biased overconfidence (Game theory approahch to identifying Deception in Large Language Models, When Two LLMs Debate, Reducing the Risks of Artificial Intelligence,Both Think They'll Win)
+- LLMs need to be able to understand competing narratives and frameworks and how it can utilize current narratives/info streams to achieve its goals
+- Current studies show that LLMs are good at constructing viable narratives but currently suffer from harnessing a consistent strategy (Digital Player, Strategic Behavior of Large Language Models, AMONGAGENTS)
+- In the real world, especially one embraced in conflict, competing narratives and information warfare run rampant, an LLM must be able to discern deception from adversaries, persuasion from over-zealous friendly newssources, and be able to create a ground truth deduction that accruately reflects the real world instead of confirming biases
+- Current academic research proposes human intervention in these models in order to prevent issues with reliability, biases, and provide oversight (Reducing the Risks of Artificial Intelligence)
+- While open-ended scenarios such as warfare or negotiations are not solely based on the principals of social deduction, future LLMs would be wise to incorporate findings from this area of research as a way of hardening AI to adversarial attacks, either from data poisoning, jailbreaking, or even biased overconfidence (Game theory approahch to identifying Deception in Large Language Models, When Two LLMs Debate, Reducing the Risks of Artificial Intelligence,Both Think They'll Win)
+=== business, economics, and financial implications (rehan and soham)
 
 = Methodology
 We conducted a structured literature review following Kitchenham’s SLR phases and PRISMA reporting guidance. We searched Google Scholar, ArXiv, and Semantic Scholar using three Boolean queries, deduplicated by DOI, and screened title/abstract before full-text review. Our final set of #num_papers papers was extracted into a CSV for quantitative counts and qualitative theme coding
@@ -274,10 +295,7 @@ Information is borrowed from Figure "Emphasis of selected structured analytical 
 6. *Rigid Kriegsspiel* (Scale: 6): "As with a Free Kriegsspiel, but with adjudication through detailed rules rather than expert judgement."
 7. *Computer-assisted wargaming* (Scale: 7): "Software-based simulations, usually highly detailed, with assessments of probability derived from data."
 
-// riedl: we should explicitly list all the papers that were analyzed. we shouuld only cite the things we need to know in the paper. for example we would not cite every single paper we collected. we should cite anything that was main body in the references; if not main and included methods, appendix for sure. if no main and no reference dont even put in paper. any paper that went into forming the quadrants and informing it is important. for example auctiong ames and business games would be in the list because they are defined as not. table should have name, relevant info, bib info, comments, rank/ratings etc as needed. we want to help guide people towards reading papers that are relevant for them
-
-
-// riedl has said that anytime we put stuff in appendix it should be tied back to our paper. so for example all the rand visualizations or epxert infographics etc are not going to be in appendix unless we specifically tie it back to our paper. wwe could explain how they relate and differ, how they link and combine, etc. this is subjective but it is helpful for making tight writing.
+[[Riedl]] We should explicitly list all the papers that were analyzed. we shouuld only cite the things we need to know in the paper. for example we would not cite every single paper we collected. we should cite anything that was main body in the references; if not main and included methods, appendix for sure. if no main and no reference dont even put in paper. any paper that went into forming the quadrants and informing it is important. for example auctiong ames and business games would be in the list because they are defined as not. table should have name, relevant info, bib info, comments, rank/ratings etc as needed. we want to help guide people towards reading papers that are relevant for them. anytime we put stuff in appendix it should be tied back to our paper. so for example all the rand visualizations or epxert infographics etc are not going to be in appendix unless we specifically tie it back to our paper. wwe could explain how they relate and differ, how they link and combine, etc. this is subjective but it is helpful for making tight writing. [[/Riedl]]
 
 = Appendix B: Systemic Literature Review Protocols
 
@@ -416,25 +434,14 @@ The *x-axis* represents *Agent open-endedness* (1 = fully analytical, 7 = fully 
 
 When plotted as a scatter-plot, four intuitive regions emerge:
 
-*Top-right (7,7) – "Pure brainstorming":* Seminar games occupy this space, proving useful for ideation but weak for reproducible analysis.
+*Top-left - "Analytical players, analytical adjudicator":* Rigid rules or computer simulations excel at repeatability but offer poor novel insight generation.
 
-*Bottom-left (1-2,1-2) – "Pure calculation":* Rigid rules or computer simulations excel at repeatability but offer poor novel insight generation.
+*Bottom-left – "Analytical players, Creative adjudicator":* This configuration is not common but possible, such as tightly scripted training vignettes where subject matter expert adjudicators improvise consequences.
 
-*Top-left – "Creative players, rigid resolution":* Negotiation games such as _Diplomacy_ exemplify this quadrant, featuring creative strategy development with mechanical outcome determination.
+*Bottom-right – "Creative players, analytical adjudicator":* Negotiation games such as _Diplomacy_ exemplify this quadrant, featuring creative strategy development with mechanical outcome determination.
 
-*Bottom-right – "Constrained players, creative umpire":* This configuration is not common but possible, such as tightly scripted training vignettes where subject matter expert adjudicators improvise consequences.
+*Top-right –  "Creative players, analytical adjudicator":* Seminar games occupy this space, proving useful for ideation but weak for reproducible analysis.
 
-
-== E Seed Papers (coverage check)
-
-- Hogan & Brennen 2024 – _Open-ended Wargames with LLMs_
-- FAIR Diplomacy (Science 2022)
-- Lamparth et al. 2024 (two versions)
-- Shrivastava et al. 2024 (inconsistency)
-- Rivera et al. 2024 (escalation)
-
-All search strings must surface these five.
-// Uncomment this to include your bibliography
 
 /*
 #import "@preview/blinky:0.2.0": link-bib-urls
