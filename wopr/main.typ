@@ -56,47 +56,40 @@ Language models (LMs) are increasingly being deployed for use in defense and sec
 // GLENN: need a hook here that pulls people in using a safety argument of some kind... make it critical and important! danger danger!! get people interested
 This new generation of _Artificial Intelligence (AI) wargames_ relies more on *creative* problem-solving and reasoning over *analytical* rigor and precision. However, there have been significant hurdles for AI researchers when publishing in this field due to the domain-specific and knowledge-intensive requirements of professional wargaming. We present a scoping literature review of #num_papers recent works on AI wargames and present a novel ontology for researchers to engage with AI wargaming. We provide a discussion for researchers on how to use our ontology to appropriately categorize their own game environment and discover new literature ... (filler)
 // Glenn: this part really needs work
-This paper provides a conslidated look at this emerging area ... (etc) ... and
+This paper provides a consolidated look at this emerging area ... (etc) ... and
 provides clear direction for other researchers to pursue. Our  responsible experimentation with LLMs in wargaming and
 adjacent, language‑centric simulations.
 ]
 
-
-
-WOPR: `"[War is a] strange game. The only winning move is not to play. How about a nice game of chess?"`\ _Wargames, 1983_
+`"A strange game. The only winning move is not to play.\ How about a nice game of chess?"`\ _WOPR, Wargames, 1983_
 
 = Introduction
 
-Applications of Artificial Intelligence (AI) for real-world decision-making has accelerated due to the due to research and engineering behind Language Models (LMs). LMs are increasingly treated as a general‑purpose technology, providing a natural‑
-language interface for help with analysis, reasoning, and planning. Wargames are used by Subject Matter Experts (SMEs) to draw information about the potential outcome of decisions made in security and policy contexts. Wargame SMEs have begun to explore how they can use AI agents which are enabled by LMs to act as players, adjudicators, scenario generators, and analysis aids.
-Therev is growing interest in language‑based and open‑ended wargames that emphasize
-qualitative, argument‑centric play and multi‑party dynamics. Traditional computational
-approaches often struggle to capture narrative depth, while purely human exercises are
-resource‑intensive. LLMs open new possibilities but introduce fresh design choices about roles,
-formats, and evaluation.
-This paper offers a scoping view of the space and a discussion‑oriented desiderata for using
-LLMs in language‑based and open‑ended wargames. We synthesize patterns across recent
-studies and practice to highlight what is being built, how these systems are used, and which
-design choices matter for realism and usefulness.
+Artificial Intelligence (AI) for real-world decision-making has accelerated in adoption due to recent research progress with Language Models (LMs). LM-powered AI systems are increasingly treated as a general‑purpose technology, providing a natural‑
+language interface for help with analysis and planning difficult tasks.
+There is a growing interest by Subject Matter Experts (SMEs) in the military community regarding how they can leverage LMs for highly creative and open‑ended wargames that emphasize qualitative and language‑centric play.
+Experts continue to explore how they can use LMs to act as players, adjudicators, scenario generators, and analysis aids in open-ended wargames.
 
-== Scope and Aims
-- Scope: language‑based and open‑ended wargames (e.g., seminar, matrix, digital multi‑turn);
-  LLM roles include player, adjudicator, scenario generation, and analyst.
-- Aims: (1) catalog recent approaches and design patterns; (2) discuss trade‑offs in format,
-  prompting, and evaluation; (3) propose desiderata for clarity, reproducibility, and practical
-  value; (4) curate references and resources for practitioners and researchers.
+Traditional computational approaches often struggle to capture narrative depth, while purely human exercises are
+resource‑intensive. LMs open new possibilities but also pose a serious safety risk due to hallucinations, ... (TODO: safety language needs to go here, impacts, concerns)
 
-= Related Work
-== Background
+This paper offers a scoping review of this area and provides a discussion‑oriented desiderata on
+LMs in language‑based and open‑ended wargames. We analyze patterns across recent
+studies and use these insights to create a new ontology for understanding open-ended wargames. With our new ontology we are able to better understand cutting-edge research ... (how?)
+
+Our focus is on language‑based and open‑ended wargames where a LM is acting in the role of either a _player_ or an _adjudicator_.
+The aim of our paper is (1) to catalog recent approaches and design patterns; (2) discuss the trade-off space of analysis and creativity; (3) propose desiderata and new research directions and (4) curate references and resources for practitioners and researchers.
+
+= Background
 // Riedl says we might neeed background and definitions as separate, and not in related works. signposting is ok. one option to keep this in related work is to present and cite all the terminology used by others and why we use and extend it. we also would present things here we disagree with etc but we are likely in the former category so we just need to communicate what we do. communicate these sections in terms of related works rather than WE DEFINE. we would want to place our diffs at the end. we should use this section to lay down what others say and really adopt and lay it on them. this is the section for all the others
-=== wargame
-We define “wargame” as “a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events” [@perla_what_1985; @noauthor_wargaming_2017; @caffrey_toward_nodate]. For this paper, we use the following working definition:
+== Wargames
+Wargames are defined by the commmunity as a “a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events” [@perla_what_1985; @noauthor_wargaming_2017; @caffrey_toward_nodate]. For this paper, we use the following working definition:
 + Ongoing conflict between actors with opposing interests or needs;
 + A synthetic environment that enables agent choice and feedback;
 + Agents make decisions and experience consequences via adjudication or rules;
 + Strategic reasoning uses information about other agents and the environment [@coulthart_whats_2017; @james_markley_strategic_2015; @perla_what_1985; @page_modeling_nodate].
 For our purposes, we adopt policy definitions of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” [@national_security_commission_on_artificial_intelligence_final_2021; @sayler_artificial_2019].
-=== serious game
+== Serious Games
 “Serious games” are games designed for purposes beyond entertainment—such as training,
 education, analysis, or policy exploration. Wargames can be considered a subset of serious
 games when they are used to explore strategic choices, elicit expert judgment, or stress‑test
@@ -104,7 +97,7 @@ plans. Unlike recreational games, the primary objective is to generate insight r
 optimize win conditions, and design choices (facilitation, documentation, evaluation) are
 selected to support learning and analysis rather than spectacle.
 
-=== Creative vs Analytical
+== Creativity vs Analytical
 Current approaches fall into two broad families: (1) human‑computer wargames used in
 defense and policy contexts, and (2) strict rule‑based games (e.g., board or digital games like
 Diplomacy). Human‑computer wargames rely heavily on subject‑matter experts (SMEs) for
@@ -123,15 +116,19 @@ integrating them into open‑ended, qualitative formats. Early experiments that 
 LLMs “play” scripted moves showed brittle reasoning, hallucination, and rule non‑adherence
 [@lamparth_human_2024; @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022; @wu_enhance_2024; @xu_exploring_2023; @xu_language_2023]. Open‑ended wargames remain predominantly human‑driven because they
 require creativity, persuasion, and negotiation—not merely optimal move search [@perla_why_2011; @noauthor_wargaming_2017; @coulthart_whats_2017].
-==== Analytical
+
+=== Analytical
 Analytical wargaming emphasizes formal rules, codified mechanics, and quantitative outcomes.
 It favors repeatability and narrow uncertainty, supports deterministic or stochastic models,
 and enables automation through explicit state representations and scoring.
-==== Creative
+=== Creative
 Creative wargaming emphasizes narrative reasoning, argumentation, and expert judgment.
 It values plausibility and explanatory richness over strict optimality, and relies on facilitation
 and qualitative adjudication to explore alternative futures.
-== seminal works in the field that help define it  Artificial Intelligence in Wargaming 
+
+= Related Works
+
+== Artificial Intelligence in Wargaming 
 Foundational defense wargaming literature establishes core definitions, taxonomies of formats
 (seminar, matrix, kriegsspiel, computer‑assisted), and adjudication philosophies (rigid rules vs.
 free adjudication) [@james_markley_strategic_2015; @noauthor_wargaming_2017]. These works emphasize
@@ -146,7 +143,8 @@ optimization for move planning, stochastic combat models, and agent‑based syst
 explicit state. Such approaches perform well in rigid games but offer limited support for
 open‑ended narrative argumentation and multi‑party persuasion typical of seminar and matrix
 formats.
-== other lit reviews, other game papers
+
+== Literature Reviews on LMs in Games
 Surveys of LLMs in games and simulation describe agents that negotiate, plan, or role‑play in
 constrained environments [@ma_computational_2024; @zhang_llm_2024]; work on Diplomacy combines
 language models with planning and tool use [@meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022; @lamparth_human_2024]; and multi‑agent LLM frameworks
@@ -376,6 +374,43 @@ Operationally, environments rich in misinformation require agents to distinguish
 Design patterns that harden systems include structured argumentation (claim–evidence–warrant), red‑team prompts that probe for inconsistencies, and periodic “strategy check‑ins” where agents restate objectives and constraints. When appropriate, limited tool use (document retrieval with citations) can improve verifiability, though it must be logged and bounded. These measures improve resilience against adversarial prompts, data poisoning, and overconfidence without over‑indexing on failure‑mode taxonomies.
 
 === Economic, Financial, and Business Implications of Wargaming
+
+Civilization IV – how does wargaming apply and how is business and finance involved?
+
+Civilization IV is a game which can also be modeled as a wargame.
+Why is it a wargame?
+
+Ongoing conflict between actors with opposing interests or needs;
+This game involves limited resources and land and has some form of win conditions. Players are competing against one another to make the best civilization possible by maximizing these resources for themselves, while minimizing the resources for the other players. Competition between players is continuous and can include economic battles.
+A synthetic environment that enables agent choice and feedback;
+The game itself is simulated in a world with cities, units, resources, and rules which will govern interactions between players.
+Agents make decisions and experience consequences via adjudication or rules;
+The game engine itself acts as an adjudicator in that whenever an action is executed, the entire state of the game changes and impacts future decisions as well as future game states.
+Strategic reasoning uses information about other agents and the environment 
+Success in the game comes from short-term survival mixed with long-term growth. An analytical line of reasoning and mix of diplomacy along with economic and military decisions can be executed to better your own civilization. A certain level of anticipation and planning is needed to be successful within this game.
+
+How does it pertain to economics:
+
+Resource Economy
+
+One of the most fundamental concepts in why economics is studied comes from the fact of resource scarcity. The game itself provides limited access to scarce resources such as iron, oil, uranium as well as luxury goods such as gold, spices, and gems. Due to the fact that there are multiple players, this inherently causes competition, another economic concept which is the basis for economical decision making in the game.
+
+Markets and Trade
+
+This section dives into the idea of comparative advantage and market dynamics. Cities can establish trade routes domestically and internationally in which players can negotiate resource-for-gold trades and technology exchanges. The pure concept of trading incorporates the idea of comparative advantage. Each player has their own set of resources and goods, but the way in which they choose to trade comes from the production from the cities they own in civilization. Comparative advantage is a fundamental concept in economics which governs how countries, or in this case civilizations, will trade with one another. In addition, the concept of specialization can be seen taking place in this game. Each city can either generate food, produce hammers, or foster commerce with gold. Each player will ultimately have each city specializing in one field so as to create microeconomic dynamics with other cities and inherently lead to trade with other cities. These fundamental economic concepts need to be handled appropriately by a player so as to maximize personal economic benefit, which can in turn lead to better gameplay and a higher likelihood of winning.
+
+Currency Taxation
+
+3. Currency and Taxation
+In this game, budget constraints and bankruptcy risks are added as another obstacle. Deficit spending in the game has penalties such as unit disbanding and cutting science and culture. These rules simulate the business world in the sense that with greater power comes greater responsibility. The larger the empire the higher it will cost to upkeep all factors involved, and in situations where there isn’t enough money to support the empire, pieces of the empire will be taken away. In addition to these business modelings, inflation is another factor in the game which attests to market friction, in which building a large empire also makes it harder to continue to grow the empire. It forces strategic financial planning so that an empire cannot just expand way too quickly without accounting for the empire inefficiencies or lack of balance.
+
+Infrastructure
+
+One of the biggest economic factors involved in this gameplay is opportunity cost. Each turn a player has they have a decision to make. Each user can make capital investments with delayed returns. A big opportunity cost question always comes with the building or adding of infrastructure versus aiding in military personnel. In this example, you have the choice of creating a new city and adding to your wealth comes with the opportunity cost of military readiness. Similarly, each decision made has some tradeoff or opportunity cost which can lead to future positives or future negatives. A player must weigh their options accordingly and make the decision which they think will minimize their opportunity cost, a very subjective decision.
+
+Talk about Catan next
+
+Go into generalizations of economics, business, and finance w.r.t wargaming.
 
 = Methodology
 We conducted a structured literature review following Kitchenham’s SLR phases and PRISMA reporting guidance. We searched Google Scholar, arXiv, and Semantic Scholar using three Boolean queries, deduplicated by DOI, and screened title/abstract before full‑text review. Our final set of #num_papers papers was extracted into a CSV for quantitative counts and qualitative theme coding.
