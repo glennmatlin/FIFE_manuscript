@@ -1,7 +1,7 @@
 #import "@preview/tracl:0.6.1": *
 
 #show: doc => acl(doc,
-  anonymous: false,
+  anonymous: true,
   title: [Shall We Wordplay a Game?\
   Language Model Agents as Players and Adjudicators\
   in Highly Creative and Open-Ended War Games],
@@ -52,39 +52,23 @@
 #let num_papers = "TBD"
 
 #abstract[
-Large language models (LLMs) are increasingly used to play, adjudicate, and
-analyze language‑based, open‑ended wargames in defense, policy, and
-organizational settings. These exercises privilege argumentation, negotiation,
-and qualitative judgment, which traditional game‑AI and rigid simulations
-underserve. We present a discussion‑oriented synthesis of recent work on
-LLM‑enabled wargaming across seminar and matrix formats and digital multi‑turn
-variants. We characterize common roles (player, adjudicator, scenario
-generation, analyst), typical prompting and facilitation patterns, and how
-studies report outcomes.
-
-We introduce a simple categorical framing along two axes—Analytical vs Creative
-for the player and for the adjudicator—and use it to situate representative
-games and design choices. Our synthesis surfaces practical guidance: make roles
-and procedures explicit; log prompts, seeds, and artifacts; favor lightweight
-rubrics over proxy language metrics; and report variability across runs. We also
-outline safety‑minded interpretation and pre‑deployment checks suitable for
-decision‑support use.
-
-Taken together, the paper consolidates patterns, clarifies terminology, and
-highlights under‑served open‑ended settings. It aims to improve comparability
-and reproducibility without flattening the human strengths of facilitated play,
-and to accelerate responsible experimentation with LLMs in wargaming and
+Language models (LMs) are increasingly used to play, adjudicate, and analyze language‑based, open‑ended wargames in defense, government, and financial settings to provide insights for real-world decision-making. This new generation of _Artificial Intelligence (AI) wargame_ relies more on *creative* problem-solving and qualitative judgment over *analytical* rigor and precision. However, there have been significant hurdles for AI researchers when publishing in this field due to the domain-specific and knowledge-intensive requirements of professional wargaming. We present a discussion‑oriented literature review of #num_papers recent works which include AI wargames. We present a novel ontology for researchers to understand  Analytical vs Creative wargaming, for both the Player and Adjudicator roles. We provide a discussion for researchers on how to use our ontology to appropriately categorize their own game environment and discover new literature ... (needs work)
+This paper provides a conslidated look at this emerging area ... (etc) ... and
+provides clear direction for other researchers to pursue. Our  responsible experimentation with LLMs in wargaming and
 adjacent, language‑centric simulations.
 ]
 
 
 
+_"[War is a] strange game.\
+The only winning move is not to play.\
+How about a nice game of chess?"\
+-- WOPR (War Operation Plan Response) a.k.a. "Joshua"_
+
 = Introduction
-Artificial intelligence has accelerated rapidly in research and application. Large language
-models (LLMs) are increasingly treated as a general‑purpose technology, providing a natural‑
-language interface to reasoning, planning, and analysis. Wargaming—used to explore decisions
-under uncertainty in security and policy contexts—has begun to adopt LLMs as participants,
-adjudicators, and analysis aids.
+
+Applications of Artificial Intelligence (AI) for real-world decision-making has accelerated due to the due to research and engineering behind Language Models (LMs). LMs are increasingly treated as a general‑purpose technology, providing a natural‑
+language interface for help with analysis, reasoning, and planning. Wargames are used by Subject Matter Experts (SMEs) to draw information about the potential outcome of decisions made in security and policy contexts. Wargame SMEs have begun to explore how they can use AI agents which are enabled by LMs to act as players, adjudicators, scenario generators, and analysis aids.
 There is growing interest in language‑based and open‑ended wargames that emphasize
 qualitative, argument‑centric play and multi‑party dynamics. Traditional computational
 approaches often struggle to capture narrative depth, while purely human exercises are
@@ -190,7 +174,9 @@ Figures: open‑endedness quadrants and representative placements.
 
 
 == Quadrants: Analytical vs Creative
-#image("creativity_quadrants.png") 
+
+#image("creativity_quadrants.png")
+image("creativity_quadrants.png") 
 Figure: Open‑endedness quadrants (illustrative placement of formats).
 
 === Q1: Analytical Player, Creative Adjudicator
@@ -233,7 +219,7 @@ wargaming: exploring uncertainty, revealing assumptions, and eliciting expert ju
 studies automate construction or evaluation for Q4 settings.
 
 
-*Q4 is highest value in serious game*
+*Q4 is most similar to reality*
 Reality is highly creative and higher creativity provides more value as a serious game. 
 
  - Wargame
@@ -389,6 +375,8 @@ Operationally, environments rich in misinformation require agents to distinguish
 
 Design patterns that harden systems include structured argumentation (claim–evidence–warrant), red‑team prompts that probe for inconsistencies, and periodic “strategy check‑ins” where agents restate objectives and constraints. When appropriate, limited tool use (document retrieval with citations) can improve verifiability, though it must be logged and bounded. These measures improve resilience against adversarial prompts, data poisoning, and overconfidence without over‑indexing on failure‑mode taxonomies.
 
+=== Economic, Financial, and Business Implications of Wargaming
+
 = Methodology
 We conducted a structured literature review following Kitchenham’s SLR phases and PRISMA reporting guidance. We searched Google Scholar, arXiv, and Semantic Scholar using three Boolean queries, deduplicated by DOI, and screened title/abstract before full‑text review. Our final set of #num_papers papers was extracted into a CSV for quantitative counts and qualitative theme coding.
 
@@ -540,6 +528,9 @@ Studies were excluded for the following reasons:
 - (E2) Non-language game AI systems (Go, StarCraft, Atari, etc.) as out of scope.
 - (E3) Opinion or editorial pieces without research content, including any blog posts which lack technical appendices or methodology.
 - (E5) Systems primarily relies on LLMs below one billion parameters as falling below the modern capability threshold.
+
+== scoping questions
+_"Please search the web for the research paper and read the contents of "BALROG: Benchmarking Agentic LLM and VLM Reasoning On Games" Please help answer the following questions: "Does this experimental methodology of the paper feature (1) open-ended games (2) multiplayer games (3) strategy games (4) war games (5) crisis simulation (6) military simulation (7) moderated policy conflict/debate (8) diplomatic negotiation, or (9) any other form of similar competitive games? Finally (10), would you consider this game to be appropriate for a scoping survey on open-ended language-based war games?" After providing your reasoning and answers, please summarize your reasoning into one sentence explaining why overall the answer for (10) is "YES" or "NO""_
 
 == Data-Extraction Template
 
