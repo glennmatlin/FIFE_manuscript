@@ -61,24 +61,19 @@
 #let num_papers = "TBD"
 
 #abstract[
-Language models (LMs) are increasingly being deployed for use in defense and security settings to provide humans with insights for real-world decision-making. One prominent example is how LMs are being used to play, adjudicate, and analyze strategic wargames. LMs are particularly useful for contexts with open-ended dynamic problems where we lack a clear optimal "yes"/"no" answer and the gameplay is non-linear.
+Language models (LMs) are increasingly being deployed for use in defense and security settings to provide humans with insights for real-world decision-making. One prominent example is the use of LMs to play, adjudicate, and analyze strategic wargames. LMs are particularly useful for contexts with open-ended dynamic problems where we lack a clear optimal "yes"/"no" answer and gameplay is non-linear.
 // GLENN: need a hook here that pulls people in using a safety argument of some kind... make it critical and important! danger danger!! get people interested
 This new generation of _Artificial Intelligence (AI) wargames_ relies more on *creative* problem-solving and reasoning over *analytical* rigor and precision. However, there have been significant hurdles for AI researchers when publishing in this field due to the domain-specific and knowledge-intensive requirements of professional wargaming. We present a scoping literature review of #num_papers recent works on AI wargames and present a novel ontology for researchers to engage with AI wargaming. We provide a discussion for researchers on how to use our ontology to appropriately categorize their own game environment and discover new literature ... (filler)
 // Glenn: this part really needs work
-This paper provides a consolidated look at this emerging area ... (etc) ... and
-provides clear direction for other researchers to pursue. Our responsible experimentation with LMs in wargaming and
-adjacent, language‑centric simulations.
-]
+This paper provides a consolidated look at this emerging area ... (etc) ... and provides clear direction for other researchers to pursue. Ourresponsible experimentation with LMs in wargaming and adjacent, language‑centric simulations. ]
 
 `"A strange game. The only winning move is not to play.\ How about a nice game of chess?"`\ _WOPR, Wargames, 1983_
 
 = Introduction
 
-Artificial Intelligence (AI) for real-world decision-making has accelerated in adoption due to recent research progress with Language Models (LMs). LM-powered AI systems are increasingly treated as a general‑purpose technology, providing a natural‑
-language interface for help with analysis and planning difficult tasks.
-There is a growi\
-ng interest by Subject Matter Experts (SMEs) in the military community regarding how they can leverage LMs for highly creative and open‑ended wargames that emphasize qualitative and language‑centric play.
-Experts continue to explore how they can use LMs to act as players, adjudicators, scenario generators, and analysis aids in open-ended wargames.
+Opportunities for using Artificial Intelligence (AI) to aid real-world decision-making have expanded due to recent research and engineering progress with Language Models (LMs). LM-powered AI systems are increasingly treated as a general‑purpose technology, providing a natural‑language interface for help with analysis and planning difficult tasks.
+As a result, there is a growing interest by Subject Matter Experts (SMEs) in the military community regarding how they can leverage LMs for highly creative and open‑ended wargames that emphasize qualitative and language‑centric play.
+SMEs are now actively exploring how they can use LMs to act as players, adjudicators, scenario generators, and analysis aids in open-ended wargames.
 
 Traditional computational approaches often struggle to capture narrative depth, while purely human exercises are
 resource‑intensive. LMs open new possibilities but also pose a serious safety risk due to hallucinations, ... (TODO: safety language needs to go here, impacts, concerns)
