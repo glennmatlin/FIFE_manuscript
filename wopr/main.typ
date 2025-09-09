@@ -1,4 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #import "@preview/tracl:0.6.1": *
+
 
 #show: doc => acl(doc,
   anonymous: true,
@@ -67,7 +111,8 @@ adjacent, language‑centric simulations.
 
 Artificial Intelligence (AI) for real-world decision-making has accelerated in adoption due to recent research progress with Language Models (LMs). LM-powered AI systems are increasingly treated as a general‑purpose technology, providing a natural‑
 language interface for help with analysis and planning difficult tasks.
-There is a growing interest by Subject Matter Experts (SMEs) in the military community regarding how they can leverage LMs for highly creative and open‑ended wargames that emphasize qualitative and language‑centric play.
+There is a growi\
+ng interest by Subject Matter Experts (SMEs) in the military community regarding how they can leverage LMs for highly creative and open‑ended wargames that emphasize qualitative and language‑centric play.
 Experts continue to explore how they can use LMs to act as players, adjudicators, scenario generators, and analysis aids in open-ended wargames.
 
 Traditional computational approaches often struggle to capture narrative depth, while purely human exercises are
