@@ -144,8 +144,8 @@ and facilitation practices are essential.
 == Analysis of Q4 (qualitative)
 here, we talk about the papers in q4 only and characterize them
 
-// riedl: we should explicitly have a section on research problems and what can be larned by working on those.
-// real time multi agent planning -- mech interpability -- avoiding bias and echochambers
+// riedl: we should explicitly have a section on research problems and what can be learned by working on those.
+// real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers
 
 // riedl: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
 
@@ -226,7 +226,7 @@ Given LMs' unique error profile, practitioners should adopt in-depth output moni
 
 *Multi-model auditing.* To ensure reproducibility of results over diverse conditions, multiple model architectures should be tested on identical scenarios to identify points of high uncertainty and common failure modes. For instance, cross-model critique, while underperforming when compared to external feedback, outperforms self-correction and confers modest performance benefits in multi-agent settings @saleh_evaluating_2025. Additionally, significant consensus breakdowns may signal events requiring human oversight; when appropriate, limited tool use (document retrieval with citations) can further improve verifiability @gou_critic_2024.
 
-*Human stakeholder training.* LM-enabled wargaming presents nonintuitive failure modes. These considerations do not align with the expectation of stakeholders, who are likely to ascribe moral intent to LM output even in abstract contexts and unlikely to question plain statements from LMs @sharma_why_2024. Operators need technical understanding of when to trust, how to improve, and where to audit LM outputs. Key stakeholders, including decision-makers relying on LM-enabled wargames, should conceptually understand LM behavioral markers and be provided with confidence assessments of wargame conclusions. 
+*Human stakeholder training.* LM-enabled wargaming presents non-intuitive failure modes. These considerations do not align with the expectation of stakeholders, who are likely to ascribe moral intent to LM output even in abstract contexts and unlikely to question plain statements from LMs @sharma_why_2024. Operators need technical understanding of when to trust, how to improve, and where to audit LM outputs. Key stakeholders, including decision-makers relying on LM-enabled wargames, should conceptually understand LM behavioral markers and be provided with confidence assessments of wargame conclusions. 
 
 = Desiderata for LM‑Enabled Wargaming
 [[freezing for riedl on thursday]]
