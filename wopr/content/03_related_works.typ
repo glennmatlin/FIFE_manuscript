@@ -2,16 +2,7 @@
 == Artificial Intelligence in Wargaming 
 //@li_exploration_2025
 //@davis_artificial_2025
-Foundational defense wargaming literature establishes core definitions, taxonomies of formats
-(seminar, matrix, kriegsspiel, computer‑assisted), and adjudication philosophies (rigid rules vs.
-free adjudication) @us_army_war_college_strategic_2015 @Deutschland_bundeswehr_wargaming_2017 @uk_ministry_of_defense_wargaming_2017. These works emphasize
-intent, uncertainty management, and the central role of facilitation and expert judgment in
-producing insight rather than scorekeeping. Practitioner handbooks and RAND‑style studies
-standardize scenario design, injects, decision capture, and after‑action analysis. Together, this
-tradition motivates our focus on language‑based, argument‑centric play and clarifies where
-automation must respect human roles.
-
-Early AI for wargaming largely targeted quantitative or tightly scoped simulations: search and
+DsEarly AI for wargaming largely targeted quantitative or tightly scoped simulations: search and
 optimization for move planning, stochastic combat models, and agent‑based systems with
 explicit state. Such approaches perform well in rigid games but offer limited support for
 open‑ended narrative argumentation and multi‑party persuasion typical of seminar and matrix formats.
