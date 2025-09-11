@@ -3,7 +3,8 @@
 
 #show: doc => acl(doc,
   anonymous: true,
-  title: [Shall We Wordplay a Game?],
+  title: [Shall We Wordplay a Game?\
+  Language Models for Wargames],
    authors: (
     (
       name: "Anonymous",
@@ -48,16 +49,13 @@ Figure: Open‑endedness quadrants (illustrative placement of formats).
 
 === Q1: Analytical Player, Analytical Adjudicator
 This quadrant covers rigid, rule‑based systems for both the players and the adjudicators (often
-predetermined scoring). Of the quadrants, this quadrant, alongside Q4, is among the most
-extensively explored, as it captures traditional “quantitative” wargames. Notable examples
-include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
-of traditional strategy board games such as chess, checkers, and Go.
+predetermined scoring). Of the quadrants, this quadrant is among the most extensively explored, as it captures traditional “quantitative” wargames. Notable examples include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
+of strategy board games both traditional (e.g. chess, checkers, and Go) or modern (e.g. Stratego, Warhammer 40k, and Polytopia) @bakhtin_mastering_2022.
+
+These games often benefit less from recent developments in LMs because of its rigid nature, with RL approaches being more common. 
 
 === Q2: Analytical Player, Creative Adjudicator
-This quadrant covers games in which players are often relatively limited in their action space,
-while a flexible, often human, adjudicator determines the outcomes. An infrequent quadrant, games that would fall into this quadrant include variants of wargames such as Meckel's early version of Free Kriegsspiel and the class of procedural based human adjudicated war games. Games that would fall under the latter are typically high fidelity military simulations where player actions are constrained by established orders and procedures while action outcomes are decided by human experts; this would encompass major wargames such as early US Navy Fleet Problems and TEWT
-focus is on limited procedural military actions while the outcomes are adjudicated by a human
-adjudicator. Many other battlefield‑scale wargames would fall under this category.
+This quadrant covers games in which players are often relatively limited in their action space, while a flexible, often human, adjudicator determines the outcomes. An infrequent quadrant, games that would fall into this quadrant include variants of wargames such as Meckel's early version of Free Kriegsspiel and the class of procedural-based human-adjudicated war games. The latter type are typically high fidelity military simulations where player actions are constrained by established orders and procedures while action outcomes are decided by human experts; this would encompass major real world wargames such as early US Navy Fleet Problems and standard Tactical Exercise Without Troops (TEWT) where the focus is on decisions within procedural military actions while the outcomes are adjudicated by a field expert. Other types of games that fall under this category include semi-rigid adjudicated wargames, where the game is played rigidly and mostly adjudicated rigidly with the possibility of human adjudicator override. 
 
 === Q3: Creative Player, Analytical Adjudicator
 This quadrant covers games with highly creative agents and low‑creativity adjudicators. Common
@@ -66,9 +64,7 @@ procedural adjudicator. This includes the vast majority of board games with a so
 rigid scoring rules, such as Diplomacy and Settlers of Catan.
 
 Of the quadrants, this quadrant is one of the most explored in its relation to AI, with extensive
-research, especially with wargames such as Diplomacy, most notably Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022. With rigid
-adjudication mechanisms and often rigid procedural agent mechanisms, games in this quadrant
-are mechanically simple to run and evaluate, which leads to the popularity of this category.
+research, especially with wargames such as Diplomacy, most notably Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022. With rigid adjudication mechanisms and often rigid procedural agent mechanisms, games in this quadrant are mechanically simple to run and evaluate, which leads to the popularity of this category.
 
 *Issues with Q3.* The limited creativity that makes Q3 attractive is also its major flaw. The rigid
 adjudication and procedural constraints in much existing research across the quadrants strongly
@@ -167,6 +163,23 @@ Practical design choices that matter include: clear turn structure (front‑chan
 IR professionals in particular benefit from wargaming because of its creative and non-analytical structure. With subjective rubrics and emphasis on cooperation and social interactions, innovative players and adjudications are nearly necessary and alleviate human cost from traditional executions of diplomatic wargames with human players and computers, whether it is through fully autonomous or human-aided.
 
 == Businesses and Organizations
+// BUSINESS CITATIONS:
+// @scherpereel_decision_2005
+// @bradfield_origins_2005
+// @chussil_learning_2007
+// @coyne_predicting_2009
+// @hamel_competing_1994
+// @hershkovitz_wargame_2019
+// @kurtz_business_2003
+// @oliverschwarz_ex_2011
+// @resende_critical_2018
+// @scherpereel_changing_2005
+// @scherpereel_decision_2005
+// @scherpereel_impact_2003
+// @schwarz_business_2013
+// @schwarz_combining_2019
+// @spaniol_five_2019
+// @hamel_competing_1994
 Business wargames use competitive or cooperative scenarios to stress‑test potential strategies that carry a high degree of uncertainty (market entry, pricing, regulatory change, supply‑chain disruption, M&A). Open‑ended play surfaces narrative risks (misaligned incentives, vendor lock‑in, reputation shocks) that spreadsheets can miss. LMs can play roles as competitor teams, regulators, customers, or internal functions (legal, comms), generating options and counter‑moves in natural language.
 
 Effective formats combine structured turns (brief → move → challenge → adjudication) with qualitative evidence requirements: claims must cite assumptions, external signals, or benchmarks. Adjudication blends simple quantitative checks (unit economics, capacity) with narrative plausibility. LMs can draft memos, scenario briefs, or stakeholder analyses conditioned on constraints (budget, brand voice, compliance) and can help enumerate second‑order effects, but human facilitators keep realism and ethics in scope.
@@ -185,7 +198,7 @@ Through experimentation with AI in wargames, the fields of economics and finance
 
 = Safety considerations (Parv Yixiong)
 
-Results of wargames often directly inform organizational policy, discussion, and institutional decision-making, including in sensitive policy and defensive contexts @noauthor_influence_2023. Because the design and interpretation of wargames often assume human players and adjudicators with meaningfully different behavior patterns than LMs, the incorporation of LMs in wargaming necessitates reevaluation of traditional wargaming methodology and interpretation. 
+Results of wargames often directly inform organizational policy, discussion, and institutional decision-making, including in sensitive policy and defensive contexts @uk_ministry_of_defense_influence_2023. Because the design and interpretation of wargames often assume human players and adjudicators with meaningfully different behavior patterns than LMs, the incorporation of LMs in wargaming necessitates reevaluation of traditional wargaming methodology and interpretation. 
 
 == Known LM simulation vulnerabilities
 
