@@ -185,23 +185,29 @@ When plotted as a scatter-plot, four intuitive regions emerge:
 *Bottom-right – "Constrained players, creative adjudicator":* This configuration is not common but possible, such as tightly scripted training vignettes where subject matter expert adjudicators improvise consequences.
 
 
-== E Seed Papers (coverage check)
+=== Economics and Finance
 
-- Hogan & Brennen 2024 – _Open-ended Wargames with LMs_
-- FAIR Diplomacy (Science 2022)
-- Lamparth et al. 2024 (two versions)
-- Shrivastava et al. 2024 (inconsistency)
-- Rivera et al. 2024 (escalation)
+*Resource Economy*
 
-All search strings must surface these five.
-// Uncomment this to include your bibliography
+One of the most fundamental concepts in why economics is studied comes from the fact of resource scarcity. The game itself provides limited access to scarce resources such as iron, oil, uranium as well as luxury goods such as gold, spices, and gems. Due to the fact that there are multiple players, this inherently causes competition, another economic concept which is the basis for economical decision making in the game.
 
-/*
-#import "@preview/blinky:0.2.0": link-bib-urls
-#let bibsrc = read("custom.bib")
+*Markets and Trade*
 
-#link-bib-urls()[
-   #bibliography("custom.bib", style: "./association-for-computational-linguistics-blinky.csl")
-]
-*/
+This section dives into the idea of comparative advantage and market dynamics. Cities can establish trade routes domestically and internationally in which players can negotiate resource-for-gold trades and technology exchanges. The pure concept of trading incorporates the idea of comparative advantage. Each player has their own set of resources and goods, but the way in which they choose to trade comes from the production from the cities they own in civilization. Comparative advantage is a fundamental concept in economics which governs how countries, or in this case civilizations, will trade with one another. In addition, the concept of specialization can be seen taking place in this game. Each city can either generate food, produce hammers, or foster commerce with gold. Each player will ultimately have each city specializing in one field so as to create microeconomic dynamics with other cities and inherently lead to trade with other cities. These fundamental economic concepts need to be handled appropriately by a player so as to maximize personal economic benefit, which can in turn lead to better gameplay and a higher likelihood of winning.
 
+*Currency Taxation*
+
+In this game, budget constraints and bankruptcy risks are added as another obstacle. Deficit spending in the game has penalties such as unit disbanding and cutting science and culture. These rules simulate the business world in the sense that with greater power comes greater responsibility. The larger the empire the higher it will cost to upkeep all factors involved, and in situations where there isn’t enough money to support the empire, pieces of the empire will be taken away. In addition to these business modelings, inflation is another factor in the game which attests to market friction, in which building a large empire also makes it harder to continue to grow the empire. It forces strategic financial planning so that an empire cannot just expand way too quickly without accounting for the empire inefficiencies or lack of balance.
+
+*Infrastructure*
+
+One of the biggest economic factors involved in this gameplay is opportunity cost. Each turn a player has they have a decision to make. Each user can make capital investments with delayed returns. A big opportunity cost question always comes with the building or adding of infrastructure versus aiding in military personnel. In this example, you have the choice of creating a new city and adding to your wealth comes with the opportunity cost of military readiness. Similarly, each decision made has some tradeoff or opportunity cost which can lead to future positives or future negatives. A player must weigh their options accordingly and make the decision which they think will minimize their opportunity cost, a very subjective decision.
+
+Settlers of Catan exemplifies a macro-scale simulation of cooperation, conflict, and uncertainty, offering valuable parallels to both wargaming and global economic systems. In Catan, each player acts as an economic agent—whether a company, policymaker, or trader—competing to expand their territory and win, but also needing to collaborate through trade and negotiation. This interplay mirrors real-world dynamics, where nations and market participants must adapt, compete, and form alliances within an ever-changing economic landscape.
+
+A defining feature of Catan is its unpredictable environment, shaped by dice rolls and development card draws, which introduces uncertainty and requires constant risk assessment. Players must dynamically adjust their strategies, learn from experience, and make decisions under partial observability, closely reflecting the complexities of modern economic and policy-making processes.
+Negotiation is central to Catan, as players engage in multi-party interactions involving offers, counteroffers, acceptance, and refusal. These exchanges model real-world group decision-making and strategic communication, requiring careful analysis of opponents’ positions and negotiation tactics such as bluffing and persuasion. This makes Catan an effective testbed for AI agents, fostering their development of advanced dialogue, strategy adaptation, and even deceptive bargaining behavior.
+
+Recent research demonstrates that AI agents trained in Catan can emulate distinct roles—trader, strategist, negotiator—each influencing and responding to the decisions of others. Findings also indicate that as agent skill increases, so does the impact of luck: highly skilled agents more effectively capitalize on favorable scenarios, further emphasizing the game’s intrinsic uncertainty.
+
+Evaluating reinforcement learning agents in environments like Catan goes beyond win rates; it includes diversity of behavior, skill expression, and the uncovering of rare or emergent strategies. Such diversity is vital for playtesting, balancing, and informing both AI research and game design. By shifting the focus from victory to exploration and policy testing, Catan enables a deeper understanding of agent behavior, strategic planning, and the identification of hidden exploits, offering actionable insights for both policymaking and strategic game development.
