@@ -3,10 +3,8 @@
 
 #show: doc => acl(doc,
   anonymous: true,
-  title: [Shall We Wordplay a Game?\
-  Language Model Agents as Players and Adjudicators\
-  in Highly Creative and Open-Ended Wargames],
-  authors: (
+  title: [Shall We Wordplay a Game?],
+   authors: (
     (
       name: "Anonymous",
       affiliation: [Anonymized for review],
@@ -18,62 +16,61 @@
 #let num_papers = "89"
 
 #abstract[
-Language models (LMs) are increasingly being deployed for use in defense and security settings to provide humans with insights for real-world decision-making. One prominent example is the use of LMs to play, adjudicate, and analyze strategic wargames. LMs are particularly useful for contexts with open-ended dynamic problems where we lack a clear optimal "yes"/"no" answer and gameplay is non-linear.
-// GLENN: need a hook here that pulls people in using a safety argument of some kind... make it critical and important! danger danger!! get people interested
-This new generation of _Artificial Intelligence (AI) wargames_ relies more on *creative* problem-solving and reasoning over *analytical* rigor and precision. However, there have been significant hurdles for AI researchers when publishing in this field due to the domain-specific and knowledge-intensive requirements of professional wargaming. We present a scoping literature review of #num_papers recent works on AI wargames and present a novel ontology for researchers to engage with AI wargaming. We provide a discussion for researchers on how to use our ontology to appropriately categorize their own game environment and discover new literature ... (filler)
-// Glenn: this part really needs work
-This paper provides a consolidated look at this emerging area ... (etc) ... and provides clear direction for other researchers to pursue. Our goal is to encourage responsible experimentation with LMs in wargaming and adjacent, language‑centric simulations. ]
-
-`"A strange game. The only winning move is not to play. How about a nice game of chess?"`\ _WOPR, Wargames, 1983_
+Language models (LMs) are increasingly being deployed for use in defense and security settings to provide humans with insights for real-world decision-making. One prominent example is the use of LMs to play, adjudicate, and analyze strategic wargames. LMs are particularly useful for contexts with open-ended dynamic problems when gameplay is non-linear and entirely novel solutions can be proposed.
+// GLENN: need a hook here that pulls people in using a safety argument of some kind... make it critical and important! danger danger!! get people interested.
+This new generation of _Artificial Intelligence (AI) wargames_ relies more on *creative* problem-solving and reasoning over *analytical* rigor and precision. However, there have been significant hurdles for AI researchers when publishing in this field due to the domain-specific and knowledge-intensive requirements of professional wargaming. We present a scoping literature review of #num_papers recent works on AI wargames and present a novel ontology for researchers to engage with AI wargaming. We provide a discussion for researchers on how to use our ontology to appropriately categorize their own game environment and discover new literature ...(TODO)... This paper provides a consolidated look at this emerging area ...(TODO)... and provides clear direction for other researchers to pursue. Our goal is to encourage responsible experimentation with LMs in wargaming and adjacent, language‑centric simulations.]
 
 = Introduction
 
-Opportunities for using Artificial Intelligence (AI) to aid real-world decision-making have expanded due to recent research and engineering progress with Language Models (LMs). LM-powered AI systems are increasingly treated as a general‑purpose technology, providing a natural‑language interface for help with analysis and planning difficult tasks.
-As a result, there is a growing interest by Subject Matter Experts (SMEs) in the military community regarding how they can leverage LMs for highly creative and open‑ended wargames that emphasize qualitative and language‑centric play.
-SMEs are now actively exploring how they can use LMs to act as players, adjudicators, scenario generators, and analysis aids in open-ended wargames.\
-Traditional computational approaches to wargames often struggle to capture narrative depth or human factor, while purely human exercises are resource‑intensive and difficult to analyze at scale. LMs open new possibilities but also pose a serious safety risk during deployment due to the greater degree of freedom afforded by the open-ended nature of these games. Early experiments that let off‑the‑shelf
+`"A strange game. The only winning move is not to play. How about a nice game of chess?"`\ _WOPR, Wargames, 1983_
+
+For thousands of years, the decision to intitiate violent conflict between groups of people has always been a strictly human affair. Although it is often said that "war never changes", the reality is that computer science is radically changing how humans make decisions about war and other high-stakes scenarios where machine errors are measured using human lives instead of a training loss function. Computer science has significantly accelerated the adoption of Artificial Intelligence (AI) as part of real-world decision-making processes thanks in large part to the recent research and engineering progress made with Language Models (LMs). LM-powered AI systems are increasingly treated as a general‑purpose technology, providing a natural‑language interface for help with analysis and planning difficult tasks.\
+The implicit promise of AI to provide general-purpose human-level intelligence via cloud-based scalable computing means that these systems are now of significant interest to national governments, military organizations, and multinational corporations as a means to automate operations, either to achieve higher effectiveness or reduce failure rates. 
+As a result, there is a growing interest among Subject Matter Experts (SMEs) in these communities in how they can leverage AI for highly creative and open‑ended wargames that emphasize qualitative and language‑centric play. The reason for this interest is that traditional computational approaches to wargames often struggle with narrative understanding, social human factors, or unbounded problems. The previous limitations on computer-driven wargames meant these wargames relied entirely on SMEs to conduct purely human exercises, which were resource‑intensive and difficult to analyze at scale. This is the primary reason why advancements in LMs are opening up numerous new possibilities. At the same time, these opportunities pose a serious safety risk during deployment due to the greater degree of freedom afforded by the open-ended nature of these games. Early experiments that let off‑the‑shelf
 LMs “play” scripted moves showed brittle reasoning, hallucination, and rule non‑adherence
 @lamparth_human_2024.
 // @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @wu_enhance_2024 @xu_exploring_2023 @xu_language_2023]
 
-This paper offers a scoping literature review  and discussion-orientated desiderata for open-ended and language-based AI wargames. We analyze patterns across recent studies and use these insights to create a new ontology to help AI researchers understand the key features of open-ended wargames to aid them in their own research.\
 
-Our focus is on language‑based and open‑ended wargames where a LM is acting in the role of either a _player_ or an _adjudicator_. The aim of our paper is (1) to catalog recent approaches and design patterns; (2) discuss the trade-off space of analysis and creativity; (3) propose desiderata and new research directions and (4) curate references and resources for practitioners and researchers.
+At time of writing, key SMEs associated with national military organizations are now actively exploring how they can use AI to provide a strategic advatange through superior capabilities. Military researchers are currently investigating how LMs can be used to help AI act as players and adjudicators in open-ended wargames. This news comes at a time when the safety-critcal nature of these systems is of high importance and getting a great deal of attention. However, there is not currently a resource to help AI researchers understand this domain and the needs of SMEs. We believe that scientists and academics have a role to play in the safety of artificial intelligence systems, particularly those in safety-critical settings. \
+This paper offers to the AI research community a scoping literature review and discussion-oriented desiderata for open-ended and creative AI wargames. We focus on open‑ended and creative wargames where an AI is acting in the role of either a _player_ or an _adjudicator_,  analyze patterns across recent studies, and present a novel taxonomy to help scientists identify and understand the key features of open-ended and creative wargames to aid them in their own research.\
+The key contributions of this paper are:
+ + Curated references on open-ended wargames to guide AI researchers
+ + Novel taxonomy to help researchers identify both analysis and creativity in wargames
+ + Desiderata-focused discussion on domain-specific needs for wargames
+ + Identify open research questions and provide clear directions for additional work.
 
 = Background
-// Riedl says we might neeed background and definitions as separate, and not in related works. signposting is ok. one option to keep this in related work is to present and cite all the terminology used by others and why we use and extend it. we also would present things here we disagree with etc but we are likely in the former category so we just need to communicate what we do. communicate these sections in terms of related works rather than WE DEFINE. we would want to place our diffs at the end. we should use this section to lay down what others say and really adopt and lay it on them. this is the section for all the others
+== Artificial Intelligence
+To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) “the use of computers to carry out tasks that previously required human intelligence”. (TODO:CITE RAND!). \ // @national_security_commission_on_artificial_intelligence_final_2021 @sayler_artificial_2019
+(TODO: Glenn needs to write here about the defintion of AI used, how it informed out survey scope, and then update the appendix survey definiton etc. we should also link the appendix here as well!)
 == Wargames
 // """
 // 3.4 Wargames
-// Wargaming is an old (von Reisswitz, 1824) technique designed to simulate battles and other complex
-// situations. Wargaming has recently been used for forecasting AI progress (Kokotajlo et al., 2024),
+// Wargaming has recently been used for forecasting AI progress (Kokotajlo et al., 2024),
 // and recent work has explored automating wargames with LLMs (Hogan & Brennen, 2024)
 // """
-// GLENN: "Conflict and war has been a focal topic of games for thousands of years.
-
-Wargames are defined by the commmunity as a “a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events” @perla_what_1985
+Conflict and war have been a focal topic of games and stories for thousands of years. Strategy wargames are nearly as old as written history, and have been a part of humanity for thousands of years. Examples of strategy-focused conflict games can be found across the ancient world, including the Egyptian _Senet_ (CITE), the Greeks' _Polis_ (CITE), and India's _Chaturanga_ (CITE), which eventually became the most well-known wargame in the world -- Chess. Over thousands of years, humans have relied on games as a simplified model of conflict to better understand their world and make decisions. Modern contemporary wargaming as we now know it grew out of the many different variations of chess that were created to simulate battles or other conflicts (TODO: CITE von Reisswitz, 1824).
+Wargames have provided art and entertainment to many. Still, all these games grew out of a desire by militaries to model and simulate the chaotic nature of conflict to help them with real-world decision-making. The term “serious games” is used to describe games designed for purposes beyond entertainment, such as training, education, analysis, or policy exploration. Serious games are used to explore strategic choices, elicit expert judgment, or stress‑test plans. Unlike purely recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis.
+// The SME community commonly defines *wargames* as _“a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events”_ @perla_what_1985
  // @noauthor_wargaming_2017; @caffrey_toward_nodate]
- For this paper, we adopt a formal academic  definition of the term _wargame_ as:
+ For this paper, we define wargames as a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events. We adopt the following formal academic definition of the term wargame:
 + Ongoing conflict between actors with opposing interests or needs;
 + A synthetic environment that enables agent choice and feedback;
 + Agents make decisions and experience consequences via adjudication or rules;
-+ Strategic reasoning uses information about other agents and the environment @coulthart_whats_2017 @james_markley_strategic_2015 @perla_what_1985.
-For our purposes, we adopt the common definitions of “Artificial Intelligence” (AI) as understood by SMEs to be “the use of computers to carry out tasks that previously required human intelligence”. 
-// [@national_security_commission_on_artificial_intelligence_final_2021 @sayler_artificial_2019]
++ Strategic reasoning uses information about other agents and the environment. @coulthart_whats_2017 @james_markley_strategic_2015 @perla_what_1985
 
-== Serious Games
-“Serious games” are games designed for purposes beyond entertainment, such as training, education, analysis, or policy exploration. Wargames often intersect with considered a subset of serious games when they are used to explore strategic choices, elicit expert judgment, or stress‑test plans. Unlike recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis.
 
-== Creativity vs Analytical
+== Creative vs Analytical
 // TODO FOR RIEDL: Any comments here about computational creativity, lab citations here as relevant
-Computational creativity has been a topic of study for many years ... 
 // CITE: Creativity in LLM-based Multi-Agent Systems: A Survey
-We observe how current wargame approaches often fall into two broad families: (1) open-ended non-linear games that heavily rely on creative problem solving or,(2) heavily structured and rule‑based games where analytical skills are more important.
+Computational creativity has been a topic of study for many years ...(TODO: FILL HERE)...
+Wargame experts at the UK MOD (CITE) have previously offered a taxonomy of analytical vs creative for wargames. They proposed to classify wargames using two broad groups. The first was open-ended non-linear games that heavily rely on creative problem solving, while the second is heavily structured and rule‑based games where analytical skills are more important. These categories are respectively referred to as creative and analytical wargames.
 Open-ended games provide a far greater degree of creative freedom for players to identify the action needed to advance towards their goals and finish the game. Creativity offers players freedom to identify many unique paths to a victory conditon. Open-ended and creative wargames rely heavily on SMEs for
-scenario design, player actions, and adjudication [@coulthart_whats_2017; @perla_what_1985]. In the military domain, these games formats are commonly referred to as matrix wargames or seminar wargames. This creative wargame style favors players with superior argumentation and decision‑making to navigate the complex open‑ended game state.
+scenario design, player actions, and adjudication @coulthart_whats_2017 @perla_what_1985. In the military domain, these games formats are commonly referred to as matrix wargames or seminar wargames. This creative wargame style favors players with superior argumentation and decision‑making to navigate the complex open‑ended game state.
 
-By contrast however, contemporary research into AI wargames have targeted analytical games where the world state is defined by strict rules, a discrete gamespace where actions often have calculated outcomes. Commonly known examples include Chess, Go, and Starcraft 2.
-// TODO: reinforcement learning citations here
+By contrast however, contemporary research into AI wargames have targeted analytical games where the world state is defined by strict rules, a discrete gamespace where actions often have calculated outcomes. Commonly known examples include Chess, Go, and Starcraft 2. (TODO: CITE)
+
 Unfortunately, these systems
 struggle with the ambiguity, creativity, and multi‑party interactions central to open-ended games. Computational support exists for tightly scoped kinetic or logistical simulations (e.g., Monte
 Carlo tree search; reinforcement learning) over specific mechanics, but offers little help with the
@@ -96,7 +93,7 @@ and qualitative adjudication to explore alternative futures.
 == Artificial Intelligence in Wargaming 
 Foundational defense wargaming literature establishes core definitions, taxonomies of formats
 (seminar, matrix, kriegsspiel, computer‑assisted), and adjudication philosophies (rigid rules vs.
-free adjudication) [@james_markley_strategic_2015; @noauthor_wargaming_2017]. These works emphasize
+free adjudication) @james_markley_strategic_2015 @noauthor_wargaming_2017. These works emphasize
 intent, uncertainty management, and the central role of facilitation and expert judgment in
 producing insight rather than scorekeeping. Practitioner handbooks and RAND‑style studies
 standardize scenario design, injects, decision capture, and after‑action analysis. Together, this
@@ -121,11 +118,11 @@ formats.
 // Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis
 
 Surveys of LMs in games and simulation describe agents that negotiate, plan, or role‑play in
-constrained environments [@ma_computational_2024; @zhang_llm_2024]; work on Diplomacy combines
-language models with planning and tool use [@meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022; @lamparth_human_2024]; and multi‑agent LM frameworks
-explore coordination, debate, and self‑critique [@zhang_llm_2024; @yao_spin-bench_2025]. Parallel reviews
+constrained environments @ma_computational_2024 @zhang_llm_2024 work on Diplomacy combines
+language models with planning and tool use @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @lamparth_human_2024 and multi‑agent LM frameworks
+explore coordination, debate, and self‑critique @zhang_llm_2024 @yao_spin-bench_2025. Parallel reviews
 in defense communities catalog AI for training and analysis but emphasize quantitative or kinetic
-models [@geist_understanding_nodate].
+models @geist_understanding_nodate.
 
 Across these threads, reporting is heterogeneous and evaluation often short‑horizon or
 subjective; prompts and facilitation procedures are rarely standardized; and open‑ended,
@@ -159,23 +156,23 @@ Figures: open‑endedness quadrants and representative placements.
 
 
 == Quadrants: Analytical vs Creative
-
-#image("creativity_quadrants.png")
+#image("creativity_graph.drawio.png")
 Figure: Open‑endedness quadrants (illustrative placement of formats).
 
-=== Q1: Analytical Player, Creative Adjudicator
-This quadrant covers games in which players are often relatively limited in their action space,
-while a flexible, often human, adjudicator computes the outcomes. A less common quadrant,
-well‑known games that would fall into this quadrant include classic Free Kriegsspiel, where the
-focus is on limited procedural military actions while the outcomes are adjudicated by a human
-adjudicator. Many other battlefield‑scale wargames would fall under this category.
 
-=== Q2: Analytical Player, Analytical Adjudicator
+=== Q1: Analytical Player, Analytical Adjudicator
 This quadrant covers rigid, rule‑based systems for both the players and the adjudicators (often
 predetermined scoring). Of the quadrants, this quadrant, alongside Q4, is among the most
 extensively explored, as it captures traditional “quantitative” wargames. Notable examples
 include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
 of traditional strategy board games such as chess, checkers, and Go.
+
+=== Q2: Analytical Player, Creative Adjudicator
+This quadrant covers games in which players are often relatively limited in their action space,
+while a flexible, often human, adjudicator computes the outcomes. A less common quadrant,
+well‑known games that would fall into this quadrant include classic Free Kriegsspiel, where the
+focus is on limited procedural military actions while the outcomes are adjudicated by a human
+adjudicator. Many other battlefield‑scale wargames would fall under this category.
 
 === Q3: Creative Player, Analytical Adjudicator
 This quadrant covers games with highly creative agents and low‑creativity adjudicators. Common
@@ -184,7 +181,7 @@ procedural adjudicator. This includes the vast majority of board games with a so
 rigid scoring rules, such as Diplomacy and Settlers of Catan.
 
 Of the quadrants, this quadrant is one of the most explored in its relation to AI, with extensive
-research, especially with wargames such as Diplomacy, most notably Meta’s Cicero [@meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022]. With rigid
+research, especially with wargames such as Diplomacy, most notably Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022. With rigid
 adjudication mechanisms and often rigid procedural agent mechanisms, games in this quadrant
 are mechanically simple to run and evaluate, which leads to the popularity of this category.
 
@@ -199,19 +196,7 @@ Nations). These exercises are common in defense, diplomacy, and organizational d
 
 == Why Q4 matters for analysis
 Games that allow creativity for both players and adjudicators better support classic aims of
-wargaming: exploring uncertainty, revealing assumptions, and eliciting expert judgment. Few
-studies automate construction or evaluation for Q4 settings.
-
-
-*Q4 is most similar to reality*
-Reality is highly creative and higher creativity provides more value as a serious game. 
-
- - Wargame
-  - battlefield
-  - non-battlefield
- - Business Wargame
-- Diplomatic Simulation
-- Generalized Social Simulation
+wargaming: exploring uncertainty, revealing assumptions, and eliciting expert judgment. Real world scenarios are hardly analytical and issues with rigid rule set for players and adjudicators mapping poorly to real world scenarios are obvious and well-explored; treatises on this matter could be dated at least back to the Free Kriegsspiel movement in the 1870s. However, few studies automate construction or evaluation for Q4 settings.
 
 *Q4 takes advantage of improving AI capabilities*. 
 Starting off as just a bank of ideas and substance for this section.
@@ -290,14 +275,19 @@ conflicts are adjudicated. We outline practical next steps for language‑based 
 open directions for evaluation and sharing of artifacts.
 
 === military uses (glenn/stu)
+[battlefield/material focused wargames vs diplomacy
+we can leave diplomatic aspects of military wargames to next section to avoid overlap, can mention] - isaac
 
+=== Diplomacy Games
+Diplomacy wargaming centers on language, signaling, and credibility rather than material force and are used in international diplomacy and international relations studies. Open‑ended, argument‑driven formats (seminar, matrix) capture how positions evolve through persuasion, norm invocation, and threat–promise exchanges across multiple stakeholders (states, IOs, NGOs, industry). When LMs participate, their value is in maintaining coherent narratives over long horizons, proposing plausible options under contested facts, helping surface implicit assumptions in briefs and communiqués, processing scenarios, and aiding with adjudication on non-analytical judging rubrics.
 
-=== International Diplomacy Games
-Diplomatic wargaming centers on language, signaling, and credibility rather than material force. Open‑ended, argument‑driven formats (seminar, matrix) capture how positions evolve through persuasion, norm invocation, and threat–promise exchanges across multiple stakeholders (states, IOs, NGOs, industry). When LMs participate, their value is in maintaining coherent narratives over long horizons, proposing plausible options under contested facts, and helping surface implicit assumptions in briefs and communiqués.
+Similar to military wargames, diplomatic wargaming are a commonplace in experiental learning for military and diplomatic training and in international relations studies. It provides support for better understanding of unseen or infrequent scenarios (such as nuclear crises) or to reevaluate existing scenario for alternate outcomes. 
 
-Compared with battlefield scenarios, diplomatic games emphasize incomplete and asymmetric information, face‑saving, and issue linkage (security tied to trade, technology, or climate). Facilitation and adjudication must account for audience costs, domestic politics, and path dependence across rounds. LMs can assist by drafting position papers, back‑channel messages, or press releases in different registers, while humans retain control of red lines, escalation ladders, and legitimacy constraints.
+Compared with battlefield scenarios, diplomatic games emphasize incomplete and asymmetric information, face‑saving, issue linkage (security tied to trade, technology, or climate), and a shift away from material forces towards abstracted interests. Facilitation and adjudication must account for audience costs, domestic politics, and path dependence across rounds. LMs can assist by drafting position papers, back‑channel messages, or press releases in different registers, while humans retain control of red lines, escalation ladders, and legitimacy constraints.
 
 Practical design choices that matter include: clear turn structure (front‑channel vs. back‑channel), explicit rules for information sharing and leaks, and rubrics that reward consistency and coalition‑building rather than only “wins.” Artifact capture (transcripts, proposals, dissent notes) is crucial for after‑action learning. Reproducibility improves when scenarios, prompts, and adjudication criteria are shared alongside model/version information.
+
+International diplomacy and relations wargames particularly benefit from wargaming because of its creative and non-analytical structure. With subjective rubrics and emphasis on cooperation and social interactions, creative players and adjudications are nearly necessary and alleviates human cost from traditional executions of diplomatic wargames with human players and computers whether it is thorugh fully autonomous or human-aided.
 
 === business/organization wargames (glenn and rohan)
 Business and organizational wargames use competitive or cooperative scenarios to stress‑test strategy under uncertainty (market entry, pricing, regulatory change, supply‑chain disruption, M&A). Open‑ended play surfaces narrative risks (misaligned incentives, vendor lock‑in, reputation shocks) that spreadsheets can miss. LMs can play roles as competitor teams, regulators, customers, or internal functions (legal, comms), generating options and counter‑moves in natural language.
@@ -330,38 +320,26 @@ Evaluating reinforcement learning agents in environments like Catan goes beyond 
 
 Through experimenting with AI in wargames, the fields of economics and finance can move beyond just static theoretical models to more dynamic real-world simulating environments governed by some form of uncertainty in higher creativity adjudicator wargames. AI agents acting as firms, governments, private entities, and more can enable the exploration of system risks, policy interventions, and resource distribution at scale. Thus, the study of AI in wargames, such as Civilization IV not only deepens our understanding of strategic behavior, while also offering a novel methodology for testing and refining economic and financial theory.
 
-= Safety considerations (Parv and Yixiong)
+= Safety considerations (Parv Yixiong)
 
-Results of wargames often directly inform organizational policy, discussion, and institutional decision-making, including in sensitive policy and defensive contexts [CITATION NEEDED]. Because the design and intepretation of wargames often assume human players and adjudicators with fundamentally different behavior patters than LMs, the incorporation of LMs in wargaming necessitates reevaluation of traditional wargaming methodology and interpretation. 
+Results of wargames often directly inform organizational policy, discussion, and institutional decision-making, including in sensitive policy and defensive contexts @noauthor_influence_2023. Because the design and interpretation of wargames often assume human players and adjudicators with fundamentally different behavior patters than LMs, the incorporation of LMs in wargaming necessitates reevaluation of traditional wargaming methodology and interpretation. 
 
-== Known LLM vulnerabilities in simulation (Yixiong)
+== Known LM simulation vulnerabilities
 
-Prior work notes recurring issues when LLMs are used for simulation: (lack of) diversity, bias, sycophancy, etcetera @anthis_llm_2025. These observations vary by model, prompt, and facilitation; they motivate context-dependent guardrails and careful interpretation rather than categorical claims about capability.  In this section, we outline a non-exhaustive set of common vulnerabilities as they apply to the most common applications of wargaming, but practitioners should carefully evaluate LLM behavior in their own contexts.  
-- Escalation dynamics: LLMs have shown escalatory tenencies in diplomatic and military contexts @rivera_escalation_2024.  Despite proposed mitigations such as @elbaum_managing_2025, this is an important evaluation criteria for military and diplomatic use-cases of war-gaming.
-- Biases & implicit utilities: the model is only as good as the data; noise and spurious correlations pre-training and post-training mean that LLMs are inherently biased @taubenfeld_systematic_2024.  Furthermore, @mazeika_utility_2025 demonstrates that these biases lead to implicit utilities and preferences over sets of world states.  
-- CoT unfaithfulness: @turpin_language_2023 @lanham_measuring_2023 show that LLM are not always 'faithful' in their reasoning; in the context of wargaming, this could materialize as mis-attribution decision factors.  Practitioners should treat LLM verbalizations as likely explanations and not assume causal implications. 
-- Sycophancy: off-the-shelf LLMs are trained to mimic assistants and users prefer agreeable assistants, so a notable artifact of post-training is emergent sycophancy @sharma_towards_2025.  
-- Incoherency over long contexts: a key challenge for LLMs is staying consistent over long contexts @liu_lost_2023.  There is also a gap between the claimed context and effective context lengths @modarressi_nolima_2025, with current SOTA models at ~8k tokens.  Effective war-gaming requires strategy consistency, so long horizon simulations need sound context compression strategies to remain effective.
+Prior work notes recurring issues when LMs are used for simulation, including bias, (lack of) diversity, and sycophancy @anthis_llm_2025. These observations vary by model and motivate context-dependent guardrails rather than categorical claims about capability. We outline a non-exhaustive set of vulnerabilities as they apply to the most common applications of wargaming, but practitioners should carefully evaluate LM behavior in their own contexts.  
+- Escalation dynamics: LMs have shown escalatory tendencies in diplomatic and military contexts @rivera_escalation_2024. Despite proposed mitigation techniques @elbaum_managing_2025, this is an important consideration for military and diplomatic wargaming use-cases.
+- Biases & implicit utilities: Noise and spurious correlations pre-training and post-training mean that LMs are inherently biased @taubenfeld_systematic_2024.  Furthermore, @mazeika_utility_2025 demonstrates that these biases lead to implicit preferences for certain world states; this may lead to systematic blind spots in LM agents, which is particularly concerning for adversarial modeling.    
+- CoT unfaithfulness: @turpin_language_2023 @lanham_measuring_2023 show that LLM are not always 'faithful' in their reasoning; in the context of wargaming, this could manifest as misattribution of their decision factors.
+- Sycophancy: off-the-shelf LMs are trained to mimic assistants and users prefer agreeable assistants, so a notable artifact of post-training is emergent sycophancy @sharma_towards_2025. In red-team or human-AI exercises, sycophancy may mask strategic vulnerabilities and incorrectly validate operator assumptions. 
+- Incoherency over long contexts: LMs struggle to maintain cohesion over long contexts @liu_lost_2023. Given there is also a gap between the claimed context and effective context lengths @modarressi_nolima_2025, and effective war-gaming requires strategic continuity, long horizon simulations may require sound context compression strategies to remain effective.
 
-
-Categories (for reference, to be deleted)
- - Wargame
-  - battlefield
-  - non-battlefield
- - Business Wargame
-- Diplomatic Simulation
-- Generalized Social Simulation
-
-== Interpretation of LM-simulated wargames (Parv)
+== Interpretation of LM-simulated wargames
 #figure(
-  image("model-simulator.png", width: 200%),
-  caption: [
-   Language models may perform recursive simulations for wargaming tasks, complicating interpretation.
-  ],
-)
-Language models draw on in-context information and pretraining data to simulate text-producing agents. These characters can be recursive; if, for instance, the model context instructs it to play a solider in a wargame, it will seek not to simulate the solider but to simulate a wargame's portrayal of a solider. Because instruction-tuned models are trained to adopt a persona of a helpful assistant (e.g., Claude, Qwen), it may in fact simulate an assistant portraying a wargamer portraying a solider. For this reason, interpreting LM outputs must acknowledge the context of these recursive personas, each of which is brittle to subtle prompting and contextual changes [CITATION NEEDED]. Wargame practitioners using LMs should therefore ensure their results are replicable over diverse prompt formats, context structures, and wording changes. This LM-as-simulator framing implies that wargames using LM outputs for domain-specific tasks require human SME oversight. Sophisticated-seeming responses may reflect skillful simulation rather than domain expertise, creating overconfidence in out-of-distribution scenarios where the model's training data provides poor guidance [CITATION NEEDED].
+  image("model-simulator.png", width: 100%),
+  caption: [Language models may perform recursive simulations, complicating interpretation.],)
+Language models draw on in-context information and pretraining data to simulate text-producing agents. These characters can be recursive; if, for instance, the model context instructs it to play a solider in a wargame, it will seek not to simulate the solider but to simulate a wargame's portrayal of a solider. Because instruction-tuned models are trained to adopt a persona of a helpful assistant (e.g., Claude, Qwen), it may in fact simulate an assistant portraying a wargamer portraying a solider. For this reason, interpreting LM outputs must acknowledge the context of these recursive personas, each of which is brittle to subtle prompting and contextual changes [CITATION NEEDED]. Wargame practitioners using LMs should therefore ensure their results are replicable over diverse prompt formats, context structures, and wording changes. This LM-as-simulator framing implies that wargames using LM outputs for domain-specific tasks require human SME oversight. Sophisticated-seeming responses may reflect skillful simulation rather than domain expertise, creating overconfidence in out-of-distribution scenarios where the model's training data provides poor guidance @taubenfeld_systematic_2024.
 
-== social deception, persuasion, and deduction (ryan and evan)
+== social deception, persuasion, and deduction
 Open‑ended wargames frequently hinge on narrative competition: actors advance frames, counter‑frames, and selective evidence to shape beliefs and coalitions. LMs can generate plausible narratives and rhetorical strategies, but sustained strategy remains a challenge; models may drift, mirror interlocutors (sycophancy), or over‑fit to short‑term persuasion at the expense of long‑term credibility. In practice, systems must balance persuasive skill with traceability and consistency across turns.
 
 Operationally, environments rich in misinformation require agents to distinguish deception from uncertainty and to reason about source reliability. Useful behaviors include: explicitly tracking claims and evidence, separating observation from inference, and flagging contested facts. Human facilitation helps steer back toward grounded analysis when models confabulate, and evaluation rubrics can reward caution, justification quality, and internal consistency rather than only rhetorical flourish.
@@ -371,17 +349,17 @@ Design patterns that harden systems include structured argumentation (claim–ev
 == Reccommendations
 Given the unique error profile of LMs, practitioners should adopt unusually in-depth output monitoring and red-teaming measures to mitigate wargaming-specific risks. For high-stakes applications in sensitive fields, at minimum these should consist of:
 
-*Comparison to human or rules-based baselines.* Establishing control conditions using deterministic agents or human SME players or adjudicators enables qualitative and quantitative measurements of LLM agent performance in various conditions, and can help detect systematic biases or failure modes unique to LM reasoning. Existing human baselines in relevant task spaces (e.g. creative writing, strategic deception) are largely neither transparent nor rigorous enough to provide meaningful comparisons [CITE WEI]. High-stakes wargames therefore should prioritize bespoke evaluations with scenario-relevant metrics and adequate analysis.
+*Comparison to human or rules-based baselines.* Establishing control conditions using deterministic agents or human SME players or adjudicators enables qualitative and quantitative measurements of LLM agent performance in various conditions, and can help detect systematic biases or failure modes unique to LM reasoning. Existing human baselines in relevant task spaces (e.g. creative writing, strategic deception) are largely neither transparent nor rigorous enough to provide meaningful comparisons @wei_recommendations_2025. High-stakes wargames therefore should prioritize bespoke evaluations with scenario-relevant metrics and adequate analysis.
 
-*Semantic and syntactic robustness testing.* To measure output stability and, by proxy, LM reliability, running inference across paraphrased inputs, synonym substitutes, and varied prompt structures may surface inconsistent strategic reasoning [CITE Nal]. Testing both surface-level, syntactic robustness and semantic equivalence can largely be automated through use of auxiliary and smaller LMs, and integrated into deployed workflows to inform user confidence in outputs.
+*Semantic and syntactic robustness testing.* To measure output stability and, by proxy, LM reliability, running inference across paraphrased inputs, synonym substitutes, and varied prompt structures may surface inconsistent strategic reasoning @nalbandyan_score_2025. Testing both surface-level, syntactic robustness and semantic equivalence can largely be automated through use of auxiliary and smaller LMs, and integrated into deployed workflows to inform user confidence in outputs.
 
-*Calibration assessment.* Well-calibrated models, those which are correct as much as their expressed confidence predicts, help minimize overconfidence in flawed strategic assessments or underconfidence in sound reasoning, providing an important auditing mechanism for understanding LM decisions; measurements of LM calibration allow external stakeholders of wargames to understand systematic flaws in LM decision-making. Additionally, requiring LMs to quantify uncertainty is likely to improve agent performance and make human review of key actions more efficient, particularly in high-stakes situations [CITE LIU]. 
+*Calibration assessment.* Well-calibrated models, those which are correct as much as their expressed confidence predicts, help minimize overconfidence in flawed strategic assessments or underconfidence in sound reasoning, providing an important auditing mechanism for understanding LM decisions; measurements of LM calibration allow external stakeholders of wargames to understand systematic flaws in LM decision-making. Additionally, requiring LMs to quantify uncertainty is likely to improve agent performance and make human review of key actions more efficient, particularly in high-stakes situations @liu_uncertainty_2025. 
 
-*Evaluation awareness monitoring.* LMs have been shown to reliably be aware when they are in evaluation contexts [Needham et al], and may perform differently when aware they are being tested [CITE abel], potentially masking real-world failure modes, leading to spurious errors, or displaying deceptive sophisticated reasoning or output during assessment phases. This is of particular concern with wargaming applications because recursive simulations may further distort real-life LM actions. Practitioners should measure evaluation awareness both through motivated questioning during scenarios (e.g., "Do you believe you, as an AI model, are being evaluated?") and passive Chain-of-thought (CoT) monitoring, and episodes containing clear evidence of evaluation awareness should be reevaluated. 
+*Evaluation awareness monitoring.* LMs have been shown to reliably be aware when they are in evaluation contexts @needham_large_2025, and may perform differently when aware they are being tested @abdelnabi_linear_2025, potentially masking real-world failure modes, leading to spurious errors, or displaying deceptive sophisticated reasoning or output during assessment phases. This is of particular concern with wargaming applications because recursive simulations may further distort real-life LM actions. Practitioners should measure evaluation awareness both through motivated questioning during scenarios (e.g., "Do you believe you, as an AI model, are being evaluated?") and passive Chain-of-thought (CoT) monitoring, and episodes containing clear evidence of evaluation awareness should be reevaluated. 
 
-*Multi-model consensus and auditing.* To ensure reproducibility of results over diverse conditions, multiple model architectures should be tested on identical sceanrios to identify points of high uncertainty and common failure modes. For instance, cross-model critique, while underperforming when compared to external feedvack, outperforms self-cirrection and cofers modest performance benefits in multi-agent settings [CITE SAHEL]. Additionally, significant concsensus breakdowns may signal events requiring human oversight. 
+*Multi-model consensus and auditing.* To ensure reproducibility of results over diverse conditions, multiple model architectures should be tested on identical sceanrios to identify points of high uncertainty and common failure modes. For instance, cross-model critique, while underperforming when compared to external feedvack, outperforms self-cirrection and cofers modest performance benefits in multi-agent settings @saleh_evaluating_2025. Additionally, significant concsensus breakdowns may signal events requiring human oversight. 
 
-*Human stakeholder training.* LM-enabled wargaming presents unintuitive failure modes, overconfidence patterns, and strengths when compared to the use of human agents. These considerations do not align with the expectation of stakeholders, who are likely to ascribe moral intent to LM output even in abstract contexts and unlikely to question plain statements from LMs [CITE SHARMA]. Operators need technical understanding of when to trust, how to improve, and where to audit LM outputs. Key stakeholders, including decision-makers relying on LM-enabled wargames, should conceptually understand LM behavioral markers and be provided with confidence assessments of wargame conclusions. 
+*Human stakeholder training.* LM-enabled wargaming presents unintuitive failure modes, overconfidence patterns, and strengths when compared to the use of human agents. These considerations do not align with the expectation of stakeholders, who are likely to ascribe moral intent to LM output even in abstract contexts and unlikely to question plain statements from LMs @sharma_why_2024. Operators need technical understanding of when to trust, how to improve, and where to audit LM outputs. Key stakeholders, including decision-makers relying on LM-enabled wargames, should conceptually understand LM behavioral markers and be provided with confidence assessments of wargame conclusions. 
 
 = Desiderata for LM‑Enabled Wargaming
 
@@ -405,15 +383,16 @@ Given the unique error profile of LMs, practitioners should adopt unusually in-d
 - Note model/version, access method, and any external tools used.
 - Document known limitations and appropriate use contexts.
 
-= Conclusions
-== Future Work
+= Open Research Questions
+// THIS IS THE FUTURE WORK SECTION
 Standardize reporting for language‑based wargames: share prompts, facilitation procedures, and
 adjudication rubrics with seeds and model versions. Expand beyond short horizons by testing
 memory, retrieval, and role‑stability over multi‑turn scenarios. Compare lightweight
 interventions (system prompts, few‑shot ICL, adapters) with simple baselines. Encourage
 artifact release (transcripts, code, minimal configs) to enable replication across venues.
-== Final Thoughts
-LMs are reshaping how language‑centric wargames can be designed and studied, but progress
+
+= Conclusions
+LMs are reshaping how open-ended and language‑centric wargames can be designed and studied, but progress
 depends on clarity about roles, formats, and evaluation. A discussion‑style synthesis helps the
 community converge on practical choices that preserve the strengths of human‑facilitated play
 while making careful use of automation. We hope the references and patterns here accelerate
@@ -442,3 +421,4 @@ security and policy contexts.
       style: "association-for-computational-linguistics-blinky.csl")
 ]
 
+#include "appendix.typ"
