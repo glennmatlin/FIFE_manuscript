@@ -32,8 +32,8 @@ This new generation of _Artificial Intelligence (AI) wargames_ relies more on *c
 We summarize descriptive statistics and qualitative themes from the surveyed works. Counts
 cover venues, years, and domains; design patterns group LM roles (player, adjudicator,
 scenario, analyst) and game formats (seminar, matrix, digital multi‑turn). We highlight
-typical prompting strategies, facilitation approaches, and reported outcomes. Figure 2  shows
-yearly paper counts by quadrant; Figure 3 summarizes the screening flow. Tables provide quick
+typical prompting strategies, facilitation approaches, and reported outcomes. @fig:yearly-counts shows
+yearly paper counts by quadrant; @fig:screening-flow summarizes the screening flow. Tables provide quick
 reference; detailed extraction lives in the appendix.
 
 Time analysis: annual volume and venue mix.
@@ -43,8 +43,13 @@ Figures: open‑endedness quadrants and representative placements.
 
 
 == Quadrants: Analytical vs Creative
-#image("figures/creativity_graph.drawio.png")
-Figure: Open‑endedness quadrants (illustrative placement of formats).
+
+As shown in @fig:creativity-quadrants, we can classify wargames based on the creativity of the player and the adjudicator.
+
+#figure(
+  image("figures/creativity_graph.drawio.png"),
+  caption: [Open‑endedness quadrants (illustrative placement of formats).],
+) <fig:creativity-quadrants>
 
 
 === Q1: Analytical Player, Analytical Adjudicator
@@ -119,7 +124,7 @@ and facilitation practices are essential.
     table.hline()
   ),
   caption: [Yearly paper counts by quadrant (2019–present).],
-)
+) <fig:yearly-counts>
 
 #figure(
   placement: top,
@@ -139,7 +144,7 @@ and facilitation practices are essential.
     table.hline()
   ),
   caption: [Screening flow with counts per stage and inclusion criteria.],
-)
+) <fig:screening-flow>
 
 == Analysis of Q4 (qualitative)
 here, we talk about the papers in q4 only and characterize them
