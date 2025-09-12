@@ -24,8 +24,5 @@ constrained environments @ma_computational_2024 @zhang_llm_2024 work on Diplomac
 language models with planning and tool use @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @lamparth_human_2024 and multi‑agent LM frameworks
 explore coordination, debate, and self‑critique @zhang_llm_2024 @yao_spin-bench_2025. Parallel reviews
 in defense communities catalog AI for training and analysis but emphasize quantitative or kinetic
-models.
-Across these threads, reporting is heterogeneous and evaluation often short‑horizon or
-subjective; prompts and facilitation procedures are rarely standardized; and open‑ended,
-qualitative wargames remain under‑served. Our discussion consolidates approaches for
-language‑based formats and highlights practical choices that affect realism and utility.
+models @goldblum_wargames_2019.
+While existing surveys on LMs in games offer valuable insights, they often focus on quantitative benchmarks or specific tasks like negotiation, with less emphasis on the open-ended, qualitative wargames that are our focus. Furthermore, reporting across these threads is often heterogeneous, evaluations are short-horizon or subjective, and facilitation procedures are rarely standardized. This leaves the unique challenges of language-based wargaming under-served. Our work aims to fill this gap by consolidating approaches for these formats and highlighting practical design choices that affect realism and utility.

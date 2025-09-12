@@ -1,5 +1,7 @@
 #import "../config.typ":num_papers
 = Results
+Before presenting our findings, it is crucial to frame the unique evaluation challenges inherent in language-centric wargames. Unlike traditional simulations with structured inputs and discrete, well-defined output spaces (e.g., a move on a board), language-based systems operate in vast, open-ended semantic spaces. The input space comprises natural language prompts and player interactions, while the output space consists of generated text representing arguments, justifications, and actions. This semantic gap between a concise input and a nuanced, high-dimensional output makes direct, one-to-one comparisons difficult and introduces significant challenges for evaluation and reproducibility. Consequently, our analysis must consider not only the outcomes of actions but also the quality, coherence, and plausibility of the language used to justify them.
+
 We summarize descriptive statistics and qualitative themes from the surveyed works. Counts
 cover venues, years, and domains; design patterns group LM roles (player, adjudicator,
 scenario, analyst) and game formats (seminar, matrix, digital multi‑turn). We highlight
