@@ -1,10 +1,10 @@
-
+#import "../config.typ":num_papers
 = Safety Considerations
 // (Parv Yixiong)
 
 The results of wargames often directly inform organizational policy, discussions, and institutional decision-making, including in sensitive policy and defensive contexts @uk_ministry_of_defense_influence_2023. Because the design and interpretation of wargames usually assume human players and adjudicators with meaningfully different behavior patterns than LMs, the incorporation of LMs in wargaming necessitates reevaluation of traditional wargaming methodology and interpretation. 
 
-== Known LM simulation vulnerabilities
+== Known LM Vulnerabilities
 
 Prior work notes recurring issues when LMs are used for simulation, including bias, (lack of) diversity, and sycophancy @anthis_llm_2025. These observations vary by model and motivate context-dependent guardrails rather than categorical claims about capability. We outline a non-exhaustive set of vulnerabilities as they apply to the most common applications of wargaming, but practitioners should carefully evaluate LM behavior in their own contexts.  
 - *Escalation dynamics:* LMs have shown escalatory tendencies in diplomatic and military contexts @rivera_escalation_2024. Despite proposed mitigation techniques @elbaum_managing_2025, this is an important consideration for military and diplomatic wargaming use-cases.

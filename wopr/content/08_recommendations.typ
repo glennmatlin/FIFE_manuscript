@@ -1,4 +1,4 @@
-
+#import "../config.typ":num_papers
 = Recommendations
 Given LMs' unique error profile, practitioners should adopt in-depth output monitoring and red-teaming measures to mitigate wargaming-specific risks. For high-stakes applications in sensitive fields, these should include:
 

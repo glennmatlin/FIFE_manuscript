@@ -1,4 +1,4 @@
-
+#import "../config.typ":num_papers
 = Discussion
 We synthesize design choices that most influence realism and analytical value: how turns are structured, what evidence or justification is required, the level of human facilitation, and how conflicts are adjudicated. We outline practical next steps for language‑based formats and note open directions for evaluation and sharing of artifacts.
 

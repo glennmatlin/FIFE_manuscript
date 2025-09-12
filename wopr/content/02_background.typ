@@ -1,3 +1,4 @@
+#import "../config.typ"
 = Background
 == Artificial Intelligence
 To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) “the use of computers to carry out tasks that previously required human intelligence”. (TODO:CITE RAND!). \ // @national_security_commission_on_artificial_intelligence_final_2021 @sayler_artificial_2019

@@ -1,3 +1,4 @@
+#import "../config.typ"
 = Introduction
 #set quote(block:true)
 #quote(attribution:[WOPR from "Wargames" 1983])[

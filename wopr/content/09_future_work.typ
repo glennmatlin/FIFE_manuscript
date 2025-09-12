@@ -1,4 +1,4 @@
-
+#import "../config.typ":num_papers
 = Open Research Questions
 // THIS IS THE FUTURE WORK SECTION
 Standardize reporting for language‑based wargames: share prompts, facilitation procedures, and

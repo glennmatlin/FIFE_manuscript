@@ -1,3 +1,4 @@
+#import "../config.typ"
 = Related Works
 == Artificial Intelligence in Wargaming 
 //@li_exploration_2025
