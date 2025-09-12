@@ -1,6 +1,6 @@
 #import "../config.typ":num_papers
 = Discussion
-This section synthesizes key design principles for developing and evaluating LM-driven agents in open-ended wargames. Drawing from our comprehensive survey, we distill a set of core methodological considerations—such as turn structure, evidence requirements, human facilitation, and adjudication protocols—that influence the validity and analytical utility of language-based strategic simulations @robinson_in_stride_2018. We then contextualize these principles within specific domains to provide actionable guidance for researchers.
+This section synthesizes key design principles for developing and evaluating LM-driven agents in open-ended wargames. Drawing from our comprehensive survey, we distill a set of core methodological considerations—such as turn structure, evidence requirements, human facilitation, and adjudication protocols—that influence the validity and analytical utility of language-based strategic simulations @robinson_stride_2018. We then contextualize these principles within specific domains to provide actionable guidance for researchers.
 
 == Military Security
 // [battlefield/material focused wargames vs diplomacy we can leave diplomatic aspects of military wargames to next section to avoid overlap, can mention] - isaac
