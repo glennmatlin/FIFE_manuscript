@@ -21,12 +21,12 @@ Volumes of military literature for wargames over two hundred years have establis
 strategic planning, managing uncertainty, and the role of facilitation and judgment in
 producing insights rather than score-keeping. This long
 tradition is our motivation to focus on language‑based or open-ended wargames.\
-For this paper, we will adopt the academic definition for *serious wargames*, which are a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events, ultimately allowing for real-world insights. Based on our review of current literature, we adopt the following formal academic definition of the term wargame @coulthart_whats_2017 @us_army_war_college_strategic_2015  @rubel_epistemology_2006 @morgan_wargames_1991:
+For this paper, we will adopt the academic definition for *serious wargames*, which are a multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events, ultimately allowing for real-world insights. Based on our review of current literature, we adopt the following formal definition of the term wargame @coulthart_whats_2017 @us_army_war_college_strategic_2015 @deutschland_bundeswehr_wargaming_2017 @uk_ministry_of_defense_wargaming_2017 @rubel_epistemology_2006 @morgan_wargames_1991:
 + Ongoing conflict between actors with opposing interests or needs;
 + A synthetic environment that enables agent choice and feedback;
 + Agents make decisions and experience consequences via adjudication or rules;
 + Strategic reasoning uses information about other agents and the environment.
-// + TODO: possible to add a bullet here to limit definition to serious
+// + TODO: possible to add a bullet here to limit definition to serious games by implying we draw data for real world use or learning etc
 
 
 == Creative vs Analytical
@@ -34,8 +34,8 @@ For this paper, we will adopt the academic definition for *serious wargames*, wh
 // CITE: Creativity in LLM-based Multi-Agent Systems: A Survey
 Computational creativity has been a topic of study for many years ...(TODO: Riedl + Glenn FILL HERE)...
 
-The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_its_1995 @walton_developing_2019.
-SMEs have often classified wargames based on the primary skill required for success @deutschland_bundeswehr_wargaming_2017 @uk_ministry_of_defense_wargaming_2017. One common method SMEs use is placing games somewhere on a spectrum spanning from analytical to creative based on the qualitative aspects and game mechanics
+The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_its_1995 @walton_developing_2019 @wasser_gaming_2019. Therefore, game designers make intentional choices about the game's scope and rules to focus on the key skills they want to reinforce or gather data about @booth_wargame_2024. 
+SMEs have often classified wargames based on the primary skill required for success. One common method SMEs use is placing games somewhere on a spectrum spanning from analytical to creative based on the qualitative aspects and game mechanics
 @combe_ii_educational_2021 @de_rosa_design_2021 @ashdown_matrix_2018. Creative game types are those that are open-ended, non-linear games that heavily rely on creative problem solving, while the second is heavily structured and rule‑based games where analytical skills are more important @zegers_matrix_2011. These categories are respectively referred to as *creative wargames* and *analytical wargames* @franken_when_2013 @barzashka_five_2019.
 Open-ended games provide a far greater degree of creative freedom for players to identify the action needed to advance towards their goals and finish the game. Creativity offers players the freedom to identify unique paths to reach the victory condition, or even change the definition of the victory condition. Due to the open-ended nature of creative wargames, they have previously relied heavily on SMEs for
 scenario design, player actions, and adjudication @coulthart_whats_2017 @perla_what_1985. In the military domain, these game formats are commonly referred to as matrix wargames or seminar wargames @us_naval_war_college_war_2015. This creative wargame style favors players with superior argumentation and decision‑making to navigate the complex open‑ended game state.

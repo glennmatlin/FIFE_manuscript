@@ -1,13 +1,16 @@
 #import "../config.typ":num_papers
 = Discussion
-We synthesize design choices that most influence realism and analytical value: how turns are structured, what evidence or justification is required, the level of human facilitation, and how conflicts are adjudicated. We outline practical next steps for language‑based formats and note open directions for evaluation and sharing of artifacts.
+(TODO: use a better lead in here ie this section is for... etc one sentence needed )
+Using our research catalog we investigate each individual domain and analyzed the design choices to provide AI researchers an overview of (TODO: need to summarize what kind of things we overview here like "we overview X, Y, and Z"
+// old text: what evidence or justification is required, the level of human facilitation, and how conflicts are adjudicated.
 
 == Military Security
 // [battlefield/material focused wargames vs diplomacy we can leave diplomatic aspects of military wargames to next section to avoid overlap, can mention] - isaac
 
 == International Relations
 International Relations (IR) wargaming centers on language, signaling, and credibility rather than material force, and is used for communication, negotiation, and diplomacy. Open‑ended, argument‑driven formats (seminar, matrix) capture how positions evolve through persuasion, norm invocation, and threat–promise exchanges across multiple stakeholders (e.g., national states, non-government or industrial organizations). When LMs participate, their value is in maintaining coherent narratives over long horizons, proposing plausible options under contested facts, helping surface implicit assumptions in briefs and communiqués, processing scenarios, and aiding with adjudication on non-analytical rubrics and procedures.\
-In a similar manner to how wargames are used extensively by the officer corps of a military, wargames are commonplace among IR professionals. Wargames present an opportunity for experiential learning for diplomatic training. Wargames are used both to support training and development, and to analyze and gain a deeper understanding of diplomatic crises that were previously unseen or extremely infrequent (i.e., nuclear crises).\
+In a similar manner to how wargames are used extensively by the officer corps of a military, wargames are commonplace among IR professionals. Wargames present an opportunity for experiential learning for diplomatic training. Wargames are used both to support training and development, and to analyze and gain a deeper understanding of diplomatic crises that were previously unseen or extremely infrequent (i.e., nuclear crises). @reddie_evidence_2023 @hersman_under_2020 @worman_designing_2023
+
 Compared with military applications, diplomatic games emphasize incomplete and asymmetric information, face‑saving, issue linkage (security tied to trade, technology, or climate), and a shift away from material forces towards abstracted interests. Facilitation and adjudication must account for audience costs, domestic politics, and path dependence across rounds. LMs can assist by drafting position papers, back‑channel messages, or press releases in different registers, while humans retain control of red lines, escalation ladders, and legitimacy constraints.\
 Practical design choices that matter include: clear turn structure (front‑channel vs. back‑channel), explicit rules for information sharing and leaks, and rubrics that reward consistency and coalition‑building rather than only “wins.” Artifact capture (transcripts, proposals, dissent notes) is crucial for after‑action learning. Reproducibility improves when scenarios, prompts, and adjudication criteria are shared alongside model/version information.\
 IR professionals in particular benefit from wargaming because of its creative and non-analytical structure. With subjective rubrics and emphasis on cooperation and social interactions, innovative players and adjudications are nearly necessary and alleviate human cost from traditional executions of diplomatic wargames with human players and computers, whether it is through fully autonomous or human-aided.
@@ -45,3 +48,6 @@ Other games, such as Settlers of Catan, also provide valuable macro-scale models
 
 Through experimentation with AI in wargames, the fields of economics and finance can move beyond static theoretical models toward dynamic environments governed by uncertainty and enforced by structured adjudicators. AI agents acting as firms, governments, or traders enable exploration of systemic risks, policy interventions, and resource distribution at scale. By studying these agents in wargames such as Civilization IV and Settlers of Catan, researchers gain novel methodologies for testing, refining, and even challenging economic and financial theory. In doing so, wargames not only deepen our understanding of strategic behavior but also provide actionable insights into the design and regulation of real-world markets.
 
+== Medicine and Public Health
+(TODO: Dark winter and other wargames)
+// todo: ask parv|yixiong 

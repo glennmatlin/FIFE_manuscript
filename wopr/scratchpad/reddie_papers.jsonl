@@ -1,10 +1,53 @@
-{"paper_id":"booth_reddie_2024_trilemma","bibtex_key":"booth_wargame_2024","title":"Wargame Design: Addressing the Trilemma","authors":["Ruby E. Booth","Andrew W. Reddie"],"year":2024,"venue":"MORS Journal of Wargaming","url":"https://www.mors.org/Publications/MORS-Journal-of-Wargaming","shorttitle":"wargame","bluf":"Defines the wargamer’s trilemma—analytical utility vs realism vs playability—and offers design tactics to recover rigor and repeatability.","relevance":"Method foundations for instrumenting open-ended language-based games so LLM runs yield analyzable data.","keywords":["wargaming trilemma","analytical validity","repeatability","adjudication","measurement","controls"],"best_fit_citations":[{"trigger_phrases":["trilemma","trade-off among realism/playability/analysis","valid inference from games"],"how_to_use":"Cite when motivating constraints/instrumentation for open-ended LLM play."},{"trigger_phrases":["design choices enable repeatability","treatment/control in games"],"how_to_use":"Cite when describing controlled, repeatable designs for language games."}]}
-{"paper_id":"reddie_etal_2023_wargames_as_data","bibtex_key":"reddie_wargames_2023","title":"Wargames as Data: Addressing the Wargamer's Trilemma","authors":["Andrew W. Reddie","Ruby E. Booth","Bethany L. Goldblum","Kiran Lakkaraju","Jason Reinhardt"],"year":2023,"venue":"Preprint / book chapter (Cyber Wargaming)","url":"https://arxiv.org/abs/2302.08065","shorttitle":"wargames","bluf":"Blueprint for collecting reliable, repeatable data from wargames: sampling, randomization, adjudication transparency, and analysis.","relevance":"Direct playbook for turning free-form, LLM-driven play into datasets with treatments and measurement.","keywords":["experimental design","randomization","sampling","adjudication","data pipeline"],"best_fit_citations":[{"trigger_phrases":["wargames as data","randomization in wargames","sampling frames"],"how_to_use":"Method section—experimental design and telemetry for LLM agents."},{"trigger_phrases":["adjudication transparency","measurement plan"],"how_to_use":"Tie to verification/metrics for language outputs."}]}
-{"paper_id":"goldblum_reddie_2023_lawfare","bibtex_key":"goldblum_integrating_2023","title":"Integrating the Art and Science of Wargaming","authors":["Bethany L. Goldblum","Andrew W. Reddie"],"year":2023,"venue":"Lawfare","url":"https://www.lawfaremedia.org/article/integrating-art-and-science-wargaming","shorttitle":"integrating","bluf":"Argues for scientific-method discipline (controls, replication) while preserving design art; flags algorithmic decision-support as testable treatments.","relevance":"Bridges human-centered play with rigorous tests—useful when inserting LLM agents or decision aids.","keywords":["controls vs realism","white-cell bias","replication","decision-support treatments"],"best_fit_citations":[{"trigger_phrases":["control/treatment comparison","replication in games"],"how_to_use":"Justify controlled comparisons of LLM vs human or with/without LLM aides."},{"trigger_phrases":["white cell bias","adjudicator effects"],"how_to_use":"Discuss measures to avoid bias with LLM adjudication."}]}
-{"paper_id":"reddie_etal_2018_science_nextgen","bibtex_key":"reddie_nextgeneration_2018","title":"Next-generation wargames","authors":["Andrew W. Reddie","Bethany L. Goldblum","Kiran Lakkaraju","Jason C. Reinhardt","Michael Nacht","Laura Epifanovskaya"],"year":2018,"venue":"Science","url":"https://doi.org/10.1126/science.aav2135","shorttitle":"nextgeneration","bluf":"Makes the case for digitally instrumented, repeatable, hypothesis-driven wargames.","relevance":"Foundational rationale for data-rich, software-mediated LLM wargaming at scale.","keywords":["digital instrumentation","hypothesis testing","repeatability","scale"],"best_fit_citations":[{"trigger_phrases":["digitally instrumented wargames","scalable experiments"],"how_to_use":"Motivate software stack and logging for LLM play."},{"trigger_phrases":["hypothesis-driven play"],"how_to_use":"State research questions and falsifiable claims in open-ended games."}]}
-{"paper_id":"letchford_etal_2022_signal","bibtex_key":"letchford_experimental_2022","title":"Experimental Wargaming with SIGNAL","authors":["Joshua Letchford","Laura Epifanovskaya","Kiran Lakkaraju","Mika Armenta","Andrew W. Reddie","Bethany L. Goldblum","et al."],"year":2022,"venue":"Military Operations Research 27(2)","url":"https://www.mors.org/Publications/MOR-Journal","shorttitle":"experimental","bluf":"Describes SIGNAL, a digital experimental wargame supporting treatment/control designs and structured telemetry.","relevance":"Architecture to emulate for LLM-in-the-loop experiments (players, opponents, adjudicators).","keywords":["SIGNAL","telemetry","treatment/control","online/board implementations"],"best_fit_citations":[{"trigger_phrases":["SIGNAL","experimental platform"],"how_to_use":"Related work when positioning your platform; or methods when discussing instrumentation."},{"trigger_phrases":["telemetry","structured logging"],"how_to_use":"Describe data capture for LLM actions/messages."}]}
-{"paper_id":"reddie_goldblum_2023_jpr_unthinkable","bibtex_key":"reddie_evidence_2023","title":"Evidence of the unthinkable: Experimental wargaming at the nuclear threshold","authors":["Andrew W. Reddie","Bethany L. Goldblum"],"year":2023,"venue":"Journal of Peace Research 60(5)","url":"https://doi.org/10.1177/00223433221094734","shorttitle":"evidence","bluf":"Experimental wargaming shows how tailored nuclear options influence escalation likelihood; triangulated with survey evidence.","relevance":"Demonstrates end-to-end pipeline from experimental design to policy inference—pattern for LLM-impact studies.","keywords":["escalation dynamics","triangulation","mixed methods","nuclear threshold"],"best_fit_citations":[{"trigger_phrases":["experimental wargaming results","triangulation with surveys"],"how_to_use":"Evaluation/Discussion when arguing external validity of LLM-agent findings."}]}
-{"paper_id":"goldblum_reinhardt_reddie_2019_bulletin_signal","bibtex_key":"goldblum_wargames_2019","title":"Wargames as experiments: The Project on Nuclear Gaming's SIGNAL framework","authors":["Bethany L. Goldblum","Jason C. Reinhardt","Andrew W. Reddie"],"year":2019,"venue":"Bulletin of the Atomic Scientists","url":"https://thebulletin.org/2019/05/wargames-as-experiments-the-project-on-nuclear-gamings-signal-framework/","shorttitle":"wargames","bluf":"Non-technical overview of experimental logic behind SIGNAL and how to obtain generalizable insights from games.","relevance":"Plain-language citation to justify experimental framing to broader audiences.","keywords":["SIGNAL overview","generalizability","experimental logic"],"best_fit_citations":[{"trigger_phrases":["wargames as experiments","generalizable insights"],"how_to_use":"Intro/Background to frame the study’s approach."}]}
-{"paper_id":"lakkaraju_etal_2020_springsim_gap","bibtex_key":"lakkaraju_experimental_2020","title":"Experimental Wargames to Address the Complexity-Scarcity Gap","authors":["Kiran Lakkaraju","Jason Reinhardt","Joshua Letchford","Jonathan Whetzel","Bethany L. Goldblum","Andrew W. Reddie"],"year":2020,"venue":"SpringSim Proceedings","url":"https://dl.acm.org/doi/abs/10.5555/3408207.3408223","shorttitle":"experimental","bluf":"Proposes architectures to scale experimental samples without losing essential behavior, tackling small-N constraints.","relevance":"Supports running many LLM-agent replications and reporting robust statistics.","keywords":["scaling samples","replications","architecture","small-N"],"best_fit_citations":[{"trigger_phrases":["replications","sample size","scalability"],"how_to_use":"Methods when justifying number of LLM runs."}]}
-{"paper_id":"hersman_etal_2020_csis_shadow","bibtex_key":"hersman_under_2020","title":"Under the Nuclear Shadow: Situational Awareness Technology and Crisis Decisionmaking","authors":["Rebecca K. C. Hersman","Reja Younis","Bryce Farabaugh","Bethany L. Goldblum","Andrew W. Reddie"],"year":2020,"venue":"CSIS Report","url":"https://csis-website-prod.s3.amazonaws.com/s3fs-public/publication/200318_UnderNucearShadow_FullReport_WEB.pdf","shorttitle":"under","bluf":"Findings from eight tabletop exercises on how emerging situational-awareness tech (incl. AI tools) shapes crisis stability.","relevance":"Policy context for potential benefits/risks of LLM decision aids in crises.","keywords":["situational awareness","AI decision support","crisis stability","tabletop exercises"],"best_fit_citations":[{"trigger_phrases":["AI/automation effects","crisis decision support"],"how_to_use":"Discussion of policy implications and risk."}]}
-{"paper_id":"reddie_etal_2019_science_response","bibtex_key":"reddie_applying_2019","title":"Applying wargames to real-world policies—Response","authors":["Andrew W. Reddie","Bethany L. Goldblum","Kiran Lakkaraju","Jason C. Reinhardt","Michael Nacht","Laura Epifanovskaya"],"year":2019,"venue":"Science 363(6434)","url":"https://doi.org/10.1126/science.aaw7260","shorttitle":"applying","bluf":"Defends analytical use of wargames when designed with controls, replication, and transparent adjudication.","relevance":"Citable defense of rigorous experimental wargaming when reviewers question validity of LLM-game studies.","keywords":["controls","replication","adjudication","validity"],"best_fit_citations":[{"trigger_phrases":["validity of wargame evidence","policy relevance"],"how_to_use":"Related Work/Limitations to justify rigor."}]}
+
+    1 @article{booth_wargame_2024,
+    2     title={Wargame Design: Addressing the Trilemma},
+    3     author={Ruby E. Booth and Andrew W. Reddie},
+    4     journal={MORS Journal of Wargaming},
+    5     year={2024},
+    6     url={https://www.mors.org/Publications/MORS-Journal-of-Wargaming}
+    7 }
+    8 @article{goldblum_wargames_2019,
+    9     title={Wargames as experiments: The Project on Nuclear Gaming's SIGNAL framework},
+   10     author={Bethany L. Goldblum and Jason C. Reinhardt and Andrew W. Reddie},
+   11     journal={Bulletin of the Atomic Scientists},
+   12     year={2019},
+   13     url={https://thebulletin.org/2019/05/wargames-as-experiments-the-project-on
+      -nuclear-gamings-signal-framework/}
+   14 }
+   15 @article{reddie_evidence_2023,
+   16     title={Evidence of the unthinkable: Experimental wargaming at the nuclear threshold},
+   17     author={Andrew W. Reddie and Bethany L. Goldblum},
+   18     journal={Journal of Peace Research},
+   19     volume={60},
+   20     number={5},
+   21     year={2023},
+   22     doi={10.1177/00223433221094734},
+   23     url={https://doi.org/10.1177/00223433221094734}
+   24 }
+   25 @techreport{hersman_under_2020,
+   26     title={Under the Nuclear Shadow: Situational Awareness Technology and Crisis Decisionmaking},
+   27     author={Rebecca K. C. Hersman and Reja Younis and Bryce Farabaugh and Bethany L. Goldblum and
+      Andrew W. Reddie},
+   28     institution={CSIS},
+   29     year={2020},
+   30
+      url={https://csis-website-prod.s3.amazonaws.com/s3fs-public/publication/200318_UnderNucearShadow_F
+      ullReport_WEB.pdf}
+   31 }
+   32 @article{reddie_nextgeneration_2018,
+   33     title={Next-generation wargames},
+   34     author={Andrew W. Reddie and Bethany L. Goldblum and Kiran Lakkaraju and Jason C. Reinhardt
+      and Michael Nacht and Laura Epifanovskaya},
+   35     journal={Science},
+   36     year={2018},
+   37     doi={10.1126/science.aav2135},
+   38     url={https://doi.org/10.1126/science.aav2135}
+   39 }
+   40 @misc{reddie_wargames_2023,
+   41     title={Wargames as Data: Addressing the Wargamer's Trilemma},
+   42     author={Andrew W. Reddie and Ruby E. Booth and Bethany L. Goldblum and Kiran Lakkaraju and
+      Jason Reinhardt},
+   43     year={2023},
+   44     howpublished={Preprint / book chapter},
+   45     url={https://arxiv.org/abs/2302.08065}
+   46 }
