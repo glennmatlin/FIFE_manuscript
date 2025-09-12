@@ -1,0 +1,42 @@
+[
+  {
+    "paper_id": "downes_martin_adjudication_2013",
+    "file": "content/02_background.typ",
+    "section": "Background → Wargames",
+    "excerpt": "Volumes of military literature for wargames over two hundred years have established numerous core definitions, taxonomies of formats (seminar, matrix, kriegsspiel, etc.), and adjudication philosophies (rigid rules vs. free adjudication). What all of these rules ultimately share in common is that they emphasize strategic planning, managing uncertainty, and the role of facilitation and judgment in producing insights rather than score-keeping.",
+    "suggestion": "Append @downes_martin_adjudication_2013 after ‘adjudication philosophies (rigid rules vs. free adjudication)’.",
+    "why_this_fits": "Downes-Martin argues adjudicators are dominant players in novel problems and their judgments must be designed, recorded, and analyzed—directly relevant to adjudication philosophies in this definition paragraph.",
+    "type": "definition",
+    "confidence": 0.82
+  },
+  {
+    "paper_id": "robinson_in_stride_2018",
+    "file": "content/06_discussion.typ",
+    "section": "Discussion",
+    "excerpt": "We synthesize design choices that most influence realism and analytical value: how turns are structured, what evidence or justification is required, the level of human facilitation, and how conflicts are adjudicated.",
+    "suggestion": "Append @robinson_in_stride_2018 after ‘how conflicts are adjudicated’.",
+    "why_this_fits": "The report introduces in‑stride and swarm gaming concepts (parallel repeated sub‑games, rotating roles) that are concrete adjudication design choices for open‑ended language‑based games.",
+    "type": "method",
+    "confidence": 0.70
+  },
+  {
+    "paper_id": "downes_martin_preference_2020",
+    "file": "content/06_discussion.typ",
+    "section": "Discussion → International Relations",
+    "excerpt": "Practical design choices that matter include: clear turn structure … Artifact capture (transcripts, proposals, dissent notes) is crucial for after‑action learning. Reproducibility improves when scenarios, prompts, and adjudication criteria are shared alongside model/version information.",
+    "suggestion": "Append @downes_martin_preference_2020 at the end of the sentence mentioning ‘after‑action learning’.",
+    "why_this_fits": "Shows how final plenaries/AARs can reverse insights and offers fixes—directly relevant when emphasizing disciplined after‑action learning and artifact capture.",
+    "type": "caution",
+    "confidence": 0.78
+  },
+  {
+    "paper_id": "downes_martin_wargaming_2025",
+    "file": "content/09_future_work.typ",
+    "section": "Open Research Questions",
+    "excerpt": "Standardize reporting for language‑based wargames: share prompts, facilitation procedures, and adjudication rubrics with seeds and model versions. Expand beyond short horizons by testing memory, retrieval, and role‑stability over multi‑turn scenarios. Compare lightweight interventions … Encourage artifact release …",
+    "suggestion": "Append @downes_martin_wargaming_2025 after the first sentence (standardize reporting…) or after ‘Expand beyond short horizons…’ to ground calls for repeated, instrumented gaming and AI-assisted analysis.",
+    "why_this_fits": "Advocates repeated gaming and applying AI (beyond LLMs) to model behavior with simulation analytics—an anchor for future work on iterative, instrumented studies.",
+    "type": "design",
+    "confidence": 0.64
+  }
+]
