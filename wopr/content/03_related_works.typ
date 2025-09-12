@@ -24,7 +24,7 @@ constrained environments @ma_computational_2024 @zhang_llm_2024 work on Diplomac
 language models with planning and tool use @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @lamparth_human_2024 and multi‑agent LM frameworks
 explore coordination, debate, and self‑critique @zhang_llm_2024 @yao_spin-bench_2025. Parallel reviews
 in defense communities catalog AI for training and analysis but emphasize quantitative or kinetic
-models @goldblum_wargames_2019.
+models.
 Across these threads, reporting is heterogeneous and evaluation often short‑horizon or
 subjective; prompts and facilitation procedures are rarely standardized; and open‑ended,
 qualitative wargames remain under‑served. Our discussion consolidates approaches for

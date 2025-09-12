@@ -8,6 +8,8 @@ Conflict and war have been a focal topic of games and stories for thousands of y
 Wargames have provided humans with many late nights of entertainment #footnote["Just one more turn"]. Despite the commercial success of modern wargames, all these descendants ultimately grew out of a desire by military leaders to model and simulate the chaotic nature of conflict @schuurman_game_2021 @greenberg_outline_1981.
 // @caffrey_history_2000
 // @specht_war_1957 @vlahos_wargaming_1986, 
+Agents in these games are commonly grouped into one of two categories — either the player agent or the adjudicator agent. The *player agent* is the actor that engages in analysis and planning, proposes moves during play, and experiences the consequences of those outcomes. By contrast, the *adjudicator agent* is the entity that determines outcomes (via rules, computation, or expert judgment). Hereafter, these agents are referred to simply as the “player(s)” and the "adjudicator(s)"\
+
 Wargames offer humans a simplified mental model that allows them to abstract away particulars and navigate decision-making and analyze the results @us_naval_war_college_fundamentals_1966 @us_army_war_college_strategic_2015.
 After thousands of years of human research and design, wargames have now grown to be an aindispensable part of military education and experiential learning across the globe @us_army_how_2023 
 @us_naval_war_college_war_2015
@@ -33,13 +35,12 @@ For this paper, we will adopt the academic definition for *serious wargames*, wh
 + Strategic reasoning uses information about other agents and the environment.
 // + TODO: possible to add a bullet here to limit definition to serious games by implying we draw data for real world use or learning etc
 
-
 == Creative vs Analytical
 // TODO FOR RIEDL: Any comments here about computational creativity, lab citations here as relevant
 // CITE: Creativity in LLM-based Multi-Agent Systems: A Survey
 Computational creativity has been a topic of study for many years ...(TODO: Riedl + Glenn FILL HERE)...
 
-The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_its_1995 @walton_developing_2019 @wasser_gaming_2019. Therefore, game designers make intentional choices about the game's scope and rules to focus on the key skills they want to reinforce or gather data about @booth_wargame_2024. 
+The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_its_1995 @walton_developing_2019 @reddie_wargames_2023 @wasser_gaming_2019. Therefore, game designers make intentional choices about the game's scope and rules to focus on the key skills they want to reinforce or gather data about @booth_wargame_2024. 
 SMEs have often classified wargames based on the primary skill required for success. One common method SMEs use is placing games somewhere on a spectrum spanning from analytical to creative based on the qualitative aspects and game mechanics
 @combe_ii_educational_2021 @de_rosa_design_2021 @ashdown_matrix_2018. Creative game types are those that are open-ended, non-linear games that heavily rely on creative problem solving, while the second is heavily structured and rule‑based games where analytical skills are more important @zegers_matrix_2011. These categories are respectively referred to as *creative wargames* and *analytical wargames* @franken_when_2013 @barzashka_five_2019.
 Open-ended games provide a far greater degree of creative freedom for players to identify the action needed to advance towards their goals and finish the game. Creativity offers players the freedom to identify unique paths to reach the victory condition, or even change the definition of the victory condition. Due to the open-ended nature of creative wargames, they have previously relied heavily on SMEs for
