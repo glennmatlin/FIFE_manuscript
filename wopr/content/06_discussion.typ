@@ -1,8 +1,6 @@
 #import "../config.typ":num_papers
 = Discussion
-(TODO: use a better lead in here ie this section is for... etc one sentence needed )
-Using our research catalog we investigate each individual domain and analyzed the design choices to provide AI researchers an overview of (TODO: need to summarize what kind of things we overview here like "we overview X, Y, and Z"
-// old text: what evidence or justification is required, the level of human facilitation, and how conflicts are adjudicated.
+This section synthesizes key design principles for developing and evaluating LM-driven agents in open-ended wargames. Drawing from our comprehensive survey, we distill a set of core methodological considerations—such as turn structure, evidence requirements, human facilitation, and adjudication protocols—that influence the validity and analytical utility of language-based strategic simulations @robinson_in_stride_2018. We then contextualize these principles within specific domains to provide actionable guidance for researchers.
 
 == Military Security
 // [battlefield/material focused wargames vs diplomacy we can leave diplomatic aspects of military wargames to next section to avoid overlap, can mention] - isaac
@@ -35,7 +33,7 @@ IR professionals in particular benefit from wargaming because of its creative an
 // @hamel_competing_1994
 Business wargames use competitive or cooperative scenarios to stress‑test potential strategies that carry a high degree of uncertainty (market entry, pricing, regulatory change, supply‑chain disruption, M&A). Open‑ended play surfaces narrative risks (misaligned incentives, vendor lock‑in, reputation shocks) that spreadsheets can miss. LMs can play roles as competitor teams, regulators, customers, or internal functions (legal, comms), generating options and counter‑moves in natural language.
 
-Effective formats combine structured turns (brief → move → challenge → adjudication) with qualitative evidence requirements: claims must cite assumptions, external signals, or benchmarks. Adjudication blends simple quantitative checks (unit economics, capacity) with narrative plausibility. LMs can draft memos, scenario briefs, or stakeholder analyses conditioned on constraints (budget, brand voice, compliance) and can help enumerate second‑order effects, but human facilitators keep realism and ethics in scope.
+Effective formats combine structured turns (brief → move → challenge → adjudication) with qualitative evidence requirements: claims must cite assumptions, external signals, or benchmarks @wheaton_making_2020. Adjudication blends simple quantitative checks (unit economics, capacity) with narrative plausibility. LMs can draft memos, scenario briefs, or stakeholder analyses conditioned on constraints (budget, brand voice, compliance) and can help enumerate second‑order effects, but human facilitators keep realism and ethics in scope.
 
 For organizational adoption, reproducibility and governance are key. Keep minimal artifacts (scenario text, prompts, seeds, facilitation script), log model/version and any tool use (RAG, calculators), and separate confidential data from public scaffolds. Typical evaluation rubrics emphasize clarity of reasoning, sensitivity analysis (what if X changes), and decision traceability. Sharing sanitized transcripts and prompt scaffolds accelerates reuse across teams while protecting proprietary details.
 
@@ -50,4 +48,5 @@ Through experimentation with AI in wargames, the fields of economics and finance
 
 == Medicine and Public Health
 (TODO: Dark winter and other wargames)
+@smith_serious_2020
 // todo: ask parv|yixiong 
