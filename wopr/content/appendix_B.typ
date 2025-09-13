@@ -7,10 +7,3 @@
 + *Analytical wargame:* Formats that track numeric scores, payoffs, probabilities, or optimization objectives, though they may still contain open-ended dialogue components. Examples include Chess, Starcraft 2, and other stochastic combat models.
 + *Creative wargame:* Games relying on narrative adjudication or subject matter expert judgment with minimal or no numeric scoring. Tabletop seminar games with after-action discussions represent this category.
 + *Language-centric game:* Formats where progress depends fundamentally on *textual or spoken communication* among actors (human or LM). CICERO Diplomacy and conflict negotiations exemplify this approach @meta_fundamental_ai_research_diplomacy_team_human-level_2022, contrasting with action-based games like _StarCraft_, where LM-powered bots handle micromanagement.
-
-= figures dump
-
-#figure(
-image("figures/fig_by_year_quadrant_area_2col.svg"),
-  caption: [The distribution of papers over time by time quadrant since 2019.],
-) <fig:plot_over_time>

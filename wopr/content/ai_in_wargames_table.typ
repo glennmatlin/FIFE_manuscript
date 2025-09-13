@@ -6,7 +6,7 @@
   columns: 2
 )
 
-#set text(font: "Times New Roman", size: 11pt)
+// #set text(font: "Times New Roman", size: 11pt)
 
 = Appendix A: Selected AI in Wargames Papers
 

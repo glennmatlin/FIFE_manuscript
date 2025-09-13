@@ -41,6 +41,11 @@ Evaluating AI in language-centric wargames presents unique challenges. Unlike tr
 ) <fig:creativity-quadrants>
 
 
+#figure(
+image("figures/fig_by_year_quadrant_area_2col.svg"),
+  caption: [The distribution of papers over time by time quadrant since 2020.],
+) <fig:plot_over_time>
+
 == Quadrant I: Analytical Player, Analytical Adjudicator
 This quadrant covers rigid, rule‑based systems for both the players and the adjudicators (often
 predetermined scoring). Of the quadrants, this quadrant is among the most extensively explored, as it captures traditional “quantitative” wargames. Rigid rules or computer simulations excel at repeatability but can offer poor novel insight generation due to the necessary constraints of the simulation rules or game engine.

@@ -1,7 +1,9 @@
 #import "../config.typ"
 = Background
 For this paper, we will focus our analysis on *serious wargames* @perla_what_1985 @coulthart_whats_2017 @rubel_epistemology_2006 @morgan_wargames_1991. Serious wargames are multi‑faceted depictions of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events, ultimately allowing for real-world insights. 
-Serious wargames have the following attributes:
+Serious wargames have the following attributes:\
+.\
+.\
 - Ongoing conflict between actors with opposing interests or needs;
 - A synthetic environment that enables agent choice and feedback;
 - Agents make decisions and experience consequences via adjudication or rules;
@@ -61,12 +63,9 @@ These AI techniques can be powerful solvers but at the expense of generalization
 // and qualitative adjudication to explore alternative futures.
 
 == Artificial Intelligence in Wargames
-To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” @minsky_semantic_1968. This broad definition is intentional. While much of the recent excitement in AI for wargaming is driven by Large Language Models (LMs), our survey is not exclusively focused on LMs. We consider any system that meets this definition of AI, including symbolic AI, expert systems, and other machine learning approaches. This allows us to provide a more comprehensive overview of the field and its historical context. The full details of our literature review protocol, including key definitions, can be found in @app:lit-review-protocols.
+To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” @minsky_semantic_1968. This broad definition is intentional. While much of the recent excitement in AI for wargaming is driven by Large Language Models (LMs), our survey is not exclusively focused on LMs. We consider any system that meets this definition of AI, including symbolic AI, expert systems, and other machine learning approaches. This allows us to provide a more comprehensive overview of the field and its historical context.
 
 //@li_exploration_2025
 //@davis_artificial_2025
 
-Early AI for wargaming largely targeted quantitative or tightly scoped simulations: search and
-optimization for move planning, stochastic combat models, and agent‑based systems with
-explicit state. Such approaches perform well in rigid games but offer limited support for
-open‑ended narrative argumentation and multi‑party persuasion typical of seminar and matrix formats.
+// Early AI in wargaming largely targeted quantitative or tightly scoped simulations: search and optimization for move planning, stochastic combat models, and agent‑based systems with explicit state. Such approaches perform well in rigid games but offer limited support for open‑ended narrative argumentation and multi‑party persuasion typical of seminar and matrix formats.
