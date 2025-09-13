@@ -31,7 +31,7 @@ LMs “play” scripted moves showed brittle reasoning, hallucination, and rule 
 @lamparth_human_2024.
 // @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @wu_enhance_2024 @xu_exploring_2023 @xu_language_2023]
 
-To unlock LMs' immense potential for such wargames, we present the AI research community with a comprehensive scoping literature review that establishes critical, discussion-oriented desiderata for deploying AI in complex wargaming scenarios. This paper fills a significant gap in the literature by providing researchers with both a thorough domain analysis and a strategic roadmap for high-impact research directions.
+To unlock LMs' immense potential for such wargames, we present a comprehensive scoping literature review that establishes critical, discussion-oriented desiderata for deploying AI in complex wargaming scenarios. This paper fills a significant gap in the literature by providing researchers with both a thorough domain analysis and a strategic roadmap for high-impact research directions.
 // We focus on open‑ended and creative wargames where an AI is acting in the role of either a _player_ or an _adjudicator_.
 
 ((RIEDL: What do we do in this paper? We present an ontology, and why. We present research questions. What else.))
