@@ -1,6 +1,5 @@
 #import "../config.typ":num_papers
 = Recommendations
-// Parv
 Given LMs' unique error profile, practitioners should adopt in-depth output monitoring and red-teaming measures to mitigate wargaming-specific risks. For high-stakes applications in sensitive fields, these should include:
 
 *Task-specific baselines comparison.* Establishing control conditions using deterministic agents or human SME players or adjudicators enables qualitative and quantitative measurements of LM agent performance in various conditions, and can help detect systematic biases or failure modes unique to LM reasoning @yin_wgsr-bench_2025. Existing human baselines in relevant task spaces (e.g. creative writing, strategic deception) are largely neither transparent nor rigorous enough to provide meaningful comparisons @wei_recommendations_2025. High-stakes wargames therefore should prioritize bespoke evaluations with scenario-relevant metrics and adequate analysis to identify capability gaps and boundary conditions before operational use @lin-greenberg_wargame_2022 @caballero_large_2024 @chu_domaino1s_2025 @tang_dsgbench_2025.

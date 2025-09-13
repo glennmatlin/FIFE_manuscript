@@ -1,20 +1,6 @@
 #import "../config.typ":num_papers
 
-// NOTES: We are redoing this part. If it is 3 AM and this is still here, ping Glenn.
-
-
-// We talk about the current work in each domain of Q4 wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."
-
-/** PARV NOTES START 
-// 1st para: motivation. 2nd para: work
-
-// open a new view, look at all the q4 stuff and categorize naturally 
-
-PARV SCRATCH END **/
-
-
-
-/**
+((NOTE: This section needs to be cut down to fit and have the extra content moved into appendix. This section should be shorter and tighter to focus on key ideas and leave the rest for appendix. We need to get this done to be under the 8 pg limit!! We talk about the current work in each domain of Q4 wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."  1st para: motivation. 2nd para: work. use papers from each quadrant naturally and weave them in. dont list off a ton of them. we only want to pick the ones that help us tell the story we are telling with our ideas.))
 
 == Analysis of Q4 (qualitative)
 
@@ -22,10 +8,9 @@ PARV SCRATCH END **/
 
 here, we talk about the papers in q4 only and characterize them
 
-// riedl: we should explicitly have a section on research problems and what can be learned by working on those.
-// real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers
+((RIEDL: we should explicitly have a section on research problems and what can be learned by working on those. e.g. real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers))
 
-// riedl: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
+((RIEDL: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
 
 
 = Discussion
