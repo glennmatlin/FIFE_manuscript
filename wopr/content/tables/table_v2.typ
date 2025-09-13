@@ -55,43 +55,30 @@
     ["GameBench: Evaluating Strategic Reasoning Abilities of LLM Agents" @costarelli_gamebench_2024], [I],
     ["Harnessing Language for Coordination: A Framework and Benchmark for LLM-Driven Multi-Agent Control" @anne_harnessing_2025], [I],
 =======
-    ["Game-Theoretic LLM: Agent Workflow for Negotiation Games" @hua_game-theoretic_2024], [I],
-    ["GameBench: Evaluating Strategic Reasoning Abilities of LLM Agents" @costarelli_gamebench_2024], [I],
-    ["Harnessing Language for Coordination: A Framework and Benchmark for LLM-Driven Multi-Agent Control" @anne_harnessing_2025], [I],
 >>>>>>> 3342783... typst: add BibTeX keys (@…) for remaining found entries in table_v2; 11 still lack bib entries
     ["Hierarchical control of multi-agent reinforcement learning team in real-time strategy (RTS) games" @zhou_hierarchical_2021], [I],
     ["LLM-Based Agent Society Investigation: Collaboration and Confrontation in Avalon Gameplay" @lan_llm-based_2024], [I],
     ["Large Language Models Play StarCraft II: Benchmarks and A Chain of Summarization Approach" @ma_large_2024], [I],
     ["Large Language Models on the Chessboard: A Study on ChatGPT's Formal Language Comprehension and Complex Reasoning Skills" @kuo_large_2023], [I],
     ["Learning to Play No-Press Diplomacy with Best Response Policy Iteration" @anthony_learning_2022], [I],
-    ["Leveraging Generative AI to Create Lightweight Simulations for Far-Future Autonomous Teammates"], [I],
+    ["Leveraging Generative AI to Create Lightweight Simulations for Far-Future Autonomous Teammates" @flathmann_leveraging_2025], [I],
     ["Maia-2: A Unified Model for Human-AI Alignment in Chess" @tang_maia-2_2024], [I],
     ["Mastering the Digital Art of War: Developing Intelligent Combat Simulation Agents for Wargaming Using Hierarchical Reinforcement Learning" @black_mastering_2024], [I],
     ["Mastering the Game of No-Press Diplomacy via Human-Regularized Reinforcement Learning and Planning" @bakhtin_mastering_2022], [I],
     ["Mastering the Game of Stratego with Model-Free Multiagent Reinforcement Learning" @perolat_mastering_2022], [I],
     ["No Press Diplomacy: Modeling Multi-Agent Gameplay" @paquette_no_2019], [I],
-    ["Playing Games With GPT: What Can We Learn About a Large Language Model From Canonical Strategic Games?"], [I],
+    ["Playing Games With GPT: What Can We Learn About a Large Language Model From Canonical Strategic Games?" @brookins_playing_2023], [I],
     ["Playing a Strategy Game with Knowledge-Based Reinforcement Learning" @voss_playing_2020], [I],
 <<<<<<< HEAD
-    ["PokeLLMon: A Human-Parity Agent for Pokemon Battles with Large Language Models"], [I],
-    ["Project Sid: Many-agent simulations toward AI civilization"], [I],
-=======
     ["PokeLLMon: A Human-Parity Agent for Pokemon Battles with Large Language Models" @hu_pokellmon_2024], [I],
     ["Project Sid: Many-agent simulations toward AI civilization" @al_project_2024], [I],
+=======
 >>>>>>> 3342783... typst: add BibTeX keys (@…) for remaining found entries in table_v2; 11 still lack bib entries
-    ["Research on Wargame Decision-Making Method Based on Multi-Agent Deep Deterministic Policy Gradient"], [I],
+    ["Research on Wargame Decision-Making Method Based on Multi-Agent Deep Deterministic Policy Gradient" @yu_research_2023], [I],
     ["SC-Phi2: A Fine-tuned Small Language Model for StarCraft II Macromanagement Tasks" @khan_sc-phi2_2024], [I],
-    ["SC2Arena and StarEvolve: Benchmark and Self-Improvement Framework for LLMs in Complex Decision-Making Tasks"], [I],
+    ["SC2Arena and StarEvolve: Benchmark and Self-Improvement Framework for LLMs in Complex Decision-Making Tasks" @shen_sc2arena_2025], [I],
     ["Self Generated Wargame AI: Double Layer Agent Task Planning Based on Large Language Model" @sun_self_2023], [I],
 <<<<<<< HEAD
-    ["Shall We Team Up: Exploring Spontaneous Cooperation of Competing LLM Agents"], [I],
-    ["Strategic behavior of large language models and the role of game structure versus contextual framing" @lore_strategic_2024], [I],
-    ["Strategy-Augmented Planning for Large Language Models via Opponent Exploitation"], [I],
-    ["SwarmBrain: Embodied agent for real-time strategy game StarCraft II via large language models." @shao_swarmbrain_2024], [I],
-    ["The Automated but Risky Game: Modeling Agent-to-Agent Negotiations and Transactions in Consumer Markets"], [I],
-    ["The Surprising Effectiveness of PPO in Cooperative Multi-Agent Games" @yu_surprising_2022], [I],
-    ["Tracing LLM Reasoning Processes with Strategic Games: A Framework for Planning, Revision, and Resource-Constrained Decision Making"], [I],
-=======
     ["Shall We Team Up: Exploring Spontaneous Cooperation of Competing LLM Agents" @wu_shall_2024], [I],
     ["Strategic behavior of large language models and the role of game structure versus contextual framing" @lore_strategic_2024], [I],
     ["Strategy-Augmented Planning for Large Language Models via Opponent Exploitation" @xu_strategy-augmented_2025], [I],
@@ -99,6 +86,7 @@
     ["The Automated but Risky Game: Modeling Agent-to-Agent Negotiations and Transactions in Consumer Markets" @zhu_automated_2025], [I],
     ["The Surprising Effectiveness of PPO in Cooperative Multi-Agent Games" @yu_surprising_2022], [I],
     ["Tracing LLM Reasoning Processes with Strategic Games: A Framework for Planning, Revision, and Resource-Constrained Decision Making" @yuan_tracing_2025], [I],
+=======
 >>>>>>> 3342783... typst: add BibTeX keys (@…) for remaining found entries in table_v2; 11 still lack bib entries
     ["Welfare Diplomacy: Benchmarking Language Model Cooperation" @mukobi_welfare_2023], [I],
 
@@ -106,19 +94,14 @@
     ["Escalation Risks from Language Models in Military and Diplomatic Decision-Making" @rivera_escalation_2024], [II],
     ["Experimental wargames to address the complexity: scarcity gap" @lakkaraju_experimental_2020], [II],
 <<<<<<< HEAD
-    ["War and Peace (WarAgent): Large Language Model-based Multi-Agent Simulation of World Wars"], [II],
-
-    ["AMONGAGENTS: Evaluating Large Language Models in the Interactive Text-Based Social Deduction Game" @chi_amongagents_2024], [III],
-    ["Advancing AI Negotiations: New Theory and Evidence from an International AI Negotiation Competition"], [III],
-    ["Agent Exchange: Shaping the Future of AI Agent Economics"], [III],
-    ["Agents of Change: Self-Evolving LLM Agents for Strategic Planning"], [III],
-=======
     ["War and Peace (WarAgent): Large Language Model-based Multi-Agent Simulation of World Wars" @hua_war_2024], [II],
 
     ["AMONGAGENTS: Evaluating Large Language Models in the Interactive Text-Based Social Deduction Game" @chi_amongagents_2024], [III],
     ["Advancing AI Negotiations: New Theory and Evidence from an International AI Negotiation Competition" @vaccaro_advancing_2025], [III],
     ["Agent Exchange: Shaping the Future of AI Agent Economics" @yang_agent_2025], [III],
     ["Agents of Change: Self-Evolving LLM Agents for Strategic Planning" @belle_agents_2025], [III],
+=======
+
 >>>>>>> 3342783... typst: add BibTeX keys (@…) for remaining found entries in table_v2; 11 still lack bib entries
     ["AvalonBench: Evaluating LLMs Playing the Game of Avalon" @light_avalonbench_2023], [III],
     ["Battlefield information and tactics engine (BITE): a multimodal large language model approach for battlespace management" @connolly_battlefield_2024], [III],
@@ -128,32 +111,19 @@
     ["Debt Collection Negotiations with Large Language Models" @wang_debt_2025], [III],
     ["Democratizing Diplomacy: A Harness for Evaluating Any Large Language Model on Full-Press Diplomacy" @duffy_democratizing_2025], [III],
     ["Digital Player: Evaluating Large Language Models based Human-like Agent in Games" @wang_digital_2025], [III],
-    ["Dungeons and Dragons as a Dialogue Challenge for Artificial Intelligence"], [III],
-    ["EAI: Emotional Decision-Making of LLMs in Strategic Games and Ethical Dilemmas"], [III],
+    ["Dungeons and Dragons as a Dialogue Challenge for Artificial Intelligence" @callison-burch_dungeons_2022], [III],
+    ["EAI: Emotional Decision-Making of LLMs in Strategic Games and Ethical Dilemmas" @mozikov_eai_2025], [III],
     ["Evaluating LLM Agent Collusion in Double Auctions" @agrawal_evaluating_2025], [III],
 =======
-    ["Debt Collection Negotiations with Large Language Models" @wang_debt_2025], [III],
-    ["Democratizing Diplomacy: A Harness for Evaluating Any Large Language Model on Full-Press Diplomacy" @duffy_democratizing_2025], [III],
-    ["Digital Player: Evaluating Large Language Models based Human-like Agent in Games" @wang_digital_2025], [III],
-    ["Dungeons and Dragons as a Dialogue Challenge for Artificial Intelligence"], [III],
-    ["EAI: Emotional Decision-Making of LLMs in Strategic Games and Ethical Dilemmas"], [III],
-    ["Evaluating LLM Agent Collusion in Double Auctions" @agrawal_evaluating_2025], [III],
 >>>>>>> 3342783... typst: add BibTeX keys (@…) for remaining found entries in table_v2; 11 still lack bib entries
     ["Finding deceivers in social context with large language models: the case of the Mafia game" @yoo_finding_2024], [III],
-    ["FishBargain: An LLM-Empowered Bargaining Agent for Online Flea-Market Platform Sellers"], [III],
-    ["HARBOR: Exploring Persona Dynamics in Multi-Agent Competition"], [III],
+    ["FishBargain: An LLM-Empowered Bargaining Agent for Online Flea-Market Platform Sellers" @kong_fishbargain_2025], [III],
+    ["HARBOR: Exploring Persona Dynamics in Multi-Agent Competition" @jiang_harbor_2025], [III],
 <<<<<<< HEAD
-    ["Human vs. Machine: Behavioral Differences Between Expert Humans and Language Models in Wargame Simulations" lamparth_human_2024], [III],
     ["Human-level play in the game of Diplomacy by combining language models with strategic reasoning" @meta_fundamental_ai_research_diplomacy_team_human-level_2022], [III],
-    ["It Takes Two to Negotiate: Modeling Social Exchange in Online Multiplayer Games" jaidka_it_2023], [III],
-    ["LLMs of Catan: Exploring Pragmatic Capabilities of Generative Chatbots" martinenghi_llms_2024], [III],
 =======
-    ["Human vs. Machine: Behavioral Differences Between Expert Humans and Language Models in Wargame Simulations" @lamparth_human_2024], [III],
-    ["Human-level play in the game of Diplomacy by combining language models with strategic reasoning" @meta_fundamental_ai_research_diplomacy_team_human-level_2022], [III],
-    ["It Takes Two to Negotiate: Modeling Social Exchange in Online Multiplayer Games" @jaidka_it_2023], [III],
-    ["LLMs of Catan: Exploring Pragmatic Capabilities of Generative Chatbots" @martinenghi_llms_2024], [III],
 >>>>>>> typst: prefix all BibTeX keys in table_v2 with @ to render citations
-    ["Learning from Synthetic Labs: Language Models as Experimental Subjects in Auctions"], [III],
+    ["Learning from Synthetic Labs: Language Models as Experimental Subjects in Auctions" @shah_learning_2025], [III],
     ["Measuring Free-Form Decision-Making Inconsistency of Language Models in Military Crisis Simulations" @shrivastava_measuring_2024], [III],
     ["Microscopic Analysis on LLM Players via Social Deduction Game" @kim_microscopic_2024], [III],
     ["More Victories, Less Cooperation: Assessing Cicero's Diplomacy Play" @wongkamjan_more_2024], [III],
@@ -164,18 +134,10 @@
     ["SPIN-Bench:  How Well Do LLMs Plan Strategically and Reason Socially?" @yao_spin-bench_2025], [III],
     ["Should I Trust You? Detecting Deception in Negotiations using Counterfactual RL" @wongkamjan_should_2025], [III],
     ["Super-additive Cooperation in Language Model Agents" @tonini_super-additive_2025], [III],
-    ["The Traitors: Deception and Trust in Multi-Agent Language Systems"], [III],
+    ["The Traitors: Deception and Trust in Multi-Agent Language Systems" @curvo_traitors_2025], [III],
 
     ["Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate" @liang_encouraging_2024], [IV],
 <<<<<<< HEAD
-    ["Large Language Models in Wargaming: Methodology, Application, and Robustness" @chen_large_2024], [IV],
-    ["Managing Escalation in Off-the-Shelf Large Language Models" @elbaum_managing_2025], [IV],
-    ["Open-Ended Wargames with Large Language Models" @hogan_open-ended_2024], [IV],
-    ["Outwit, Outplay, Out-Generate: A Framework for Designing Strategic Generative Agents in Competitive Environments"], [IV],
-    ["Scaling Laws For Scalable Oversight"], [IV],
-    ["What if LLMs Have Different World Views: Simulating Alien Civilizations with LLM-based Agents"], [IV],
-    ["When Two LLMs Debate, Both Think They'll Win"], [IV],
-=======
     ["Large Language Models in Wargaming: Methodology, Application, and Robustness" @chen_large_2024], [IV],
     ["Managing Escalation in Off-the-Shelf Large Language Models" @elbaum_managing_2025], [IV],
     ["Open-Ended Wargames with Large Language Models" @hogan_open-ended_2024], [IV],
@@ -183,6 +145,7 @@
     ["Scaling Laws For Scalable Oversight" @engels_scaling_2025], [IV],
     ["What if LLMs Have Different World Views: Simulating Alien Civilizations with LLM-based Agents" @xue_what_2025], [IV],
     ["When Two LLMs Debate, Both Think They'll Win" @prasad_when_2025], [IV],
+=======
 >>>>>>> 3342783... typst: add BibTeX keys (@…) for remaining found entries in table_v2; 11 still lack bib entries
 
     bottomrule(),
