@@ -5,7 +5,8 @@ Serious wargames have the following attributes:
 - Ongoing conflict between actors with opposing interests or needs;
 - A synthetic environment that enables agent choice and feedback;
 - Agents make decisions and experience consequences via adjudication or rules;
-- Strategic reasoning uses information about other agents and the environment.-hcsftharuseoinm-deciionsgnerte sihs.
+- Strategic reasoning uses information about other agents and the environment.
+- The outcomes of the game are used to inform real-world decisions or generate insights.
 
 Conflict and war have been a focal topic of games and stories for thousands of years. Strategy wargames are nearly as old as written history. Examples of strategy-focused conflict games can be found across the ancient world, including the Egyptian _Senet_, the Greeks' _Polis_, Chinese _Go_, and India's _Chaturanga_, which eventually became perhaps the most well-known wargame in the world: _Chess_. 
 Wargames act as a simplified model of conflict to navigate the world and make effective decisions @perla_why_2011. Modern contemporary wargaming evolved from custom variations of chess that incorporated additional rule systems or maps, designed to simulate military battles, most notably @von_reisswitz-kaderzin_und_grabowska_kriegsspiel_1989.
@@ -67,8 +68,7 @@ GLENN TODO: use jonathan's citations
 // and qualitative adjudication to explore alternative futures.
 
 == Artificial Intelligence in Wargames
-We adopt the definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence”. ((TODO:CITE RAND!)). \ // @sayler_artificial_2019 @national_security_commission_on_artificial_intelligence_final_2021
-((TODO: Glenn needs to write here about the defintion of AI used, how it informed out survey scope, and then update the appendix survey definition etc. we should also link the appendix here as well!))
+To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” @Minsky1968Semantic. This broad definition is intentional. While much of the recent excitement in AI for wargaming is driven by Large Language Models (LMs), our survey is not exclusively focused on LMs. We consider any system that meets this definition of AI, including symbolic AI, expert systems, and other machine learning approaches. This allows us to provide a more comprehensive overview of the field and its historical context. The full details of our literature review protocol, including key definitions, can be found in @app:lit-review-protocols.
 
 //@li_exploration_2025
 //@davis_artificial_2025

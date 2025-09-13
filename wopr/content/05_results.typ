@@ -1,9 +1,6 @@
 #import "../config.typ":num_papers
 = Ontology of Wargames
-The spectrum between creative wargames and analytical wargames 
-((Choose one:
-- is incomplete because it does not consider the fact that the adjudicator can also have varying degrees of constrained or creative decision-making
-- conflates the player and the adjudicator.))
+The spectrum between creative wargames and analytical wargames conflates the player and the adjudicator.
 As we argue below, considering the analytical versus creative nature of the players separate from that of the adjudicator helps us understand the space of games with respect to AI approaches.
 
 ((Justifying the need to consider players and adjudicators independently. It's actually a bit challenging, because increased linguistic flexibility on the player side seems to require increased linguistic flexibility, so I need to find counter examples.))
@@ -11,7 +8,7 @@ While prior categorization schemes focus on the flexibility afforded the player,
 Unlike traditional simulations with structured inputs and discrete, well-defined action efects, language-based systems operate in vast, open-ended semantic spaces. 
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the ajudicator in the form of language descriptions of outcomes, it need not be the case.
 The presence of natural language in wargames is not equal across all games. 
-Consider the game of _Diplomacy_ in which players can communicate naturally to make trade deals, but the final form of the trade deal must be highly structured in terms of resource exchanges that are simple to adjudicate.
+Consider the game of _Diplomacy_ in which players can communicate naturally to make trade deals, but the final form of the trade deal must be highly structured in terms of resource exchanges that are simple to ajudicate.
 Consider also a game such as _Free Kriegspiel_ ((NOTE: or another example)), in which the players' actions are limited to movements of army pieces on a board, but the ajudicator has a high degree of autonomy to dictate---and explain---the outcomes of each move.
 
 Consequently, we arrange the space of wargames according to a two-dimensional space, as shown in @fig:creativity-quadrants.
@@ -21,8 +18,7 @@ To this, we add a vertical dimension, which characterizes the adjudicator's role
 Inherent to this is the ability for the players to negotiate the outcome with the ajudicator. This negotiation is not a player move per-se but happens ((NOTE: could use the term extra-diagetically)) after the move is made as a means to dynamically alter the mapping from the player's move to the response. ((NOTE: Writing this, I wonder if it's the mapping that is creative as opposed to the actual surface form of the ajudicator's output response.))
 
 
-((NOTE: I don't really understand what is going on in this paragraph.))
-Before presenting our findings, it is crucial to frame the unique evaluation challenges inherent in language-centric wargames. Unlike traditional simulations with structured inputs and discrete, well-defined output spaces (e.g., a move on a board), language-based systems operate in vast, open-ended semantic spaces. The input space comprises natural language prompts and player interactions, while the output space consists of generated text representing arguments, justifications, and actions. This semantic gap between a concise input and a nuanced, high-dimensional output makes direct, one-to-one comparisons difficult and introduces significant challenges for evaluation and reproducibility. Consequently, our analysis must consider not only the outcomes of actions but also the quality, coherence, and plausibility of the language used to justify them.
+Evaluating AI in language-centric wargames presents unique challenges. Unlike traditional simulations with clear-cut rules and actions, these wargames are open-ended and revolve around natural language. This means that instead of discrete moves on a board, we have complex, high-dimensional text outputs representing arguments, justifications, and actions. This makes direct comparisons and reproducible evaluations difficult. Therefore, our analysis focuses not just on the outcomes of the games, but also on the quality, coherence, and plausibility of the language the AI agents use.
 
 We summarize descriptive statistics and qualitative themes from the surveyed works. Counts
 cover venues, years, and domains; design patterns group LM roles (player, adjudicator,
@@ -31,9 +27,9 @@ typical prompting strategies, facilitation approaches, and reported outcomes. @f
 yearly paper counts by quadrant; @fig:screening-flow summarizes the screening flow. Tables provide quick
 reference; detailed extraction lives in the appendix.
 
-((RIEDL: I would like to see a lot of examples of games in the quadrant sections. I'm skipping reading Q1-Q4 for now.))
 
-// (( TODO: We need to add the (1) Time analysis: annual volume and venue mix, (2) Paper stats: LM families, roles, formats, artifacts released, (3) Figures: open‑endedness quadrants and representative placements. ))
+
+
 
 // == Quadrants: Analytical vs Creative
 
@@ -62,7 +58,7 @@ This quadrant covers games in which players are often relatively limited in thei
 This quadrant covers games with highly creative agents and low‑creativity adjudicators. Common
 patterns in this quadrant include highly expressive, low‑procedural‑complexity games with a
 procedural adjudicator. This includes the vast majority of board games with a social element and
-rigid scoring rules, such as Diplomacy and Settlers of Catan. @martinenghi_llms_2024
+rigid scoring rules, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistence: Avalon_. @martinenghi_llms_2024
 
 Of the quadrants, this quadrant is one of the most explored in its relation to AI, with extensive
 research, especially with wargames such as Diplomacy, most notably Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_human-level_2022. With rigid adjudication mechanisms and often rigid procedural agent mechanisms, games in this quadrant are mechanically simple to evaluate, which leads to the popularity of this category in the fields of AI competition and diplomacy.
@@ -72,9 +68,7 @@ adjudication and procedural constraints in much existing research across the qua
 constrain the effect of the expressive creativity. While games in this quadrant often focus on social interactions of the players, the constrained procedural actions limit complex or realistic games and with low nuance in the outcome.
 
 == Quadrant IV: Creative Player, Creative Adjudicator
-This quadrant covers wargames with expressive players and qualitative adjudication. Examples
-include modern seminar and matrix formats and adjudicated simulations (e.g., Model United
-Nations). These exercises are common in defense, diplomacy, and organizational decision‑ *[cite cite cite cite cite]. [also expand a little, name specific games, etc.]* Several factors motivate our focus on Q4 wargames:
+This quadrant covers wargames with expressive players and qualitative adjudication. These are often discussion-based exercises that prioritize strategic creativity and narrative plausibility over rigid rule-sets. Prominent examples include modern seminar-style wargames, such as the U.S. Army's TRADOC wargames used to explore future military concepts, and matrix wargames like the "ISIS Crisis" game, which use a structured argumentation format to analyze complex, multi-faceted conflicts. Adjudicated simulations, such as Model United Nations, where participants engage in diplomatic role-playing, also fall into this category. Furthermore, most tabletop role-playing games (TTRPGs) like _Shadowrun_, _Paranoia_, _Call of Cthulhu_, and _Vampire: The Masquerade_ are excellent examples of this quadrant, where player freedom is high and a Game Master provides narrative adjudication.
 
 *Q4 wargames matters for the real world smth smth* This subset of wargames best represents real-world strategic environments where outcomes in complex and dynamic environments depend on agent adaptation and emergent behaviors. The limitations of rigid rule-sets in mapping to complex strategic environments have been extensively documented, tracing back to at least the Free Kriegsspiel movement @schuurman_game_2021. However, despite their practical utility for simulating complex environments, few studies have attempted to automate construction or evaluation processes for Q4 settings.
 
@@ -125,4 +119,3 @@ Nations). These exercises are common in defense, diplomacy, and organizational d
   ),
   caption: [Screening flow with counts per stage and inclusion criteria.],
 ) <fig:screening-flow>
-

@@ -20,7 +20,7 @@ The implicit promise of AI to provide general-purpose human-level intelligence v
 
 
 Wargames are not just for war. The term describes any game ((RIEDL: that... )).
-As such, "wargames" are conducted to aide strategic decision making in business, diplomacy, law, and military ((RIEDL: any others?)). ((RIEDL: footnote maybe about D&D here? or ending of entertainment strictly i.e. D&D))
+As such, "wargames" are conducted to aide strategic decision making in business, diplomacy, law, healthcare, cybersecurity, and military. ((RIEDL: footnote maybe about D&D here? or ending of entertainment strictly i.e. D&D))
 As a result, there is a growing interest among Subject Matter Experts (SMEs) in these communities in how they can leverage AI in wargames, particularly for those that are highly language-centric and thus highly open-ended, affording a high degree of creative ideation by players  
 @hogan_open-ended_2024.
 This is in contrast to many traditional computer-driven wargames, which have more constrained possibility spaces, limiting their applicability, especially in narrative understanding, social human factors, or unbounded problems @geist_understanding_2022. 

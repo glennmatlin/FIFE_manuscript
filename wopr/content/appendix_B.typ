@@ -1,6 +1,7 @@
 = Appendix B: Literature Review Protocols <app:lit-review-protocols>
 
 == Key Definitions
++ *Artificial Intelligence (AI):* The use of computers to carry out tasks that previously required human intelligence.
 + *Wargame:* A multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events.
 + *Open-ended:* Games where rules permit *unconstrained natural-language moves*, allowing players to propose novel actions beyond a preset menu. Outcomes are adjudicated by facilitators, subject matter experts, or dynamic rules rather than a fixed payoff matrix. Seminar wargames or Diplomacy (with negotiation phases) exemplify this approach, contrasting with constrained games like Chess or Go or rigid social games like Werewolf or Among Us.
 + *Analytical wargame:* Formats that track numeric scores, payoffs, probabilities, or optimization objectives, though they may still contain open-ended dialogue components. Examples include Chess, Starcraft 2, and other stochastic combat models.
