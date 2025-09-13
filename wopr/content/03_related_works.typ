@@ -1,28 +1,10 @@
 #import "../config.typ"
 = Related Works
-== Artificial Intelligence in Wargaming 
-//@li_exploration_2025
-//@davis_artificial_2025
-Early AI for wargaming largely targeted quantitative or tightly scoped simulations: search and
-optimization for move planning, stochastic combat models, and agent‑based systems with
-explicit state. Such approaches perform well in rigid games but offer limited support for
-open‑ended narrative argumentation and multi‑party persuasion typical of seminar and matrix formats.
-
-== Literature Reviews on LMs in Games
-// CITE: LLM as a Mastermind: A Survey of Strategic Reasoning with Large Language Models
-// A Survey on Large Language Model-Based Game Agents
-// Large Language Models and Games: A Survey and Roadmap
-// LLM as a Mastermind: A Survey of Strategic Reasoning with Large Language Models
-// Playing games with Large language models: Randomness and strategy
-// SPIN-Bench: How well do LLMs plan strategically and reason socially?
-// A Survey on Game Playing Agents and Large Models: Methods, Applications, and Challenges
-// A Survey on Large Language Model-Based Social Agents in Game-Theoretic Scenarios
-// Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis
+((TODO: explaining that related work means other literature reviews.))
+// (( TODO CITE: LLM as a Mastermind: A Survey of Strategic Reasoning with Large Language Models; A Survey on Large Language Model-Based Game Agents; Large Language Models and Games: A Survey and Roadmap; LLM as a Mastermind: A Survey of Strategic Reasoning with Large Language Models;  Playing games with Large language models: Randomness and strategy; SPIN-Bench: How well do LLMs plan strategically and reason socially?; A Survey on Game Playing Agents and Large Models: Methods, Applications, and Challenges; A Survey on Large Language Model-Based Social Agents in Game-Theoretic Scenarios; Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis
 
 Surveys of LMs in games and simulation describe agents that negotiate, plan, or role‑play in
 constrained environments @ma_computational_2024 @zhang_llm_2024 work on Diplomacy combines
-language models with planning and tool use @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @lamparth_human_2024 and multi‑agent LM frameworks
-explore coordination, debate, and self‑critique @zhang_llm_2024 @yao_spin-bench_2025. Parallel reviews
-in defense communities catalog AI for training and analysis but emphasize quantitative or kinetic
-models @goldblum_wargames_2019.
+language models with planning and tool use @meta_fundamental_ai_research_diplomacy_team_human-level_2022 @lamparth_human_2024 and multi‑agent LM frameworks
+explore coordination, debate, and self‑critique @zhang_llm_2024 @yao_spin-bench_2025. Parallel reviews in defense communities often mention AI for education and analysis, and emphasize analytical games rather than open-ended creative games.
 While existing surveys on LMs in games offer valuable insights, they often focus on quantitative benchmarks or specific tasks like negotiation, with less emphasis on the open-ended, qualitative wargames that are our focus. Furthermore, reporting across these threads is often heterogeneous, evaluations are short-horizon or subjective, and facilitation procedures are rarely standardized. This leaves the unique challenges of language-based wargaming under-served. Our work aims to fill this gap by consolidating approaches for these formats and highlighting practical design choices that affect realism and utility.

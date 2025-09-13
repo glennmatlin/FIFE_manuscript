@@ -17,20 +17,22 @@
 #import "config.typ": num_papers
 
 #abstract[
-Language models (LMs) are increasingly being deployed for use in defense and security settings to provide humans with insights for real-world decision-making. One prominent example is the use of LMs to play, adjudicate, and analyze strategic wargames. LMs are particularly useful for contexts with open-ended dynamic problems when game-play is non-linear and entirely novel solutions can be proposed.
-// GLENN: need a hook here that pulls people in using a safety argument of some kind... make it critical and important! danger danger!! get people interested.
-This new generation of _Artificial Intelligence (AI) wargames_ relies more on *creative* problem-solving and reasoning over *analytical* rigor and precision. However, there have been significant hurdles for AI researchers when publishing in this field due to the domain-specific and knowledge-intensive requirements of professional wargaming. We present a scoping literature review of #num_papers recent works on AI wargames and present a novel ontology for researchers to engage with AI wargaming. We provide a discussion for researchers on how to use our ontology to appropriately categorize their own game environment and discover new literature ...(TODO)... This paper provides a consolidated look at this emerging area ...(TODO)... and provides clear direction for other researchers to pursue. Our goal is to encourage responsible experimentation with LMs in wargaming and adjacent, language‑centric simulations.]
+Language models (LMs) are increasingly being deployed for use in defense and security settings to provide humans with insights for real-world decision-making. One prominent example is the use of *LMs for wargames* --- a depiction of conflict in which the participants’ decisions influence the future outcomes of events.
+Based on a scoping literature review of #num_papers recent works on AI in wargames, we construct an ontology of wargames in terms of the creativity afforded to the player's action space and the adjudicator's judgement space.
+We discuss both the serious application areas (finance, medicine, diplomacy, military) as well as entertainment applications (table-top role-playing, video games), where we describe the research challenges associated with each domain.
+As serious applications of wargames can have significant societal and safety implications, we motivate further research on LMs in wargames.
+]
 
-#include "content/00_abstract.typ"
+// #include "content/00_abstract.typ"
 #include "content/01_introduction.typ"
 #include "content/02_background.typ"
-#include "content/03_related_works.typ"
 #include "content/04_methodology.typ"
 #include "content/05_results.typ"
 #include "content/06_discussion.typ"
 #include "content/07_safety.typ"
 #include "content/08_recommendations.typ"
 #include "content/09_future_work.typ"
+#include "content/03_related_works.typ"
 #include "content/10_conclusion.typ"
 #include "content/11_impact_statement.typ"
 

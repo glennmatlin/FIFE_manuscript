@@ -6,3 +6,5 @@ adjudication rubrics with seeds and model versions @reddie_next-generation_2018 
 memory, retrieval, and role‑stability over multi‑turn scenarios. Compare lightweight
 interventions (system prompts, few‑shot ICL, adapters) with simple baselines. Encourage
 artifact release (transcripts, code, minimal configs) to enable replication across venues @reddie_wargames_2023.
+
+((Riedl: planning; ability to explore alternatives; world models))
