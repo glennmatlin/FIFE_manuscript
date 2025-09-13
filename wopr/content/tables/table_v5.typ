@@ -153,20 +153,34 @@
     bottomrule(),
   )
 }
+// #block(fill: luma(230), inset: 8pt, radius: 4pt)[
+//   stack(spacing: 3pt, align: top)[
+//     text(size: 9pt)[*Table 1 Legend*],
+//     text(size: 8pt)[*Total papers: 100*],
+//     text(size: 8pt, fill: color.navy)["Quadrant I: 52"],
+//     text(size: 8pt, fill: color.yellow)["Quadrant II: 6"],
+//     text(size: 8pt, fill: color.eastern)["Quadrant III: 34"],
+//     text(size: 8pt, fill: color.red)["Quadrant IV: 8"],
+//   ]
+// ]
 #block(
-  fill: luma(230),
+  fill: luma(180),
   inset: 8pt,
-  radius: 4pt,
-  // Legend & totals
-    text(size: 9pt)[*Table 1 Legend*]
-    v(2pt)
-    text(size: 8pt)[*Total papers: 100*]
-    v(2pt)
-    text(size: 8pt, fill:rgb("#0172B2"))[Quadrant I: 52]
-    v(2pt)
-    text(size: 8pt, fill:rgb("#E69F01"))[Quadrant II: 6]
-    v(2pt)
-    text(size: 8pt, fill:rgb("#009E73"))[Quadrant III: 34]
-    v(2pt)
-    text(size: 8pt, fill:rgb("#C97BA6"))[Quadrant IV: 8]
+  radius: 8pt,
+
+  stack(
+    spacing: 3pt,
+    text(size: 9pt)[*Table 1 Legend*],
+    text(size: 8pt)[*Total papers: 100*],
+    text(size: 8pt, fill: color.navy)[Quadrant I: 52],
+    text(size: 8pt, fill: color.yellow)[Quadrant II: 6],
+    text(size: 8pt, fill: color.eastern)[Quadrant III: 34],
+    text(size: 8pt, fill: color.red)[Quadrant IV: 8],
+    // text(size: 8pt, fill: color.linear-rgb(#0172B2))[Quadrant I: 52],
+    // text(size: 8pt, fill: color.linear-rgb(#E69F01))[Quadrant II: 6],
+    // text(size: 8pt, fill: color.linear-rgb(#009E73))[Quadrant III: 34],
+    // text(size: 8pt, fill: color.linear-rgb(#C97BA6))[Quadrant IV: 8],
+  ),
 )
+
+
