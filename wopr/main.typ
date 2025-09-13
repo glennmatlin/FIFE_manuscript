@@ -3,8 +3,8 @@
 
 #show: doc => acl(doc,
   anonymous: true,
-  title: [Shall We Wordplay a Game?\
-  Language Models for Wargames],
+  title: [Shall We Play a Game?\
+  Language Models for Open-ended Wargames],
    authors: (
     (
       name: "Anonymous",
