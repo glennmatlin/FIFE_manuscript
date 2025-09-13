@@ -42,7 +42,7 @@ As serious applications of wargames can have significant societal and safety imp
   #bibliography("zotero.bib",
       style: "association-for-computational-linguistics-blinky.csl")
 ]
-#include "content/tables/table_v2.typ"
+#include "content/tables/table_v4.typ"
 #include "content/appendix_A.typ"
 // #include "content/appendix_B.typ"
 #include "content/appendix_C.typ"

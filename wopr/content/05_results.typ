@@ -3,7 +3,6 @@
 
 The current conception of a spectrum between creative wargames and analytical wargames conflates the player and the adjudicator.
 As we argue below, considering the analytical versus creative nature of the players separate from that of the adjudicator helps us understand the space of games with respect to AI approaches.
-
 While prior categorization schemes focus on the flexibility afforded to the player, they elide the unique challenges inherent when the player's moves are language-based. 
 Unlike traditional simulations with structured inputs and discrete, well-defined action effects, language-based systems operate in vast, open-ended semantic spaces. 
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the adjudicator in the form of language descriptions of outcomes, it need not be the case.
@@ -32,19 +31,14 @@ Inherent to this is the ability for the players to negotiate the outcome with th
   caption: [Open‑endedness axes with categorical levels (Analytical/Creative) for player and adjudicator],
 )
 
-
-((RIEDL: Still not sure what this paragraph is adding. Is it talking about how we did our analysis? If so, does it go in the Methodology section at the end?))
-Evaluating AI in language-centric wargames presents unique challenges. Unlike traditional simulations with clear-cut rules and actions, these wargames are open-ended and revolve around natural language. This means that instead of discrete moves on a board, we have complex, high-dimensional text outputs representing arguments, justifications, and actions. This makes direct comparisons and reproducible evaluations difficult. Therefore, our analysis focuses not just on the outcomes of the games, but also on the quality, coherence, and plausibility of the language the AI agents use.
-
 #figure(
   image("figures/fig_ontology.svg"),
-  caption: [Ontology of creativity for AI in wargames with illustrative placement of example games in each of the four quadrants.],
+  caption: [Ontology of creativity for AI in wargames with illustrative placement of example games in each of the four quadrants.]
 ) <fig:creativity-quadrants>
-
 
 #figure(
 image("figures/fig_by_year_quadrant_area_2col.svg"),
-  caption: [The distribution of papers over time by time quadrant since 2020.],
+  caption: [The distribution of papers over time by time quadrant from 2020 to 2025.],
 ) <fig:plot_over_time>
 
 == Quadrant I: Analytical Player, Analytical Adjudicator
@@ -61,7 +55,7 @@ These simulations allow for repeatability but also offer poor novel insight gene
 
 Because games in this quadrant are amenable to the creation of computational simulations, they can be played by AI systems that leverage repeated trial-and-error play at super-human simulator speeds. 
 Reinforcement learning and Monte Carlo Tree Search, in particular, have been demonstrated to be highly effective at games in this quadrant, and sometimes more specialized search algorithms such as Minimax. 
-However, games in this quadrant have benefited  less from recent developments in LMs because of their rigid nature, which does not map well to the capabilities of LMs @anthony_learning_2022 @perolat_mastering_2022 @light_strategist_2024 @gao_land-based_2024.
+However, games in this quadrant have benefited less from recent developments in LMs because of their rigid nature, which does not map well to the capabilities of LMs @anthony_learning_2022 @perolat_mastering_2022 @light_strategist_2024 @gao_land-based_2024.
 
 == Quadrant II: Analytical Player, Creative Adjudicator
 This quadrant covers games in which players are often relatively limited in their action space, while a human SME adjudicator determines the outcomes based on their judgment. This configuration is not common for wargames, but it is possible. Games that would fall into this quadrant include variants of wargames such as Meckel's early version of _Free Kriegsspiel_. 
@@ -87,11 +81,12 @@ However, the limited evaluation creativity that makes Q3 attractive also limits 
 While games in this quadrant often focus on social interactions of the players, the constrained procedural actions limit complex or realistic games and with low nuance in the outcome of those social interactions.
 
 == Quadrant IV: Creative Player, Creative Adjudicator
-This quadrant covers wargames with expressive players and qualitative adjudication. These are often discussion-based exercises that prioritize strategic creativity and narrative plausibility over rigid rule-sets. Prominent examples include modern seminar-style wargames, such as the U.S. Army's TRADOC wargames used to explore future military concepts, and matrix wargames like the "ISIS Crisis" game, which use a structured argumentation format to analyze complex, multi-faceted conflicts. Adjudicated simulations, such as Model United Nations, where participants engage in diplomatic role-playing, also fall into this category. Furthermore, most tabletop role-playing games (TTRPGs) like _Shadowrun_, _Paranoia_, _Call of Cthulhu_, and _Vampire: The Masquerade_ are excellent examples of this quadrant, where player freedom is high and a Game Master provides narrative adjudication. The non-combat, non-die-based portions of _Dungeons \& Dragons_ is another example.#footnote[_Dungeons \& Dragons_ and other TTRPGs can be played with more or less emphasis on combat and figurines. The most rigid form of play would be only the combat elements that are played only within the combat rules and ajudication also strictly following the rules of die rolls, which would fall in quadrant I. Players rigidly following combat and die-roll rules but where the Game Master ignores die rolls and makes their own determinations of outcomes would be an extreme variation that falls within Quadrant II; this style of role-playing is exemplified by _Neverwinter Nights_ with Dungeon Master mode enabled.] ((RIEDL: the reference to D&D is for consistency with previous text, but also to prompt the footnote, which is long and can probably be cut due to sheer nerdiness.))
+This quadrant covers wargames with expressive players and qualitative adjudication. These are often discussion-based exercises that prioritize strategic creativity and narrative plausibility over rigid rule-sets. Prominent examples include modern seminar-style wargames, such as the U.S. Army's TRADOC wargames used to explore future military concepts, and matrix wargames like the "ISIS Crisis" game, which use a structured argumentation format to analyze complex, multi-faceted conflicts. Adjudicated simulations, such as Model United Nations, where participants engage in diplomatic role-playing, also fall into this category. Furthermore, most tabletop role-playing games (TTRPGs) like _Shadowrun_, _Paranoia_, _Call of Cthulhu_, and _Vampire: The Masquerade_ are excellent examples of this quadrant, where player freedom is high and a Game Master provides narrative adjudication. The non-combat, non-die-based portions of _Dungeons \& Dragons_ is another example
+#footnote[_Dungeons \& Dragons_ and other TTRPGs can be played with varying emphasis on combat and rules. A rigid form of play, focusing only on combat where adjudication strictly follows the rules and die rolls, would shift _D&D_ into Quadrant I. An extreme variation where players follow rigid rules but the Game Master ignores die rolls to determine the outcomes would be in Quadrant II; this style is exemplified by _Neverwinter Nights_ with Dungeon Master mode enabled.]
 
 Games that allow creativity for both players and adjudicators better support classic aims of wargaming: exploring uncertainty, revealing assumptions, and eliciting expert judgment. Real world scenarios involving complex social interactions are hard to formalize and attempts to create rule sets for players or adjudicators 
 tend to over-simplify real world phenomenon to the point where outcomes are hard to make actionable in the real world.
-Within the context of playing games with entirely human players and entirely human ajudicators, this games in this quadrant are well-explored; treatises on this matter trace back to the _Free Kriegsspiel_ movement @schuurman_game_2021 ((RIEDL: Can we give a date?)). However, despite their practical utility for simulating complex real-world environments, few have attempted to _automate_ construction or evaluation processes for Q4 settings.
+Within the context of playing games with entirely human players and entirely human ajudicators, this games in this quadrant are well-explored; treatises on this matter trace back to the _Free Kriegsspiel_ movement @schuurman_game_2021 ((RIEDL: Can we give a date for Free Kriegspiel?)). However, despite their practical utility for simulating complex real-world environments, few have attempted to _automate_ construction or evaluation processes for Q4 settings.
 Game in this quadrant have, until recently, been beyond the reach of practical computing.
 However, this changes with the availability of highly capable LMs.
 

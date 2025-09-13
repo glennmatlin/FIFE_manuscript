@@ -8,7 +8,7 @@ The only winning move is not to play.
 How about a nice game of _Chess_?
 ]
 
-For thousands of years, the decision to initiate violent conflict between groups of people has always been a strictly human affair. The common refrain _"war never changes"_ is incomplete without its ending phrase, "_only the weapons are new_" #footnote["Practical Warfare", pg. 7 @london_practical_1915].
+For thousands of years, the decision to initiate violent conflict between groups of people has always been a strictly human affair. And while the common refrain goes _"war never changes,"_ it is incomplete without its ending phrase, "_only the weapons are new_" #footnote["Practical Warfare", pg. 7 @london_practical_1915].
 The reality is that Artificial Intelligence (AI) is radically changing how humans make decisions about war. The use of AI in high-stakes scenarios means that machine errors will be measured using the loss of human life instead of a loss function or a benchmark score. 
 
 The adoption of Artificial Intelligence (AI) as part of real-world decision-making processes has accelerated over the past five years, largely thanks to advancements in research and engineering on Language Models (LMs), which have shown promise in completing long-horizon semantic tasks needed in wargames @kwa_measuring_2025.  LM-powered AI systems are increasingly treated as a general‑purpose technology, providing a natural‑language interface for help with analysis and planning difficult tasks.
