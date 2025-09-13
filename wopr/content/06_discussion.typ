@@ -2,9 +2,14 @@
 = Discussion
 This section synthesizes key design principles for developing and evaluating LM-driven agents in open-ended wargames. Drawing from our comprehensive survey, we distill a set of core methodological considerations—such as turn structure, evidence requirements, human facilitation, and adjudication protocols—that influence the validity and analytical utility of language-based strategic simulations @robinson_stride_2018. We then contextualize these principles within specific domains to provide actionable guidance for researchers.
 
-== Military & Security
+== Military and National Security
 // [battlefield/material focused wargames vs diplomacy we can leave diplomatic aspects of military wargames to next section to avoid overlap, can mention] - isaac
 At the time of writing, numerous national military and security organizations are actively exploring how they can use AI to provide experiential learning and potentially establish a strategic advantage through superior decision-making and judgment @black_scaling_2024. We have observed how both military SMEs and academic researchers are currently investigating how LMs can be used to help AI act as players and adjudicators in open-ended wargames @black_mastering_2024 @griffin_matrix_2024. This news comes at a time when the safety-critical nature of these systems is of high importance and is receiving considerable attention. However, there is not currently a resource to help bridge the understanding gap between AI researchers and SMEs for this domain. We believe that non-military scientists and academics have a major role to play in the effectiveness and alignment of AI systems, particularly those in safety-critical settings. \
+
+//parv: this is the part where I talk about medicine and stuff
+
+\
+
 Because wargames offer humans a simplified mental model that allows them to abstract away particulars and navigate decision-making and analyze the results @us_naval_war_college_fundamentals_1966 @us_army_war_college_strategic_2015, they have been used in education and training, particularly in military contexts @us_naval_war_college_war_2015 @deutschland_bundeswehr_wargaming_2017 @uk_ministry_of_defense_wargaming_2017 @uk_ministry_of_defense_wargaming_2017 @croatian_military_academy_introduction_2019 @australian_armed_forces_wargaming_2022 @polish_armed_forces_wargaming_2022 @us_army_how_2023 @nato_wargaming_2023 @french_ministry_of_the_armed_forces_wargaming_2024
 
 == International Relations
@@ -48,7 +53,3 @@ Other games, such as Settlers of Catan, also provide valuable macro-scale models
 
 Through experimentation with AI in wargames, the fields of economics and finance can move beyond static theoretical models toward dynamic environments governed by uncertainty and enforced by structured adjudicators. AI agents acting as firms, governments, or traders enable exploration of systemic risks, policy interventions, and resource distribution at scale. By studying these agents in wargames such as Civilization IV and Settlers of Catan, researchers gain novel methodologies for testing, refining, and even challenging economic and financial theory. In doing so, wargames not only deepen our understanding of strategic behavior but also provide actionable insights into the design and regulation of real-world markets.
 
-== Medicine and Public Health
-((TODO: Dark winter and other wargames))
-@smith_serious_2020
-// todo: ask parv|yixiong 
