@@ -70,13 +70,11 @@ constrain the effect of the expressive creativity. While games in this quadrant 
 == Quadrant IV: Creative Player, Creative Adjudicator
 This quadrant covers wargames with expressive players and qualitative adjudication. These are often discussion-based exercises that prioritize strategic creativity and narrative plausibility over rigid rule-sets. Prominent examples include modern seminar-style wargames, such as the U.S. Army's TRADOC wargames used to explore future military concepts, and matrix wargames like the "ISIS Crisis" game, which use a structured argumentation format to analyze complex, multi-faceted conflicts. Adjudicated simulations, such as Model United Nations, where participants engage in diplomatic role-playing, also fall into this category. Furthermore, most tabletop role-playing games (TTRPGs) like _Shadowrun_, _Paranoia_, _Call of Cthulhu_, and _Vampire: The Masquerade_ are excellent examples of this quadrant, where player freedom is high and a Game Master provides narrative adjudication.
 
-*Q4 wargames matters for the real world smth smth* This subset of wargames best represents real-world strategic environments where outcomes in complex and dynamic environments depend on agent adaptation and emergent behaviors. The limitations of rigid rule-sets in mapping to complex strategic environments have been extensively documented, tracing back to at least the Free Kriegsspiel movement @schuurman_game_2021. However, despite their practical utility for simulating complex environments, few studies have attempted to automate construction or evaluation processes for Q4 settings.
+Games that allow creativity for both players and adjudicators better support classic aims of wargaming: exploring uncertainty, revealing assumptions, and eliciting expert judgment. Real world scenarios are hardly analytical and issues with rigid rule set for players and adjudicators mapping poorly to real world scenarios are obvious and well-explored; treatises on this matter could be dated at least back to the Free Kriegsspiel movement @schuurman_game_2021. However, despite their practical utility for simulating complex environments, few studies have attempted to automate construction or evaluation processes for Q4 settings.
 
-*Q4 wargames leverage improving AI capabilities*. LMs are trending toward longer time‑horizon competence, expanding context windows, and enhanced retrieval across longer contexts @kwa_measuring_2025 @zhang_inftybench_2024. They also exhibit improvements in persuasion and qualified judgment @karger_forecastbench_2025 @schoenegger_large_2025, indicating a trajectory toward more capable agents and adjudicators.
+Quadrant IV wargames are particularly well-suited to leverage the improving capabilities of AI. LMs are trending toward longer time‑horizon competence, expanding context windows, and enhanced retrieval across longer contexts @kwa_measuring_2025 @zhang_inftybench_2024. They also exhibit improvements in persuasion and qualified judgment @karger_forecastbench_2025 @schoenegger_large_2025, indicating a trajectory toward more capable agents and adjudicators. Parameter‑efficient fine‑tuning techniques such as adapters and LoRA, combined with in‑context learning (ICL), enable model tailoring for a wargaming context without costly retraining. Lightweight adapters stabilize role-specific behavior (e.g., adjudicator versus player), while prompt‑only ICL provides scenario‑specific styling and constraints. Both approaches reduce operational overhead and improve reproducibility.
 
-*Q4 wargames exploit current frontier architectures* Parameter‑efficient fine‑tuning techniques such as adapters and LoRA, combined with in‑context learning (ICL), enable model tailoring for a wargaming context without costly retraining. Lightweight adapters stabilize role-specific behavior (e.g., adjudicator versus player), while prompt‑only ICL provides scenario‑specific styling and constraints. Both approaches reduce operational overhead and improve reproducibility.
-
-*Q4 wargames present unique safety concerns*. Creative players may develop novel strategies or exploit scenario ambiguities in ways that push beyond the exercise's intended scope, while creative adjudicators possess significant latitude in interpreting player actions and determining outcomes, which could introduce bias, inconsistency, or inappropriate scenario escalation. These risks are compounded when AI systems assume both roles, due to the combination of reduced human oversight and expressive flexibility. 
+However, Q4 wargames also present unique safety concerns. Creative players may develop novel strategies or exploit scenario ambiguities in ways that push beyond the exercise's intended scope, while creative adjudicators possess significant latitude in interpreting player actions and determining outcomes, which could introduce bias, inconsistency, or inappropriate scenario escalation. These risks are compounded when AI systems assume both roles, due to the combination of reduced human oversight and expressive flexibility. 
 
 #figure(
   placement: top,
@@ -119,3 +117,14 @@ This quadrant covers wargames with expressive players and qualitative adjudicati
   ),
   caption: [Screening flow with counts per stage and inclusion criteria.],
 ) <fig:screening-flow>
+
+== Analysis of Q4 (qualitative)
+
+((RIEDL: I'm not sure why this has to be a separate section from 4.4. If things get complex to read, then 4.5 and 4.6 could be 4.4.1 and 4.4.2.))
+
+here, we talk about the papers in q4 only and characterize them
+
+// riedl: we should explicitly have a section on research problems and what can be learned by working on those.
+// real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers
+
+// riedl: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
