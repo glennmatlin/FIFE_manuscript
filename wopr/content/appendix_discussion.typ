@@ -1,4 +1,4 @@
-= Appendix: Detailed Discussion of Wargaming Domains <app:discussion>
+= Appendix C: Detailed Discussion of Wargaming Domains <app:discussion>
 
 == Military and National Security
 // [battlefield/material focused wargames vs diplomacy we can leave diplomatic aspects of military wargames to next section to avoid overlap, can mention] - isaac
