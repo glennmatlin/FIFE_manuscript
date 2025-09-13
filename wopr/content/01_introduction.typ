@@ -5,7 +5,7 @@
 #quote(attribution:[WOPR from "Wargames" 1983])[
 A strange game.
 The only winning move is not to play.
-How about a nice game of chess?
+How about a nice game of _Chess_?
 ]
 
 For thousands of years, the decision to initiate violent conflict between groups of people has always been a strictly human affair. The common refrain _"war never changes"_ is incomplete without its ending phrase, "_only the weapons are new_" #footnote["Practical Warfare", pg. 7 @london_practical_1915].

@@ -11,7 +11,7 @@ Serious wargames have the following attributes:\
 - The outcomes of the game are used to inform real-world decisions or generate insights.
 
 Conflict and war have been a focal topic of games and stories for thousands of years. Strategy wargames are nearly as old as written history. Examples of strategy-focused conflict games can be found across the ancient world, including the Egyptian _Senet_, the Greeks' _Polis_, Chinese _Go_, and India's _Chaturanga_, which eventually became perhaps the most well-known wargame in the world: _Chess_. 
-Wargames act as a simplified model of conflict to navigate the world and make effective decisions @perla_why_2011. Modern contemporary wargaming evolved from custom variations of chess that incorporated additional rule systems or maps, designed to simulate military battles, most notably @von_reisswitz-kaderzin_und_grabowska_kriegsspiel_1989.
+Wargames act as a simplified model of conflict to navigate the world and make effective decisions @perla_why_2011. Modern contemporary wargaming evolved from custom variations of _Chess_ that incorporated additional rule systems or maps, designed to simulate military battles, most notably @von_reisswitz-kaderzin_und_grabowska_kriegsspiel_1989.
 Wargames have also crossed into games for entertainment; commercially successful modern wargames--_Risk_, _Diplomacy_, _Civilization_, _Twilight Struggle_, _Advanced Squad Leader_, _Space Hulk_, even _Dungeons \& Dragons_--all grew out of a desire by military leaders to model and simulate the chaotic nature of conflict @schuurman_game_2021 @greenberg_outline_1981.
 
 Agents in these games are commonly grouped into one of two categories: _player_ and _adjudicator_. 
@@ -43,7 +43,7 @@ These AI techniques can be powerful solvers but at the expense of generalization
 // Open-ended games provide a far greater degree of creative freedom for players to identify the action needed to advance towards their goals and finish the game. Creativity offers players the freedom to identify unique paths to reach the victory condition, or even change the definition of the victory condition. Due to the open-ended nature of creative wargames, they have previously relied heavily on SMEs for
 // scenario design, player actions, and adjudication @coulthart_whats_2017 @perla_war_1987. In the military domain, these game formats are commonly referred to as matrix wargames or seminar wargames @us_naval_war_college_war_2015. This creative wargame style favors players with superior argumentation and decision‑making to navigate the complex open‑ended game state.
 
-// By contrast however, contemporary research into AI in wargames have targeted analytical games where the world state is defined by strict rules, a discrete gamespace where actions often have calculated outcomes. Commonly known examples include Chess, Go, and Starcraft 2.
+// By contrast however, contemporary research into AI in wargames have targeted analytical games where the world state is defined by strict rules, a discrete gamespace where actions often have calculated outcomes. Commonly known examples include _Chess_, _Go_, and _StarCraft II_.
 
 // Unfortunately, these systems
 // struggle with the ambiguity, creativity, and multi‑party interactions central to open-ended games. Computational support exists for tightly scoped kinetic or logistical simulations (e.g., Monte

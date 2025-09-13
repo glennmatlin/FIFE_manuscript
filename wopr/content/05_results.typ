@@ -8,9 +8,9 @@ While prior categorization schemes focus on the flexibility afforded to the play
 Unlike traditional simulations with structured inputs and discrete, well-defined action effects, language-based systems operate in vast, open-ended semantic spaces. 
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the adjudicator in the form of language descriptions of outcomes, it need not be the case.
 The presence of natural language in wargames is not equal across all games. 
-Consider the game of _Diplomacy_ in which players can communicate naturally to make trade deals, but the final form of the trade deal must be highly structured in terms of resource exchanges that are simple to adjudicate.
+Consider _Twilight Imperium_, where players negotiate deals in natural language, but the resulting exchanges (e.g., trade goods, promissory notes) are recorded in structured terms that are simple to adjudicate.
 
-Consider also games such as _Free Kriegspiel_ and _Navy Fleet Problems_ in which the players' actions are limited to movements of army pieces on a board. Still, the adjudicator has a high degree of autonomy to dictate---and explain---the outcomes of each move.
+Consider also games such as _Free Kriegsspiel_ and _Navy Fleet Problems_ in which the players' actions are limited to movements of army pieces on a board. Still, the adjudicator has a high degree of autonomy to dictate—and explain—the outcomes of each move.
 These examples demonstrate that the degree of creativity afforded to the player and the adjudicator can be considered as two independent axes, which form the basis of our proposed ontology.
 
 To remedy this deficiency with the classic analytical to creative spectrum, we add a vertical dimension, which characterizes the adjudicator's role. To be in the top half of the space, adjudicator's responses to the player are characterized as _adjudicator analytical_, meaning the adjudicator's responses to the player are limited to prescribed responses. To be on the bottom half of the space, the adjudicator's responses to the player are characterized as _adjudicator creative_, meaning the adjudicator has the agency to create novel responses. 
@@ -50,7 +50,7 @@ image("figures/fig_by_year_quadrant_area_2col.svg"),
 This quadrant covers rigid, rule‑based systems for both the players and the adjudicators (often
 predetermined scoring). Of the quadrants, this quadrant is among the most extensively explored, as it captures traditional “quantitative” wargames. Rigid rules or computer simulations excel at repeatability but can offer poor novel insight generation due to the necessary constraints of the simulation rules or game engine.
 Notable examples include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
-of strategy board games both traditional (e.g. chess, checkers, and Go) or modern (e.g. Stratego, Warhammer 40k, and Starcraft) @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
+of strategy board games both traditional (e.g., _Chess_, _Checkers_, and _Go_) or modern (e.g., _Stratego_, _Warhammer 40K_, and _StarCraft_) @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
 
 These games often benefit less from recent developments in LMs because of its rigid nature, with RL approaches being more common. @anthony_learning_2022 @perolat_mastering_2022 @light_strategist_2024 @gao_land-based_2024
 
@@ -64,7 +64,7 @@ procedural adjudicator. This includes the vast majority of board games with a so
 rigid scoring rules, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistence: Avalon_. @martinenghi_llms_2024
 
 Of the quadrants, this quadrant is one of the most explored in its relation to AI, with extensive
-research, especially with wargames such as Diplomacy, most notably Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_human-level_2022. With rigid adjudication mechanisms and often rigid procedural agent mechanisms, games in this quadrant are mechanically simple to evaluate, which leads to the popularity of this category in the fields of AI competition and diplomacy.
+During our survey period, this quadrant received the most attention. Its rigid adjudication and procedural agent designs make evaluation straightforward and repeatable, which helps explain its popularity in AI competitions and benchmarking (e.g., Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_human-level_2022).
 
 However, the limited evaluation creativity that makes Q3 attractive is also its major flaw. The rigid
 adjudication and procedural constraints in much existing research across the quadrants strongly
