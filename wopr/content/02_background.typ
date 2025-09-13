@@ -53,7 +53,7 @@ GLENN TODO: use jonathan's citations
 // Open-ended games provide a far greater degree of creative freedom for players to identify the action needed to advance towards their goals and finish the game. Creativity offers players the freedom to identify unique paths to reach the victory condition, or even change the definition of the victory condition. Due to the open-ended nature of creative wargames, they have previously relied heavily on SMEs for
 // scenario design, player actions, and adjudication @coulthart_whats_2017 @perla_war_1987. In the military domain, these game formats are commonly referred to as matrix wargames or seminar wargames @us_naval_war_college_war_2015. This creative wargame style favors players with superior argumentation and decision‑making to navigate the complex open‑ended game state.
 
-// By contrast however, contemporary research into AI wargames have targeted analytical games where the world state is defined by strict rules, a discrete gamespace where actions often have calculated outcomes. Commonly known examples include Chess, Go, and Starcraft 2. (TODO: CITE)
+// By contrast however, contemporary research into AI in wargames have targeted analytical games where the world state is defined by strict rules, a discrete gamespace where actions often have calculated outcomes. Commonly known examples include Chess, Go, and Starcraft 2.
 
 // Unfortunately, these systems
 // struggle with the ambiguity, creativity, and multi‑party interactions central to open-ended games. Computational support exists for tightly scoped kinetic or logistical simulations (e.g., Monte
