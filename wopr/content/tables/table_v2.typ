@@ -127,7 +127,7 @@
     ["Measuring Free-Form Decision-Making Inconsistency of Language Models in Military Crisis Simulations" @shrivastava_measuring_2024], [III],
     ["Microscopic Analysis on LLM Players via Social Deduction Game" @kim_microscopic_2024], [III],
     ["More Victories, Less Cooperation: Assessing Cicero's Diplomacy Play" @wongkamjan_more_2024], [III],
-    ["MultiMind: Enhancing Werewolf Agents with Multimodal Memory"], [III],
+    ["MultiMind: Enhancing Werewolf Agents with Multimodal Memory" @zhang_multimind_2025a], [III],
     ["Negotiation and honesty in artificial intelligence methods for the board game of Diplomacy" @kramar_negotiation_2022], [III],
     ["Playing repeated games with large language models" @akata_playing_2025], [III],
     ["Richelieu: Self-Evolving LLM-Based Agents for AI Diplomacy" @guan_richelieu_2024], [III],
