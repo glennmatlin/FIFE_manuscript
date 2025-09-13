@@ -3,7 +3,7 @@
 #import "../config.typ"
 
 = Related Works
-A growing body of work surveys the use of Large Language Models (LMs) in games and simulations, covering topics from strategic reasoning @zhang_llm_2024 and agent architecture @hu_survey_2025 to general applications @xu_survey_2024, modeling @gao_large_2024 @ma_computational_2024, and benchmarking social reasoning and persuasion @yao_spin-bench_2025 @park_ai_2023 @feng_survey_2025. While valuable, these surveys focus on games with well-defined rules and clear win conditions. In contrast, our work focuses on the sub-domain of open-ended, language-based wargames characterized by their qualitative nature, ambiguous rules, and the importance of narrative and argumentation. To our knowledge, this is the first scoping literature review and comprehensive research agenda for this class of wargames.
+A growing body of work surveys the use of Language Models (LMs) in games and simulations, covering topics from strategic reasoning @zhang_llm_2024 and agent architecture @hu_survey_2025 to general applications @xu_survey_2024, modeling @gao_large_2024 @ma_computational_2024, and benchmarking social reasoning and persuasion @yao_spin-bench_2025 @park_ai_2023 @feng_survey_2025. While valuable, these surveys focus on games with well-defined rules and clear win conditions. In contrast, our work focuses on the sub-domain of open-ended, language-based wargames characterized by their qualitative nature, ambiguous rules, and the importance of narrative and argumentation. To our knowledge, this is the first scoping literature review and comprehensive research agenda for this class of wargames.
 
 /*
 In this section, we review other literature reviews and surveys on the topic of language models in games and simulations.

@@ -5,7 +5,7 @@ We searched Google Scholar, arXiv, and Semantic Scholar using a series of querie
 Single-move games or LM polling presented as games were excluded due to a lack of interactivity. Opinion or editorial pieces without research content, including any blog posts that lack technical appendices or methodology, were not included. Studies were only included if they met all of the following criteria:
 - Publication year 2020-2025 to ensure GPT-era relevance.
 - Includes the use of technologies or methods that would commonly be understood to be considered artificial intelligence.
-- AIs serving as agents, adjudicators, or generators to ensure breadth of roles.
+- AIs serving as players or adjudicators, which includes a breadth of other terminology used, e.g., AI agent, world model, state generator.
 - Provision of any evaluation outcome (quantitative metrics, subject matter expert narratives, or explicit statement of “none”) as needed for synthesis.
 - Full text accessibility in English, or with an acceptable machine translation.
-- Publications available online from peer-reviewed venues or reports from authoritative sources (RAND, CNA, DoD, MoD). Pre-prints were included, but flagged.
+- Pre-print available online with a preference for work that was either published with peer-review, or reports from authoritative sources (e.g. RAND, DoD, MoD).

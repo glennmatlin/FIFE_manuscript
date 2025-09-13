@@ -42,6 +42,7 @@ As serious applications of wargames can have significant societal and safety imp
   #bibliography("zotero.bib",
       style: "association-for-computational-linguistics-blinky.csl")
 ]
-#include "content/ai_in_wargames_table.typ"
+#include "content/tables/ai_in_wargames_table.typ"
+#include "content/tables/table_v2.typ"
 #include "content/appendix_A.typ"
 #include "content/appendix_B.typ"
