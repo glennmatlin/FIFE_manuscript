@@ -49,5 +49,5 @@ As serious applications of wargames can have significant societal and safety imp
 #include "content/appendix_B.typ"
 #include "content/appendix_discussion.typ"
 #include "content/table.typ"
-#include "content/table_glenn.typ"
+// #include "content/table_glenn.typ"
 // #include "content/cybersecurity_risks_discusson.typ"

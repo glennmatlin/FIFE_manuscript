@@ -8,28 +8,9 @@
 + *Creative wargame:* Games relying on narrative adjudication or subject matter expert judgment with minimal or no numeric scoring. Tabletop seminar games with after-action discussions represent this category.
 + *Language-centric game:* Formats where progress depends fundamentally on *textual or spoken communication* among actors (human or LM). CICERO Diplomacy and conflict negotiations exemplify this approach @meta_fundamental_ai_research_diplomacy_team_human-level_2022, contrasting with action-based games like _StarCraft_, where LM-powered bots handle micromanagement.
 
-== Analytical vs Creative Axes
-
-We treat analytical and creative emphases as two axes of open‑endedness: one for the player
-agent (the actor who proposes moves) and one for the adjudicator agent (the entity that
-determines outcomes via rules or judgment). Hereafter we refer to them simply as “player” and
-“adjudicator.” We avoid numeric scales and use categorical labels: Analytical or Creative.
+= figures dump
 
 #figure(
-  placement: top,
-  scope: "parent",
-  table(
-    columns: (auto, auto, auto),
-    stroke: none,
-    column-gutter: 1em,
-    align: left,
-    table.hline(),
-    [*Axis*], [*Analytical*], [*Creative*],
-    [Player], [Fixed scripts; narrow menus], [Novel proposals; free‑form argumentation],
-    [Adjudicator], [Deterministic rules/tables], [Expert narrative judgment; flexible calls],
-    table.hline()
-  ),
-  caption: [Open‑endedness axes with categorical levels (Analytical/Creative) for player and adjudicator],
-)
-
-
+image("figures/fig_by_year_quadrant_area_2col.svg"),
+  caption: [The distribution of papers over time by time quadrant since 2019.],
+) <fig:plot_over_time>

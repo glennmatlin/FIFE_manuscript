@@ -1,7 +1,4 @@
 #import "../config.typ":num_papers
-
-== Analysis of Q4 (qualitative)
-
 = Discussion
 
 The motivation for integrating Large Language Models (LMs) into wargaming is rooted in the need to better navigate complex, high-stakes decision-making under uncertainty across diverse domains. From military strategy and international diplomacy, where experiential learning is critical for crisis response and strategic advantage @black_scaling_2024, to business and finance, where simulations help stress-test strategies against market volatility @scherpereel_decision_2005, wargames provide a controlled environment for exploration. In public health, they are essential for preparing for crises like pandemics @smith_serious_2020. LMs offer a way to enhance these simulations, enabling more dynamic, nuanced, and scalable explorations of strategic landscapes that are often characterized by incomplete information and adversarial interactions.

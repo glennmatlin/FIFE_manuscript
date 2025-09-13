@@ -1,5 +1,4 @@
 #import "../config.typ":num_papers
-
 = Open Research Questions
 Widespread language model deployment in open-ended wargaming scenarios necessitates incorporating sophisticated planning algorithms for long-term strategy in large state spaces, improved counterfactual reasoning for creative strategy generation, and robust world models for dynamic environments. These capabilities are essential for addressing the complex, partially-specified nature of open-ended wargaming scenarios where traditional computational approaches prove insufficient. Several research challenges require both theoretical and empirical investigation:
 
