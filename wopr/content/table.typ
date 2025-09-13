@@ -8,7 +8,7 @@
 
 #set text(font: "Times New Roman", size: 11pt)
 
-== Selected AI in Wargames Papers
+= Appendix A: Selected AI in Wargames Papers
 
 // The table is in normal flow (no #place / no float).
 // It will break across columns and pages; header repeats automatically.

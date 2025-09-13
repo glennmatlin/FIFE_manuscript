@@ -34,7 +34,7 @@ As serious applications of wargames can have significant societal and safety imp
 #include "content/09_future_work.typ"
 #include "content/03_related_works.typ"
 #include "content/10_conclusion.typ"
-#include "content/11_impact_statement.typ"
+// #include "content/11_impact_statement.typ"
 
 
 #import "@preview/blinky:0.2.0": link-bib-urls
@@ -44,10 +44,9 @@ As serious applications of wargames can have significant societal and safety imp
   #bibliography("zotero.bib",
       style: "association-for-computational-linguistics-blinky.csl")
 ]
-
+#include "content/table.typ"
 #include "content/appendix_A.typ"
 #include "content/appendix_B.typ"
 #include "content/appendix_discussion.typ"
-#include "content/table.typ"
 // #include "content/table_glenn.typ"
 // #include "content/cybersecurity_risks_discusson.typ"
