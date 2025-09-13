@@ -33,12 +33,12 @@ Inherent to this is the ability for the players to negotiate the outcome with th
 
 #figure(
   image("figures/fig_ontology.svg"),
-  caption: [Ontology of creativity for AI in wargames with illustrative placement of example games in each of the four quadrants.]
+  caption: [Ontology of AI creativity in wargames with illustrative example games in each of the four quadrants.]
 ) <fig:creativity-quadrants>
 
 #figure(
 image("figures/fig_by_year_quadrant_area_2col.svg"),
-  caption: [The distribution of papers over time by time quadrant from 2020 to 2025.],
+  caption: [The distribution of selected papers on AI in wargames by quadrant over time from 2020 to 2025.],
 ) <fig:plot_over_time>
 
 == Quadrant I: Analytical Player, Analytical Adjudicator
