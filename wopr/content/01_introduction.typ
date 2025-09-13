@@ -16,9 +16,6 @@ The adoption of Artificial Intelligence (AI) as part of real-world decision-maki
 
 The implicit promise of AI to provide general-purpose human-level intelligence via cloud-based scalable computing means that these systems are now of significant interest to national governments, military organizations, and multinational corporations as a means to automate operations, either to achieve higher effectiveness or reduce failure rates.
 
-((RIEDL: Consider "AI wargames" vs. "AI in wargames". I am thinking the latter is more appropriate, so lets ensure we use this consistently throughout))
-
-
 Wargames are not just for war. The term describes any game ((RIEDL: that... )).
 As such, "wargames" are conducted to aide strategic decision making in business, diplomacy, law, healthcare, cybersecurity, and military. ((RIEDL: footnote maybe about D&D here? or ending of entertainment strictly i.e. D&D))
 As a result, there is a growing interest among Subject Matter Experts (SMEs) in these communities in how they can leverage AI in wargames, particularly for those that are highly language-centric and thus highly open-ended, affording a high degree of creative ideation by players  

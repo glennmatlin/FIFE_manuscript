@@ -1,7 +1,3 @@
 #import "../config.typ":num_papers
-= Conclusions
-LMs are reshaping how open-ended and language‑centric wargames can be designed and studied, but progress
-depends on clarity about roles, formats, and evaluation. A discussion‑style synthesis helps the
-community converge on practical choices that preserve the strengths of human‑facilitated play
-while making careful use of automation. We hope the references and patterns here accelerate
-responsible exploration in defense, policy, and organizational settings.
+= Conclusion
+We present a framework for understanding and deploying language models in open-ended wargaming scenarios through a novel two-dimensional taxonomy that separates player and adjudicator creativity. Our scoping literature review demonstrates that while analytical wargames have dominated AI research, the most strategically valuable applications lie in Quadrant IV environments where both players and adjudicators operate creatively. Qualitative domain analysis across military, diplomatic, business, and public health contexts reveals both significant opportunities and critical safety considerations that require careful mitigation strategies. We identify several research questions and methodological recommendations, seeking to bridge the critical gap between AI researchers and wargaming practitioners and enable more informed integration of AI systems in strategic decision-making contexts.

@@ -1,7 +1,3 @@
 #import "../config.typ":num_papers
 = Impact Statement
-This work consolidates emerging practices for incorporating LMs into open‑ended, language‑
-centric wargames. The primary impact is practical: clearer reporting, lightweight evaluation,
-and reproducible artifacts that support analysts and researchers. We aim to reduce duplicated
-effort, surface trade‑offs transparently, and improve the interpretability of results used in
-security and policy contexts.
+This research provides a novel taxonomy for categorizing and evaluating AI applications in wargaming, directly supporting national security, diplomatic, and business organizations seeking to leverage LMs for strategic analysis. The safety considerations and mitigation strategies we outline are essential for preventing potential failures when AI systems inform real-world policy decisions through wargaming exercises. Our two-dimensional taxonomy enables more systematic research approaches across the intersection of AI and strategic simulation. The domain-specific guidance offers immediate practical value for practitioners, while the open research questions establish technical priorities for advancing LM strategic reasoning capabilities.
