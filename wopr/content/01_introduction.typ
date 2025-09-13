@@ -23,15 +23,11 @@ As a result, there is a growing interest among Subject Matter Experts (SMEs) in 
 This is in contrast to many traditional computer-driven wargames, which have more constrained possibility spaces, limiting their applicability, especially in narrative understanding, social human factors, or unbounded problems @geist_understanding_2022. 
 The previous limitations on computer-driven wargames meant conducting language-based, open-ended games relied _entirely_ on SMEs to conduct purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_war_1954 @perla_war_1987 @davis_illustrating_2017. 
 
-LMs are opening up numerous new possibilities with respect to automating aspects of language-based, open-ended games. At the same time, these opportunities pose a serious risks in deployment due to the greater degree of freedom afforded by the open-ended nature of these games @rivera_escalation_2024. Early experiments that let off‑the‑shelf
-LMs “play” scripted moves showed brittle reasoning, hallucination, and rule non‑adherence
+LMs are opening up numerous new possibilities with respect to automating aspects of language-based, open-ended games. At the same time, these opportunities pose a serious risk in deployment due to the greater degree of freedom afforded by the open-ended nature of these games @rivera_escalation_2024. Early experiments with LMs that used off‑the‑shelf
+models play an analytical wargame of scripted events, which resulted in brittle reasoning, hallucination, and rule non‑adherence
 @lamparth_human_2024.
-// @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @wu_enhance_2024 @xu_exploring_2023 @xu_language_2023]
 
 To unlock LMs' immense potential for such wargames, we present a comprehensive scoping literature review that establishes critical, discussion-oriented desiderata for deploying AI in complex wargaming scenarios. This paper fills a significant gap in the literature by providing researchers with both a thorough domain analysis and a strategic roadmap for high-impact research directions.
-// We focus on open‑ended and creative wargames where an AI is acting in the role of either a _player_ or an _adjudicator_.
-
-((RIEDL: What do we do in this paper? We present an ontology, and why. We present research questions. What else.))
 
 The key contributions of this paper are:
  + A curated reference catalog on open-ended wargames to guide AI researchers.

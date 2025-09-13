@@ -68,7 +68,7 @@ GLENN TODO: use jonathan's citations
 // and qualitative adjudication to explore alternative futures.
 
 == Artificial Intelligence in Wargames
-To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” @Minsky1968Semantic. This broad definition is intentional. While much of the recent excitement in AI for wargaming is driven by Large Language Models (LMs), our survey is not exclusively focused on LMs. We consider any system that meets this definition of AI, including symbolic AI, expert systems, and other machine learning approaches. This allows us to provide a more comprehensive overview of the field and its historical context. The full details of our literature review protocol, including key definitions, can be found in @app:lit-review-protocols.
+To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence” @minsky_semantic_1968. This broad definition is intentional. While much of the recent excitement in AI for wargaming is driven by Large Language Models (LMs), our survey is not exclusively focused on LMs. We consider any system that meets this definition of AI, including symbolic AI, expert systems, and other machine learning approaches. This allows us to provide a more comprehensive overview of the field and its historical context. The full details of our literature review protocol, including key definitions, can be found in @app:lit-review-protocols.
 
 //@li_exploration_2025
 //@davis_artificial_2025

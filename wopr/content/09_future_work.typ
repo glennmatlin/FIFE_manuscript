@@ -1,8 +1,6 @@
 #import "../config.typ":num_papers
 
 = Open Research Questions
-
-= Open Research Questions
 Widespread language model deployment in open-ended wargaming scenarios necessitates incorporating sophisticated planning algorithms for long-term strategy in large state spaces, improved counterfactual reasoning for creative strategy generation, and robust world models for dynamic environments. These capabilities are essential for addressing the complex, partially-specified nature of open-ended wargaming scenarios where traditional computational approaches prove insufficient. Several research challenges require both theoretical and empirical investigation:
 
 - *How can we reliably elicit and maintain coherent hierarchal personas without behavioral leakage between persona levels?* Persona misgeneralization may cause models to simulate stylized fictional portrayals rather than authentic domain expertise potentially masking deficiencies in real-world capability. One class of promising solutions involves intervening on model internals through activation steering, which leverages un-interpretable yet meaningful hidden states or personas @turner_steering_2024 @chalnev_improving_2024 @chen_persona_2025. However, such techniques remain highly brittle and unpredictable @tan_analyzing_2025 @hao_patterns_2025 and require further advancement.

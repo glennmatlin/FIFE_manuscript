@@ -1,5 +1,3 @@
-// ===== Table of Selected AI in Wargames Papers =====
-
 == Table of Selected AI in Wargames Papers
 
 // Page and text formatting for compact table
