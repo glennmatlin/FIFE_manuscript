@@ -3,20 +3,19 @@
 The spectrum between creative wargames and analytical wargames conflates the player and the adjudicator.
 As we argue below, considering the analytical versus creative nature of the players separate from that of the adjudicator helps us understand the space of games with respect to AI approaches.
 
-((Justifying the need to consider players and adjudicators independently. It's actually a bit challenging, because increased linguistic flexibility on the player side seems to require increased linguistic flexibility, so I need to find counter examples.))
 While prior categorization schemes focus on the flexibility afforded the player, it elides the unique challenges inherent when the player's moves are language-based. 
 Unlike traditional simulations with structured inputs and discrete, well-defined action efects, language-based systems operate in vast, open-ended semantic spaces. 
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the ajudicator in the form of language descriptions of outcomes, it need not be the case.
 The presence of natural language in wargames is not equal across all games. 
 Consider the game of _Diplomacy_ in which players can communicate naturally to make trade deals, but the final form of the trade deal must be highly structured in terms of resource exchanges that are simple to ajudicate.
-Consider also a game such as _Free Kriegspiel_ ((NOTE: or another example)), in which the players' actions are limited to movements of army pieces on a board, but the ajudicator has a high degree of autonomy to dictate---and explain---the outcomes of each move.
+Consider also a game such as _Free Kriegspiel_, in which the players' actions are limited to movements of army pieces on a board, but the ajudicator has a high degree of autonomy to dictate---and explain---the outcomes of each move.
+These examples demonstrate that the degree of creativity afforded to the player and the adjudicator can be considered as two independent axes, which forms the basis of our proposed ontology.
 
 Consequently, we arrange the space of wargames according to a two-dimensional space, as shown in @fig:creativity-quadrants.
 The horizontal dimension characterizes the player role, creating a spectrum from analytical to creative. The lefthand side characterizes player moves as _player analytical_, meaning the player is presented with finite, pre-defined action options. The righthand side of the space characterizes player moves as _player creative_, implying that the player has increasing agency to create new types of moves that could not have been envisioned in advance. The horizontal dimension is identical to the analytical versus creative dimension described in the ((Background section)). 
 
 To this, we add a vertical dimension, which characterizes the adjudicator's role. To be on the top half of the space,  ajudicator's responses to the player are characterized as _ajudicator analytical_, meaning the ajudicator's responses to the player are limited to prescribed responses. To be on the bottom half of the space, the adjudicator's responses to the player are characterized as _ajudicator creative_, meaning the ajudicator has the agency to create novel responses. 
-Inherent to this is the ability for the players to negotiate the outcome with the ajudicator. This negotiation is not a player move per-se but happens ((NOTE: could use the term extra-diagetically)) after the move is made as a means to dynamically alter the mapping from the player's move to the response. ((NOTE: Writing this, I wonder if it's the mapping that is creative as opposed to the actual surface form of the ajudicator's output response.))
-
+Inherent to this is the ability for the players to negotiate the outcome with the ajudicator. This negotiation is not a player move per-se but happens after the move is made as a means to dynamically alter the mapping from the player's move to the response.
 
 Evaluating AI in language-centric wargames presents unique challenges. Unlike traditional simulations with clear-cut rules and actions, these wargames are open-ended and revolve around natural language. This means that instead of discrete moves on a board, we have complex, high-dimensional text outputs representing arguments, justifications, and actions. This makes direct comparisons and reproducible evaluations difficult. Therefore, our analysis focuses not just on the outcomes of the games, but also on the quality, coherence, and plausibility of the language the AI agents use.
 
@@ -120,11 +119,15 @@ However, Q4 wargames also present unique safety concerns. Creative players may d
 
 == Analysis of Q4 (qualitative)
 
-((RIEDL: I'm not sure why this has to be a separate section from 4.4. If things get complex to read, then 4.5 and 4.6 could be 4.4.1 and 4.4.2.))
-
 here, we talk about the papers in q4 only and characterize them
 
-// riedl: we should explicitly have a section on research problems and what can be learned by working on those.
-// real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers
+=== Open Research Problems
+The unique characteristics of Q4 wargames open up several interesting research problems for the AI community.
 
-// riedl: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
+*Real-time Multi-agent Planning:* Q4 games often involve multiple agents that need to coordinate and make decisions in real-time. This requires developing new multi-agent planning algorithms that can handle the dynamic and uncertain nature of these games.
+
+*Mechanical Interpretability:* As AI agents become more complex, understanding their decision-making process becomes crucial. Research in mechanical interpretability for Q4 wargames could focus on developing methods to explain why an agent chose a particular strategy or action, which is especially important in high-stakes scenarios.
+
+*Avoiding Bias and Echo Chambers:* The open-ended nature of Q4 games can lead to the emergence of biases and echo chambers, where agents reinforce each other's beliefs and limit the exploration of alternative strategies. Future research could explore how to design AI agents that are robust to these phenomena and can maintain a diversity of perspectives.
+
+Furthermore, as Riedl suggests, Q4 wargames offer a unique opportunity to study these research problems in an integrated manner. Unlike siloed research on individual AI capabilities, Q4 games allow us to observe how these capabilities interact and influence each other in a complex, dynamic environment. This can lead to a more holistic understanding of AI and its implications.
