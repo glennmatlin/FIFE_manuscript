@@ -208,7 +208,7 @@
   ["Evaluating LLM Agent Collusion in Double Auctions"],
   [III],
 
-  ["Finding deceivers in social context with large language models: the case of the Mafia game"],
+  ["Finding deceivers in social context with large language models: the case of the Mafia game" yoo_finding_2024],
   [III],
 
   ["FishBargain: An LLM-Empowered Bargaining Agent for Online Flea-Market Platform Sellers"],
