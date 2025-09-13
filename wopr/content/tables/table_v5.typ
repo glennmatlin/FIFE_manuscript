@@ -152,12 +152,21 @@
 
     bottomrule(),
   )
-
-  // Legend & totals
-  v(6pt)
-  block(width: 100%, fill: luma(96), inset: (x: 6pt, y: 4pt), radius: 2pt)[
-    #set text(size: 8pt)
-    *Legend:* Q = Quadrant (I–IV)
-  ]
-  text(size: 8pt)[Total papers: 100 | Quadrant I: 52 | Quadrant II: 6 | Quadrant III: 34 | Quadrant IV: 8]
 }
+#block(
+  fill: luma(230),
+  inset: 8pt,
+  radius: 4pt,
+  // Legend & totals
+    text(size: 9pt)[*Table 1 Legend*]
+    v(2pt)
+    text(size: 8pt)[*Total papers: 100*]
+    v(2pt)
+    text(size: 8pt, fill:rgb("#0172B2"))[Quadrant I: 52]
+    v(2pt)
+    text(size: 8pt, fill:rgb("#E69F01"))[Quadrant II: 6]
+    v(2pt)
+    text(size: 8pt, fill:rgb("#009E73"))[Quadrant III: 34]
+    v(2pt)
+    text(size: 8pt, fill:rgb("#C97BA6"))[Quadrant IV: 8]
+)
