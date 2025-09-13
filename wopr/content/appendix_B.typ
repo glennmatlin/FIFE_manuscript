@@ -32,34 +32,4 @@ determines outcomes via rules or judgment). Hereafter we refer to them simply as
   caption: [Open‑endedness axes with categorical levels (Analytical/Creative) for player and adjudicator],
 )
 
-// == Placing Representative Wargames on the Two-Axis Plot
-// TODO: HAVE A WAY TO ILLUSTRATE GAMES ON THE PLOT! maybe use draw.io?
-// #figure(
-//   placement: top,
-//   scope: "parent",
-//   table(
-//     // columns: (auto, auto,auto,auto),
-//     // align: left,
-//     columns: (1fr, auto, auto, 2fr),
-//     align: (left, center, center, left),
-//     stroke: none,
-//     column-gutter: 1em,
-//     table.hline(),
-//     [*Wargame Name *], [*Player*], [*Adjudicator*], [*Notes*],
-//   [Seminar wargame], [Creative], [Creative], [Open proposals; facilitated discussion],
-//   [Matrix wargame], [Creative], [Creative], [Invented actions; light adjudication],
-//   [Free Kriegsspiel], [Creative], [Creative], [Free play; expert adjudicator judgment],
-//   [Red Teaming], [Creative], [Creative], [Extreme novelty; structured critique],
-//   [Diplomacy], [Creative], [Analytical], [Open negotiation; algorithmic resolution],
-//   [Course‑of‑Action wargame], [Analytical], [Analytical], [Scripted analysis; doctrinal checks],
-//   [Warhammer 40k], [Analytical], [Analytical], [Varied tactics; heavy dice/rules],
-//   [Computer simulation], [Analytical], [Analytical], [Menu actions; software computation],
-//   [Rigid Kriegsspiel], [Analytical], [Analytical], [Rulebook tactics; deterministic tables],
-//   [Chess], [Analytical], [Analytical], [Codified moves; formal rules],
-//   [Tic‑Tac‑Toe], [Analytical], [Analytical], [Strict moves; formal rules],
-//   [Conway’s Game of Life], [Analytical], [Analytical], [Deterministic cellular automaton],
-//   [Linear graphic novel games], [Analytical], [Analytical], [Narrative rails; limited agency],
-//     table.hline()
-//   ),
-//     caption: [Representative wargames plotted on dual-axis framework],
-// )
+

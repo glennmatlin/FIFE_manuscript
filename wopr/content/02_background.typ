@@ -24,7 +24,7 @@ The term _serious games_ is used to describe games designed for purposes beyond 
 Serious games can be used to explore strategic choices, elicit expert judgment, or stress‑test plans @us_army_war_college_strategic_2015.
 Unlike purely recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis @de_rosa_design_2021.
 
-//The term serious games is used to describe games designed for purposes beyond entertainment, such as training, education, analysis, or policy exploration @smith_serious_2020 (CITE: more cites for serious games) @wallman_its_1995. Serious games are used to explore strategic choices, elicit expert judgment, or stress‑test plans @us_army_war_college_strategic_2015. Unlike purely recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis @de_rosa_design_2021.
+
 //Volumes of military literature for wargames over two hundred years have established numerous core definitions, taxonomies of formats
 //(seminar, matrix, kriegsspiel, etc.), and adjudication philosophies (rigid rules vs. free adjudication). What all of these rules ultimately share in common is that they emphasize
 //strategic planning, managing uncertainty, and the role of facilitation and judgment in
@@ -40,9 +40,7 @@ Open-ended games provide a far greater degree of creative freedom for players to
 scenario design, player actions, and adjudication @perla_war_1987 @perla_why_2011 @coulthart_whats_2017.
 
 Contemporary research into AI in wargames has targeted analytical games, where the world state and the ways it can be changed through moves are defined by strict rules and a discrete --- though sometimes combinatorially large —-- game state space. Common examples include _Chess_, _Go_, and _Starcraft_. @silver_mastering_2017 @vinyals_grandmaster_2019 @goodman_ai_2020 @ma_adaptive_2025 These games do not present opportunities to incorporate ambiguity, creativity, or multi‑party interactions, which are central to open-ended games. Computational support in the form of tightly-scoped kinetic or logistical simulations is much more feasible, often providing ground truth game state and transitions.  Therefore, analytical games are amenable to artificial intelligence game-playing agents using techniques such as state-space search, Monte Carlo tree search, or reinforcement learning @feng_alphazero-like_2023 @black_scaling_2024. 
-These AI techniques can be powerful solvers but at the expense of generalization to novel scenarios ((RIEDL: can we cite some of Jonathan Balloch's novelty work?
-GLENN TODO: use jonathan's citations 
-)). 
+These AI techniques can be powerful solvers but at the expense of generalization to novel scenarios @balloch_novgrid_2022 @zollicoffer_novelty_2023. 
 
 // These categories are respectively referred to as *creative wargames* and *analytical wargames* @franken_when_2013 @barzashka_five_2019.
 // Open-ended games provide a far greater degree of creative freedom for players to identify the action needed to advance towards their goals and finish the game. Creativity offers players the freedom to identify unique paths to reach the victory condition, or even change the definition of the victory condition. Due to the open-ended nature of creative wargames, they have previously relied heavily on SMEs for

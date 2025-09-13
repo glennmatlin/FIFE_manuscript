@@ -3,7 +3,6 @@
 The spectrum between creative wargames and analytical wargames conflates the player and the adjudicator.
 As we argue below, considering the analytical versus creative nature of the players separate from that of the adjudicator helps us understand the space of games with respect to AI approaches.
 
-RIEDL: 
 While prior categorization schemes focus on the flexibility afforded the player, it elides the unique challenges inherent when the player's moves are language-based. 
 Unlike traditional simulations with structured inputs and discrete, well-defined action effects, language-based systems operate in vast, open-ended semantic spaces. 
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the ajudicator in the form of language descriptions of outcomes, it need not be the case.
@@ -13,7 +12,7 @@ Consider also games such as _Free Kriegspiel_and _Navy Fleet Problems_, in which
 These examples demonstrate that the degree of creativity afforded to the player and the adjudicator can be considered as two independent axes, which forms the basis of our proposed ontology.
 
 Consequently, we arrange the space of wargames according to a two-dimensional space, as shown in @fig:creativity-quadrants.
-The horizontal dimension characterizes the player role, creating a spectrum from analytical to creative. The lefthand side characterizes player moves as _player analytical_, meaning the player is presented with finite, pre-defined action options. The righthand side of the space characterizes player moves as _player creative_, implying that the player has increasing agency to create new types of moves that could not have been envisioned in advance. The horizontal dimension is identical to the analytical versus creative dimension described in the ((RIEDL: goes into Background section)). 
+The horizontal dimension characterizes the player role, creating a spectrum from analytical to creative. The lefthand side characterizes player moves as _player analytical_, meaning the player is presented with finite, pre-defined action options. The righthand side of the space characterizes player moves as _player creative_, implying that the player has increasing agency to create new types of moves that could not have been envisioned in advance. The horizontal dimension is identical to the analytical versus creative dimension described in the. // ((RIEDL: goes into Background section)) 
 
 To this, we add a vertical dimension, which characterizes the adjudicator's role. To be on the top half of the space,  ajudicator's responses to the player are characterized as _ajudicator analytical_, meaning the ajudicator's responses to the player are limited to prescribed responses. To be on the bottom half of the space, the adjudicator's responses to the player are characterized as _ajudicator creative_, meaning the ajudicator has the agency to create novel responses. 
 Inherent to this is the ability for the players to negotiate the outcome with the ajudicator. This negotiation is not a player move per-se but happens after the move is made as a means to dynamically alter the mapping from the player's move to the response.
@@ -98,6 +97,7 @@ However, Q4 wargames also present unique safety concerns. Creative players may d
   caption: [Yearly paper counts by quadrant (2019–present).],
 ) <fig:yearly-counts>
 
+/*
 #figure(
   placement: top,
   scope: "parent",
@@ -117,10 +117,11 @@ However, Q4 wargames also present unique safety concerns. Creative players may d
   ),
   caption: [Screening flow with counts per stage and inclusion criteria.],
 ) <fig:screening-flow>
+*/
 
 == Analysis of Q4 (qualitative)
 
-here, we talk about the papers in q4 only and characterize them
+// here, we talk about the papers in q4 only and characterize them
 
 === Open Research Problems
 The unique characteristics of Q4 wargames open up several interesting research problems for the AI community.

@@ -1,16 +1,16 @@
 #import "../config.typ":num_papers
 
-((NOTE: This section needs to be cut down to fit and have the extra content moved into appendix. This section should be shorter and tighter to focus on key ideas and leave the rest for appendix. We need to get this done to be under the 8 pg limit!! We talk about the current work in each domain of Q4 wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."  1st para: motivation. 2nd para: work. use papers from each quadrant naturally and weave them in. dont list off a ton of them. we only want to pick the ones that help us tell the story we are telling with our ideas.))
+// ((NOTE: This section needs to be cut down to fit and have the extra content moved into appendix. This section should be shorter and tighter to focus on key ideas and leave the rest for appendix. We need to get this done to be under the 8 pg limit!! We talk about the current work in each domain of Q4 wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."  1st para: motivation. 2nd para: work. use papers from each quadrant naturally and weave them in. dont list off a ton of them. we only want to pick the ones that help us tell the story we are telling with our ideas.))
 
 == Analysis of Q4 (qualitative)
 
-((RIEDL: I'm not sure why this has to be a separate section from 4.4. If things get complex to read, then 4.5 and 4.6 could be 4.4.1 and 4.4.2.))
+// ((RIEDL: I'm not sure why this has to be a separate section from 4.4. If things get complex to read, then 4.5 and 4.6 could be 4.4.1 and 4.4.2.))
 
-here, we talk about the papers in q4 only and characterize them
+// here, we talk about the papers in q4 only and characterize them
 
-((RIEDL: we should explicitly have a section on research problems and what can be learned by working on those. e.g. real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers))
+// ((RIEDL: we should explicitly have a section on research problems and what can be learned by working on those. e.g. real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers))
 
-((RIEDL: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
+// ((RIEDL: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
 
 
 = Discussion
