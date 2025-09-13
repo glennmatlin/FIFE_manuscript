@@ -18,8 +18,8 @@
 
 #abstract[
 Language models (LMs) are increasingly being deployed for use in defense and security settings to provide humans with insights for real-world decision-making. One prominent example is the use of *LMs for wargames* --- a depiction of conflict in which the participants’ decisions influence the future outcomes of events.
-Based on a scoping literature review of #num_papers recent works on AI in wargames, we construct an ontology of wargames in terms of the creativity afforded to the player's action space and the adjudicator's judgement space.
-We discuss both the serious application areas (finance, medicine, diplomacy, military) as well as entertainment applications (table-top role-playing, video games), where we describe the research challenges associated with each domain.
+Based on a scoping literature review of a curated selection of #num_papers recent works on AI in wargames, we construct an ontology of wargames in terms of the creativity afforded to the player's action space and the adjudicator's judgement space.
+We discuss both serious application areas (finance, medicine, diplomacy, and military) as well as entertainment applications (table-top role-playing and video games), where we describe the research challenges associated with each domain.
 As serious applications of wargames can have significant societal and safety implications, we motivate further research on LMs in wargames.
 ]
 

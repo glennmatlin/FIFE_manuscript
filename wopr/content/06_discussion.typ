@@ -1,4 +1,33 @@
 #import "../config.typ":num_papers
+
+// NOTES: We are redoing this part. If it is 3 AM and this is still here, ping Glenn. 
+
+
+// We talk about the current work in each domain of Q4 wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."
+
+/** PARV NOTES START 
+// 1st para: motivation. 2nd para: work
+
+// open a new view, look at all the q4 stuff and categorize naturally 
+
+PARV SCRATCH END **/
+
+
+
+/**
+
+== Analysis of Q4 (qualitative)
+
+((RIEDL: I'm not sure why this has to be a separate section from 4.4. If things get complex to read, then 4.5 and 4.6 could be 4.4.1 and 4.4.2.))
+
+here, we talk about the papers in q4 only and characterize them
+
+// riedl: we should explicitly have a section on research problems and what can be learned by working on those.
+// real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers
+
+// riedl: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
+
+
 = Discussion
 This section synthesizes key design principles for developing and evaluating LM-driven agents in open-ended wargames. Drawing from our comprehensive survey, we distill a set of core methodological considerations—such as turn structure, evidence requirements, human facilitation, and adjudication protocols—that influence the validity and analytical utility of language-based strategic simulations @robinson_stride_2018. We then contextualize these principles within specific domains to provide actionable guidance for researchers.
 
