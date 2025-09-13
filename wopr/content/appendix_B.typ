@@ -1,4 +1,4 @@
-= Appendix B: Literature Review Protocols
+= Appendix B: Literature Review Protocols <app:lit-review-protocols>
 
 == Key Definitions
 + *Wargame:* A multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events.

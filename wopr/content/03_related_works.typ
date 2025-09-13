@@ -1,6 +1,6 @@
 #import "../config.typ"
 = Related Works
-((TODO: explaining that related work means other literature reviews.))
+In this section, we review other literature reviews and surveys on the topic of language models in games and simulations.
 // (( TODO CITE: LLM as a Mastermind: A Survey of Strategic Reasoning with Large Language Models; A Survey on Large Language Model-Based Game Agents; Large Language Models and Games: A Survey and Roadmap; LLM as a Mastermind: A Survey of Strategic Reasoning with Large Language Models;  Playing games with Large language models: Randomness and strategy; SPIN-Bench: How well do LLMs plan strategically and reason socially?; A Survey on Game Playing Agents and Large Models: Methods, Applications, and Challenges; A Survey on Large Language Model-Based Social Agents in Game-Theoretic Scenarios; Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis
 
 Surveys of LMs in games and simulation describe agents that negotiate, plan, or role‑play in

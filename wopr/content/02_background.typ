@@ -6,7 +6,7 @@ Serious wargames have the following attributes:
 - A synthetic environment that enables agent choice and feedback;
 - Agents make decisions and experience consequences via adjudication or rules;
 - Strategic reasoning uses information about other agents and the environment.
-// + ((TODO: possible to add a bullet here to limit definition to serious games by implying we draw data for real world use or learning etc))
+- The outcomes of the game are used to inform real-world decisions or generate insights.
 
 Conflict and war have been a focal topic of games and stories for thousands of years. Strategy wargames are nearly as old as written history. Examples of strategy-focused conflict games can be found across the ancient world, including the Egyptian _Senet_, the Greeks' _Polis_, Chinese _Go_, and India's _Chaturanga_, which eventually became perhaps the most well-known wargame in the world: _Chess_. 
 Wargames act as a simplified model of conflict to navigate the world and make effective decisions @perla_why_2011. Modern contemporary wargaming evolved from custom variations of chess that incorporated additional rule systems or maps, designed to simulate military battles, most notably @von_reisswitz-kaderzin_und_grabowska_kriegsspiel_1989.
@@ -72,7 +72,7 @@ GLENN TODO: use jonathan's citations
 // It values plausibility and explanatory richness over strict optimality, and relies on facilitation
 // and qualitative adjudication to explore alternative futures.
 
-== Artificial Intelligence for WarGames
+== Artificial Intelligence in Wargames
 To help achieve our goal of bridging the gap between AI researchers and domain SMEs, we adopt the definition of “Artificial Intelligence” (AI) as “the use of computers to carry out tasks that previously required human intelligence”. ((TODO:CITE RAND!)). \ // @sayler_artificial_2019 @national_security_commission_on_artificial_intelligence_final_2021
 ((TODO: Glenn needs to write here about the defintion of AI used, how it informed out survey scope, and then update the appendix survey definition etc. we should also link the appendix here as well!))
 
