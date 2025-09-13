@@ -45,4 +45,3 @@ As serious applications of wargames can have significant societal and safety imp
 #include "content/ai_in_wargames_table.typ"
 #include "content/appendix_A.typ"
 #include "content/appendix_B.typ"
-#include "content/appendix_C.typ"
