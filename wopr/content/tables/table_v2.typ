@@ -11,6 +11,16 @@
 
 = Appendix A: Selected AI in Wargames Papers
 
+== Key Definitions
++ *Artificial Intelligence (AI):* The use of computers to carry out tasks that previously required human intelligence.
++ *Wargame:* A multi‑faceted depiction of conflict with one or more parties in which the participants’ decisions influence the future outcomes of events.
++ *Open-ended:* Games where rules permit *unconstrained natural-language moves*, allowing players to propose novel actions beyond a preset menu. Outcomes are adjudicated by facilitators, subject matter experts, or dynamic rules rather than a fixed payoff matrix. Seminar wargames or Diplomacy (with negotiation phases) exemplify this approach, contrasting with constrained games like Chess or Go or rigid social games like Werewolf or Among Us.
++ *Analytical wargame:* Formats that track numeric scores, payoffs, probabilities, or optimization objectives, though they may still contain open-ended dialogue components. Examples include _Chess_, _Starcraft_, and other non-stochastic combat models.
++ *Creative wargame:* Games relying on narrative adjudication or subject matter expert judgment with minimal or no numeric scoring. Tabletop seminar games with after-action discussions represent this category.
++ *Language-centric game:* Formats where progress depends fundamentally on *textual or spoken communication* among actors (human or LM) rather than simply using language as an individual agent. CICERO Diplomacy and conflict negotiations exemplify this approach @meta_fundamental_ai_research_diplomacy_team_human-level_2022, contrasting with action-based games like _StarCraft_, where LM-powered bots handle micromanagement and are never engaged in language-centric action.
+
+== TODO: Table subsection title here
+
 #{
   // Make column 1 (titles) ragged-right for nicer wraps.
   show table.cell.where(x: 1): set par(justify: false)
@@ -94,7 +104,7 @@
     ["FishBargain: An LLM-Empowered Bargaining Agent for Online Flea-Market Platform Sellers"], [III],
     ["HARBOR: Exploring Persona Dynamics in Multi-Agent Competition"], [III],
     ["Human vs. Machine: Behavioral Differences Between Expert Humans and Language Models in Wargame Simulations" lamparth_human_2024], [III],
-    ["Human-level play in the game of Diplomacy by combining language models with strategic reasoning" meta_fundamental_ai_research_diplomacy_team_human-level_2022], [III],
+    ["Human-level play in the game of Diplomacy by combining language models with strategic reasoning" @meta_fundamental_ai_research_diplomacy_team_human-level_2022], [III],
     ["It Takes Two to Negotiate: Modeling Social Exchange in Online Multiplayer Games" jaidka_it_2023], [III],
     ["LLMs of Catan: Exploring Pragmatic Capabilities of Generative Chatbots" martinenghi_llms_2024], [III],
     ["Learning from Synthetic Labs: Language Models as Experimental Subjects in Auctions"], [III],

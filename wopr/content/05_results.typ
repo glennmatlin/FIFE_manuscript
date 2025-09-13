@@ -9,7 +9,6 @@ Unlike traditional simulations with structured inputs and discrete, well-defined
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the adjudicator in the form of language descriptions of outcomes, it need not be the case.
 The presence of natural language in wargames is not equal across all games. 
 Consider _Twilight Imperium_, where players negotiate deals in natural language, but the resulting exchanges (e.g., trade goods, promissory notes) are recorded in structured terms that are simple to adjudicate.
-
 Consider also games such as _Free Kriegsspiel_ and _Navy Fleet Problems_ in which the players' actions are limited to movements of army pieces on a board. Still, the adjudicator has a high degree of autonomy to dictate—and explain—the outcomes of each move.
 These examples demonstrate that the degree of creativity afforded to the player and the adjudicator can be considered as two independent axes, which form the basis of our proposed ontology.
 
@@ -33,11 +32,13 @@ Inherent to this is the ability for the players to negotiate the outcome with th
   caption: [Open‑endedness axes with categorical levels (Analytical/Creative) for player and adjudicator],
 )
 
+
+((RIEDL: Still not sure what this paragraph is adding. Is it talking about how we did our analysis? If so, does it go in the Methodology section at the end?))
 Evaluating AI in language-centric wargames presents unique challenges. Unlike traditional simulations with clear-cut rules and actions, these wargames are open-ended and revolve around natural language. This means that instead of discrete moves on a board, we have complex, high-dimensional text outputs representing arguments, justifications, and actions. This makes direct comparisons and reproducible evaluations difficult. Therefore, our analysis focuses not just on the outcomes of the games, but also on the quality, coherence, and plausibility of the language the AI agents use.
 
 #figure(
-  image("figures/taxonomy_games.png"),
-  caption: [Open‑endedness quadrants (illustrative placement of formats).],
+  image("figures/fig_ontology.svg"),
+  caption: [Ontology of creativity for AI in wargames with illustrative placement of example games in each of the four quadrants.],
 ) <fig:creativity-quadrants>
 
 
@@ -48,14 +49,25 @@ image("figures/fig_by_year_quadrant_area_2col.svg"),
 
 == Quadrant I: Analytical Player, Analytical Adjudicator
 This quadrant covers rigid, rule‑based systems for both the players and the adjudicators (often
-predetermined scoring). Of the quadrants, this quadrant is among the most extensively explored, as it captures traditional “quantitative” wargames. Rigid rules or computer simulations excel at repeatability but can offer poor novel insight generation due to the necessary constraints of the simulation rules or game engine.
-Notable examples include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
-of strategy board games both traditional (e.g., _Chess_, _Checkers_, and _Go_) or modern (e.g., _Stratego_, _Warhammer 40K_, and _StarCraft_) @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
+predetermined scoring). 
+Games in this quadrant include traditional strategy board games such as _Chess_, _Go_, and the original _Kriegspiel_, as well as more modern variants such as _Stratego_, the No Press variant of _Diplomacy_, _Warhammer 40k_, and _Starcraft_ @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
 
-These games often benefit less from recent developments in LMs because of its rigid nature, with RL approaches being more common. @anthony_learning_2022 @perolat_mastering_2022 @light_strategist_2024 @gao_land-based_2024
+Of all the quadrants, this one is among the most extensively explored. 
+//as it captures traditional “quantitative” wargames. 
+Because the players' actions are from a prescribed (though possibly large) set of possibilities, and because ajudication can be implemeted as a scoring function, games in this quadrant are amenable to the creation of computational simulations.
+These simulations allow for repeatability but also offer poor novel insight generation due to the necessary constraints of the simulation rules or game engine.
+// Notable examples include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
+// of strategy board games both traditional (e.g., _Chess_, _Checkers_, and _Go_) or modern (e.g., _Stratego_, _Warhammer 40K_, and _StarCraft_) @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
+
+Because games in this quadrant are amenable to the creation of computational simulations, they can be played by AI systems that leverage repeated trial-and-error play at super-human simulator speeds. 
+Reinforcement learning and Monte Carlo Tree Search, in particular, have been demonstrated to be highly effective at games in this quadrant, and sometimes more specialized search algorithms such as Minimax. 
+However, games in this quadrant have benefited  less from recent developments in LMs because of their rigid nature, which does not map well to the capabilities of LMs @anthony_learning_2022 @perolat_mastering_2022 @light_strategist_2024 @gao_land-based_2024.
 
 == Quadrant II: Analytical Player, Creative Adjudicator
-This quadrant covers games in which players are often relatively limited in their action space, while a human SME adjudicator determines the outcomes based on their judgment. This configuration is not common for wargames, but it is possible. Games that would fall into this quadrant include variants of wargames such as Meckel's early version of Free Kriegsspiel and the class of procedural-based human-adjudicated war games @schuurman_game_2021. The latter type is typically a high-fidelity military simulation where established orders and procedures constrain player actions, while human experts decide action outcomes; this would encompass major real-world wargames such as early US Navy Fleet Problems and standard Tactical Exercise Without Troops (TEWT), where the focus is on decisions within procedural military actions as the field expert adjudicator determines the outcomes @nofi_hm_2010 @john_armatys_wargame_2022. Other types of games that fall under this category include semi-rigid adjudicated wargames, where the game is played rigidly and adjudicators have the possibility of overriding the outcomes -- such as tightly scripted training vignettes where SME adjudicators improvise consequences @uk_ministry_of_defense_wargaming_2017. Outside of military wargames, certain corporate wargames also fall into this quadrant; these games share similar emphasis on managerial or operational procedures over a creatively adjudicated and simulated scenario @cohen_role_1961 @hershkovitz_wargame_2019. Generally, wargames in this quadrant tend to lean more towards serious games with common shared emphasis on resolving realistic human-adjudicated scenarios with established procedures. 
+This quadrant covers games in which players are often relatively limited in their action space, while a human SME adjudicator determines the outcomes based on their judgment. This configuration is not common for wargames, but it is possible. Games that would fall into this quadrant include variants of wargames such as Meckel's early version of _Free Kriegsspiel_. 
+It also includes a class of procedural-based human-adjudicated war games @schuurman_game_2021 involving high-fidelity military simulations where established orders and procedures constrain player actions while human experts decide action outcomes. Examples includemajor real-world wargames such as early US Navy Fleet Problems and standard Tactical Exercise Without Troops (TEWT), where the focus is on decisions within procedural military actions as the field expert adjudicator determines the outcomes @nofi_hm_2010 @john_armatys_wargame_2022. Other types of games that fall under this category include semi-rigid adjudicated wargames, where the game is played rigidly and adjudicators have the possibility of overriding the outcomes, such as tightly scripted training vignettes where SME adjudicators improvise consequences @uk_ministry_of_defense_wargaming_2017. Outside of military wargames, certain corporate wargames also fall into this quadrant; these games share similar emphasis on managerial or operational procedures over a creatively adjudicated and simulated scenario @cohen_role_1961 @hershkovitz_wargame_2019. Generally, wargames in this quadrant tend to lean more towards serious games with common shared emphasis on resolving realistic human-adjudicated scenarios with established procedures.
+
+((RIEDL: do we have anything to say about AI?))
 
 == Quadrant III: Creative Player, Analytical Adjudicator
 This quadrant covers games with highly creative agents and low‑creativity adjudicators. Common
@@ -63,17 +75,25 @@ patterns in this quadrant include highly expressive, low‑procedural‑complexi
 procedural adjudicator. This includes the vast majority of board games with a social element and
 rigid scoring rules, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistence: Avalon_. @martinenghi_llms_2024
 
-Of the quadrants, this quadrant is one of the most explored in its relation to AI, with extensive
-During our survey period, this quadrant received the most attention. Its rigid adjudication and procedural agent designs make evaluation straightforward and repeatable, which helps explain its popularity in AI competitions and benchmarking (e.g., Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_human-level_2022).
+This quadrant has been of recent interest to the AI research community because some of the games in this quadrant involve natural language in limited contexts. For example _Diplomacy_ allows for natural language negotiations between players.
+The Cicero agent @meta_fundamental_ai_research_diplomacy_team_human-level_2022 demonstrated that natural language negotiation could be incorporated into reinforcement learning loops. 
+This was possible, however, because the negotiations only occur within a prescribed stage of gameplay and does not affect ajudication, which can be automated.
+Duing ouurvperod, isqudnt receivdteIts rigid adjudication and procedural agent designs make evaluation straightforward and repeatable, which helps explain its popularity in AI competitions and benchmarking (e.g., Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_human-level_2022).
 
-However, the limited evaluation creativity that makes Q3 attractive is also its major flaw. The rigid
-adjudication and procedural constraints in much existing research across the quadrants strongly
-constrain the effect of the expressive creativity. While games in this quadrant often focus on social interactions of the players, the constrained procedural actions limit complex or realistic games and with low nuance in the outcome.
+However, the limited evaluation creativity that makes Q3 attractive also limits the generalizability of AI contributions. 
+// The rigid
+// adjudication and procedural constraints in much existing research across the quadrants strongly
+// constrain the effect of the expressive creativity. 
+While games in this quadrant often focus on social interactions of the players, the constrained procedural actions limit complex or realistic games and with low nuance in the outcome of those social interactions.
 
 == Quadrant IV: Creative Player, Creative Adjudicator
-This quadrant covers wargames with expressive players and qualitative adjudication. These are often discussion-based exercises that prioritize strategic creativity and narrative plausibility over rigid rule-sets. Prominent examples include modern seminar-style wargames, such as the U.S. Army's TRADOC wargames used to explore future military concepts, and matrix wargames like the "ISIS Crisis" game, which use a structured argumentation format to analyze complex, multi-faceted conflicts. Adjudicated simulations, such as Model United Nations, where participants engage in diplomatic role-playing, also fall into this category. Furthermore, most tabletop role-playing games (TTRPGs) like _Shadowrun_, _Paranoia_, _Call of Cthulhu_, and _Vampire: The Masquerade_ are excellent examples of this quadrant, where player freedom is high and a Game Master provides narrative adjudication.
+This quadrant covers wargames with expressive players and qualitative adjudication. These are often discussion-based exercises that prioritize strategic creativity and narrative plausibility over rigid rule-sets. Prominent examples include modern seminar-style wargames, such as the U.S. Army's TRADOC wargames used to explore future military concepts, and matrix wargames like the "ISIS Crisis" game, which use a structured argumentation format to analyze complex, multi-faceted conflicts. Adjudicated simulations, such as Model United Nations, where participants engage in diplomatic role-playing, also fall into this category. Furthermore, most tabletop role-playing games (TTRPGs) like _Shadowrun_, _Paranoia_, _Call of Cthulhu_, and _Vampire: The Masquerade_ are excellent examples of this quadrant, where player freedom is high and a Game Master provides narrative adjudication. The non-combat, non-die-based portions of _Dungeons \& Dragons_ is another example.#footnote[_Dungeons \& Dragons_ and other TTRPGs can be played with more or less emphasis on combat and figurines. The most rigid form of play would be only the combat elements that are played only within the combat rules and ajudication also strictly following the rules of die rolls, which would fall in quadrant I. Players rigidly following combat and die-roll rules but where the Game Master ignores die rolls and makes their own determinations of outcomes would be an extreme variation that falls within Quadrant II; this style of role-playing is exemplified by _Neverwinter Nights_ with Dungeon Master mode enabled.] ((RIEDL: the reference to D&D is for consistency with previous text, but also to prompt the footnote, which is long and can probably be cut due to sheer nerdiness.))
 
-Games that allow creativity for both players and adjudicators better support classic aims of wargaming: exploring uncertainty, revealing assumptions, and eliciting expert judgment. Real world scenarios are hardly analytical and issues with rigid rule set for players and adjudicators mapping poorly to real world scenarios are obvious and well-explored; treatises on this matter could be dated at least back to the Free Kriegsspiel movement @schuurman_game_2021. However, despite their practical utility for simulating complex environments, few studies have attempted to automate construction or evaluation processes for Q4 settings.
+Games that allow creativity for both players and adjudicators better support classic aims of wargaming: exploring uncertainty, revealing assumptions, and eliciting expert judgment. Real world scenarios involving complex social interactions are hard to formalize and attempts to create rule sets for players or adjudicators 
+tend to over-simplify real world phenomenon to the point where outcomes are hard to make actionable in the real world.
+Within the context of playing games with entirely human players and entirely human ajudicators, this games in this quadrant are well-explored; treatises on this matter trace back to the _Free Kriegsspiel_ movement @schuurman_game_2021 ((RIEDL: Can we give a date?)). However, despite their practical utility for simulating complex real-world environments, few have attempted to _automate_ construction or evaluation processes for Q4 settings.
+Game in this quadrant have, until recently, been beyond the reach of practical computing.
+However, this changes with the availability of highly capable LMs.
 
 Quadrant IV wargames are particularly well-suited to leverage the improving capabilities of AI. LMs are trending toward longer time‑horizon competence, expanding context windows, and enhanced retrieval across longer contexts @kwa_measuring_2025 @zhang_infinitybench_2024. They also exhibit improvements in persuasion and qualified judgment @karger_forecastbench_2025 @schoenegger_large_2025, indicating a trajectory toward more capable agents and adjudicators. Parameter‑efficient fine‑tuning techniques such as adapters and LoRA, combined with in‑context learning (ICL), enable model tailoring for a wargaming context without costly retraining. Lightweight adapters stabilize role-specific behavior (e.g., adjudicator versus player), while prompt‑only ICL provides scenario‑specific styling and constraints. Both approaches reduce operational overhead and improve reproducibility.
 
