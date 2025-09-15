@@ -1,7 +1,7 @@
 #import "../config.typ":num_papers
-= Discussion
+= Discussion of Application Domains
 
-The motivation for integrating Large Language Models (LMs) into wargaming is rooted in the need to better navigate complex, high-stakes decision-making under uncertainty across diverse domains. 
+The motivation for integrating LMs into wargaming is rooted in the need to better navigate complex, high-stakes decision-making under uncertainty across diverse domains. 
 LMs offer a way to enhance these simulations, enabling more dynamic, nuanced, and scalable explorations of strategic landscapes,
 and making the exercises more repeatable and easier to conduct more often.
 // that are often characterized by incomplete information and adversarial interactions.
@@ -25,4 +25,5 @@ For businesses, wargames are a tool to test corporate strategy against competiti
 
 Finally, in medicine and public health, wargames are used for crisis preparedness and response planning @smith_serious_2020. These tabletop exercises test emergency plans and inter-agency coordination, with LMs potentially assisting in scenario generation and analysis. This is crucial for improving societal resilience to future health crises.
 
-While this section provides a high-level synthesis, a more granular analysis of the unique characteristics and applications within each domain is available in Appendix ((TODO: add link to appendix after updates))
+While this section provides a high-level synthesis, a more granular analysis of the unique characteristics and applications within each domain is available in Appendix ((TODO: add link to appendix after updates)).
+Additionally, Appendix @app:recommendations-details enumerates implementation considerations to ensure that LMs are being effectively applied.

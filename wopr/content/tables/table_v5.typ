@@ -149,11 +149,10 @@
     ["What if LLMs Have Different World Views: Simulating Alien Civilizations with LLM-based Agents" @xue_what_2025], [#qtag("IV")],
     ["When Two LLMs Debate, Both Think They'll Win" @prasad_when_2025], [#qtag("IV")],
     ["Rethinking Adversarial Examples in Wargames" @chen_rethinking_2022], [#qtag("I")],
-
-    bottomrule(),
-  )
-}
-// #block(fill: luma(230), inset: 8pt, radius: 4pt)[
+    bottomrule()
+  );
+};
+, inset: 8pt, radius: 4pt)[
 //   stack(spacing: 3pt, align: top)[
 //     text(size: 9pt)[*Table 1 Legend*],
 //     text(size: 8pt)[*Total papers: 100*],
