@@ -1,42 +1,11 @@
 #import "@preview/tracl:0.6.1": *
 #import "../config.typ":num_papers
 
-// NOTES: We are redoing this part. If it is 3 AM and this is still here, ping Glenn.
-
-
-// We talk about the current work in each domain of Q4 wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."
-
-/** PARV NOTES START 
-// 1st para: motivation. 2nd para: work
-
-// open a new view, look at all the q4 stuff and categorize naturally 
-
-PARV SCRATCH END **/
-
-
-
-/**
-
-== Analysis of Q4 (qualitative)
-
-((RIEDL: I'm not sure why this has to be a separate section from 4.4. If things get complex to read, then 4.5 and 4.6 could be 4.4.1 and 4.4.2.))
-
-here, we talk about the papers in q4 only and characterize them
-
-// riedl: we should explicitly have a section on research problems and what can be learned by working on those.
-// real time multi agent planning -- mech interpretability -- avoiding bias and echo chambers
-
-// riedl: have a statement at some point where you could focus on anyone of these individual problems, but these games give opportunities to do many things at once and measure interactions. Q4 can solve the problem by avoiding the silos, explaining how the systems interact etc.
-
-
-= Discussion
+= Discussion on Wargame Domains
 This section synthesizes key design principles for developing and evaluating LM-driven agents in open-ended wargames. Drawing from our comprehensive survey, we distill a set of core methodological considerations—such as turn structure, evidence requirements, human facilitation, and adjudication protocols—that influence the validity and analytical utility of language-based strategic simulations @robinson_stride_2018. We then contextualize these principles within specific domains to provide actionable guidance for researchers.
 
 == Military and National Security
-// [battlefield/material focused wargames vs diplomacy we can leave diplomatic aspects of military wargames to next section to avoid overlap, can mention] - isaac
 At the time of writing, numerous national military and security organizations are actively exploring how they can use AI to provide experiential learning and potentially establish a strategic advantage through superior decision-making and judgment @black_scaling_2024. We have observed how both military SMEs and academic researchers are currently investigating how LMs can be used to help AI act as players and adjudicators in open-ended wargames @black_mastering_2024 @griffin_matrix_2024. This news comes at a time when the safety-critical nature of these systems is of high importance and is receiving considerable attention. However, there is not currently a resource to help bridge the understanding gap between AI researchers and SMEs for this domain. We believe that non-military scientists and academics have a major role to play in the effectiveness and alignment of AI systems, particularly those in safety-critical settings. \
-
-
 Because wargames offer humans a simplified mental model that allows them to abstract away particulars and navigate decision-making and analyze the results @us_naval_war_college_fundamentals_1966 @us_army_war_college_strategic_2015, they have been used in education and training, particularly in military contexts @us_naval_war_college_war_2015 @deutschland_bundeswehr_wargaming_2017 @uk_ministry_of_defense_wargaming_2017 @uk_ministry_of_defense_wargaming_2017 @croatian_military_academy_introduction_2019 @australian_armed_forces_wargaming_2022 @polish_armed_forces_wargaming_2022 @us_army_how_2023 @nato_wargaming_2023 @french_ministry_of_the_armed_forces_wargaming_2024
 
 == International Relations
