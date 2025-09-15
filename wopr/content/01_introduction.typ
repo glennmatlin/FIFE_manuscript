@@ -1,6 +1,8 @@
+#import "@preview/tracl:0.6.1": *
 #import "../config.typ"
 
 = Introduction
+<sec:introduction>
 #set quote(block:true)
 #quote(attribution:[WOPR from "Wargames" 1983])[
 A strange game.

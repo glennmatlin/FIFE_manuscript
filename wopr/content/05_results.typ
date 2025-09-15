@@ -1,3 +1,4 @@
+#import "@preview/tracl:0.6.1": *
 #import "../config.typ":num_papers
 = Ontology of Wargames
 
@@ -8,10 +9,10 @@ While prior categorization schemes focus on the flexibility afforded to the play
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the adjudicator in the form of language descriptions of outcomes, it need not be the case.
 The presence of natural language in wargames is not equal across all games. 
 Consider _Twilight Imperium_, where players negotiate deals in natural language, but the resulting exchanges (e.g., trade goods, promissory notes) are recorded in structured terms that are simple to adjudicate.
-Consider also games such as _Free Kriegsspiel_ and _Navy Fleet Problems_ in which the players' actions are limited to movements of army pieces on a board while the adjudicator has a high degree of autonomy to dictate---and explain---the outcomes of each move.
+Consider also games such as _Free Kriegsspiel_, in which players' actions are limited to the movements of army pieces on a board. At the same time, the adjudicator has a high degree of autonomy to dictate---and explainx---the outcomes of each move.
 These examples demonstrate that the degree of creativity afforded to the player and the adjudicator can be considered as two independent axes, which form the basis of our proposed ontology.
 
-To remedy this deficiency with the classic analytical to creative spectrum, we add a second dimension, which characterizes the adjudicator's role, as shown in ((FIGURE 1)). To be in the top half of the space, adjudicator's responses to the player are characterized as _adjudicator analytical_, meaning the adjudicator's responses to the player are limited to prescribed responses. To be on the bottom half of the space, the adjudicator's responses to the player are characterized as _adjudicator creative_, meaning the adjudicator has the agency to create novel responses. 
+To remedy this deficiency with the classic analytical to creative spectrum, we add a second dimension, which characterizes the adjudicator's role, as defined in @table:creativity-axis and represented visually in @fig:creativity-quadrants. To be in the top half of the space, adjudicator's responses to the player are characterized as _adjudicator analytical_, meaning the adjudicator's responses to the player are limited to prescribed responses. To be on the bottom half of the space, the adjudicator's responses to the player are characterized as _adjudicator creative_, meaning the adjudicator has the agency to create novel responses. 
 Inherent to this is the ability for the players to negotiate the outcome with the adjudicator. This negotiation is not a player move per se, but happens after the move is made as a means to dynamically alter the mapping from the player's move to the response.
 
 #figure(
@@ -29,7 +30,7 @@ Inherent to this is the ability for the players to negotiate the outcome with th
     table.hline()
   ),
   caption: [Open‑endedness axes with categorical levels (Analytical/Creative) for player and adjudicator],
-)
+)<table:creativity-axis>
 
 #figure(
   image("figures/fig_ontology.svg"),
@@ -68,13 +69,15 @@ Other types of games that fall under this category include semi-rigid adjudicate
 ((RIEDL: do we have anything to say about AI?))
 
 == Quadrant III: Creative Player, Analytical Adjudicator
-This quadrant covers games with highly creative agents and low‑creativity adjudicators. Common
+This quadrant covers games with highly creative agents where adjudication is tightly fixed and leaves little room for interpretation  . Common
 patterns in this quadrant include highly expressive, low‑procedural‑complexity games with a
 procedural adjudicator. This includes the vast majority of board games with a social element and
 rigid scoring rules, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistence: Avalon_. @martinenghi_llms_2024
 
 This quadrant has been of recent interest to the AI research community because some of the games in this quadrant involve natural language in limited contexts. For example _Diplomacy_ allows for natural language negotiations between players.
-The Cicero agent @meta_fundamental_ai_research_diplomacy_team_human-level_2022 (((RIEDL: this citation is weird, should be author names))) demonstrated that natural language negotiation could be incorporated into reinforcement learning loops. 
+The Cicero agent @meta_fundamental_ai_research_diplomacy_team_human-level_2022
+// ((RIEDL: this citation is weird, should be author names))  ((GLENN: oddly enough this is how its listed in the original followed up with riedl as the org first so keeping it until told to override ))
+demonstrated that natural language negotiation could be incorporated into reinforcement learning loops. 
 This was possible, however, because the negotiations only occur within a prescribed stage of gameplay and does not affect ajudication, which can be automated.
 Duing ouurvperod, isqudnt receivdteIts rigid adjudication and procedural agent designs make evaluation straightforward and repeatable, which helps explain its popularity in AI competitions and benchmarking (e.g., Meta’s Cicero @meta_fundamental_ai_research_diplomacy_team_human-level_2022).
 

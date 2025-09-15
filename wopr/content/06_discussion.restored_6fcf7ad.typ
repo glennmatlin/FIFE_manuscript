@@ -1,3 +1,4 @@
+#import "@preview/tracl:0.6.1": *
 #import "../config.typ":num_papers
 
 // NOTES: We are redoing this part. If it is 3 AM and this is still here, ping Glenn.

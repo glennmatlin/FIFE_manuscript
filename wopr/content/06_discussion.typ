@@ -1,4 +1,8 @@
+#import "@preview/tracl:0.6.1": *
+#import "@preview/tracl:0.6.1": *
+
 #import "../config.typ":num_papers
+
 = Discussion of Application Domains
 
 The motivation for integrating LMs into wargaming is rooted in the need to better navigate complex, high-stakes decision-making under uncertainty across diverse domains. 
@@ -25,5 +29,5 @@ For businesses, wargames are a tool to test corporate strategy against competiti
 
 Finally, in medicine and public health, wargames are used for crisis preparedness and response planning @smith_serious_2020. These tabletop exercises test emergency plans and inter-agency coordination, with LMs potentially assisting in scenario generation and analysis. This is crucial for improving societal resilience to future health crises.
 
-While this section provides a high-level synthesis, a more granular analysis of the unique characteristics and applications within each domain is available in Appendix ((TODO: add link to appendix after updates)).
-Additionally, Appendix @app:recommendations-details enumerates implementation considerations to ensure that LMs are being effectively applied.
+While this section provides a high-level synthesis, a more granular analysis of the unique characteristics and applications within each domain is available in Appendix.
+Additionally, @sec:detailedrecommendations enumerates implementation considerations to ensure that LMs are being effectively applied.

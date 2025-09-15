@@ -1,3 +1,4 @@
+#import "@preview/tracl:0.6.1": *
 #import "../config.typ":num_papers
 = Safety Considerations
 
@@ -7,7 +8,7 @@ The results of wargames often directly inform organizational policy, discussions
 - *Implicit bias*: Pre-training noise creates systematic errors @taubenfeld_systematic_2024 leading to implicit world state preferences @mazeika_utility_2025, causing blind spots in adversarial modeling.
 - *Long context incoherence:* LMs struggle to maintain cohesion over long contexts @liu_lost_2023. Effective wargaming requires strategic continuity and long horizon simulations may challenge the effective attention @modarressi_nolima_2025. 
 - *Prompt sensitivity:* The behavior of LMs can be heavily influenced by the system prompt, e.g., including "helpful assistant" or "skeptical critic" can significantly change the LM's behavior and can be exploited to generated desired outcomes undermine the insights gained from the game. 
-- *Sycophancy*: Post-training creates emergent sycophancy @sharma_towards_2025, which may mask strategic vulnerabilities and incorrectly validate operator assumptions in red-team exercises. Because post-training encourages helpfulness, harmlesses, and honesty (((CITE: Amanda Askew))) the way the LM is rewarded during training can affect its ability to adopt personas that do not have these qualities, such as in the case of an adversary.
+- *Sycophancy*: Post-training creates emergent sycophancy @sharma_towards_2025, which may mask strategic vulnerabilities and incorrectly validate operator assumptions in red-team exercises. Because post-training encourages helpfulness, harmlessness, and honesty @askell_general_2021 @sharma_towards_2025 the way the LM is rewarded during training can affect its ability to adopt personas that do not have these qualities, such as in the case of an adversary.
 // Mark: because sycophancy and recursive personas fall out of the same cause, I've combined them. I think my description of "recursive personas" is a bit more general at the risk of not having the "soldier" example to make it concrete. Anyway I think "adversaries trying to be helpful" should be alarming enough for people to pay attention.
 // Parv: was tryign to get above across in "recusrive persona.." and "robustness" discussions in the following sections. if unclear, let me know! 
 // I am very okay with removing it. Note I didn't add prompt sensitivty, and would rather remove that because recursive is built upon later in the work (specifically future work)

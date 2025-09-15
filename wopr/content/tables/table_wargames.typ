@@ -1,31 +1,12 @@
-// ===== Appendix A: Selected AI in Wargames Papers (Title / Citation / Q) =====
-
-// #set page(
-//   paper: "a4",
-//   margin: (left: 2.5cm, right: 2.5cm, top: 2.5cm, bottom: 2.5cm),
-//   columns: 2
-// )
-
 #import "@preview/booktabs:0.0.4": toprule, midrule, bottomrule
-
-// #set text(size: 9pt, lang: "en", hyphenate: true)
-
-= Appendix A: Selected AI in Wargames Papers
-
 #{
-  // Title & Citation columns ragged-right for nicer wraps in a narrow measure.
   show table.cell.where(x: 1): set par(justify: false)
-  // show table.cell.where(x: 2): set par(justify: false)
-
-  // Quadrant palette (same scheme as before).
   let qcol = (
     "I":   rgb(0, 114, 178),
     "II":  rgb(230, 159, 0),
     "III": rgb(0, 158, 115),
     "IV":  rgb(204, 121, 167),
   )
-
-  // Larger, centered badge (fixed size so it reads as an icon).
   let qtag(q) = box(
     width: 7.5mm,
     height: 4.2mm,
@@ -45,7 +26,7 @@
     stroke: none,
 
     toprule(),
-    table.header(repeat: true)[*Title*][*Citation*][*Q*],
+    table.header(repeat: true)[*Title*][*Quadrant*],
     midrule(),
 
     // ===== Rows (Title, Quadrant) =====
@@ -152,34 +133,7 @@
     bottomrule()
   );
 };
-, inset: 8pt, radius: 4pt)[
-//   stack(spacing: 3pt, align: top)[
-//     text(size: 9pt)[*Table 1 Legend*],
-//     text(size: 8pt)[*Total papers: 100*],
-//     text(size: 8pt, fill: color.navy)["Quadrant I: 52"],
-//     text(size: 8pt, fill: color.yellow)["Quadrant II: 6"],
-//     text(size: 8pt, fill: color.eastern)["Quadrant III: 34"],
-//     text(size: 8pt, fill: color.red)["Quadrant IV: 8"],
-//   ]
-// ]
-// #block(
-//   fill: luma(180),
-//   inset: 8pt,
-//   radius: 8pt,
 
-//   stack(
-//     spacing: 3pt,
-//     text(size: 9pt)[*Table 1 Legend*],
-//     text(size: 8pt)[*Total papers: 100*],
-//     text(size: 8pt, fill: color.navy)[Quadrant I: 52],
-//     text(size: 8pt, fill: color.yellow)[Quadrant II: 6],
-//     text(size: 8pt, fill: color.eastern)[Quadrant III: 34],
-//     // text(size: 8pt, fill: color.linear-rgb(#0172B2))[Quadrant I: 52],
-//     // text(size: 8pt, fill: color.linear-rgb(#E69F01))[Quadrant II: 6],
-//     // text(size: 8pt, fill: color.linear-rgb(#009E73))[Quadrant III: 34],
-//     // text(size: 8pt, fill: color.linear-rgb(#C97BA6))[Quadrant IV: 8],
-//   ),
-// )
 #block(
   fill: luma(230),
   inset: 8pt,
@@ -194,7 +148,4 @@
     text(size: 8pt, fill: rgb("#C97BA6"))[Quadrant IV: 8],
   ),
 )
-
-
-
-
+<tab:wargame_papers>
