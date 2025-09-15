@@ -7,7 +7,7 @@ Serious wargames have the following attributes:
 - Ongoing conflict between actors with opposing interests or needs;
 - A synthetic environment that enables agent choice and feedback;
 - Agents make decisions and experience consequences via adjudication or rules;
-- Strategic reasoning uses information about other agents and the environment.
+- Strategic reasoning uses information about other agents and the environment;
 - The outcomes of the game are used to inform real-world decisions or generate insights.
 
 // Conflict and war have been a focal topic of games and stories for thousands of years. Strategy wargames are nearly as old as written history. Examples of strategy-focused conflict games can be found across the ancient world, including the Egyptian _Senet_, the Greeks' _Polis_, Chinese _Go_, and India's _Chaturanga_, which eventually became perhaps the most well-known wargame in the world: _Chess_. 

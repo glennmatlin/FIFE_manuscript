@@ -62,7 +62,7 @@
   ["Exploration of Wargaming and AI Applications in Military Decision-Making" li_exploration_2025],
   [I],
 
-  ["Game Reasoning Arena: A Framework and Benchmark for Assessing Reasoning Capabilites of Large Language Models via Game Play" cipolina-kun_game_2025],
+  ["Game Reasoning Arena: A Framework and Benchmark for Assessing Reasoning Capabilities of Large Language Models via Game Play" cipolina-kun_game_2025],
   [I],
 
   ["Game Theory Approach to Identifying Deception in Large Language Models" maggio_game_2024],

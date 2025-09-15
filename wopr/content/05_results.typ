@@ -9,7 +9,7 @@ While prior categorization schemes focus on the flexibility afforded to the play
 While it would appear that increased flexibility afforded to players, in the form of language descriptions of moves, must necessarily be met with increased flexibility afforded to the adjudicator in the form of language descriptions of outcomes, it need not be the case.
 The presence of natural language in wargames is not equal across all games. 
 Consider _Twilight Imperium_, where players negotiate deals in natural language, but the resulting exchanges (e.g., trade goods, promissory notes) are recorded in structured terms that are simple to adjudicate.
-Consider also games such as _Free Kriegsspiel_, in which players' actions are limited to the movements of army pieces on a board. At the same time, the adjudicator has a high degree of autonomy to dictate---and explainx---the outcomes of each move.
+Consider also games such as _Free Kriegsspiel_, in which players' actions are limited to the movements of army pieces on a board. At the same time, the adjudicator has a high degree of autonomy to dictate---and explain---the outcomes of each move.
 These examples demonstrate that the degree of creativity afforded to the player and the adjudicator can be considered as two independent axes, which form the basis of our proposed ontology.
 
 To remedy this deficiency with the classic analytical to creative spectrum, we add a second dimension, which characterizes the adjudicator's role, as defined in @table:creativity-axis and represented visually in @fig:creativity-quadrants. To be in the top half of the space, adjudicator's responses to the player are characterized as _adjudicator analytical_, meaning the adjudicator's responses to the player are limited to prescribed responses. To be on the bottom half of the space, the adjudicator's responses to the player are characterized as _adjudicator creative_, meaning the adjudicator has the agency to create novel responses. 
@@ -54,7 +54,7 @@ Games in this quadrant include traditional strategy board games such as _Chess_,
 
 This quadrant is the most extensively explored. 
 //as it captures traditional “quantitative” wargames. 
-Because the players' actions are from a prescribed (though possibly large) set of possibilities, and because ajudication can be implemeted as a scoring function, games in this quadrant are amenable to the creation of computational simulations.
+Because the players' actions are from a prescribed (though possibly large) set of possibilities, and because adjudication can be implemented as a scoring function, games in this quadrant are amenable to the creation of computational simulations.
 These simulations allow for repeatability but also offer poor novel insight generation due to the necessary constraints of the simulation rules or game engine.
 // Notable examples include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
 // of strategy board games both traditional (e.g., _Chess_, _Checkers_, and _Go_) or modern (e.g., _Stratego_, _Warhammer 40K_, and _StarCraft_) @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
@@ -75,13 +75,13 @@ Other types of games that fall under this category include semi-rigid adjudicate
 This quadrant covers games with highly creative agents where adjudication is tightly fixed and leaves little room for interpretation  . Common
 patterns in this quadrant include highly expressive, low‑procedural‑complexity games with a
 procedural adjudicator. This includes the vast majority of board games with a social element and
-rigid scoring rules, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistence: Avalon_. @martinenghi_llms_2024
+rigid scoring rules, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistance: Avalon_. @martinenghi_llms_2024
 
 This quadrant has been of recent interest to the AI research community because some of the games in this quadrant involve natural language in limited contexts. For example _Diplomacy_ allows for natural language negotiations between players.
 The Cicero agent @meta_fundamental_ai_research_diplomacy_team_human-level_2022
 // ((RIEDL: this citation is weird, should be author names))  ((GLENN: oddly enough this is how its listed in the original followed up with riedl as the org first so keeping it until told to override ))
 demonstrated that natural language negotiation could be incorporated into RL loops. 
-This was possible, however, because the negotiations only occur within a prescribed stage of gameplay and does not affect ajudication, which can be automated. The game design of rigid adjudication and procedural resolution of conflicts means the evaluation is relatively straightforward and repeatable, which helps explain its popularity in AI competitions and benchmarking.
+This was possible, however, because the negotiations only occur within a prescribed stage of gameplay and does not affect adjudication, which can be automated. The game design of rigid adjudication and procedural resolution of conflicts means the evaluation is relatively straightforward and repeatable, which helps explain its popularity in AI competitions and benchmarking.
 
 However, the limited evaluation creativity that makes Q3 attractive also limits the generalizability of AI contributions. 
 // The rigid
@@ -94,7 +94,7 @@ This quadrant covers wargames with both players and adjudication uses qualitativ
 #footnote[_Dungeons \& Dragons_ and other TTRPGs can be played with varying emphasis on combat and rules. A rigid form of play, focusing only on combat where adjudication strictly follows the rules and die rolls, would shift _D&D_ into Quadrant I. An extreme variation where players follow rigid rules but the Game Master ignores die rolls to determine the outcomes would be in Quadrant II; this style is exemplified by _Neverwinter Nights_ with Dungeon Master mode enabled.]
 
 Games that allow creativity for both players and adjudicators better support classic aims of wargaming: exploring uncertainty, revealing assumptions, and eliciting expert judgment. Real world scenarios involving complex social interactions are hard to formalize and attempts to create rule sets for players or adjudicators  tend to over-simplify real world phenomenon to the point where outcomes are hard to make actionable in the real world.
-Within the context of playing games with entirely human players and entirely human ajudicators, this games in this quadrant are well-explored; treatises on this matter trace back to the _Free Kriegsspiel_ movement @schuurman_game_2021 from the early 1870s. However, despite their practical utility for simulating complex real-world environments, few have attempted to _automate_ construction or evaluation processes for Q4 settings.
+Within the context of playing games with entirely human players and entirely human adjudicators, this games in this quadrant are well-explored; treatises on this matter trace back to the _Free Kriegsspiel_ movement @schuurman_game_2021 from the early 1870s. However, despite their practical utility for simulating complex real-world environments, few have attempted to _automate_ construction or evaluation processes for Q4 settings.
 Game in this quadrant have, until recently, been beyond the reach of practical computing.
 However, this changes with the availability of highly capable LMs.
 

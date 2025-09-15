@@ -65,7 +65,7 @@
     ["Exploration of Wargaming and AI Applications in Military Decision-Making" @li_exploration_2025], [#qtag("I")],
     ["Finding deceivers in social context with large language models: the case of the Mafia game" @yoo_finding_2024], [#qtag("III")],
     ["FishBargain: An LLM-Empowered Bargaining Agent for Online Flea-Market Platform Sellers" @kong_fishbargain_2025], [#qtag("III")],
-    ["Game Reasoning Arena: A Framework and Benchmark for Assessing Reasoning Capabilites of Large Language Models via Game Play" @cipolina-kun_game_2025], [#qtag("I")],
+    ["Game Reasoning Arena: A Framework and Benchmark for Assessing Reasoning Capabilities of Large Language Models via Game Play" @cipolina-kun_game_2025], [#qtag("I")],
     ["Game Theory Approach to Identifying Deception in Large Language Models" @maggio_game_2024], [#qtag("I")],
     ["GameBench: Evaluating Strategic Reasoning Abilities of LLM Agents" @costarelli_gamebench_2024], [#qtag("I")],
     ["Game-Theoretic LLM: Agent Workflow for Negotiation Games" @hua_game-theoretic_2024], [#qtag("I")],
