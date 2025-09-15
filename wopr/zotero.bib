@@ -3975,11 +3975,13 @@ Publication Title: {arXiv} [cs.{CL}]},
 	keywords = {Computer Science - Computation and Language},
 }
 
-@book{uk_ministry_of_defense_influence_2023,
+@report{uk_ministry_of_defence_influence_2023,
+	location = {United Kingdom},
 	title = {Influence Wargaming Handbook},
-	publisher = {Development, Concepts and Doctrine Centre},
-	author = {{UK} Ministry of Defense},
-	date = {2023},
+	url = {https://www.gov.uk/government/publications/influence-wargaming-handbook},
+	institution = {Development, Concepts and Doctrine Centre},
+	author = {{UK Ministry of Defence}},
+	date = {2023-07-06},
 	langid = {english},
 }
 
@@ -5128,6 +5130,21 @@ Publisher: {IEEE}},
 	langid = {english},
 }
 
+@misc{balloch_neuro-symbolic_2023,
+	title = {Neuro-Symbolic World Models for Adapting to Open World Novelty},
+	url = {http://arxiv.org/abs/2301.06294},
+	doi = {10.48550/arXiv.2301.06294},
+	abstract = {Open-world novelty--a sudden change in the mechanics or properties of an environment--is a common occurrence in the real world. Novelty adaptation is an agent's ability to improve its policy performance post-novelty. Most reinforcement learning ({RL}) methods assume that the world is a closed, fixed process. Consequentially, {RL} policies adapt inefficiently to novelties. To address this, we introduce {WorldCloner}, an end-to-end trainable neuro-symbolic world model for rapid novelty adaptation. {WorldCloner} learns an efficient symbolic representation of the pre-novelty environment transitions, and uses this transition model to detect novelty and efficiently adapt to novelty in a single-shot fashion. Additionally, {WorldCloner} augments the policy learning process using imagination-based adaptation, where the world model simulates transitions of the post-novelty environment to help the policy adapt. By blending ''imagined'' transitions with interactions in the post-novelty environment, performance can be recovered with fewer total environment interactions. Using environments designed for studying novelty in sequential decision-making problems, we show that the symbolic world model helps its neural policy adapt more efficiently than model-based and model-based neural-only reinforcement learning methods.},
+	number = {{arXiv}:2301.06294},
+	publisher = {{arXiv}},
+	author = {Balloch, Jonathan and Lin, Zhiyu and Wright, Robert and Peng, Xiangyu and Hussain, Mustafa and Srinivas, Aarun and Kim, Julia and Riedl, Mark O.},
+	urldate = {2025-09-15},
+	date = {2023-01-16},
+	eprinttype = {arxiv},
+	eprint = {2301.06294 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Machine Learning, Computer Science - Symbolic Computation},
+}
+
 @article{reddie_next-generation_2018,
 	title = {Next-generation wargames},
 	volume = {362},
@@ -5223,6 +5240,21 @@ Publisher: {IEEE}},
 	shortjournal = {{arXiv}},
 	author = {Zollicoffer, Geigh and Eaton, Kenneth and Balloch, Jonathan and Kim, Julia M. and Zhou, Wei and Wright, Robert and Riedl, Mark O.},
 	date = {2023},
+}
+
+@misc{zollicoffer_novelty_2023-1,
+	title = {Novelty Detection in Reinforcement Learning with World Models},
+	url = {http://arxiv.org/abs/2310.08731},
+	doi = {10.48550/arXiv.2310.08731},
+	abstract = {Reinforcement learning ({RL}) using world models has found significant recent successes. However, when a sudden change to world mechanics or properties occurs then agent performance and reliability can dramatically decline. We refer to the sudden change in visual properties or state transitions as novelties. Implementing novelty detection within generated world model frameworks is a crucial task for protecting the agent when deployed. In this paper, we propose straightforward bounding approaches to incorporate novelty detection into world model {RL} agents, by utilizing the misalignment of the world model's hallucinated states and the true observed states as an anomaly score. We provide effective approaches to detecting novelties in a distribution of transitions learned by an agent in a world model. Finally, we show the advantage of our work in a novel environment compared to traditional machine learning novelty detection methods as well as currently accepted {RL} focused novelty detection algorithms.},
+	number = {{arXiv}:2310.08731},
+	publisher = {{arXiv}},
+	author = {Zollicoffer, Geigh and Eaton, Kenneth and Balloch, Jonathan and Kim, Julia and Zhou, Wei and Wright, Robert and Riedl, Mark O.},
+	urldate = {2025-09-15},
+	date = {2023},
+	eprinttype = {arxiv},
+	eprint = {2310.08731 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Machine Learning, Computer Science - Systems and Control, Electrical Engineering and Systems Science - Systems and Control},
 }
 
 @article{balloch_novgrid_2022,
@@ -7763,14 +7795,6 @@ Publication Title: {arXiv} [cs.{CL}]},
 	langid = {english},
 }
 
-@book{uk_ministry_of_defense_wargaming_2017,
-	title = {Wargaming Handbook},
-	publisher = {Development, Concepts and Doctrine Centre},
-	author = {{UK} Ministry of Defense},
-	date = {2017-08},
-	langid = {english},
-}
-
 @book{french_ministry_of_the_armed_forces_wargaming_2024,
 	edition = {1.4},
 	title = {Wargaming Handbook},
@@ -7790,11 +7814,19 @@ Publication Title: {arXiv} [cs.{CL}]},
 	date = {2023-09},
 }
 
+@book{uk_ministry_of_defense_wargaming_2017,
+	title = {Wargaming Handbook},
+	publisher = {Development, Concepts and Doctrine Centre},
+	author = {{UK Ministry of Defense}},
+	date = {2017-08},
+	langid = {english},
+}
+
 @book{deutschland_bundeswehr_wargaming_2017,
 	title = {Wargaming Handbook},
 	url = {https://www.professionalwargaming.co.uk/Wargame_Handbuch_englisch_online.pdf},
 	publisher = {Bundeswehr Doctrine Centre},
-	author = {Deutschland Bundeswehr},
+	author = {{Deutschland Bundeswehr}},
 	urldate = {2025-06-26},
 	date = {2017},
 }
@@ -7817,12 +7849,12 @@ Publication Title: {arXiv} [cs.{CL}]},
 	langid = {english},
 }
 
-@article{paul_edward_strong_wargaming_2017,
+@article{strong_wargaming_2017,
 	title = {Wargaming the Atlantic War: Captain Gilbert Roberts and the Wrens of the Western Approaches Tactical Unit},
 	volume = {Validity and Utility of Wargaming},
 	abstract = {The Western Approaches Tactical Unit ({WATU}) was a Royal Navy analysis team founded in early 1942. Their remit was to study the conduct of convoy operations, to understand how the U-boats operated and to formulate tactics to counter this evolving threat. The unit was made up of experienced naval officers and a number of talented young women from the {WRNS}. Using conceptual/analytical wargames, {WATU} developed a range of tactics during the war and disseminated these to over 5,000 Allied officers through a series of lectures and tactical games. Many of these appeared in the Atlantic Convoy Instructions and were used with considerable success by Allied naval forces during the decisive engagements of the Atlantic War. The essay outlines the origins and purpose of the organisation, how the team functioned, the individuals that conducted the wargames, and the series of evolving challenges that it was intended to overcome – focusing on the series of Anti-Submarine Warfare training and analysis wargames conducted by the unit between 1942 and 1943. The article concludes with an overview of some of the numerous lessons that modern defence analysts could draw from the work of the unit and highlights its utility as an exemplar of the use of wargaming as a tool for modern defence analysis.},
 	journaltitle = {Military Operations Research Society},
-	author = {{Paul Edward Strong}},
+	author = {Strong, Paul E.},
 	date = {2017-12-10},
 	langid = {english},
 }
@@ -8121,3 +8153,5 @@ destruction process.},
 	date = {2024-10},
 	langid = {english},
 }
+
+

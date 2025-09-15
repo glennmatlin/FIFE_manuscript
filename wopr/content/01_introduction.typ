@@ -26,17 +26,17 @@ means that these systems are now of significant interest to national governments
 
 Wargames, however, are not just for war. The term describes any game that is a multi-faceted depiction of conflict in which the participants’ decisions influence the future outcomes of events.
 As such, "wargames" are conducted to aid strategic decision-making in business, diplomacy, law, healthcare, cybersecurity, and military. 
-Subject Matter Experts (SMEs) in these communities seek to leverage AI in wargames that are highly language-centric and thus highly open-ended, affording a high degree of creative ideation by players 
+Subject Matter Experts (SMEs) in these communities seek to leverage AI in wargames that are language-centric and thus open-ended, affording a high degree of creative ideation by players 
 @hogan_open-ended_2024.
 These games historically could only be conducted as purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_war_1954 @perla_war_1987 @davis_illustrating_2017. 
 
 This is in contrast to wargames that have constrained possibility spaces and are thus limited in their applicability to scenarios that draw on narrative understanding and social human factors, or are unbounded problem spaces @geist_understanding_2022. 
-Games with bounded action spaces and well-defined evaluation criteria are amenable to implementation as computational simulations and for which AI systems such as search, Monte Carlo tree search, and reinforcement learning could be applied effectively.
+Games with bounded action spaces and well-defined evaluation criteria are amenable to implementation as computational simulations and for which AI systems such as search, Monte Carlo Tree Search (MCTS), and Reinforcement Learning (RL) could be applied effectively.
 
 // The previous limitations on computer-driven wargames meant conducting language-based, open-ended games relied _entirely_ on SMEs to conduct purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_war_1954 @perla_war_1987 @davis_illustrating_2017. 
 
-LMs open up numerous new possibilities with respect to automating aspects of language-based, open-ended games. At the same time, these opportunities pose a serious risk in deployment due to the greater degree of freedom afforded by the open-ended nature of these games @rivera_escalation_2024. Early experiments with LMs that used off‑the‑shelf
-models play an analytical wargame of scripted events, which resulted in brittle reasoning, hallucination, and rule non‑adherence
+LMs open up numerous new possibilities with respect to automating aspects of language-based, open-ended games. At the same time, these opportunities pose a serious risk in deployment due to the greater degree of freedom afforded by the open-ended nature of these games @rivera_escalation_2024. Early experiments with LMs used off‑the‑shelf
+models to play an analytical wargame of scripted events, found it resulted in brittle reasoning, hallucinations, and rule non‑adherence
 @lamparth_human_2024.
 
 We present a comprehensive scoping literature review that establishes critical, discussion-oriented desiderata for deploying AI in complex wargaming scenarios. This paper fills a significant gap in the literature by providing researchers with both a thorough domain analysis and a strategic roadmap for high-impact research directions.
