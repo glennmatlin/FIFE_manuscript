@@ -49,9 +49,8 @@ Focusing on the space of wargames with the most open-endedness for players and a
   #bibliography("zotero.bib",
       style: "association-for-computational-linguistics-blinky.csl")
 ]
-#include "content/appendix_wargames.typ"
-// #include "content/appendix_B.typ"
-// #include "content/appendix_C.typ"
-// #include "content/appendix_D.typ"
-// #include "content/appendix_E.typ"
-#include "content/appendix_recommendations.typ"
+
+#appendix[
+  #include "content/appendix_wargames.typ"
+  #include "content/appendix_recommendations.typ"
+]
