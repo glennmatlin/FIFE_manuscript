@@ -21,9 +21,9 @@ Wargames have become commercially successful entertainment---_Risk_, _Diplomacy_
 Agents in wargames are commonly grouped into one of two categories: _player_ and _adjudicator_. 
 A *player* is an agent that engages in analysis and planning, proposes moves during play, and experiences the consequences of those outcomes. 
 The *adjudicator* is an agent that determines outcomes (via rules, computation, or expert judgment) of players' moves.
-In some games, such as _Chess_ or _Civilization_, the players are constrained to pre-defined sets of rules. In other games, such as _Dungeons & Dragons_ or _Model United Nations_, actions are unconstrained, and a player can propose any move that they can express in natural language. 
-Likewise, while adjudicators may be constrained to some _a priori_ defined rules and calculations (e.g., game mechanics defining valid actions and outcomes), they might also be able to propose any effect or world change that can be expressed in natural languages (e.g., expressing player outcomes using narrative generation or mental heuristics). 
-In some cases, players and adjudicators can negotiate the effects of moves, with players making the case for why an effect could or could not occur.
+In some games, such as _Chess_ or _Civilization_, the players are constrained to pre-defined sets of rules. In other games, such as _Dungeons & Dragons_ or _Model United Nations_, actions are unconstrained, and a player can propose any move that they can express in natural language @martin_dungeons_2018. 
+Likewise, while adjudicators may be constrained to some _a priori_ defined rules and calculations (e.g., game mechanics defining valid actions and outcomes), they might also be able to propose any effect or world change that can be expressed in natural languages (e.g., expressing player outcomes using narrative generation or mental heuristics) @zhu_calypso_2023. 
+In some cases, players and adjudicators can negotiate the effects of moves, with players making the case for why an effect could or could not occur @callison-burch_dungeons_2022 @zhu_fireball_2023.
 
 == Creative vs Analytical Wargames
 <sec:creative_vs_analytical>
