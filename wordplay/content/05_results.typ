@@ -50,15 +50,8 @@ image("figures/fig_by_year_quadrant_area_2col.svg"),
 This quadrant covers rigid, rule‑based systems for both the players and the adjudicators (often
 predetermined scoring). 
 Games in this quadrant include traditional strategy board games such as _Chess_, _Go_, and the original _Kriegspiel_, as well as more modern variants such as _Stratego_, the No Press variant of _Diplomacy_, _Warhammer 40k_, and _Starcraft_ @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
-
-This quadrant is the most extensively explored because the players' actions are from a prescribed set of possibilities. Because adjudication can be implemented as a scoring function, games in this quadrant are amenable to the creation of computational simulations. \
-These simulations allow for repeatability but also offer limited novel insight generation due to the necessary constraints imposed by the simulation rules or game engine.
-// Notable examples include the No‑Press variant of Diplomacy, the original rigid Kriegsspiel, and nearly the entirety
-// of strategy board games both traditional (e.g., _Chess_, _Checkers_, and _Go_) or modern (e.g., _Stratego_, _Warhammer 40K_, and _StarCraft_) @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
-
-Because games in this quadrant are amenable to the creation of computational simulations, they can be played by AI systems that leverage repeated trial-and-error play at super-human simulator speeds. 
-RL and MCTS in particular have been demonstrated to be highly effective at games in this quadrant, and sometimes more specialized search algorithms, such as Minimax. 
-However, games in this quadrant have benefited less from recent developments in LMs because of their rigid nature, which does not map well to the capabilities of LMs @anthony_learning_2022 @perolat_mastering_2022 @light_strategist_2024 @gao_land-based_2024.
+Because players act from prescribed menus and adjudication reduces to deterministic scoring, these titles are ideal for high-throughput simulation.
+RL, MCTS, and related search-heavy approaches thrive here, yet the rigid action spaces leave little room for LM advantages such as narrative reasoning @anthony_learning_2022 @perolat_mastering_2022 @light_strategist_2024 @gao_land-based_2024.
 
 == Quadrant II: Analytical Player, Creative Adjudicator
 This quadrant covers games in which players are often relatively limited in their action space, while a human SME adjudicator determines the outcomes based on their judgment. This configuration is not common for wargames, but it is possible. Games that would fall into this quadrant include variants of wargames such as Meckel's early version of _Free Kriegsspiel_ @schuurman_game_2021. 
@@ -69,15 +62,8 @@ Other types of games that fall under this category include semi-rigid adjudicate
 // ((TODO for ISAAC or GLENN))
 
 == Quadrant III: Creative Player, Analytical Adjudicator
-This quadrant covers games with highly creative agents where adjudication is tightly fixed and leaves little room for interpretation  . Common
-patterns in this quadrant include highly expressive, low‑procedural‑complexity games with a
-procedural adjudicator. This includes the vast majority of board games with a social element and
-rigid scoring rules, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistance: Avalon_. @martinenghi_llms_2024
-
-This quadrant has been of recent interest to the AI research community because some of the games in this quadrant involve natural language in limited contexts. For example _Diplomacy_ allows for natural language negotiations between players.
-The Cicero agent @meta_fundamental_ai_research_diplomacy_team_human-level_2022
-// ((RIEDL: this citation is weird, should be author names))  ((GLENN: oddly enough this is how its listed in the original followed up with riedl as the org first so keeping it until told to override ))
-demonstrated that natural language negotiation could be incorporated into RL loops. 
+This quadrant covers games with highly creative agents alongside tightly fixed adjudication—expressive, low-procedural-complexity titles that still rely on rigid scoring, such as _Quo Vadis_, _Article 27: The UN Security Council Game_, and _The Resistance: Avalon_ @martinenghi_llms_2024.
+It attracts LM research because games like _Diplomacy_ blend natural-language negotiation with deterministic resolution; Cicero shows that coordinated planning plus chat-channel conditioning can match strong human play @meta_fundamental_ai_research_diplomacy_team_human-level_2022.
 This was possible, however, because the negotiations only occur within a prescribed stage of gameplay and does not affect adjudication, which can be automated. The game design of rigid adjudication and procedural resolution of conflicts means the evaluation is relatively straightforward and repeatable, which helps explain its popularity in AI competitions and benchmarking.
 
 However, the limited evaluation creativity that makes Q3 attractive also limits the generalizability of AI contributions. 
