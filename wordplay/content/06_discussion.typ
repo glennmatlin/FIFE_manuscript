@@ -1,6 +1,4 @@
 #import "@preview/tracl:0.6.1": *
-#import "@preview/tracl:0.6.1": *
-
 #import "../config.typ":num_papers
 
 = Discussion of Application Domains

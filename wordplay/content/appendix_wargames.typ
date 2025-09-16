@@ -25,7 +25,15 @@ This LM-powered exploration of branches and sequels provides significant value f
 // At the time of writing, numerous national military and security organizations are actively exploring how they can use AI to provide experiential learning and potentially establish a strategic advantage through superior decision-making and judgment 
 
 ==== Cybersecurity
-Cybersecurity wargames encompasses a variety of wargaming activity, from hands-on-keyboard technical operations, to 
+While cybersecurity is a distinct domain from military and national security, it is inherrently adversarial. Cybersecurity wargames are easily separated into technical, operational, and policy issues @samuelson_wargaming_2018.
+Technical wargames test the knowledge and skills of a limited number of hands-on-keyboard operators against some type of problem, such as solving a technical problem or searching for vulnerabilities in a  system. At this level, LMs provide value as AI teammates or adversaries, or as adjudicators for inputs beyond on-network or on-system computer commands.
+Operational wargames serve two audiences: technical teams and organizations, and non-technical organizations that include or work with technical teams and organizations. 
+Technical teams use operational wargames as an extension of technical wargames, but with a larger group of players, longer time horizons, higher-level stakes, organizational context and impact, etc. Given the larger team size and the potential integration of skilled team members who are not on keyboard, LMs can extend the on-network narrative to include, for example, security and threat analysts, by generating digital content to represent or react to on-net activity. 
+Non-technical organizations use operational cybersecurity wargames for business purposes such as testing, training, and evaluating operating procedures and incident response plans. These wargames face limitations from the challenges of generating meaningful wargame content at scale for all players. Organizations either must hire 
+
+
+Technical teams use operational wargames as an extension of technical wargames on a larger scale, such as integrating hands-on operators with security and threat analysts and technical leadership, or 
+
 
 === International Relations
 International Relations (IR) wargaming centers on language, signaling, and credibility rather than material force, and is used for communication, negotiation, and diplomacy. Open‑ended, argument‑driven formats (seminar, matrix) capture how positions evolve through persuasion, norm invocation, and threat–promise exchanges across multiple stakeholders (e.g., national states, non-government or industrial organizations) @mans_training_2010 @schechter_wargaming_2021 @lin-greenberg_wargaming_2022. When LMs participate, their value is in maintaining coherent narratives over long horizons, proposing plausible options under contested facts, helping surface implicit assumptions in briefs and communiqués, processing scenarios, and aiding with adjudication on non-analytical rubrics and procedures.
