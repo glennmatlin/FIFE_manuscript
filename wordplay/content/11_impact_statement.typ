@@ -1,0 +1,3 @@
+#import "../config.typ":num_papers
+= Impact Statement
+This research provides a novel taxonomy for categorizing and evaluating AI applications in wargaming, directly supporting organizations seeking to leverage LMs for strategic analysis. The safety considerations and mitigation strategies we outline are essential for preventing potential failures when AI systems inform real-world policy decisions through wargaming exercises. The domain-specific guidance offers immediate practical value for practitioners, while the open research questions establish technical priorities for advancing LM strategic reasoning capabilities.

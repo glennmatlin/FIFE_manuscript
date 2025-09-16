@@ -1,0 +1,32 @@
+Game-Theoretic LLM: Agent Workflow for Negotiation Games
+Harnessing Language for Coordination: A Framework and Benchmark for LLM-Driven Multi-Agent Control
+Leveraging Generative AI to Create Lightweight Simulations for Far-Future Autonomous Teammates
+Playing Games With GPT: What Can We Learn About a Large Language Model From Canonical Strategic Games?
+PokeLLMon: A Human-Parity Agent for Pokemon Battles with Large Language Models
+Project Sid: Many-agent simulations toward AI civilization
+Research on Wargame Decision-Making Method Based on Multi-Agent Deep Deterministic Policy Gradient
+SC-Phi2: A Fine-tuned Small Language Model for StarCraft II Macromanagement Tasks
+SC2Arena and StarEvolve: Benchmark and Self-Improvement Framework for LLMs in Complex Decision-Making Tasks
+Shall We Team Up: Exploring Spontaneous Cooperation of Competing LLM Agents
+Strategy-Augmented Planning for Large Language Models via Opponent Exploitation
+The Automated but Risky Game: Modeling Agent-to-Agent Negotiations and Transactions in Consumer Markets
+Tracing LLM Reasoning Processes with Strategic Games: A Framework for Planning, Revision, and Resource-Constrained Decision Making
+War and Peace (WarAgent): Large Language Model-based Multi-Agent Simulation of World Wars
+Advancing AI Negotiations: New Theory and Evidence from an International AI Negotiation Competition
+Agent Exchange: Shaping the Future of AI Agent Economics
+Agents of Change: Self-Evolving LLM Agents for Strategic Planning
+Debt Collection Negotiations with Large Language Models
+Democratizing Diplomacy: A Harness for Evaluating Any Large Language Model on Full-Press Diplomacy
+Dungeons and Dragons as a Dialogue Challenge for Artificial Intelligence
+EAI: Emotional Decision-Making of LLMs in Strategic Games and Ethical Dilemmas
+Evaluating LLM Agent Collusion in Double Auctions
+FishBargain: An LLM-Empowered Bargaining Agent for Online Flea-Market Platform Sellers
+HARBOR: Exploring Persona Dynamics in Multi-Agent Competition
+Learning from Synthetic Labs: Language Models as Experimental Subjects in Auctions
+MultiMind: Enhancing Werewolf Agents with Multimodal Memory
+The Traitors: Deception and Trust in Multi-Agent Language Systems
+Large Language Models in Wargaming: Methodology, Application, and Robustness
+Outwit, Outplay, Out-Generate: A Framework for Designing Strategic Generative Agents in Competitive Environments
+Scaling Laws For Scalable Oversight
+What if LLMs Have Different World Views: Simulating Alien Civilizations with LLM-based Agents
+When Two LLMs Debate, Both Think They'll Win

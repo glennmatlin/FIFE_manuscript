@@ -1,0 +1,43 @@
+game,file,count
+chess,content/01_introduction.typ,1
+chess,content/02_background.typ,2
+chess,content/05_results.typ,1
+chess,content/tables/ai_in_wargames_table.typ,3
+chess,content/tables/table_v2.typ,3
+chess,content/appendix_B.typ,2
+Diplomacy,content/01_introduction.typ,1
+Diplomacy,content/05_results.typ,3
+Diplomacy,content/06_discussion.typ,2
+Diplomacy,content/tables/ai_in_wargames_table.typ,10
+Diplomacy,content/tables/table_v2.typ,10
+Diplomacy,content/appendix_A.typ,2
+Diplomacy,content/appendix_B.typ,2
+Catan,content/tables/ai_in_wargames_table.typ,1
+Catan,content/tables/table_v2.typ,1
+Catan,content/appendix_A.typ,8
+StarCraft II,content/tables/ai_in_wargames_table.typ,4
+StarCraft II,content/tables/table_v2.typ,4
+StarCraft,content/02_background.typ,1
+StarCraft,content/05_results.typ,1
+StarCraft,content/appendix_B.typ,1
+Stratego,content/05_results.typ,1
+Stratego,content/tables/ai_in_wargames_table.typ,1
+Stratego,content/tables/table_v2.typ,1
+Dungeons and Dragons,content/tables/ai_in_wargames_table.typ,1
+Dungeons and Dragons,content/tables/table_v2.typ,1
+Avalon,content/tables/ai_in_wargames_table.typ,3
+Avalon,content/tables/table_v2.typ,3
+Mafia,content/tables/ai_in_wargames_table.typ,1
+Mafia,content/tables/table_v2.typ,1
+Werewolf,content/tables/ai_in_wargames_table.typ,1
+Werewolf,content/tables/table_v2.typ,1
+Werewolf,content/appendix_B.typ,1
+Civilization,content/tables/ai_in_wargames_table.typ,2
+Civilization,content/tables/table_v2.typ,2
+Civilization,content/appendix_A.typ,1
+Pokemon,content/tables/ai_in_wargames_table.typ,1
+Pokemon,content/tables/table_v2.typ,1
+Among Us,content/appendix_B.typ,1
+Go,content/02_background.typ,3
+Go,content/05_results.typ,1
+Go,content/appendix_B.typ,1
