@@ -42,7 +42,7 @@ As seen in @fig:plot_over_time, recent work has shifted sharply toward more open
 #figure(
 image("figures/fig_by_year_quadrant_area_2col.svg"),
   placement: top,
-  caption: [The distribution of selected papers on AI in wargames by quadrant over time from 2020 to 2025. *_NOTE:_* At time of submission, 2025 
+  caption: [The distribution of selected papers on AI in wargames by quadrant over time from 2020 to 2025. *_Note:_* At the time of writing, 2025 is incomplete.
 ],
 ) <fig:plot_over_time>
 
