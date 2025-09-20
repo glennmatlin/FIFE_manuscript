@@ -5,7 +5,7 @@
 At the time of writing, numerous national military and security organizations are actively exploring how they can use AI to provide experiential learning and potentially establish a strategic advantage through superior decision-making and judgment @black_scaling_2024. We have observed how both military SMEs and academic researchers are currently investigating how LMs can be used to help AI act as players and adjudicators in open-ended wargames @black_mastering_2024 @griffin_matrix_2024. This news comes at a time when the safety-critical nature of these systems is of high importance and is receiving considerable attention. However, there is not currently a resource to help bridge the understanding gap between AI researchers and SMEs for this domain. We believe that non-military scientists and academics have a major role to play in the effectiveness and alignment of AI systems, particularly those in safety-critical settings. 
 
 
-Because wargames offer humans a simplified mental model that allows them to abstract away particulars and navigate decision-making and analyze the results @us_naval_war_college_fundamentals_1966 @us_army_war_college_strategic_2015, they have been used in education and training, particularly in military contexts @us_naval_war_college_war_2015 @deutschland_bundeswehr_wargaming_2017 @uk_ministry_of_defense_wargaming_2017 @uk_ministry_of_defense_wargaming_2017 @croatian_military_academy_introduction_2019 @australian_armed_forces_wargaming_2022 @polish_armed_forces_wargaming_2022 @us_army_how_2023 @nato_wargaming_2023 @french_ministry_of_the_armed_forces_wargaming_2024
+Because wargames offer humans a simplified mental model that allows them to abstract away particulars and navigate decision-making and analyze the results @us_naval_war_college_fundamentals_1966 @usarmywarcollege_StrategicWargamingHandbook_2015, they have been used in education and training, particularly in military contexts @us_naval_war_college_war_2015 @deutschland_bundeswehr_wargaming_2017 @ukministryofdefense_WargamingHandbook_2017 @ukministryofdefense_WargamingHandbook_2017 @croatian_military_academy_introduction_2019 @australianarmedforces_WargamingHandbook_2022 @polish_armed_forces_wargaming_2022 @us_army_how_2023 @nato_wargaming_2023 @french_ministry_of_the_armed_forces_wargaming_2024
 
 == International Relations
 International Relations (IR) wargaming centers on language, signaling, and credibility rather than material force, and is used for communication, negotiation, and diplomacy. Open‑ended, argument‑driven formats (seminar, matrix) capture how positions evolve through persuasion, norm invocation, and threat–promise exchanges across multiple stakeholders (e.g., national states, non-government or industrial organizations) @mans_training_2010 @schechter_wargaming_2021 @lin-greenberg_wargaming_2022. When LMs participate, their value is in maintaining coherent narratives over long horizons, proposing plausible options under contested facts, helping surface implicit assumptions in briefs and communiqués, processing scenarios, and aiding with adjudication on non-analytical rubrics and procedures.
@@ -25,10 +25,10 @@ IR professionals in particular benefit from wargaming because of its creative an
 // @hershkovitz_wargame_2019
 // @kurtz_business_2003
 // @oliverschwarz_ex_2011
-// @resende_critical_2018
+// @resende_CriticalSuccessFactors_2018
 // @scherpereel_changing_2005
 // @scherpereel_decision_2005
 // @scherpereel_impact_2003
-// @schwarz_business_2013
-// @schwarz_combining_2019
+// @schwarz_BusinessWargamingTeaching_2013
+// @schwarz_CombiningScenarioPlanning_2019
 //

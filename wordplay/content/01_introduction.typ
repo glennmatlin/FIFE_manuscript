@@ -10,11 +10,11 @@ The only winning move is not to play.
 How about a nice game of _Chess_?
 ]
 
-For thousands of years, the decision to initiate violent conflict between groups of people has always been a strictly human affair. And while the common refrain goes _"war never changes,"_ it is incomplete without its ending phrase, "_only the weapons are new_".#footnote["Practical Warfare", pg. 7 @london_practical_1915]
+For thousands of years, the decision to initiate violent conflict between groups of people has always been a strictly human affair. And while the common refrain goes _"war never changes,"_ it is incomplete without its ending phrase, "_only the weapons are new_".#footnote["Practical Warfare", pg. 7 @london_PracticalWarfareChapters_1915]
 The reality is that Artificial Intelligence (AI) is radically changing how humans make decisions about war. The use of AI in high-stakes scenarios means that machine errors will be measured using the loss of human life instead of a loss function or a benchmark score. 
 
 The adoption of AI as part of real-world decision-making processes has accelerated over the past five years, largely thanks to advancements in research and engineering on Language Models (LMs)
-@kwa_measuring_2025.  
+@kwa_measuringaiability_2025.  
 LM-powered AI systems are increasingly 
 used to 
 help with the analysis and planning of difficult tasks.
@@ -25,12 +25,12 @@ Wargames, however, are not just for war. The term describes any game that is a m
 As such, "wargames" are conducted to aid strategic decision-making in business, diplomacy, law, healthcare, cyber-security, and military. 
 Subject Matter Experts (SMEs) in these communities seek to leverage AI in wargames that are language-centric and thus open-ended, affording a high degree of creative ideation by players 
 @hogan_open-ended_2024.
-These games historically could only be conducted as purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_war_1954 @perla_war_1987 @davis_illustrating_2017. 
+These games historically could only be conducted as purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_WarGamingTechnique_1954 @perla_war_1987 @davis_illustrating_2017. 
 
-This is in contrast to analytical wargames, which feature constrained action spaces with limited possible outcomes, a stark difference when compared to the messy and uncertain world we live in. Analytical wargames are therefore limited in their applicability to scenarios that draw on narrative understanding orq social human factors  @geist_understanding_2022. 
+This is in contrast to analytical wargames, which feature constrained action spaces with limited possible outcomes, a stark difference when compared to the messy and uncertain world we live in. Analytical wargames are therefore limited in their applicability to scenarios that draw on narrative understanding orq social human factors  @geist_Wargames_2022. 
 Games with bounded action spaces and well-defined evaluation criteria are amenable to implementation as computational simulations and for which AI systems such as search, Monte Carlo Tree Search (MCTS), and Reinforcement Learning (RL) could be applied effectively.
 
-// The previous limitations on computer-driven wargames meant conducting language-based, open-ended games relied _entirely_ on SMEs to conduct purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_war_1954 @perla_war_1987 @davis_illustrating_2017. 
+// The previous limitations on computer-driven wargames meant conducting language-based, open-ended games relied _entirely_ on SMEs to conduct purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_WarGamingTechnique_1954 @perla_war_1987 @davis_illustrating_2017. 
 
 LMs open up numerous new possibilities with respect to automating aspects of language-based, open-ended games. At the same time, these opportunities pose a serious risk in deployment due to the greater degree of freedom afforded by the open-ended nature of these games @rivera_escalation_2024. Early experiments with LMs used off‑the‑shelf
 models to play an analytical wargame of scripted events, found it resulted in brittle reasoning, hallucinations, and rule non‑adherence

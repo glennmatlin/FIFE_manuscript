@@ -1,6 +1,6 @@
 #import "@preview/tracl:0.6.1": *
 #import "../config.typ":num_papers 
-Wargames are multi-faceted, multi-player depictions of conflict in which the participants decisions influence the future outcomes of events.
+Wargames are multi-faceted, multi-player depictions of conflict in which the participants' decisions influence the future outcomes of events.
 Wargames are often used for subject matter experts to explore strategic implications of decision-making, though it also encapsulates entertainment-oriented simulations from _Chess_ to table-top role-playing games like _Dungeons & Dragons_. 
 On the more open-ended side of the spectrum of wargames, players use natural language to convey their moves and adjudicators propose outcomes.
 Language models (LMs) are increasingly being considered for use in defense and security settings to provide subject matter experts with insights into real-world, consequential decisions. 

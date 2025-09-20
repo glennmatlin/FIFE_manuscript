@@ -81,7 +81,7 @@ Reddie Set (from reddie_papers.jsonl)
 
 - File: content/09_future_work.typ
   - Section: Open Research Questions
-  - Citekey: @reddie_wargames_2023
+  - Citekey: @reddie_WargamesDataAddressing_2023
   - ID: arXiv:2302.08065
   - Status in zotero.bib: missing
 

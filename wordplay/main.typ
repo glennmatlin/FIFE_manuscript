@@ -1,18 +1,46 @@
 #import "@preview/tracl:0.6.1": *
 
+// #show: doc => acl(doc,
+//   anonymous: false,
+//   title: [Shall We Play a Game?\
+//   Language Models for Open-ended Wargames],
+//    authors: (
+//     (
+//       name: "Glenn Matlin\nParv Mahajan, Isaac Song, Yixiong Hao, Ryan Bard, \nStu Topp, Evan Montoya, M. Rehan Parwani, Soham Shetty, \n Mark Riedl",
+//       affiliation: "College of Computing, Georgia Institute of Technology",
+//       email: "glenn@gatech.edu",
+//     ),
+//   ),
+// )
 
 #show: doc => acl(doc,
-  anonymous: true,
+  anonymous: false,
   title: [Shall We Play a Game?\
   Language Models for Open-ended Wargames],
-   authors: (
+  authors: (
     (
-      name: "Anonymous",
-      affiliation: [Anonymized for review],
-      email: "anonymous@invalid",
+      name: [
+        // Use symbols only here:
+        #set footnote(numbering: "*")
+
+        // Attach FIRST definitions to the first person that needs them,
+        // then reuse with #footnote(<label>) on others.
+
+        Glenn Matlin#footnote[Corresponding author: glenn`@gatech.edu`] <corr>\
+        Parv Mahajan#footnote[Equal second authorship.] <second>,
+        Isaac Song#footnote(<second>),
+        Yixiong Hao#footnote(<second>), Ryan Bard#footnote(<second>),\ Stu Topp, Evan Montoya,
+        M. Rehan Parwani, Soham Shetty,\
+        Mark Riedl
+        // To tag more contributors, add  #footnote(<contrib>)  after their names.
+        // To tag more co-second authors, add  #footnote(<second>)  after their names.
+      ],
+      affiliation: "College of Computing, Georgia Institute of Technology",
+      email: "glenn@gatech.edu",
     ),
   ),
 )
+
 
 #import "config.typ": num_papers
 

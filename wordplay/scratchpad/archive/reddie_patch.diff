@@ -4,16 +4,16 @@ index 9b3e1c2..f5a9bde 100644
 +++ b/content/02_background.typ
 @@ -35,7 +35,7 @@
  
--The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_its_1995 @walton_developing_2019.
-+The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_its_1995 @walton_developing_2019 @booth_wargame_2024.
- SMEs have often classified wargames based on the primary skill required for success @deutschland_bundeswehr_wargaming_2017 @uk_ministry_of_defense_wargaming_2017. One common method SMEs use is placing games somewhere on a spectrum spanning from analytical to creative based on the qualitative aspects and game mechanics
+-The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_ItsOnlyGame_1995 @walton_developing_2019.
++The nature of game design forces trade-offs between realism and simplicity in order to manage complexity to help games flow properly and allow humans to gain insight from the experience. @wallman_ItsOnlyGame_1995 @walton_developing_2019 @booth_wargame_2024.
+ SMEs have often classified wargames based on the primary skill required for success @deutschland_bundeswehr_wargaming_2017 @ukministryofdefense_WargamingHandbook_2017. One common method SMEs use is placing games somewhere on a spectrum spanning from analytical to creative based on the qualitative aspects and game mechanics
  @combe_ii_educational_2021 @de_rosa_design_2021 @ashdown_matrix_2018. Creative game types are those that are open-ended, non-linear games that heavily rely on creative problem solving, while the second is heavily structured and rule‑based games where analytical skills are more important @zegers_matrix_2011. These categories are respectively referred to as *creative wargames* and *analytical wargames* @franken_when_2013 @barzashka_five_2019.
  Open-ended games provide a far greater degree of creative freedom for players to identify the action needed to advance towards their goals and finish the game. Creativity offers players the freedom to identify unique paths to reach the victory condition, or even change the definition of the victory condition. Due to the open-ended nature of creative wargames, they have previously relied heavily on SMEs for
 @@ -16,7 +16,7 @@
  @french_ministry_of_the_armed_forces_wargaming_2024 
  @deutschland_bundeswehr_wargaming_2006 @croatian_military_academy_introduction_2019 @nato_wargaming_2023.
--The term serious games is used to describe games designed for purposes beyond entertainment, such as training, education, analysis, or policy exploration (CITE: more cites for serious games) @wallman_its_1995. Serious games are used to explore strategic choices, elicit expert judgment, or stress‑test plans (CITE: for serious game). Unlike purely recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis (CITE).
-+The term serious games is used to describe games designed for purposes beyond entertainment, such as training, education, analysis, or policy exploration (CITE: more cites for serious games) @wallman_its_1995. Serious games are used to explore strategic choices, elicit expert judgment, or stress‑test plans (CITE: for serious game). Unlike purely recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis (CITE) @goldblum_integrating_2023.
+-The term serious games is used to describe games designed for purposes beyond entertainment, such as training, education, analysis, or policy exploration (CITE: more cites for serious games) @wallman_ItsOnlyGame_1995. Serious games are used to explore strategic choices, elicit expert judgment, or stress‑test plans (CITE: for serious game). Unlike purely recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis (CITE).
++The term serious games is used to describe games designed for purposes beyond entertainment, such as training, education, analysis, or policy exploration (CITE: more cites for serious games) @wallman_ItsOnlyGame_1995. Serious games are used to explore strategic choices, elicit expert judgment, or stress‑test plans (CITE: for serious game). Unlike purely recreational games, the primary objective is to generate insight rather than to optimize win conditions, and design choices (facilitation, documentation, evaluation) are selected to support learning and analysis (CITE) @goldblum_integrating_2023.
 
 diff --git a/content/03_related_works.typ b/content/03_related_works.typ
 index 7c83f61..af9e3a1 100644
@@ -30,10 +30,10 @@ index 7c83f61..af9e3a1 100644
  
 @@ -22,7 +22,7 @@
  Surveys of LMs in games and simulation describe agents that negotiate, plan, or role‑play in
- constrained environments @ma_computational_2024 @zhang_llm_2024 work on Diplomacy combines
+ constrained environments @ma_ComputationalExperimentsMeet_2024 @zhang_LLMMastermindSurvey_2024 work on Diplomacy combines
  language models with planning and tool use @meta_fundamental_ai_research_diplomacy_team_fair_human-level_2022 @lamparth_human_2024 and multi‑agent LM frameworks
--explore coordination, debate, and self‑critique @zhang_llm_2024 @yao_spin-bench_2025. Parallel reviews
-+explore coordination, debate, and self‑critique @zhang_llm_2024 @yao_spin-bench_2025. Parallel reviews
+-explore coordination, debate, and self‑critique @zhang_LLMMastermindSurvey_2024 @yao_spin-bench_2025. Parallel reviews
++explore coordination, debate, and self‑critique @zhang_LLMMastermindSurvey_2024 @yao_spin-bench_2025. Parallel reviews
  in defense communities catalog AI for training and analysis but emphasize quantitative or kinetic
 -models.
 +models @goldblum_wargames_2019.
@@ -67,4 +67,4 @@ index 1b2b3d4..2a3c4d5 100644
 -interventions (system prompts, few‑shot ICL, adapters) with simple baselines. Encourage
 -artifact release (transcripts, code, minimal configs) to enable replication across venues.
 +interventions (system prompts, few‑shot ICL, adapters) with simple baselines. Encourage
-+artifact release (transcripts, code, minimal configs) to enable replication across venues @reddie_wargames_2023.
++artifact release (transcripts, code, minimal configs) to enable replication across venues @reddie_WargamesDataAddressing_2023.

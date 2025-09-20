@@ -29,25 +29,25 @@
     [*Q*],
   ),
 
-  ["A Land-Based War-Gaming Simulation Method Based on Multi-Agent Proximal Policy Optimization" gao_land-based_2024],
+  ["A Land-Based War-Gaming Simulation Method Based on Multi-Agent Proximal Policy Optimization" gao_LandBasedWarGamingSimulation_2024],
   [I],
 
-  ["Adaptive Command: Real-Time Policy Adjustment via Language Models in StarCraft II" ma_adaptive_2025],
+  ["Adaptive Command: Real-Time Policy Adjustment via Language Models in StarCraft II" ma_AdaptiveCommandRealTime_2025],
   [I],
 
-  ["Ares: A System-Oriented Wargame Framework for Adversarial ML" ahmed_ares_2022],
+  ["Ares: A System-Oriented Wargame Framework for Adversarial ML" ahmed_AresSystemOrientedWargame_2022],
   [I],
 
   ["BALROG: Benchmarking Agentic LLM and VLM Reasoning On Games" paglieri_balrog_2024],
   [I],
 
-  ["BattleAgentBench: A Benchmark for Evaluating Cooperation and Competition Capabilities of Language Models in Multi-Agent Systems" wang_battleagentbench_2024],
+  ["BattleAgentBench: A Benchmark for Evaluating Cooperation and Competition Capabilities of Language Models in Multi-Agent Systems" wang_BattleAgentBenchBenchmarkEvaluating_2024],
   [I],
 
-  ["Can Large Language Models Play Games? A Case Study of A Self-Play Approach" guo_can_2024],
+  ["Can Large Language Models Play Games? A Case Study of A Self-Play Approach" guo_CanLargeLanguage_2024],
   [I],
 
-  ["Chess AI: Competing Paradigms for Machine Intelligence" maharaj_chess_2022],
+  ["Chess AI: Competing Paradigms for Machine Intelligence" maharaj_ChessAICompeting_2022],
   [I],
 
   ["ChessGPT: Bridging Policy Learning and Language Modeling" feng_chessgpt_2023],
@@ -83,7 +83,7 @@
   ["LLM-Based Agent Society Investigation: Collaboration and Confrontation in Avalon Gameplay" lan_llm-based_2024],
   [I],
 
-  ["Large Language Models Play StarCraft II: Benchmarks and A Chain of Summarization Approach" ma_large_2024],
+  ["Large Language Models Play StarCraft II: Benchmarks and A Chain of Summarization Approach" ma_ComputationalExperimentsMeet_2024],
   [I],
 
   ["Large Language Models on the Chessboard: A Study on ChatGPT's Formal Language Comprehension and Complex Reasoning Skills" kuo_large_2023],
