@@ -1,1 +1,0 @@
-#let num_papers = "100"
