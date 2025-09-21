@@ -8,6 +8,6 @@ Single-move games or LM polling presented as games were excluded due to a lack o
 - Publication year 2020-2025 to ensure LM relevance.
 - Includes the use of technologies or methods that would commonly be understood to be considered artificial intelligence.
 - AIs serving as players or adjudicators, which includes a breadth of other terminology used, e.g., AI agent, world model, state generator.
-- Provision of any evaluation outcome (quantitative metrics, subject matter expert narratives, or explicit statement of “none”) as needed for synthesis.
+- Provision of any evaluation outcome (quantitative metrics, SME narratives, or explicit statement of “none”) as needed for synthesis.
 - Full text accessibility in English, or with an acceptable machine translation.
 - Pre-print available online with a preference for work that was either published with peer-review, or reports from authoritative sources (e.g., RAND, DoD, MoD).

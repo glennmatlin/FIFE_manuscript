@@ -26,7 +26,7 @@ means that these systems are now of significant interest to national governments
 
 Wargames, however, are not just for war. The term describes any game that is a multi-faceted depiction of conflict in which the participants’ decisions influence the future outcomes of events.
 As such, "wargames" are conducted to aid strategic decision-making in business, diplomacy, law, healthcare, cybersecurity, and military. 
-Subject Matter Experts (SMEs) in these communities seek to leverage AI in wargames that are language-centric and thus open-ended, affording a high degree of creative ideation by players 
+SMEs in these communities seek to leverage AI in wargames that are language-centric and thus open-ended, affording a high degree of creative ideation by players 
 @hogan_open-ended_2024.
 These games historically could only be conducted as purely human exercises, which were resource‑intensive and difficult to analyze at scale @mood_war_1954 @perla_war_1987 @davis_illustrating_2017. 
 

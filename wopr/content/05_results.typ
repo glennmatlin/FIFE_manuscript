@@ -50,7 +50,7 @@ image("figures/fig_by_year_quadrant_area_2col.svg"),
 == Quadrant I: Analytical Player, Analytical Adjudicator
 This quadrant covers rigid, rule‑based systems for both the players and the adjudicators (often
 predetermined scoring). 
-Games in this quadrant include traditional strategy board games such as _Chess_, _Go_, and the original _Kriegspiel_, as well as more modern variants such as _Stratego_, the No Press variant of _Diplomacy_, _Warhammer 40k_, and _Starcraft_ @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @bakhtin_mastering_2022 @anthony_learning_2022.
+Games in this quadrant include traditional strategy board games such as _Chess_, _Go_, and the original _Kriegspiel_, as well as more modern variants such as _Stratego_, the No Press variant of _Diplomacy_, _Warhammer 40k_, and _Starcraft_ @vinyals_grandmaster_2019 @schuurman_game_2021 @bakhtin_mastering_2022 @anthony_learning_2022.
 
 This quadrant is the most extensively explored. 
 //as it captures traditional “quantitative” wargames. 

@@ -1,10 +1,10 @@
 #import "../config.typ":num_papers
 = Conclusions
 
-Wargaming is a cognitive tool for subject matter experts to explore the implications of strategic decision-making. It is not just a tool for militaries; it can be applied to many domains, including entertainment.
+Wargaming is a cognitive tool for SMEs to explore the implications of strategic decision-making. It is not just a tool for militaries; it can be applied to many domains, including entertainment.
 To better understand the space of games, we present a novel ontology that considers the creative range of moves afforded to players and adjudicators.
 Wargames that address open-ended problem spaces and/or social dynamics are played with natural language descriptions of moves. 
-Language models can be useful tools in conducting creative, language-based games. 
+LMs can be useful tools in conducting creative, language-based games. 
 How LMs are used in wargames can be domain-specific. 
 Additionally there are reasons why LMs can, without careful consideration of how they are employed, raise safety concerns with respect to how they affect human decision-making and inferences drawn from the wargaming exercises.
 Finally, we address the broader goals of artificial intelligence and present open research questions on the capabilities of AI in wargames.
