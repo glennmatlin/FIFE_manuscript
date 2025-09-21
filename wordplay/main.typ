@@ -34,13 +34,13 @@
 ]
 #include "content/01_introduction.typ"
 #include "content/02_background.typ"
-#include "content/04_methodology.typ"
-#include "content/05_results.typ"
-#include "content/06_discussion.typ"
-#include "content/07_safety.typ"
-#include "content/08_recommendations.typ"
-#include "content/09_future_work.typ"
-#include "content/03_related_works.typ"
+#include "content/03_methodology.typ"
+#include "content/04_results.typ"
+#include "content/05_discussion.typ"
+#include "content/06_safety.typ"
+
+#include "content/08_future_work.typ"
+#include "content/09_related_works.typ"
 #include "content/10_conclusion.typ"
 
 

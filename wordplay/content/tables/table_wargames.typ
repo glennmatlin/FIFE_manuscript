@@ -120,7 +120,7 @@
     ["Strategic behavior of large language models and the role of game structure versus contextual framing" @lore_strategic_2024], [#qtag("I")],
     ["Strategy-Augmented Planning for Large Language Models via Opponent Exploitation" @xu_StrategyAugmentedPlanningLarge_2025], [#qtag("I")],
     ["Super-additive Cooperation in Language Model Agents" @tonini_SuperadditiveCooperationLanguage_2025], [#qtag("III")],
-    ["SwarmBrain: Embodied agent for real‑time strategy game StarCraft II via large language models." @shao_SwarmBrainEmbodiedAgent_2024], [#qtag("I")],
+    ["SwarmBrain: Embodied agent for real-time strategy game StarCraft II via large language models." @shao_SwarmBrainEmbodiedAgent_2024], [#qtag("I")],
     ["The Automated but Risky Game: Modeling Agent-to-Agent Negotiations and Transactions in Consumer Markets" @zhu_automated_2025], [#qtag("I")],
     ["The Surprising Effectiveness of PPO in Cooperative Multi-Agent Games" @yu_SurprisingEffectivenessPPO_2022], [#qtag("I")],
     ["The Traitors: Deception and Trust in Multi-Agent Language Systems" @curvo_traitors_2025], [#qtag("III")],
