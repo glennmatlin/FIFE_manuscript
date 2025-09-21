@@ -36,5 +36,4 @@ For businesses, wargames test corporate strategy against competitive dynamics an
 
 In medicine and public health, wargames support crisis preparedness and response planning @smith_serious_2020, with tabletop exercises testing emergency plans and inter-agency coordination while LMs help generate and analyze scenarios to bolster societal resilience.
 
-While this section provides a high-level synthesis, a more granular analysis of the unique characteristics and applications within each domain is available in Appendix.
-Additionally, @sec:detailedrecommendations enumerates implementation considerations to ensure that LMs are being effectively applied.
+While this section provides a high-level synthesis, a more granular analysis of the unique characteristics and applications within each domain is available in @sec:wargame_domains, while @sec:detailedrecommendations lists implementation considerations to ensure effective application of LMs in domain-specific wargames.

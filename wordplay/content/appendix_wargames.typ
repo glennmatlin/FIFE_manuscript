@@ -2,10 +2,10 @@
 #import "@preview/tracl:0.6.1": *
 
 = Wargames <sec:wargames>
-== Selected Wargame Papers
+== Selected Wargame Papers <sec:wargame_papers>
 #include "tables/table_wargames.typ" 
 
-== Domains in Wargames
+== Domains in Wargames <sec:wargame_domains>
 This section synthesizes key design principles for developing and evaluating LM-driven agents in open-ended wargames. Drawing from our comprehensive survey, we distill a set of core methodological considerations—such as turn structure, evidence requirements, human facilitation, and adjudication protocols—that influence the validity and analytical utility of language-based strategic simulations @downes-martin_ValidityUtilityWargaming_2017. We then contextualize these principles within specific domains to provide actionable guidance for researchers.
 
 === Military and National Security
@@ -61,9 +61,3 @@ Taken together, economics- and business-oriented wargames provide an experimenta
 Wargaming is not limited to military and geopolitical conflicts. It has also been used to great effect in the fields of medicine and public health to prepare for and respond to health crises. A prominent example is the "Dark Winter" exercise, a 2001 simulation of a smallpox attack on the United States, which highlighted critical deficiencies in the nation's preparedness for a bioterrorist attack.
 
 Following the precedent of "Dark Winter", numerous other wargames and simulation exercises have been conducted to address a variety of public health challenges. These exercises, often referred to as tabletop exercises (TTXs) or drills, are crucial tools for testing emergency plans, training personnel, and improving coordination between different agencies. For instance, "Event 201" simulated a global pandemic to identify and address the economic and societal challenges it would pose. These simulations have proven invaluable in preparing for real-world events like the COVID-19 pandemic, allowing policymakers and healthcare professionals to rehearse their responses in a controlled environment @smith_serious_2020.
-
-
-== Human-Agent vs. Agent-Agent Interactions 
-Especially in negotiation-centric settings and highly creative agents, previous research leans toward Human-Agent Interactions (HAI) with emphasis on emulating or integrating with human diplomatic behavior. Often it is a single AI agent interacting with a group of human players, as seen typically in AI research with negotiation-centric board games. With diplomacy and collaboration being the focus, the state of the game strongly encourages AI agents to adopt the social language of the rest of the players. Such research is often conducted through random games on online platforms with text-based communications, and mostly without the human users being strongly informed of the presence of the AI agent on the platform, let alone that they are playing against an AI agent @meta_fundamental_ai_research_diplomacy_team_human-level_2022. The focus is often on how AI interacts compared to human diplomatic strategies as the primary benchmark, with the target of human-like behavior, and evaluated on performance against humans. 
-
-However, agent-agent interaction (A2A) is increasingly important as agentic AI proliferates in practice, including organizational and enterprise contexts. Conflicts between multiple agentic systems will differ from HAI dynamics. Much prior work studies cooperative tasks or MoE coordination; competitive diplomatic A2A remains sparse. Human-likeness, a common HAI benchmark, may not translate to A2A settings with different equilibria and strategies.

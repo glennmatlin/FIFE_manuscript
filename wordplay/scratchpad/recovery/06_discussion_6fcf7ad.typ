@@ -3,7 +3,7 @@
 // NOTES: We are redoing this part. If it is 3 AM and this is still here, ping Glenn.
 
 
-// We talk about the current work in each domain of Q4 wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."
+// We talk about the current work in each domain of Q-IV wargames. then, we say something like "in general, all the stuff in [DOMAIN] has xyz charecteristics. this is interesting because XYZ."
 
 /** PARV NOTES START 
 // 1st para: motivation. 2nd para: work
